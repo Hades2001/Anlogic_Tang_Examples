@@ -1,0 +1,11 @@
+##  System
+set_pin_assignment {CLK_24M} { LOCATION = K14; }	##24MHZ
+set_pin_assignment {nRST} { LOCATION = K16; }		##USER_KEY
+
+##  LED IOs
+set_pin_assignment {LEDs[0]} { LOCATION = J14; }	## LED G
+set_pin_assignment {LEDs[1]} { LOCATION = P13; }	## LED B
+set_pin_assignment {LEDs[2]} { LOCATION = R3; }	    ## LED R
+
+##  GPIOs
+set_pin_assignment {GPIO} 	    { LOCATION = C15; }

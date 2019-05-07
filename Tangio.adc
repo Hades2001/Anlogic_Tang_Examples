@@ -1,17 +1,17 @@
-set_pin_assignment {clk} { LOCATION = K14; }		##24MHZ
+set_pin_assignment {CLK_24M} { LOCATION = K14; }		##24MHZ
 set_pin_assignment {nRST} { LOCATION = K16; }		##USER_KEY
 
 ##  LED IOs
-set_pin_assignment {LED[0]} { LOCATION = J14; }		## LED G
-set_pin_assignment {LED[1]} { LOCATION = P13; }	    ## LED B
-set_pin_assignment {LED[2]} { LOCATION = R3; }	    ## LED R
+set_pin_assignment {LEDs[0]} { LOCATION = J14; }		## LED G
+set_pin_assignment {LEDs[1]} { LOCATION = P13; }	    ## LED B
+set_pin_assignment {LEDs[2]} { LOCATION = R3; }	    ## LED R
 
 ## LCD IOs
 set_pin_assignment {LCDBK} 		{ LOCATION = J16; }	
 
 set_pin_assignment {LCD_CLK} 	{ LOCATION = L1; }	
-set_pin_assignment {LCD_HYNC} 	{ LOCATION = P1; }
-set_pin_assignment {LCD_SYNC} 	{ LOCATION = R1; }
+set_pin_assignment {LCD_HSYNC} 	{ LOCATION = P1; }
+set_pin_assignment {LCD_VSYNC} 	{ LOCATION = R1; }
 set_pin_assignment {LCD_DEN} 	{ LOCATION = L4; }
 
 set_pin_assignment {LCD_R[0]} 	{ LOCATION = B2; }

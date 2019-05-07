@@ -1,0 +1,40 @@
+standard
+***Report Model: TOP***
+
+IO Statistics
+#IO                     6
+  #input                2
+  #output               4
+  #inout                0
+
+Utilization Statistics
+#lut                  584   out of  19600    2.98%
+#reg                   80   out of  19600    0.41%
+#le                   584
+  #lut only           504   out of    584   86.30%
+  #reg only             0   out of    584    0.00%
+  #lut&reg             80   out of    584   13.70%
+#dsp                    0   out of     29    0.00%
+#bram                   0   out of     64    0.00%
+  #bram9k               0
+  #fifo9k               0
+#bram32k                0   out of     16    0.00%
+#pad                    6   out of    188    3.19%
+  #ireg                 0
+  #oreg                 0
+  #treg                 0
+#pll                    1   out of      4   25.00%
+#clknet                 3   out of     16   18.75%
+  #gclk                 1
+
+
+Detailed IO Report
+
+Name        Direction     Location     IOStandard     DriveStrength     
+CLK_24M     INPUT         K14          LVCMOS25       N/A               
+nRST        INPUT         K16          LVCMOS25       N/A               
+GPIO        OUTPUT        C15          LVCMOS25       8                 
+LEDs[2]     OUTPUT        R3           LVCMOS25       8                 
+LEDs[1]     OUTPUT        P13          LVCMOS25       8                 
+LEDs[0]     OUTPUT        J14          LVCMOS25       8                 
+
