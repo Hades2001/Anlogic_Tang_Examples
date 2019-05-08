@@ -12537,3 +12537,7 @@ RUN-1003 : finish command "download -bit E:\Fpga_Prj\Anlogic\AnlogIC_Examples\LE
 
 RUN-1004 : used memory is 372 MB, reserved memory is 348 MB, peak memory is 703 MB
 GUI-1001 : Download success!
+HDL-1007 : analyze verilog file Source/TOP.v
+HDL-1007 : analyze verilog file al_ip/SysPll.v
+HDL-1007 : analyze verilog file Source/PWM.v
+HDL-1007 : analyze verilog file Source/LEDRGBCtrl.v

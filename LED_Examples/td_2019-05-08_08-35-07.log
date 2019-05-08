@@ -1,0 +1,42 @@
+============================================================
+   Tang Dynasty, V4.4.433
+   Copyright:   Shanghai Anlogic Infotech Co., Ltd.
+                2011 - 2021
+   Executable = C:/Anlogic/TD4.4.433/bin/td.exe
+   Built at =   17:57:18 Feb 26 2019
+   Run by =     Administrator
+   Run Date =   Wed May  8 08:35:07 2019
+
+   Run on =     JSB-C
+============================================================
+RUN-1002 : start command "open_project LED_Examples.al"
+HDL-1007 : analyze verilog file Source/TOP.v
+HDL-1007 : analyze verilog file al_ip/SysPll.v
+HDL-1007 : analyze verilog file Source/PWM.v
+HDL-1007 : analyze verilog file Source/LEDRGBCtrl.v
+RUN-1002 : start command "import_device eagle_s20.db -package BG256"
+ARC-1001 : Device Initialization.
+ARC-1001 : ------------------------------------------------------------------
+ARC-1001 :            OPTION            |          IO          |   SETTING   
+ARC-1001 : ------------------------------------------------------------------
+ARC-1001 :   cso_b/cclk/mosi/miso/dout  |  T3/R11/T10/P10/S11  |    gpio    
+ARC-1001 :             done             |         P13          |    gpio    
+ARC-1001 :           program_b          |          T2          |  dedicated  
+ARC-1001 :        tdi/tms/tck/tdo       |   C12/A15/C14/E14    |  dedicated  
+ARC-1001 : ------------------------------------------------------------------
+ARC-1004 : Device setting, marked 5 dedicate IOs in total.
+RUN-1002 : start command "download -bit E:\Fpga_Prj\Anlogic\AnlogIC_Examples\LED_Examples\LED_Examples.bit -mode jtag -spd 6 -sec 64 -cable 0"
+PRG-2014 : Chip validation success: EAGLE_S20_BG256
+RUN-1002 : start command "bit_to_vec -chip EAGLE_S20_BG256 -m jtag -bit E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LED_Examples/LED_Examples.bit"
+PRG-3000 : BIT2VEC::JtagBitstream: completed! line_num = 1354, frame_num = 1259
+RUN-1003 : finish command "bit_to_vec -chip EAGLE_S20_BG256 -m jtag -bit E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LED_Examples/LED_Examples.bit" in  1.936388s wall, 1.809612s user + 0.156001s system = 1.965613s CPU (101.5%)
+
+RUN-1004 : used memory is 251 MB, reserved memory is 219 MB, peak memory is 253 MB
+RUN-1002 : start command "program -cable 0 -spd 6"
+RUN-1003 : finish command "program -cable 0 -spd 6" in  6.670625s wall, 0.280802s user + 0.249602s system = 0.530403s CPU (8.0%)
+
+RUN-1004 : used memory is 281 MB, reserved memory is 249 MB, peak memory is 281 MB
+RUN-1003 : finish command "download -bit E:\Fpga_Prj\Anlogic\AnlogIC_Examples\LED_Examples\LED_Examples.bit -mode jtag -spd 6 -sec 64 -cable 0" in  9.328621s wall, 2.168414s user + 0.499203s system = 2.667617s CPU (28.6%)
+
+RUN-1004 : used memory is 140 MB, reserved memory is 107 MB, peak memory is 281 MB
+GUI-1001 : Download success!

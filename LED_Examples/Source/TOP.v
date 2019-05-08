@@ -14,7 +14,7 @@ module TOP
     output  [2:0]   LEDs;
     output          GPIO;
 
-    wire            CLK_100M;
+    wire            CLK_100M;  
     wire            CLK_50M;
     wire            CLK_200M;
     wire            CLK_33M;
@@ -29,27 +29,6 @@ module TOP
 		.clk2_out   (   CLK_200M    ),
 		.clk3_out   (   CLK_33M     )
     );
-
-    /*
-    PWM
-    #(
-       .PWMWidth( 16 )
-    )
-    R_PWM
-    (
-        .CLK        (   CLK_24M ),
-        .nRST       (   nRST    ),
-        
-        .OUT        (   LEDs[0]     ),
-        .PWMUpData  (   16'd1000    ),
-        .PWMConData (   16'd10     )
-
-    );
-        assign  LEDs[1] = 1'b1;
-        assign  LEDs[2] = 1'b1;
-    */
-
-
 
     LEDRGBCtrl  U1
     (
