@@ -69,10 +69,28 @@ module TOP
 		.empty_flag	(	FIFO_EMPTY	),
 		.full_flag	(	FIFO_FULL	) 
 	);
+	
+	LCDCTRL U4
+	(
+		.CLK		(	CLK_100M	),
+		.nRST		(	nRST		),
 
-	assign	FIFO_CLK_W 	= clk;
+		.HSYNC		(	LCD_HYNC	),
+		.VSYNC		(	LCD_SYNC	),
+
+		.FIFOWe		(	FIFO_WE		),
+
+		.RGBData	(	FIFO_DI		)
+
+	);
+	
+	assign	FIFO_CLK_W 	= CLK_100M;
+	//assign	FIFO_DI		= 8'b1111_1111;	
+	/*
+	assign	FIFO_CLK_W 	= CLK_100M;
 	assign	FIFO_DI		= 8'b1111_1111;	
 	assign	FIFO_WE		= ( FIFO_FULL == 1'b1 ) ? 1'b0 : 1'b1;
+	*/
 
 	VGAMod	D1
 	(
@@ -96,7 +114,7 @@ module TOP
 
 	);
 
-	assign		LCD_CLK		=	CLK_100M;
+	assign		LCD_CLK		=	PixeClk;
 	assign		GPIO		=	LCD_DEN;
 
 	CLK_MOD	U1

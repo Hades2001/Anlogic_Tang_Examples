@@ -53,8 +53,13 @@ module VGAMod
             end
     end
 
+    assign  LCD_HSYNC = (( PixelCount >= ( H_BackPorch - 16'd200 ))&&( PixelCount < (PixelForHS - 1))) ? 1'b0 : 1'b1;
+    assign  LCD_VSYNC = (( LineCount  >= ( V_BackPorch - 16'd40  ))&&( LineCount  < (LineForVS  - 1))) ? 1'b0 : 1'b1;
+
+    /*
     assign  LCD_HSYNC = (( PixelCount >= ( H_BackPorch + 4 ))&&( PixelCount < (PixelForHS - 5))) ? 1'b0 : 1'b1;
     assign  LCD_VSYNC = (( LineCount  >= ( V_BackPorch + 2 ))&&( LineCount  < (LineForVS  - 5))) ? 1'b0 : 1'b1;
+    */
 
     assign  LCD_DE = (  ( PixelCount >= H_BackPorch )&&
                         ( PixelCount <= PixelForHS ) &&

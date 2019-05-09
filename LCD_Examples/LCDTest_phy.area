@@ -8,16 +8,16 @@ IO Statistics
   #inout                0
 
 Utilization Statistics
-#lut                  385   out of  19600    1.96%
-#reg                   98   out of  19600    0.50%
-#le                   385
-  #lut only           287   out of    385   74.55%
-  #reg only             0   out of    385    0.00%
-  #lut&reg             98   out of    385   25.45%
+#lut                  568   out of  19600    2.90%
+#reg                  114   out of  19600    0.58%
+#le                   568
+  #lut only           454   out of    568   79.93%
+  #reg only             0   out of    568    0.00%
+  #lut&reg            114   out of    568   20.07%
 #dsp                    0   out of     29    0.00%
-#bram                   1   out of     64    1.56%
+#bram                   2   out of     64    3.13%
   #bram9k               0
-  #fifo9k               1
+  #fifo9k               2
 #bram32k                0   out of     16    0.00%
 #pad                   35   out of    188   18.62%
   #ireg                 0

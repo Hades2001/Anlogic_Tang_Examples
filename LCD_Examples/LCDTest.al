@@ -15,6 +15,7 @@
             <File>al_ip/LCDPLL.v</File>
             <File>source/CLK_MOD.v</File>
             <File>al_ip/DisFIFO.v</File>
+            <File>source/LCDCTRL.v</File>
         </Verilog>
         <ADC_FILE>IO/io.adc</ADC_FILE>
         <SDC_FILE/>
@@ -26,7 +27,7 @@
         <CREATEINDEX>user</CREATEINDEX>
     </TOP_MODULE>
     <Project_Settings>
-        <Step_Last_Change>2019-05-09 18:12:09</Step_Last_Change>
+        <Step_Last_Change>2019-05-10 00:33:07</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
