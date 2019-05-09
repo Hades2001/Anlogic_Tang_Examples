@@ -1,17 +1,17 @@
-set_pin_assignment {CLK_24M} { LOCATION = K14; }		##24MHZ
+set_pin_assignment {clk} { LOCATION = K14; }		##24MHZ
 set_pin_assignment {nRST} { LOCATION = K16; }		##USER_KEY
 
 ##  LED IOs
-set_pin_assignment {LEDs[0]} { LOCATION = J14; }		## LED G
-set_pin_assignment {LEDs[1]} { LOCATION = P13; }	    ## LED B
-set_pin_assignment {LEDs[2]} { LOCATION = R3; }	    ## LED R
+set_pin_assignment {LED[0]} { LOCATION = J14; }		## LED G
+set_pin_assignment {LED[1]} { LOCATION = P13; }	    ## LED B
+set_pin_assignment {LED[2]} { LOCATION = R3; }	    ## LED R
 
 ## LCD IOs
 set_pin_assignment {LCDBK} 		{ LOCATION = J16; }	
 
 set_pin_assignment {LCD_CLK} 	{ LOCATION = L1; }	
-set_pin_assignment {LCD_HSYNC} 	{ LOCATION = P1; }
-set_pin_assignment {LCD_VSYNC} 	{ LOCATION = R1; }
+set_pin_assignment {LCD_HYNC} 	{ LOCATION = P1; }
+set_pin_assignment {LCD_SYNC} 	{ LOCATION = R1; }
 set_pin_assignment {LCD_DEN} 	{ LOCATION = L4; }
 
 set_pin_assignment {LCD_R[0]} 	{ LOCATION = B2; }
@@ -42,20 +42,5 @@ set_pin_assignment {LCD_B[6]} 	{ LOCATION = M1; }
 set_pin_assignment {LCD_B[7]} 	{ LOCATION = N1; }
 
 ##  GPIO
+
 set_pin_assignment {GPIO} 	    { LOCATION = C15; }
-
-## SPIFlash
-##set_pin_assignment {FLASH1_CS} 	{ LOCATION = C15; }
-##set_pin_assignment {FLASH1_CLK} 	{ LOCATION = C15; }
-set_pin_assignment {FLASH1_IO[0]} 	{ LOCATION = T10; }
-set_pin_assignment {FLASH1_IO[1]} 	{ LOCATION = P10; }
-set_pin_assignment {FLASH1_IO[2]} 	{ LOCATION = L7; }
-set_pin_assignment {FLASH1_IO[3]} 	{ LOCATION = L8; }
-
-set_pin_assignment {NAND_CS} 	    { LOCATION = D3; }
-set_pin_assignment {NAND_CLK} 	    { LOCATION = H4; }
-set_pin_assignment {NAND_IO[0]} 	{ LOCATION = B3; }
-set_pin_assignment {NAND_IO[1]} 	{ LOCATION = F3; }
-set_pin_assignment {NAND_IO[2]} 	{ LOCATION = F5; }
-set_pin_assignment {NAND_IO[3]} 	{ LOCATION = B1; }
-

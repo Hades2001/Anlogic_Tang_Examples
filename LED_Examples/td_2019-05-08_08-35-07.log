@@ -40,3 +40,24 @@ RUN-1003 : finish command "download -bit E:\Fpga_Prj\Anlogic\AnlogIC_Examples\LE
 
 RUN-1004 : used memory is 140 MB, reserved memory is 107 MB, peak memory is 281 MB
 GUI-1001 : Download success!
+RUN-1002 : start command "download -bit E:\Fpga_Prj\Anlogic\AnlogIC_Examples\LED_Examples\LED_Examples.bit -mode program_spi -v -spd 6 -sec 64 -cable 0"
+PRG-2014 : Chip validation success: EAGLE_S20_BG256
+RUN-1002 : start command "bit_to_vec -chip EAGLE_S20_BG256 -m program_spi -bit E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LED_Examples/LED_Examples.bit"
+RUN-1003 : finish command "bit_to_vec -chip EAGLE_S20_BG256 -m program_spi -bit E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LED_Examples/LED_Examples.bit" in  2.641357s wall, 2.199614s user + 0.452403s system = 2.652017s CPU (100.4%)
+
+RUN-1004 : used memory is 464 MB, reserved memory is 431 MB, peak memory is 474 MB
+RUN-1002 : start command "program_spi -cable 0 -spd 6"
+RUN-1003 : finish command "program_spi -cable 0 -spd 6" in  106.120906s wall, 6.115239s user + 0.826805s system = 6.942044s CPU (6.5%)
+
+RUN-1004 : used memory is 465 MB, reserved memory is 433 MB, peak memory is 474 MB
+RUN-1002 : start command "bit_to_vec -chip EAGLE_S20_BG256 -m verify_spi -bit E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LED_Examples/LED_Examples.bit"
+RUN-1002 : start command "program -cable 0 -spd 4"
+RUN-1003 : finish command "program -cable 0 -spd 4" in  25.406351s wall, 0.639604s user + 0.062400s system = 0.702005s CPU (2.8%)
+
+RUN-1004 : used memory is 281 MB, reserved memory is 249 MB, peak memory is 474 MB
+RUN-1002 : start command "program -cable 0 -spd 1"
+RUN-1003 : finish command "download -bit E:\Fpga_Prj\Anlogic\AnlogIC_Examples\LED_Examples\LED_Examples.bit -mode program_spi -v -spd 6 -sec 64 -cable 0" in  135.535221s wall, 9.828063s user + 1.528810s system = 11.356873s CPU (8.4%)
+
+RUN-1004 : used memory is 142 MB, reserved memory is 109 MB, peak memory is 474 MB
+GUI-1001 : Download success!
+RUN-1002 : start command "import_device eagle_s20.db -package BG256"
