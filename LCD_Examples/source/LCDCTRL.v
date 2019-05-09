@@ -10,7 +10,12 @@ module LCDCTRL
 
 );
 
-    always@()
+    always@( posedge CLK or negedge nRST )begin
+    if( !nRST ) begin 
+
+        end
+
+    end
 
 
 
