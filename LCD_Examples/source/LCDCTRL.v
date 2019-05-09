@@ -10,7 +10,7 @@ module LCDCTRL
 
 );
 
-    
+    always@()
 
 
 
