@@ -67,6 +67,8 @@ module VGAMod
     assign  VGA_R    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[15:11], 3'b111 } : 8'b1111_1111;
     assign  VGA_G    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[10:5] , 2'b11  } : 8'b0000_0000;
     assign  VGA_B    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[4:0]  , 3'b111 } : 8'b0000_0000;
+
+    
 /*
     always @(  posedge PixelClk or negedge nRST  )begin
         if( !nRST ) begin
