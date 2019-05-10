@@ -29,7 +29,8 @@ module VGAMod
     localparam      HightPixel  = 16'd480;
 
     localparam      H_BackPorch  =  16'd256;
-    localparam      V_BackPorch  =  16'd45;
+    localparam      V_BackPorch  =  16'd45;     // 800*480@44Hz   
+    //localparam      V_BackPorch  =  16'd760;  // 800*480@20Hz
 
     localparam      PixelForHS  =   16'd1056 + H_BackPorch;
     localparam      LineForVS   =   16'd525  + V_BackPorch;
@@ -56,8 +57,13 @@ module VGAMod
     end
 
     assign  LCD_HSYNC = (( PixelCount >= ( H_BackPorch - 16'd200 ))&&( PixelCount < (PixelForHS - 1))) ? 1'b0 : 1'b1;
-    assign  LCD_VSYNC = (( LineCount  >= ( V_BackPorch - 16'd40  ))&&( LineCount  < (LineForVS  - 1))) ? 1'b0 : 1'b1;
+    assign  LCD_VSYNC = (( LineCount  >= 0 )&&( LineCount  < V_BackPorch )) ? 1'b1 : 1'b0;
 
+
+    /*
+    assign  LCD_HSYNC = (( PixelCount >= ( H_BackPorch - 16'd200 ))&&( PixelCount < (PixelForHS - 1))) ? 1'b0 : 1'b1;
+    assign  LCD_VSYNC = (( LineCount  >= ( V_BackPorch - 16'd40  ))&&( LineCount  < (LineForVS  - 1))) ? 1'b0 : 1'b1;
+    */
     assign  FIFO_RST  = (( PixelCount >= 0 )&&( PixelCount < 16'd20 )) ? 1'b1 : 1'b0;
 
     assign  LCD_DE = (  ( PixelCount >= H_BackPorch )&&
@@ -66,7 +72,7 @@ module VGAMod
                         ( LineCount < LineForVS ))  ? 1'b1 : 1'b0;
 
     assign  FIFO_CLK = PixelClk;
-    assign  FIFO_RE  = (( PixelCount >= FIFOReStart )&&( PixelCount <= FIFOReEnd )&&( FIFO_Empty == 1'b0 )) ? 1'b1 : 1'b0;
+    assign  FIFO_RE  = (( LineCount >= V_BackPorch )&&( LineCount < LineForVS )&&( PixelCount >= FIFOReStart )&&( PixelCount <= FIFOReEnd )&&( FIFO_Empty == 1'b0 )) ? 1'b1 : 1'b0;
 
     assign  LCD_R    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[15:11], 3'b111 } : 8'b1111_1111;
     assign  LCD_G    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[10:5] , 2'b11  } : 8'b0000_0000;

@@ -8,8 +8,8 @@ IO Statistics
   #inout                0
 
 Gate Statistics
-#Basic gates          180
-  #and                 11
+#Basic gates          213
+  #and                 16
   #nand                 0
   #or                   0
   #nor                  0
@@ -20,15 +20,15 @@ Gate Statistics
   #bufif1               0
   #MX21                32
   #FADD                 0
-  #DFF                129
+  #DFF                157
   #LATCH                0
-#MACRO_ADD             20
-#MACRO_EQ               4
-#MACRO_MUX            151
+#MACRO_ADD             28
+#MACRO_EQ               7
+#MACRO_MUX            236
 
 Report Hierarchy Area:
 +-----------------------------------------+
 |Instance |Module |gates  |seq    |macros |
 +-----------------------------------------+
-|top      |TOP    |51     |129    |27     |
+|top      |TOP    |56     |157    |38     |
 +-----------------------------------------+

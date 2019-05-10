@@ -1,5 +1,5 @@
 // Verilog netlist created by TD v4.4.433
-// Fri May 10 10:47:33 2019
+// Fri May 10 14:30:56 2019
 
 `timescale 1ns / 1ps
 module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
@@ -48,8 +48,15 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   wire [14:0] \U4/Addr ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(18)
   wire [15:0] \U4/AddrCtrl ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(15)
   wire [0:1] \U4/Addr_piped ;
-  wire [15:0] \U4/n1 ;
-  wire [14:0] \U4/n5 ;
+  wire [15:0] \U4/Count ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
+  wire [15:0] \U4/LineConut ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(16)
+  wire [15:0] \U4/XPos ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(48)
+  wire [11:0] \U4/n14 ;
+  wire [15:0] \U4/n18 ;
+  wire [15:0] \U4/n2 ;
+  wire [7:0] \U4/n20 ;
+  wire [14:0] \U4/n23 ;
+  wire [15:0] \U4/n7 ;
   wire CLK_100M;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(40)
   wire \D1/add0/c11 ;
   wire \D1/add0/c15 ;
@@ -67,14 +74,6 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   wire \D1/lt0_c5 ;
   wire \D1/lt0_c7 ;
   wire \D1/lt0_c9 ;
-  wire \D1/lt10_c1 ;
-  wire \D1/lt10_c11 ;
-  wire \D1/lt10_c13 ;
-  wire \D1/lt10_c15 ;
-  wire \D1/lt10_c3 ;
-  wire \D1/lt10_c5 ;
-  wire \D1/lt10_c7 ;
-  wire \D1/lt10_c9 ;
   wire \D1/lt1_c1 ;
   wire \D1/lt1_c11 ;
   wire \D1/lt1_c13 ;
@@ -147,17 +146,16 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   wire \D1/lt9_c5 ;
   wire \D1/lt9_c7 ;
   wire \D1/lt9_c9 ;
+  wire \D1/mux2_b0_sel_is_0_o ;
   wire \D1/n0 ;
   wire \D1/n10 ;
   wire \D1/n12 ;
   wire \D1/n13 ;
   wire \D1/n15 ;
-  wire \D1/n16 ;
-  wire \D1/n18 ;
-  wire \D1/n20 ;
+  wire \D1/n17 ;
+  wire \D1/n19 ;
   wire \D1/n21 ;
-  wire \D1/n22 ;
-  wire \D1/n24 ;
+  wire \D1/n23 ;
   wire \D1/n9 ;
   wire \FIFO0/logic_fifo_full ;
   wire \FIFO0/logic_fifo_full_neg ;
@@ -225,8 +223,17 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   wire \U4/add0/c3 ;
   wire \U4/add0/c7 ;
   wire \U4/add1/c11 ;
+  wire \U4/add1/c15 ;
   wire \U4/add1/c3 ;
   wire \U4/add1/c7 ;
+  wire \U4/add2/c11 ;
+  wire \U4/add2/c3 ;
+  wire \U4/add2/c7 ;
+  wire \U4/add3/c3 ;
+  wire \U4/add3/c7 ;
+  wire \U4/add4/c11 ;
+  wire \U4/add4/c3 ;
+  wire \U4/add4/c7 ;
   wire \U4/lt0_c1 ;
   wire \U4/lt0_c11 ;
   wire \U4/lt0_c13 ;
@@ -237,53 +244,88 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   wire \U4/lt0_c9 ;
   wire \U4/lt1_c1 ;
   wire \U4/lt1_c11 ;
-  wire \U4/lt1_c13 ;
-  wire \U4/lt1_c15 ;
   wire \U4/lt1_c3 ;
   wire \U4/lt1_c5 ;
   wire \U4/lt1_c7 ;
   wire \U4/lt1_c9 ;
   wire \U4/lt2_c1 ;
   wire \U4/lt2_c11 ;
-  wire \U4/lt2_c13 ;
-  wire \U4/lt2_c15 ;
   wire \U4/lt2_c3 ;
   wire \U4/lt2_c5 ;
   wire \U4/lt2_c7 ;
   wire \U4/lt2_c9 ;
-  wire \U4/mux1_b0_sel_is_0_o ;
-  wire \U4/n12 ;
-  wire \U4/n4 ;
-  wire \U4/n8 ;
-  wire _al_u178_o;
-  wire _al_u179_o;
-  wire _al_u181_o;
-  wire _al_u182_o;
-  wire _al_u184_o;
-  wire _al_u185_o;
-  wire _al_u187_o;
-  wire _al_u188_o;
-  wire _al_u190_o;
+  wire \U4/lt3_c1 ;
+  wire \U4/lt3_c11 ;
+  wire \U4/lt3_c13 ;
+  wire \U4/lt3_c15 ;
+  wire \U4/lt3_c3 ;
+  wire \U4/lt3_c5 ;
+  wire \U4/lt3_c7 ;
+  wire \U4/lt3_c9 ;
+  wire \U4/lt4_c1 ;
+  wire \U4/lt4_c11 ;
+  wire \U4/lt4_c13 ;
+  wire \U4/lt4_c15 ;
+  wire \U4/lt4_c3 ;
+  wire \U4/lt4_c5 ;
+  wire \U4/lt4_c7 ;
+  wire \U4/lt4_c9 ;
+  wire \U4/lt5_c1 ;
+  wire \U4/lt5_c11 ;
+  wire \U4/lt5_c13 ;
+  wire \U4/lt5_c15 ;
+  wire \U4/lt5_c3 ;
+  wire \U4/lt5_c5 ;
+  wire \U4/lt5_c7 ;
+  wire \U4/lt5_c9 ;
+  wire \U4/lt6_c1 ;
+  wire \U4/lt6_c11 ;
+  wire \U4/lt6_c13 ;
+  wire \U4/lt6_c15 ;
+  wire \U4/lt6_c3 ;
+  wire \U4/lt6_c5 ;
+  wire \U4/lt6_c7 ;
+  wire \U4/lt6_c9 ;
+  wire \U4/lt7_c1 ;
+  wire \U4/lt7_c11 ;
+  wire \U4/lt7_c13 ;
+  wire \U4/lt7_c15 ;
+  wire \U4/lt7_c3 ;
+  wire \U4/lt7_c5 ;
+  wire \U4/lt7_c7 ;
+  wire \U4/lt7_c9 ;
+  wire \U4/mux2_b0_sel_is_0_o ;
+  wire \U4/n1 ;
+  wire \U4/n10 ;
+  wire \U4/n13 ;
+  wire \U4/n19 ;
+  wire \U4/n21 ;
+  wire \U4/n22 ;
+  wire \U4/n26 ;
+  wire \U4/n30 ;
+  wire \U4/n32 ;
+  wire \U4/n6_lutinv ;
+  wire \U4/sub0/c11 ;
+  wire \U4/sub0/c3 ;
+  wire \U4/sub0/c7 ;
+  wire _al_u189_o;
   wire _al_u191_o;
+  wire _al_u192_o;
   wire _al_u193_o;
-  wire _al_u194_o;
+  wire _al_u195_o;
   wire _al_u196_o;
-  wire _al_u197_o;
+  wire _al_u198_o;
   wire _al_u199_o;
-  wire _al_u200_o;
+  wire _al_u201_o;
   wire _al_u202_o;
-  wire _al_u203_o;
   wire _al_u204_o;
   wire _al_u205_o;
-  wire _al_u206_o;
   wire _al_u207_o;
   wire _al_u208_o;
-  wire _al_u209_o;
   wire _al_u210_o;
   wire _al_u211_o;
   wire _al_u213_o;
   wire _al_u214_o;
-  wire _al_u215_o;
   wire _al_u216_o;
   wire _al_u217_o;
   wire _al_u218_o;
@@ -291,9 +333,9 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   wire _al_u220_o;
   wire _al_u221_o;
   wire _al_u222_o;
+  wire _al_u223_o;
   wire _al_u224_o;
   wire _al_u225_o;
-  wire _al_u226_o;
   wire _al_u227_o;
   wire _al_u228_o;
   wire _al_u229_o;
@@ -301,11 +343,36 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   wire _al_u231_o;
   wire _al_u232_o;
   wire _al_u233_o;
+  wire _al_u234_o;
+  wire _al_u235_o;
+  wire _al_u236_o;
+  wire _al_u238_o;
+  wire _al_u239_o;
+  wire _al_u240_o;
+  wire _al_u241_o;
+  wire _al_u242_o;
+  wire _al_u243_o;
+  wire _al_u244_o;
+  wire _al_u245_o;
+  wire _al_u246_o;
+  wire _al_u247_o;
+  wire _al_u328_o;
+  wire _al_u329_o;
+  wire _al_u330_o;
+  wire _al_u331_o;
+  wire _al_u332_o;
+  wire _al_u367_o;
+  wire _al_u368_o;
+  wire _al_u369_o;
+  wire _al_u370_o;
+  wire _al_u371_o;
+  wire _al_u372_o;
+  wire _al_u373_o;
   wire clk_pad;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(21)
   wire nRST_pad;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(22)
 
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add0/ucin_al_u354"),
+    //.MACRO("D1/add0/ucin_al_u412"),
     //.R_POSITION("X0Y1Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -318,7 +385,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add0/u11_al_u357  (
+    \D1/add0/u11_al_u415  (
     .a({\D1/LineCount [13],\D1/LineCount [11]}),
     .b({\D1/LineCount [14],\D1/LineCount [12]}),
     .c(2'b00),
@@ -329,7 +396,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\D1/add0/c15 ),
     .fx({\D1/n2 [14],\D1/n2 [12]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add0/ucin_al_u354"),
+    //.MACRO("D1/add0/ucin_al_u412"),
     //.R_POSITION("X0Y2Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -342,14 +409,14 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add0/u15_al_u358  (
+    \D1/add0/u15_al_u416  (
     .a({open_n18,\D1/LineCount [15]}),
     .c(2'b00),
     .d({open_n23,1'b0}),
     .fci(\D1/add0/c15 ),
     .f({open_n40,\D1/n2 [15]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add0/ucin_al_u354"),
+    //.MACRO("D1/add0/ucin_al_u412"),
     //.R_POSITION("X0Y0Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -362,7 +429,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add0/u3_al_u355  (
+    \D1/add0/u3_al_u413  (
     .a({\D1/LineCount [5],\D1/LineCount [3]}),
     .b({\D1/LineCount [6],\D1/LineCount [4]}),
     .c(2'b00),
@@ -373,7 +440,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\D1/add0/c7 ),
     .fx({\D1/n2 [6],\D1/n2 [4]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add0/ucin_al_u354"),
+    //.MACRO("D1/add0/ucin_al_u412"),
     //.R_POSITION("X0Y1Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -386,7 +453,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add0/u7_al_u356  (
+    \D1/add0/u7_al_u414  (
     .a({\D1/LineCount [9],\D1/LineCount [7]}),
     .b({\D1/LineCount [10],\D1/LineCount [8]}),
     .c(2'b00),
@@ -397,7 +464,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\D1/add0/c11 ),
     .fx({\D1/n2 [10],\D1/n2 [8]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add0/ucin_al_u354"),
+    //.MACRO("D1/add0/ucin_al_u412"),
     //.R_POSITION("X0Y0Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -410,7 +477,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add0/ucin_al_u354  (
+    \D1/add0/ucin_al_u412  (
     .a({\D1/LineCount [1],1'b0}),
     .b({\D1/LineCount [2],\D1/LineCount [0]}),
     .c(2'b00),
@@ -420,7 +487,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\D1/add0/c3 ),
     .fx({\D1/n2 [2],\D1/n2 [0]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add1/ucin_al_u359"),
+    //.MACRO("D1/add1/ucin_al_u417"),
     //.R_POSITION("X0Y1Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -433,7 +500,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add1/u11_al_u362  (
+    \D1/add1/u11_al_u420  (
     .a({\D1/PixelCount [13],\D1/PixelCount [11]}),
     .b({\D1/PixelCount [14],\D1/PixelCount [12]}),
     .c(2'b00),
@@ -444,7 +511,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\D1/add1/c15 ),
     .fx({\D1/n4 [14],\D1/n4 [12]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add1/ucin_al_u359"),
+    //.MACRO("D1/add1/ucin_al_u417"),
     //.R_POSITION("X0Y2Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -457,14 +524,14 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add1/u15_al_u363  (
+    \D1/add1/u15_al_u421  (
     .a({open_n120,\D1/PixelCount [15]}),
     .c(2'b00),
     .d({open_n125,1'b0}),
     .fci(\D1/add1/c15 ),
     .f({open_n142,\D1/n4 [15]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add1/ucin_al_u359"),
+    //.MACRO("D1/add1/ucin_al_u417"),
     //.R_POSITION("X0Y0Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -477,7 +544,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add1/u3_al_u360  (
+    \D1/add1/u3_al_u418  (
     .a({\D1/PixelCount [5],\D1/PixelCount [3]}),
     .b({\D1/PixelCount [6],\D1/PixelCount [4]}),
     .c(2'b00),
@@ -488,7 +555,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\D1/add1/c7 ),
     .fx({\D1/n4 [6],\D1/n4 [4]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add1/ucin_al_u359"),
+    //.MACRO("D1/add1/ucin_al_u417"),
     //.R_POSITION("X0Y1Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -501,7 +568,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add1/u7_al_u361  (
+    \D1/add1/u7_al_u419  (
     .a({\D1/PixelCount [9],\D1/PixelCount [7]}),
     .b({\D1/PixelCount [10],\D1/PixelCount [8]}),
     .c(2'b00),
@@ -512,7 +579,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\D1/add1/c11 ),
     .fx({\D1/n4 [10],\D1/n4 [8]}));
   EG_PHY_LSLICE #(
-    //.MACRO("D1/add1/ucin_al_u359"),
+    //.MACRO("D1/add1/ucin_al_u417"),
     //.R_POSITION("X0Y0Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -525,7 +592,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \D1/add1/ucin_al_u359  (
+    \D1/add1/ucin_al_u417  (
     .a({\D1/PixelCount [1],1'b0}),
     .b({\D1/PixelCount [2],\D1/PixelCount [0]}),
     .c(2'b00),
@@ -642,113 +709,6 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fci(\D1/lt0_c15 ),
     .f({\D1/n9 ,open_n416}));
   EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y0Z0"),
-    .ALUTYPE("A_LE_B_CARRY"),
-    .INIT_LUT0(16'b0000000000001010),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_0|D1/lt10_cin  (
-    .a({\D1/PixelCount [0],1'b1}),
-    .b({1'b1,open_n422}),
-    .fco(\D1/lt10_c1 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y2Z1"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_10|D1/lt10_9  (
-    .a(\D1/PixelCount [10:9]),
-    .b(2'b10),
-    .fci(\D1/lt10_c9 ),
-    .fco(\D1/lt10_c11 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y3Z0"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_12|D1/lt10_11  (
-    .a(\D1/PixelCount [12:11]),
-    .b(2'b00),
-    .fci(\D1/lt10_c11 ),
-    .fco(\D1/lt10_c13 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y3Z1"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_14|D1/lt10_13  (
-    .a(\D1/PixelCount [14:13]),
-    .b(2'b00),
-    .fci(\D1/lt10_c13 ),
-    .fco(\D1/lt10_c15 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y0Z1"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_2|D1/lt10_1  (
-    .a(\D1/PixelCount [2:1]),
-    .b(2'b00),
-    .fci(\D1/lt10_c1 ),
-    .fco(\D1/lt10_c3 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y1Z0"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_4|D1/lt10_3  (
-    .a(\D1/PixelCount [4:3]),
-    .b(2'b00),
-    .fci(\D1/lt10_c3 ),
-    .fco(\D1/lt10_c5 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y1Z1"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_6|D1/lt10_5  (
-    .a(\D1/PixelCount [6:5]),
-    .b(2'b01),
-    .fci(\D1/lt10_c5 ),
-    .fco(\D1/lt10_c7 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y2Z0"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_8|D1/lt10_7  (
-    .a(\D1/PixelCount [8:7]),
-    .b(2'b00),
-    .fci(\D1/lt10_c7 ),
-    .fco(\D1/lt10_c9 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("D1/lt10_0|D1/lt10_cin"),
-    //.R_POSITION("X0Y4Z0"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \D1/lt10_cout|D1/lt10_15  (
-    .a({1'b0,\D1/PixelCount [15]}),
-    .b(2'b10),
-    .fci(\D1/lt10_c15 ),
-    .f({\D1/n22 ,open_n634}));
-  EG_PHY_MSLICE #(
     //.MACRO("D1/lt1_0|D1/lt1_cin"),
     //.R_POSITION("X0Y0Z0"),
     .ALUTYPE("A_LE_B_CARRY"),
@@ -757,7 +717,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("RIPPLE"))
     \D1/lt1_0|D1/lt1_cin  (
     .a({\D1/PixelCount [0],1'b0}),
-    .b({1'b1,open_n640}),
+    .b({1'b1,open_n422}),
     .fco(\D1/lt1_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt1_0|D1/lt1_cin"),
@@ -854,7 +814,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .a({1'b0,\D1/PixelCount [15]}),
     .b(2'b10),
     .fci(\D1/lt1_c15 ),
-    .f({\D1/n10 ,open_n852}));
+    .f({\D1/n10 ,open_n634}));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt2_0|D1/lt2_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -863,8 +823,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_0|D1/lt2_cin  (
-    .a(2'b11),
-    .b({\D1/LineCount [0],open_n858}),
+    .a({\D1/LineCount [0],1'b0}),
+    .b({1'b1,open_n640}),
     .fco(\D1/lt2_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt2_0|D1/lt2_cin"),
@@ -874,8 +834,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_10|D1/lt2_9  (
-    .a(2'b00),
-    .b(\D1/LineCount [10:9]),
+    .a(\D1/LineCount [10:9]),
+    .b(2'b00),
     .fci(\D1/lt2_c9 ),
     .fco(\D1/lt2_c11 ));
   EG_PHY_MSLICE #(
@@ -886,8 +846,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_12|D1/lt2_11  (
-    .a(2'b00),
-    .b(\D1/LineCount [12:11]),
+    .a(\D1/LineCount [12:11]),
+    .b(2'b00),
     .fci(\D1/lt2_c11 ),
     .fco(\D1/lt2_c13 ));
   EG_PHY_MSLICE #(
@@ -898,8 +858,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_14|D1/lt2_13  (
-    .a(2'b00),
-    .b(\D1/LineCount [14:13]),
+    .a(\D1/LineCount [14:13]),
+    .b(2'b00),
     .fci(\D1/lt2_c13 ),
     .fco(\D1/lt2_c15 ));
   EG_PHY_MSLICE #(
@@ -910,8 +870,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_2|D1/lt2_1  (
-    .a(2'b10),
-    .b(\D1/LineCount [2:1]),
+    .a(\D1/LineCount [2:1]),
+    .b(2'b10),
     .fci(\D1/lt2_c1 ),
     .fco(\D1/lt2_c3 ));
   EG_PHY_MSLICE #(
@@ -922,8 +882,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_4|D1/lt2_3  (
-    .a(2'b00),
-    .b(\D1/LineCount [4:3]),
+    .a(\D1/LineCount [4:3]),
+    .b(2'b01),
     .fci(\D1/lt2_c3 ),
     .fco(\D1/lt2_c5 ));
   EG_PHY_MSLICE #(
@@ -934,8 +894,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_6|D1/lt2_5  (
-    .a(2'b00),
-    .b(\D1/LineCount [6:5]),
+    .a(\D1/LineCount [6:5]),
+    .b(2'b01),
     .fci(\D1/lt2_c5 ),
     .fco(\D1/lt2_c7 ));
   EG_PHY_MSLICE #(
@@ -946,8 +906,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_8|D1/lt2_7  (
-    .a(2'b00),
-    .b(\D1/LineCount [8:7]),
+    .a(\D1/LineCount [8:7]),
+    .b(2'b00),
     .fci(\D1/lt2_c7 ),
     .fco(\D1/lt2_c9 ));
   EG_PHY_MSLICE #(
@@ -958,10 +918,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt2_cout|D1/lt2_15  (
-    .a(2'b00),
-    .b({1'b1,\D1/LineCount [15]}),
+    .a({1'b0,\D1/LineCount [15]}),
+    .b(2'b10),
     .fci(\D1/lt2_c15 ),
-    .f({\D1/n12 ,open_n1070}));
+    .f({LCD_SYNC_pad,open_n852}));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt3_0|D1/lt3_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -970,8 +930,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_0|D1/lt3_cin  (
-    .a({\D1/LineCount [0],1'b0}),
-    .b({1'b1,open_n1076}),
+    .a({\D1/PixelCount [0],1'b0}),
+    .b({1'b0,open_n858}),
     .fco(\D1/lt3_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt3_0|D1/lt3_cin"),
@@ -981,8 +941,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_10|D1/lt3_9  (
-    .a(\D1/LineCount [10:9]),
-    .b(2'b01),
+    .a(\D1/PixelCount [10:9]),
+    .b(2'b00),
     .fci(\D1/lt3_c9 ),
     .fco(\D1/lt3_c11 ));
   EG_PHY_MSLICE #(
@@ -993,7 +953,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_12|D1/lt3_11  (
-    .a(\D1/LineCount [12:11]),
+    .a(\D1/PixelCount [12:11]),
     .b(2'b00),
     .fci(\D1/lt3_c11 ),
     .fco(\D1/lt3_c13 ));
@@ -1005,7 +965,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_14|D1/lt3_13  (
-    .a(\D1/LineCount [14:13]),
+    .a(\D1/PixelCount [14:13]),
     .b(2'b00),
     .fci(\D1/lt3_c13 ),
     .fco(\D1/lt3_c15 ));
@@ -1017,8 +977,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_2|D1/lt3_1  (
-    .a(\D1/LineCount [2:1]),
-    .b(2'b00),
+    .a(\D1/PixelCount [2:1]),
+    .b(2'b10),
     .fci(\D1/lt3_c1 ),
     .fco(\D1/lt3_c3 ));
   EG_PHY_MSLICE #(
@@ -1029,8 +989,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_4|D1/lt3_3  (
-    .a(\D1/LineCount [4:3]),
-    .b(2'b11),
+    .a(\D1/PixelCount [4:3]),
+    .b(2'b10),
     .fci(\D1/lt3_c3 ),
     .fco(\D1/lt3_c5 ));
   EG_PHY_MSLICE #(
@@ -1041,8 +1001,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_6|D1/lt3_5  (
-    .a(\D1/LineCount [6:5]),
-    .b(2'b01),
+    .a(\D1/PixelCount [6:5]),
+    .b(2'b00),
     .fci(\D1/lt3_c5 ),
     .fco(\D1/lt3_c7 ));
   EG_PHY_MSLICE #(
@@ -1053,7 +1013,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_8|D1/lt3_7  (
-    .a(\D1/LineCount [8:7]),
+    .a(\D1/PixelCount [8:7]),
     .b(2'b00),
     .fci(\D1/lt3_c7 ),
     .fco(\D1/lt3_c9 ));
@@ -1065,10 +1025,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt3_cout|D1/lt3_15  (
-    .a({1'b0,\D1/LineCount [15]}),
+    .a({1'b0,\D1/PixelCount [15]}),
     .b(2'b10),
     .fci(\D1/lt3_c15 ),
-    .f({\D1/n13 ,open_n1288}));
+    .f({FIFO_RST,open_n1070}));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt4_0|D1/lt4_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -1077,8 +1037,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_0|D1/lt4_cin  (
-    .a({\D1/PixelCount [0],1'b0}),
-    .b({1'b0,open_n1294}),
+    .a(2'b01),
+    .b({\D1/PixelCount [0],open_n1076}),
     .fco(\D1/lt4_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt4_0|D1/lt4_cin"),
@@ -1088,8 +1048,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_10|D1/lt4_9  (
-    .a(\D1/PixelCount [10:9]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\D1/PixelCount [10:9]),
     .fci(\D1/lt4_c9 ),
     .fco(\D1/lt4_c11 ));
   EG_PHY_MSLICE #(
@@ -1100,8 +1060,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_12|D1/lt4_11  (
-    .a(\D1/PixelCount [12:11]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\D1/PixelCount [12:11]),
     .fci(\D1/lt4_c11 ),
     .fco(\D1/lt4_c13 ));
   EG_PHY_MSLICE #(
@@ -1112,8 +1072,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_14|D1/lt4_13  (
-    .a(\D1/PixelCount [14:13]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\D1/PixelCount [14:13]),
     .fci(\D1/lt4_c13 ),
     .fco(\D1/lt4_c15 ));
   EG_PHY_MSLICE #(
@@ -1124,8 +1084,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_2|D1/lt4_1  (
-    .a(\D1/PixelCount [2:1]),
-    .b(2'b10),
+    .a(2'b00),
+    .b(\D1/PixelCount [2:1]),
     .fci(\D1/lt4_c1 ),
     .fco(\D1/lt4_c3 ));
   EG_PHY_MSLICE #(
@@ -1136,8 +1096,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_4|D1/lt4_3  (
-    .a(\D1/PixelCount [4:3]),
-    .b(2'b10),
+    .a(2'b00),
+    .b(\D1/PixelCount [4:3]),
     .fci(\D1/lt4_c3 ),
     .fco(\D1/lt4_c5 ));
   EG_PHY_MSLICE #(
@@ -1148,8 +1108,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_6|D1/lt4_5  (
-    .a(\D1/PixelCount [6:5]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\D1/PixelCount [6:5]),
     .fci(\D1/lt4_c5 ),
     .fco(\D1/lt4_c7 ));
   EG_PHY_MSLICE #(
@@ -1160,8 +1120,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_8|D1/lt4_7  (
-    .a(\D1/PixelCount [8:7]),
-    .b(2'b00),
+    .a(2'b10),
+    .b(\D1/PixelCount [8:7]),
     .fci(\D1/lt4_c7 ),
     .fco(\D1/lt4_c9 ));
   EG_PHY_MSLICE #(
@@ -1172,10 +1132,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt4_cout|D1/lt4_15  (
-    .a({1'b0,\D1/PixelCount [15]}),
-    .b(2'b10),
+    .a(2'b00),
+    .b({1'b1,\D1/PixelCount [15]}),
     .fci(\D1/lt4_c15 ),
-    .f({FIFO_RST,open_n1506}));
+    .f({\D1/n12 ,open_n1288}));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt5_0|D1/lt5_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -1184,8 +1144,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_0|D1/lt5_cin  (
-    .a(2'b01),
-    .b({\D1/PixelCount [0],open_n1512}),
+    .a({\D1/PixelCount [0],1'b1}),
+    .b({1'b0,open_n1294}),
     .fco(\D1/lt5_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt5_0|D1/lt5_cin"),
@@ -1195,8 +1155,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_10|D1/lt5_9  (
-    .a(2'b00),
-    .b(\D1/PixelCount [10:9]),
+    .a(\D1/PixelCount [10:9]),
+    .b(2'b10),
     .fci(\D1/lt5_c9 ),
     .fco(\D1/lt5_c11 ));
   EG_PHY_MSLICE #(
@@ -1207,8 +1167,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_12|D1/lt5_11  (
-    .a(2'b00),
-    .b(\D1/PixelCount [12:11]),
+    .a(\D1/PixelCount [12:11]),
+    .b(2'b00),
     .fci(\D1/lt5_c11 ),
     .fco(\D1/lt5_c13 ));
   EG_PHY_MSLICE #(
@@ -1219,8 +1179,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_14|D1/lt5_13  (
-    .a(2'b00),
-    .b(\D1/PixelCount [14:13]),
+    .a(\D1/PixelCount [14:13]),
+    .b(2'b00),
     .fci(\D1/lt5_c13 ),
     .fco(\D1/lt5_c15 ));
   EG_PHY_MSLICE #(
@@ -1231,8 +1191,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_2|D1/lt5_1  (
-    .a(2'b00),
-    .b(\D1/PixelCount [2:1]),
+    .a(\D1/PixelCount [2:1]),
+    .b(2'b00),
     .fci(\D1/lt5_c1 ),
     .fco(\D1/lt5_c3 ));
   EG_PHY_MSLICE #(
@@ -1243,8 +1203,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_4|D1/lt5_3  (
-    .a(2'b00),
-    .b(\D1/PixelCount [4:3]),
+    .a(\D1/PixelCount [4:3]),
+    .b(2'b00),
     .fci(\D1/lt5_c3 ),
     .fco(\D1/lt5_c5 ));
   EG_PHY_MSLICE #(
@@ -1255,8 +1215,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_6|D1/lt5_5  (
-    .a(2'b00),
-    .b(\D1/PixelCount [6:5]),
+    .a(\D1/PixelCount [6:5]),
+    .b(2'b01),
     .fci(\D1/lt5_c5 ),
     .fco(\D1/lt5_c7 ));
   EG_PHY_MSLICE #(
@@ -1267,8 +1227,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_8|D1/lt5_7  (
-    .a(2'b10),
-    .b(\D1/PixelCount [8:7]),
+    .a(\D1/PixelCount [8:7]),
+    .b(2'b10),
     .fci(\D1/lt5_c7 ),
     .fco(\D1/lt5_c9 ));
   EG_PHY_MSLICE #(
@@ -1279,10 +1239,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt5_cout|D1/lt5_15  (
-    .a(2'b00),
-    .b({1'b1,\D1/PixelCount [15]}),
+    .a({1'b0,\D1/PixelCount [15]}),
+    .b(2'b10),
     .fci(\D1/lt5_c15 ),
-    .f({\D1/n15 ,open_n1724}));
+    .f({\D1/n13 ,open_n1506}));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt6_0|D1/lt6_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -1291,8 +1251,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_0|D1/lt6_cin  (
-    .a({\D1/PixelCount [0],1'b1}),
-    .b({1'b0,open_n1730}),
+    .a(2'b11),
+    .b({\D1/LineCount [0],open_n1512}),
     .fco(\D1/lt6_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt6_0|D1/lt6_cin"),
@@ -1302,8 +1262,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_10|D1/lt6_9  (
-    .a(\D1/PixelCount [10:9]),
-    .b(2'b10),
+    .a(2'b00),
+    .b(\D1/LineCount [10:9]),
     .fci(\D1/lt6_c9 ),
     .fco(\D1/lt6_c11 ));
   EG_PHY_MSLICE #(
@@ -1314,8 +1274,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_12|D1/lt6_11  (
-    .a(\D1/PixelCount [12:11]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\D1/LineCount [12:11]),
     .fci(\D1/lt6_c11 ),
     .fco(\D1/lt6_c13 ));
   EG_PHY_MSLICE #(
@@ -1326,8 +1286,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_14|D1/lt6_13  (
-    .a(\D1/PixelCount [14:13]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\D1/LineCount [14:13]),
     .fci(\D1/lt6_c13 ),
     .fco(\D1/lt6_c15 ));
   EG_PHY_MSLICE #(
@@ -1338,8 +1298,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_2|D1/lt6_1  (
-    .a(\D1/PixelCount [2:1]),
-    .b(2'b00),
+    .a(2'b10),
+    .b(\D1/LineCount [2:1]),
     .fci(\D1/lt6_c1 ),
     .fco(\D1/lt6_c3 ));
   EG_PHY_MSLICE #(
@@ -1350,8 +1310,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_4|D1/lt6_3  (
-    .a(\D1/PixelCount [4:3]),
-    .b(2'b00),
+    .a(2'b01),
+    .b(\D1/LineCount [4:3]),
     .fci(\D1/lt6_c3 ),
     .fco(\D1/lt6_c5 ));
   EG_PHY_MSLICE #(
@@ -1362,8 +1322,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_6|D1/lt6_5  (
-    .a(\D1/PixelCount [6:5]),
-    .b(2'b01),
+    .a(2'b01),
+    .b(\D1/LineCount [6:5]),
     .fci(\D1/lt6_c5 ),
     .fco(\D1/lt6_c7 ));
   EG_PHY_MSLICE #(
@@ -1374,8 +1334,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_8|D1/lt6_7  (
-    .a(\D1/PixelCount [8:7]),
-    .b(2'b10),
+    .a(2'b00),
+    .b(\D1/LineCount [8:7]),
     .fci(\D1/lt6_c7 ),
     .fco(\D1/lt6_c9 ));
   EG_PHY_MSLICE #(
@@ -1386,10 +1346,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt6_cout|D1/lt6_15  (
-    .a({1'b0,\D1/PixelCount [15]}),
-    .b(2'b10),
+    .a(2'b00),
+    .b({1'b1,\D1/LineCount [15]}),
     .fci(\D1/lt6_c15 ),
-    .f({\D1/n16 ,open_n1942}));
+    .f({\D1/n15 ,open_n1724}));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt7_0|D1/lt7_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -1398,8 +1358,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_0|D1/lt7_cin  (
-    .a(2'b11),
-    .b({\D1/LineCount [0],open_n1948}),
+    .a({\D1/LineCount [0],1'b0}),
+    .b({1'b0,open_n1730}),
     .fco(\D1/lt7_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt7_0|D1/lt7_cin"),
@@ -1409,8 +1369,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_10|D1/lt7_9  (
-    .a(2'b00),
-    .b(\D1/LineCount [10:9]),
+    .a(\D1/LineCount [10:9]),
+    .b(2'b01),
     .fci(\D1/lt7_c9 ),
     .fco(\D1/lt7_c11 ));
   EG_PHY_MSLICE #(
@@ -1421,8 +1381,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_12|D1/lt7_11  (
-    .a(2'b00),
-    .b(\D1/LineCount [12:11]),
+    .a(\D1/LineCount [12:11]),
+    .b(2'b00),
     .fci(\D1/lt7_c11 ),
     .fco(\D1/lt7_c13 ));
   EG_PHY_MSLICE #(
@@ -1433,8 +1393,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_14|D1/lt7_13  (
-    .a(2'b00),
-    .b(\D1/LineCount [14:13]),
+    .a(\D1/LineCount [14:13]),
+    .b(2'b00),
     .fci(\D1/lt7_c13 ),
     .fco(\D1/lt7_c15 ));
   EG_PHY_MSLICE #(
@@ -1445,8 +1405,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_2|D1/lt7_1  (
-    .a(2'b10),
-    .b(\D1/LineCount [2:1]),
+    .a(\D1/LineCount [2:1]),
+    .b(2'b01),
     .fci(\D1/lt7_c1 ),
     .fco(\D1/lt7_c3 ));
   EG_PHY_MSLICE #(
@@ -1457,8 +1417,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_4|D1/lt7_3  (
-    .a(2'b01),
-    .b(\D1/LineCount [4:3]),
+    .a(\D1/LineCount [4:3]),
+    .b(2'b11),
     .fci(\D1/lt7_c3 ),
     .fco(\D1/lt7_c5 ));
   EG_PHY_MSLICE #(
@@ -1469,8 +1429,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_6|D1/lt7_5  (
-    .a(2'b01),
-    .b(\D1/LineCount [6:5]),
+    .a(\D1/LineCount [6:5]),
+    .b(2'b01),
     .fci(\D1/lt7_c5 ),
     .fco(\D1/lt7_c7 ));
   EG_PHY_MSLICE #(
@@ -1481,8 +1441,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_8|D1/lt7_7  (
-    .a(2'b00),
-    .b(\D1/LineCount [8:7]),
+    .a(\D1/LineCount [8:7]),
+    .b(2'b00),
     .fci(\D1/lt7_c7 ),
     .fco(\D1/lt7_c9 ));
   EG_PHY_MSLICE #(
@@ -1493,10 +1453,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt7_cout|D1/lt7_15  (
-    .a(2'b00),
-    .b({1'b1,\D1/LineCount [15]}),
+    .a({1'b0,\D1/LineCount [15]}),
+    .b(2'b10),
     .fci(\D1/lt7_c15 ),
-    .f({\D1/n18 ,open_n2160}));
+    .f({\D1/n17 ,open_n1942}));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt8_0|D1/lt8_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -1505,8 +1465,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_0|D1/lt8_cin  (
-    .a({\D1/LineCount [0],1'b0}),
-    .b({1'b0,open_n2166}),
+    .a(2'b11),
+    .b({\D1/PixelCount [0],open_n1948}),
     .fco(\D1/lt8_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt8_0|D1/lt8_cin"),
@@ -1516,8 +1476,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_10|D1/lt8_9  (
-    .a(\D1/LineCount [10:9]),
-    .b(2'b01),
+    .a(2'b00),
+    .b(\D1/PixelCount [10:9]),
     .fci(\D1/lt8_c9 ),
     .fco(\D1/lt8_c11 ));
   EG_PHY_MSLICE #(
@@ -1528,8 +1488,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_12|D1/lt8_11  (
-    .a(\D1/LineCount [12:11]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\D1/PixelCount [12:11]),
     .fci(\D1/lt8_c11 ),
     .fco(\D1/lt8_c13 ));
   EG_PHY_MSLICE #(
@@ -1540,8 +1500,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_14|D1/lt8_13  (
-    .a(\D1/LineCount [14:13]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\D1/PixelCount [14:13]),
     .fci(\D1/lt8_c13 ),
     .fco(\D1/lt8_c15 ));
   EG_PHY_MSLICE #(
@@ -1552,8 +1512,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_2|D1/lt8_1  (
-    .a(\D1/LineCount [2:1]),
-    .b(2'b01),
+    .a(2'b11),
+    .b(\D1/PixelCount [2:1]),
     .fci(\D1/lt8_c1 ),
     .fco(\D1/lt8_c3 ));
   EG_PHY_MSLICE #(
@@ -1564,8 +1524,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_4|D1/lt8_3  (
-    .a(\D1/LineCount [4:3]),
-    .b(2'b11),
+    .a(2'b11),
+    .b(\D1/PixelCount [4:3]),
     .fci(\D1/lt8_c3 ),
     .fco(\D1/lt8_c5 ));
   EG_PHY_MSLICE #(
@@ -1576,8 +1536,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_6|D1/lt8_5  (
-    .a(\D1/LineCount [6:5]),
-    .b(2'b01),
+    .a(2'b11),
+    .b(\D1/PixelCount [6:5]),
     .fci(\D1/lt8_c5 ),
     .fco(\D1/lt8_c7 ));
   EG_PHY_MSLICE #(
@@ -1588,8 +1548,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_8|D1/lt8_7  (
-    .a(\D1/LineCount [8:7]),
-    .b(2'b00),
+    .a(2'b01),
+    .b(\D1/PixelCount [8:7]),
     .fci(\D1/lt8_c7 ),
     .fco(\D1/lt8_c9 ));
   EG_PHY_MSLICE #(
@@ -1600,10 +1560,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt8_cout|D1/lt8_15  (
-    .a({1'b0,\D1/LineCount [15]}),
-    .b(2'b10),
+    .a(2'b00),
+    .b({1'b1,\D1/PixelCount [15]}),
     .fci(\D1/lt8_c15 ),
-    .f({\D1/n20 ,open_n2378}));
+    .f({\D1/n19 ,open_n2160}));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt9_0|D1/lt9_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -1612,8 +1572,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_0|D1/lt9_cin  (
-    .a(2'b11),
-    .b({\D1/PixelCount [0],open_n2384}),
+    .a({\D1/PixelCount [0],1'b1}),
+    .b({1'b1,open_n2166}),
     .fco(\D1/lt9_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("D1/lt9_0|D1/lt9_cin"),
@@ -1623,8 +1583,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_10|D1/lt9_9  (
-    .a(2'b00),
-    .b(\D1/PixelCount [10:9]),
+    .a(\D1/PixelCount [10:9]),
+    .b(2'b10),
     .fci(\D1/lt9_c9 ),
     .fco(\D1/lt9_c11 ));
   EG_PHY_MSLICE #(
@@ -1635,8 +1595,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_12|D1/lt9_11  (
-    .a(2'b00),
-    .b(\D1/PixelCount [12:11]),
+    .a(\D1/PixelCount [12:11]),
+    .b(2'b00),
     .fci(\D1/lt9_c11 ),
     .fco(\D1/lt9_c13 ));
   EG_PHY_MSLICE #(
@@ -1647,8 +1607,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_14|D1/lt9_13  (
-    .a(2'b00),
-    .b(\D1/PixelCount [14:13]),
+    .a(\D1/PixelCount [14:13]),
+    .b(2'b00),
     .fci(\D1/lt9_c13 ),
     .fco(\D1/lt9_c15 ));
   EG_PHY_MSLICE #(
@@ -1659,8 +1619,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_2|D1/lt9_1  (
-    .a(2'b11),
-    .b(\D1/PixelCount [2:1]),
+    .a(\D1/PixelCount [2:1]),
+    .b(2'b00),
     .fci(\D1/lt9_c1 ),
     .fco(\D1/lt9_c3 ));
   EG_PHY_MSLICE #(
@@ -1671,8 +1631,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_4|D1/lt9_3  (
-    .a(2'b11),
-    .b(\D1/PixelCount [4:3]),
+    .a(\D1/PixelCount [4:3]),
+    .b(2'b00),
     .fci(\D1/lt9_c3 ),
     .fco(\D1/lt9_c5 ));
   EG_PHY_MSLICE #(
@@ -1683,8 +1643,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_6|D1/lt9_5  (
-    .a(2'b11),
-    .b(\D1/PixelCount [6:5]),
+    .a(\D1/PixelCount [6:5]),
+    .b(2'b01),
     .fci(\D1/lt9_c5 ),
     .fco(\D1/lt9_c7 ));
   EG_PHY_MSLICE #(
@@ -1695,8 +1655,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_8|D1/lt9_7  (
-    .a(2'b01),
-    .b(\D1/PixelCount [8:7]),
+    .a(\D1/PixelCount [8:7]),
+    .b(2'b00),
     .fci(\D1/lt9_c7 ),
     .fco(\D1/lt9_c9 ));
   EG_PHY_MSLICE #(
@@ -1707,24 +1667,24 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \D1/lt9_cout|D1/lt9_15  (
-    .a(2'b00),
-    .b({1'b1,\D1/PixelCount [15]}),
+    .a({1'b0,\D1/PixelCount [15]}),
+    .b(2'b10),
     .fci(\D1/lt9_c15 ),
-    .f({\D1/n21 ,open_n2596}));
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .f({\D1/n21 ,open_n2378}));
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
-    //.LUTF0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
-    //.LUTG1("(C*~B*~D)"),
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(C*D)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(C*D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1011000110100000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b1011000110100000),
-    .INIT_LUTG1(16'b0000000000110000),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b1111000000000000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b1111000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -1734,28 +1694,26 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \D1/reg0_b0|D1/reg1_b4  (
-    .a({open_n2602,_al_u228_o}),
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [0],\D1/n2 [4]}),
+    \D1/reg0_b0|D1/reg0_b8  (
+    .c({\D1/n4 [0],\D1/n4 [8]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,\D1/LineCount [4]}),
+    .d({\D1/mux2_b0_sel_is_0_o ,\D1/mux2_b0_sel_is_0_o }),
     .sr(nRST_pad),
-    .q({\D1/PixelCount [0],\D1/LineCount [4]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/PixelCount [0],\D1/PixelCount [8]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
-    //.LUTF0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
-    //.LUTG1("(C*~B*~D)"),
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(C*D)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(C*D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1011000110100000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b1011000110100000),
-    .INIT_LUTG1(16'b0000000000110000),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b1111000000000000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b1111000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -1765,28 +1723,26 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \D1/reg0_b10|D1/reg1_b3  (
-    .a({open_n2625,_al_u228_o}),
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [10],\D1/n2 [3]}),
+    \D1/reg0_b10|D1/reg0_b7  (
+    .c({\D1/n4 [10],\D1/n4 [7]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,\D1/LineCount [3]}),
+    .d({\D1/mux2_b0_sel_is_0_o ,\D1/mux2_b0_sel_is_0_o }),
     .sr(nRST_pad),
-    .q({\D1/PixelCount [10],\D1/LineCount [3]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/PixelCount [10],\D1/PixelCount [7]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~B*~D)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("(C*~B*~D)"),
-    //.LUTG1("(C*~B*~D)"),
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(C*D)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(C*D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0000000000110000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b0000000000110000),
-    .INIT_LUTG1(16'b0000000000110000),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b1111000000000000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b1111000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -1796,27 +1752,26 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \D1/reg0_b11|D1/reg0_b9  (
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [11],\D1/n4 [9]}),
+    \D1/reg0_b11|D1/reg0_b6  (
+    .c({\D1/n4 [11],\D1/n4 [6]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({\D1/mux2_b0_sel_is_0_o ,\D1/mux2_b0_sel_is_0_o }),
     .sr(nRST_pad),
-    .q({\D1/PixelCount [11],\D1/PixelCount [9]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/PixelCount [11],\D1/PixelCount [6]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~B*~D)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("(C*~B*~D)"),
-    //.LUTG1("(C*~B*~D)"),
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(C*D)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(C*D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0000000000110000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b0000000000110000),
-    .INIT_LUTG1(16'b0000000000110000),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b1111000000000000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b1111000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -1826,27 +1781,26 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \D1/reg0_b12|D1/reg0_b8  (
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [12],\D1/n4 [8]}),
+    \D1/reg0_b12|D1/reg0_b4  (
+    .c({\D1/n4 [12],\D1/n4 [4]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({\D1/mux2_b0_sel_is_0_o ,\D1/mux2_b0_sel_is_0_o }),
     .sr(nRST_pad),
-    .q({\D1/PixelCount [12],\D1/PixelCount [8]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/PixelCount [12],\D1/PixelCount [4]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~B*~D)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("(C*~B*~D)"),
-    //.LUTG1("(C*~B*~D)"),
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(C*D)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(C*D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0000000000110000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b0000000000110000),
-    .INIT_LUTG1(16'b0000000000110000),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b1111000000000000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b1111000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -1856,27 +1810,26 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \D1/reg0_b13|D1/reg0_b7  (
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [13],\D1/n4 [7]}),
+    \D1/reg0_b13|D1/reg0_b3  (
+    .c({\D1/n4 [13],\D1/n4 [3]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({\D1/mux2_b0_sel_is_0_o ,\D1/mux2_b0_sel_is_0_o }),
     .sr(nRST_pad),
-    .q({\D1/PixelCount [13],\D1/PixelCount [7]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/PixelCount [13],\D1/PixelCount [3]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~B*~D)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("(C*~B*~D)"),
-    //.LUTG1("(C*~B*~D)"),
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(C*D)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(C*D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0000000000110000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b0000000000110000),
-    .INIT_LUTG1(16'b0000000000110000),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b1111000000000000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b1111000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -1886,105 +1839,14 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \D1/reg0_b14|D1/reg0_b6  (
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [14],\D1/n4 [6]}),
+    \D1/reg0_b14|D1/reg0_b2  (
+    .c({\D1/n4 [14],\D1/n4 [2]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({\D1/mux2_b0_sel_is_0_o ,\D1/mux2_b0_sel_is_0_o }),
     .sr(nRST_pad),
-    .q({\D1/PixelCount [14],\D1/PixelCount [6]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  EG_PHY_LSLICE #(
-    //.LUTF0("(C*~B*~D)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("(C*~B*~D)"),
-    //.LUTG1("(C*~B*~D)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0000000000110000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b0000000000110000),
-    .INIT_LUTG1(16'b0000000000110000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .REG1_REGSET("RESET"),
-    .REG1_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \D1/reg0_b15|D1/reg0_b5  (
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [15],\D1/n4 [5]}),
-    .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
-    .sr(nRST_pad),
-    .q({\D1/PixelCount [15],\D1/PixelCount [5]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  EG_PHY_LSLICE #(
-    //.LUTF0("(C*~B*~D)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("(C*~B*~D)"),
-    //.LUTG1("(C*~B*~D)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0000000000110000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b0000000000110000),
-    .INIT_LUTG1(16'b0000000000110000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .REG1_REGSET("RESET"),
-    .REG1_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \D1/reg0_b1|D1/reg0_b4  (
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [1],\D1/n4 [4]}),
-    .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
-    .sr(nRST_pad),
-    .q({\D1/PixelCount [1],\D1/PixelCount [4]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  EG_PHY_LSLICE #(
-    //.LUTF0("(C*~B*~D)"),
-    //.LUTF1("(C*~B*~D)"),
-    //.LUTG0("(C*~B*~D)"),
-    //.LUTG1("(C*~B*~D)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0000000000110000),
-    .INIT_LUTF1(16'b0000000000110000),
-    .INIT_LUTG0(16'b0000000000110000),
-    .INIT_LUTG1(16'b0000000000110000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .REG1_REGSET("RESET"),
-    .REG1_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \D1/reg0_b2|D1/reg0_b3  (
-    .b({_al_u233_o,_al_u233_o}),
-    .c({\D1/n4 [2],\D1/n4 [3]}),
-    .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
-    .sr(nRST_pad),
-    .q({\D1/PixelCount [2],\D1/PixelCount [3]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/PixelCount [14],\D1/PixelCount [2]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
     //.LUTF0("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
     //.LUTF1("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
@@ -2010,11 +1872,11 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .b({\D1/n2 [0],\D1/n2 [8]}),
     .c({\D1/LineCount [0],\D1/LineCount [8]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({_al_u242_o,_al_u242_o}),
     .sr(nRST_pad),
-    .q({\D1/LineCount [0],\D1/LineCount [8]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/LineCount [0],\D1/LineCount [8]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
     //.LUTF0("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
     //.LUTF1("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
@@ -2040,11 +1902,11 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .b({\D1/n2 [10],\D1/n2 [7]}),
     .c({\D1/LineCount [10],\D1/LineCount [7]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({_al_u242_o,_al_u242_o}),
     .sr(nRST_pad),
-    .q({\D1/LineCount [10],\D1/LineCount [7]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/LineCount [10],\D1/LineCount [7]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
     //.LUTF0("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
     //.LUTF1("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
@@ -2070,11 +1932,11 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .b({\D1/n2 [11],\D1/n2 [6]}),
     .c({\D1/LineCount [11],\D1/LineCount [6]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({_al_u242_o,_al_u242_o}),
     .sr(nRST_pad),
-    .q({\D1/LineCount [11],\D1/LineCount [6]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/LineCount [11],\D1/LineCount [6]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
     //.LUTF0("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
     //.LUTF1("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
@@ -2100,11 +1962,11 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .b({\D1/n2 [12],\D1/n2 [2]}),
     .c({\D1/LineCount [12],\D1/LineCount [2]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({_al_u242_o,_al_u242_o}),
     .sr(nRST_pad),
-    .q({\D1/LineCount [12],\D1/LineCount [2]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .q({\D1/LineCount [12],\D1/LineCount [2]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
     //.LUTF0("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
     //.LUTF1("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
@@ -2130,9 +1992,40 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .b({\D1/n2 [13],\D1/n2 [14]}),
     .c({\D1/LineCount [13],\D1/LineCount [14]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u228_o,_al_u228_o}),
+    .d({_al_u242_o,_al_u242_o}),
     .sr(nRST_pad),
-    .q({\D1/LineCount [13],\D1/LineCount [14]}));  // source/VGAMod.v(55)
+    .q({\D1/LineCount [13],\D1/LineCount [14]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  EG_PHY_LSLICE #(
+    //.LUTF0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
+    //.LUTF1("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
+    //.LUTG0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
+    //.LUTG1("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1011000110100000),
+    .INIT_LUTF1(16'b1011000110100000),
+    .INIT_LUTG0(16'b1011000110100000),
+    .INIT_LUTG1(16'b1011000110100000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .REG1_REGSET("RESET"),
+    .REG1_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \D1/reg1_b1|D1/reg1_b4  (
+    .a({_al_u242_o,_al_u242_o}),
+    .b({_al_u247_o,_al_u247_o}),
+    .c({\D1/n2 [1],\D1/n2 [4]}),
+    .clk(LCD_CLK_pad),
+    .d({\D1/LineCount [1],\D1/LineCount [4]}),
+    .sr(nRST_pad),
+    .q({\D1/LineCount [1],\D1/LineCount [4]}));  // source/VGAMod.v(56)
   EG_PHY_FIFO #(
     .AE(32'b00000000000000000000000000110100),
     .AEP1(32'b00000000000000000000000000111100),
@@ -2153,16 +2046,16 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \FIFO0/logic_fifo_0  (
     .clkr(LCD_CLK_pad),
     .clkw(CLK_100M),
-    .csr({2'b11,\D1/n24 }),
+    .csr({2'b11,\D1/n23 }),
     .csw({2'b11,\FIFO0/logic_fifo_full_neg }),
-    .dia({open_n2936,open_n2937,open_n2938,open_n2939,open_n2940,FIFO_DI[3:0]}),
+    .dia({open_n2682,open_n2683,open_n2684,open_n2685,open_n2686,FIFO_DI[3:0]}),
     .orea(1'b0),
     .oreb(1'b0),
     .re(FIFO_RE),
     .rprst(FIFO_RST),
     .rst(FIFO_RST),
     .we(FIFO_WE),
-    .dob({open_n2961,FIFO_DO[3:0],FIFO_DO[11:8]}),
+    .dob({open_n2707,FIFO_DO[3:0],FIFO_DO[11:8]}),
     .empty_flag(FIFO_EMPTY),
     .full_flag(\FIFO0/logic_fifo_full ));
   EG_PHY_FIFO #(
@@ -2185,16 +2078,16 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \FIFO0/logic_fifo_1  (
     .clkr(LCD_CLK_pad),
     .clkw(CLK_100M),
-    .csr({2'b11,\D1/n24 }),
+    .csr({2'b11,\D1/n23 }),
     .csw({2'b11,\FIFO0/logic_fifo_full_neg }),
-    .dia({open_n2962,open_n2963,open_n2964,open_n2965,open_n2966,FIFO_DI[7:4]}),
+    .dia({open_n2708,open_n2709,open_n2710,open_n2711,open_n2712,FIFO_DI[7:4]}),
     .orea(1'b0),
     .oreb(1'b0),
     .re(FIFO_RE),
     .rprst(FIFO_RST),
     .rst(FIFO_RST),
     .we(FIFO_WE),
-    .dob({open_n2987,FIFO_DO[7:4],FIFO_DO[15:12]}));
+    .dob({open_n2733,FIFO_DO[7:4],FIFO_DO[15:12]}));
   EG_PHY_GCLK \PLL1/bufg_feedback  (
     .clki(\PLL1/clk0_buf ),
     .clko(LCD_CLK_pad));  // al_ip/LCDPLL.v(38)
@@ -2277,9 +2170,29 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .refclk(clk_pad),
     .reset(1'b0),
     .stdby(1'b0),
-    .clkc({open_n2990,open_n2991,open_n2992,CLK_100M,\PLL1/clk0_buf }));  // al_ip/LCDPLL.v(69)
+    .clkc({open_n2736,open_n2737,open_n2738,CLK_100M,\PLL1/clk0_buf }));  // al_ip/LCDPLL.v(69)
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.LUTF0("(~D)"),
+    //.LUTG0("(~D)"),
+    .CEMUX("CE"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000000011111111),
+    .INIT_LUTG0(16'b0000000011111111),
+    .LSFMUX0("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("SET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \U1/CLK_OUT_reg  (
+    .ce(\U1/n1 ),
+    .clk(LCD_CLK_pad),
+    .d({open_n2755,LED_pad[1]}),
+    .sr(nRST_pad),
+    .q({open_n2777,LED_pad[1]}));  // source/CLK_MOD.v(32)
+  EG_PHY_LSLICE #(
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y1Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2292,7 +2205,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/u11_al_u339  (
+    \U1/add0/u11_al_u397  (
     .a({\U1/Count [13],\U1/Count [11]}),
     .b({\U1/Count [14],\U1/Count [12]}),
     .c(2'b00),
@@ -2303,7 +2216,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U1/add0/c15 ),
     .fx({\U1/n3 [14],\U1/n3 [12]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y2Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2316,7 +2229,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/u15_al_u340  (
+    \U1/add0/u15_al_u398  (
     .a({\U1/Count [17],\U1/Count [15]}),
     .b({\U1/Count [18],\U1/Count [16]}),
     .c(2'b00),
@@ -2327,7 +2240,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U1/add0/c19 ),
     .fx({\U1/n3 [18],\U1/n3 [16]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y2Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2340,7 +2253,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/u19_al_u341  (
+    \U1/add0/u19_al_u399  (
     .a({\U1/Count [21],\U1/Count [19]}),
     .b({\U1/Count [22],\U1/Count [20]}),
     .c(2'b00),
@@ -2351,7 +2264,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U1/add0/c23 ),
     .fx({\U1/n3 [22],\U1/n3 [20]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y3Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2364,7 +2277,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/u23_al_u342  (
+    \U1/add0/u23_al_u400  (
     .a({\U1/Count [25],\U1/Count [23]}),
     .b({\U1/Count [26],\U1/Count [24]}),
     .c(2'b00),
@@ -2375,7 +2288,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U1/add0/c27 ),
     .fx({\U1/n3 [26],\U1/n3 [24]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y3Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2388,7 +2301,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/u27_al_u343  (
+    \U1/add0/u27_al_u401  (
     .a({\U1/Count [29],\U1/Count [27]}),
     .b({\U1/Count [30],\U1/Count [28]}),
     .c(2'b00),
@@ -2399,7 +2312,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U1/add0/c31 ),
     .fx({\U1/n3 [30],\U1/n3 [28]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y4Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2412,14 +2325,14 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/u31_al_u344  (
-    .a({open_n3093,\U1/Count [31]}),
+    \U1/add0/u31_al_u402  (
+    .a({open_n2868,\U1/Count [31]}),
     .c(2'b00),
-    .d({open_n3098,1'b0}),
+    .d({open_n2873,1'b0}),
     .fci(\U1/add0/c31 ),
-    .f({open_n3115,\U1/n3 [31]}));
+    .f({open_n2890,\U1/n3 [31]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y0Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2432,7 +2345,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/u3_al_u337  (
+    \U1/add0/u3_al_u395  (
     .a({\U1/Count [5],\U1/Count [3]}),
     .b({\U1/Count [6],\U1/Count [4]}),
     .c(2'b00),
@@ -2443,7 +2356,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U1/add0/c7 ),
     .fx({\U1/n3 [6],\U1/n3 [4]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y1Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2456,7 +2369,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/u7_al_u338  (
+    \U1/add0/u7_al_u396  (
     .a({\U1/Count [9],\U1/Count [7]}),
     .b({\U1/Count [10],\U1/Count [8]}),
     .c(2'b00),
@@ -2467,7 +2380,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U1/add0/c11 ),
     .fx({\U1/n3 [10],\U1/n3 [8]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U1/add0/ucin_al_u336"),
+    //.MACRO("U1/add0/ucin_al_u394"),
     //.R_POSITION("X0Y0Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2480,29 +2393,29 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U1/add0/ucin_al_u336  (
+    \U1/add0/ucin_al_u394  (
     .a({\U1/Count [1],1'b0}),
     .b({\U1/Count [2],\U1/Count [0]}),
     .c(2'b00),
     .d(2'b01),
     .e(2'b01),
-    .f({\U1/n3 [1],open_n3174}),
+    .f({\U1/n3 [1],open_n2949}),
     .fco(\U1/add0/c3 ),
     .fx({\U1/n3 [2],\U1/n3 [0]}));
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2513,26 +2426,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b0|U1/reg0_b8  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [0],\U1/n3 [8]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [0],\U1/Count [8]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2543,26 +2455,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b10|U1/reg0_b7  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [10],\U1/n3 [7]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [10],\U1/Count [7]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2573,26 +2484,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b11|U1/reg0_b6  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [11],\U1/n3 [6]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [11],\U1/Count [6]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2603,26 +2513,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b12|U1/reg0_b4  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [12],\U1/n3 [4]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [12],\U1/Count [4]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2633,26 +2542,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b13|U1/reg0_b31  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [13],\U1/n3 [31]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [13],\U1/Count [31]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2663,26 +2571,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b14|U1/reg0_b30  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [14],\U1/n3 [30]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [14],\U1/Count [30]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2693,26 +2600,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b15|U1/reg0_b29  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [15],\U1/n3 [29]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [15],\U1/Count [29]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2723,26 +2629,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b16|U1/reg0_b28  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [16],\U1/n3 [28]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [16],\U1/Count [28]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2753,26 +2658,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b17|U1/reg0_b27  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [17],\U1/n3 [27]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [17],\U1/Count [27]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2783,26 +2687,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b18|U1/reg0_b25  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [18],\U1/n3 [25]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [18],\U1/Count [25]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2813,26 +2716,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b19|U1/reg0_b24  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [19],\U1/n3 [24]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [19],\U1/Count [24]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2843,26 +2745,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b1|U1/reg0_b23  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [1],\U1/n3 [23]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [1],\U1/Count [23]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -2873,14 +2774,13 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U1/reg0_b20|U1/reg0_b21  (
-    .b({_al_u211_o,_al_u211_o}),
     .c({\U1/n3 [20],\U1/n3 [21]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({\U1/n1 ,\U1/n1 }),
     .sr(nRST_pad),
     .q({\U1/Count [20],\U1/Count [21]}));  // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y1Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2893,7 +2793,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/u11_al_u348  (
+    \U2/add0/u11_al_u406  (
     .a({\U2/Count [13],\U2/Count [11]}),
     .b({\U2/Count [14],\U2/Count [12]}),
     .c(2'b00),
@@ -2904,7 +2804,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U2/add0/c15 ),
     .fx({\U2/n3 [14],\U2/n3 [12]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y2Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2917,7 +2817,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/u15_al_u349  (
+    \U2/add0/u15_al_u407  (
     .a({\U2/Count [17],\U2/Count [15]}),
     .b({\U2/Count [18],\U2/Count [16]}),
     .c(2'b00),
@@ -2928,7 +2828,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U2/add0/c19 ),
     .fx({\U2/n3 [18],\U2/n3 [16]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y2Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2941,7 +2841,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/u19_al_u350  (
+    \U2/add0/u19_al_u408  (
     .a({\U2/Count [21],\U2/Count [19]}),
     .b({\U2/Count [22],\U2/Count [20]}),
     .c(2'b00),
@@ -2952,7 +2852,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U2/add0/c23 ),
     .fx({\U2/n3 [22],\U2/n3 [20]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y3Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2965,7 +2865,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/u23_al_u351  (
+    \U2/add0/u23_al_u409  (
     .a({\U2/Count [25],\U2/Count [23]}),
     .b({\U2/Count [26],\U2/Count [24]}),
     .c(2'b00),
@@ -2976,7 +2876,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U2/add0/c27 ),
     .fx({\U2/n3 [26],\U2/n3 [24]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y3Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -2989,7 +2889,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/u27_al_u352  (
+    \U2/add0/u27_al_u410  (
     .a({\U2/Count [29],\U2/Count [27]}),
     .b({\U2/Count [30],\U2/Count [28]}),
     .c(2'b00),
@@ -3000,7 +2900,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U2/add0/c31 ),
     .fx({\U2/n3 [30],\U2/n3 [28]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y4Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -3013,14 +2913,14 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/u31_al_u353  (
-    .a({open_n3579,\U2/Count [31]}),
+    \U2/add0/u31_al_u411  (
+    .a({open_n3380,\U2/Count [31]}),
     .c(2'b00),
-    .d({open_n3584,1'b0}),
+    .d({open_n3385,1'b0}),
     .fci(\U2/add0/c31 ),
-    .f({open_n3601,\U2/n3 [31]}));
+    .f({open_n3402,\U2/n3 [31]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y0Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -3033,7 +2933,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/u3_al_u346  (
+    \U2/add0/u3_al_u404  (
     .a({\U2/Count [5],\U2/Count [3]}),
     .b({\U2/Count [6],\U2/Count [4]}),
     .c(2'b00),
@@ -3044,7 +2944,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U2/add0/c7 ),
     .fx({\U2/n3 [6],\U2/n3 [4]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y1Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -3057,7 +2957,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/u7_al_u347  (
+    \U2/add0/u7_al_u405  (
     .a({\U2/Count [9],\U2/Count [7]}),
     .b({\U2/Count [10],\U2/Count [8]}),
     .c(2'b00),
@@ -3068,7 +2968,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .fco(\U2/add0/c11 ),
     .fx({\U2/n3 [10],\U2/n3 [8]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U2/add0/ucin_al_u345"),
+    //.MACRO("U2/add0/ucin_al_u403"),
     //.R_POSITION("X0Y0Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -3081,29 +2981,29 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U2/add0/ucin_al_u345  (
+    \U2/add0/ucin_al_u403  (
     .a({\U2/Count [1],1'b0}),
     .b({\U2/Count [2],\U2/Count [0]}),
     .c(2'b00),
     .d(2'b01),
     .e(2'b01),
-    .f({\U2/n3 [1],open_n3660}),
+    .f({\U2/n3 [1],open_n3461}),
     .fco(\U2/add0/c3 ),
     .fx({\U2/n3 [2],\U2/n3 [0]}));
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3114,26 +3014,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b0|U2/reg0_b8  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [0],\U2/n3 [8]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [0],\U2/Count [8]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3144,26 +3043,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b10|U2/reg0_b7  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [10],\U2/n3 [7]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [10],\U2/Count [7]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3174,26 +3072,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b11|U2/reg0_b6  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [11],\U2/n3 [6]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [11],\U2/Count [6]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3204,26 +3101,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b12|U2/reg0_b4  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [12],\U2/n3 [4]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [12],\U2/Count [4]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3234,26 +3130,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b13|U2/reg0_b31  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [13],\U2/n3 [31]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [13],\U2/Count [31]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3264,26 +3159,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b14|U2/reg0_b30  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [14],\U2/n3 [30]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [14],\U2/Count [30]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3294,26 +3188,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b15|U2/reg0_b29  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [15],\U2/n3 [29]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [15],\U2/Count [29]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3324,26 +3217,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b16|U2/reg0_b28  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [16],\U2/n3 [28]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [16],\U2/Count [28]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3354,26 +3246,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b17|U2/reg0_b27  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [17],\U2/n3 [27]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [17],\U2/Count [27]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3384,26 +3275,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b18|U2/reg0_b25  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [18],\U2/n3 [25]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [18],\U2/Count [25]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3414,26 +3304,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b19|U2/reg0_b24  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [19],\U2/n3 [24]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [19],\U2/Count [24]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3444,26 +3333,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b1|U2/reg0_b23  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [1],\U2/n3 [23]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [1],\U2/Count [23]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*~(B*D))"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*~D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0011000011110000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000000011110000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -3474,10 +3362,9 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
     \U2/reg0_b20|U2/reg0_b21  (
-    .b({_al_u222_o,_al_u222_o}),
     .c({\U2/n3 [20],\U2/n3 [21]}),
     .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
+    .d({\U2/n1 ,\U2/n1 }),
     .sr(nRST_pad),
     .q({\U2/Count [20],\U2/Count [21]}));  // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
@@ -3502,14 +3389,14 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .SRMODE("SYNC"),
     .SRMUX("SR"))
     \U4/Addr_pipe_b1|U4/Addr_pipe_b0  (
-    .a({\U4/Addr_piped [0],open_n3975}),
-    .b({\U4/Addr_piped [1],open_n3976}),
-    .c({\U4/ROM0/inst_doa_i0_007 ,open_n3977}),
+    .a({\U4/Addr_piped [0],open_n3802}),
+    .b({\U4/Addr_piped [1],open_n3803}),
+    .c({\U4/ROM0/inst_doa_i0_000 ,open_n3804}),
     .clk(CLK_100M),
-    .d({\U4/ROM0/inst_doa_i1_007 ,nRST_pad}),
+    .d({\U4/ROM0/inst_doa_i1_000 ,nRST_pad}),
     .mi(\U4/Addr [14:13]),
     .sr(\D1/n0 ),
-    .f({_al_u200_o,\D1/n0 }),
+    .f({_al_u214_o,\D1/n0 }),
     .q({\U4/Addr_piped [1],\U4/Addr_piped [0]}));
   // address_offset=0;data_offset=0;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
@@ -3530,38 +3417,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hE6AB2FDEB2AAAAAAAAE3BFE0AEDD3EEFBBFE7AAAAAAAAAAAAAAAAAAAEBF01B00),
-    .INIT_01(256'hABFBAF1C87FFFFFFFFBFA3D0FFB9FE8EBA7EEFFFFFFFFAFEFFEFFFFB6717DF7F),
-    .INIT_02(256'hA7BEBEEEAFFFFFFFFEBFA29AE8C70ECAA8ABAFFFFEBBBB686AAF5A1FB79FA0FF),
-    .INIT_03(256'hB7AFADBF2FFFFFFFFFF7B602EB68AECAB6F7FAFFFAF9DBB5D058D320FEBB97FF),
-    .INIT_04(256'hA6F2FCE23FFFFFFFFF83A76AA3EFC688E6FFFAFFEA1B24BF9FEF2FABEEB07BFF),
-    .INIT_05(256'hA68FFE22EFFFFFEAFB0BA64EF12176E9CEDFFFFFEDD3FE8219A1AFEFFB8DFFFF),
-    .INIT_06(256'hB6CAEEF3BFFFFFEAFEFEBD2E9BFAB2ECAB7FFFFFEEFE9D5CEF1AFFFEEADFFFFF),
-    .INIT_07(256'hA7B8FF5BFFFFFFEAFFBADCBAAE3C54A92EBFFFFFFBBAD9AFC6BFFFFEB06FFFFF),
-    .INIT_08(256'hABFFFFCFFFEAFFEAAE0F892A1BFE11A9ECFFFFBAECECEFAD2BFFFFFFBBFB0C7F),
-    .INIT_09(256'hEBE9FFA7FFFEBFEAAC7E95AD271F253FFDFFFFFF7E3FAE0ABFEBFFFFAEB561FF),
-    .INIT_0A(256'hE2F6EEB3FFFE2FEAF8FEC2BEC6EE9EFFF3FFFAB18AEB86BFFAABFFFEBBE0017F),
-    .INIT_0B(256'hB0ADEEEFFFEA4BEBFFFE8CA77ED78B3FBBFBFBAEFBBD2FFFFEABFEBFED052AFF),
-    .INIT_0C(256'hEDA42F2FFFE2ECBFFB3EADCB0FFBB99E8BFAEA3FFF5EAAAAAABFFFFFEF3FFFFF),
-    .INIT_0D(256'hEBACEEFEBFA77F2FBF3A86DED2EFA71ECBFAA6FFEF40000151AAFFFFFBFFFFFF),
-    .INIT_0E(256'hE2BE6FACEBED8EB6AFAACEFCEC14F19E3AEB2BFFFAAAAAAAAEE52AAFFEFFFFFF),
-    .INIT_0F(256'hE9BEBA3B8BEA28FCF7AB76307FFAF47B2FBCBFFFFEFFFFFFFFAAEC2BFBAC7FFF),
-    .INIT_10(256'hE6EC3B3EA4AAEABFD9AB7A7A0D11516CABDFFE0AFFFFFFFFFFFFAAE4AAEF47FF),
-    .INIT_11(256'hB82A6A3FEB4ACBFABFBB5EEA7E17F068AEB829863FFFFFFFFFFFFFFBD2BBADE6),
-    .INIT_12(256'h2F6E8B3FFFE4F6BE4CBB98F061A8B9AAA5D8D8ACEF854FFFFFFFFFFAFA4AF2EA),
-    .INIT_13(256'h973BE2FFFFFB918C82BEB8833D310D62AB1791E12B0163B84FFFFFF8105AEA5F),
-    .INIT_14(256'hB4EF3FCFFFFFBFA69AFE5F99C6B5C43CCE4C539377585FE2F34AAABAAAAAFAD7),
-    .INIT_15(256'hEA3EBDCFFFEFEFECFFAB57168C50B69F9A6EB2BAEFB05FFA50579ABFFEBFFAB4),
-    .INIT_16(256'hEE5BD6BBFFFEBE2F9FAF2EC3FFEFF95BAEBFFEABEF9B41FFFFB967D3BFFFFFE5),
-    .INIT_17(256'hCECBF763FFFFE6139FAEBF2FFFFFFEAFEEFFFFFFEAE9209FFFFFAD028EAFFFF9),
-    .INIT_18(256'hAAAE86A3FFFE3913F7AA990FFFFFFEAAAEFFFFFFFABBA6E9FFFFEAEA167AFBFB),
-    .INIT_19(256'hAEFAA2CBFFFB9F7A37A68F2EBFFFFEAABFFFFFFFFFFE47A7FFFFFFFFF9B9AAFF),
-    .INIT_1A(256'hD7FEAEEBFFED62EA3FD2E8AEBFFFFFFABFFFFFFFFEBED2987FFFFFFFFEAF62FF),
-    .INIT_1B(256'hECFFEEA4FFE89ABEF282622EFFFFFFFEBFFFFEAFEABACE13FFFFFFFFFFEE697F),
-    .INIT_1C(256'hE92BE8ECFF9FCFFEC2D629FFFFFFFFFFFFFFFFAEEAAA64A67FFFFFFFFFFFBEFF),
-    .INIT_1D(256'hF8BFECFFFE8F7FFFFAF73AAFFFFFFFFFFFFFFFFEFAAE9AB84FFFFFFFFFFFFBFF),
-    .INIT_1E(256'hFB0FE8FBFF6C6FFEBBB3B2BFFFFFFFFFFFFFFFFBC8AC96DB0FFFFFFFFFFFFFFF),
-    .INIT_1F(256'h8F7EADFBFEDBCFFE2B75D6FFFFFFFFFFFFFFFFEBAA2855B323FFFFFFFFFFFFED),
+    .INIT_00(256'hFFCEA9AF7E9AAAAAAAAACBBFC2AE75BEEFBBFCFAAAAAAAAAAAAAAAAAAAEBD039),
+    .INIT_01(256'hFFABFBAD360FFFFFFFFFBF8B52FFB3FE2EB8FEEFFFFFFFFAFEFFEFFFF9CD1F7D),
+    .INIT_02(256'hFF8FBEBEEEAFFFFFFFFEBF8A3AE24D2E6AA2ABAFFFFEBBB9E0EAAD783F9F3F82),
+    .INIT_03(256'hFF9FAFA7BDAFFFFFFFFFDF9C0AE9E2AE6A9EDFFAFFFAF37B9750725982FEBB1F),
+    .INIT_04(256'hFF8EDAF6C8BFFFFFFFFF0B8DEA8BEF4E22CEFFFAFFE83986BF3FEDAFABEE90FB),
+    .INIT_05(256'hFF8E2FFC8AEFFFFFEAF92B8C6ED181DEE36E7FFFFFE75BFE083383AFEFFB27FF),
+    .INIT_06(256'hFF9E6AEEDBBFFFFFEAFEFEB5AE3BFA9AE6A9FFFFFFEEFE3576ED3AFFFEEA7FFF),
+    .INIT_07(256'hFF8FB2FD7BFFFFFFEAFFBA76BAACB456A1AEBFFFFFFBBA73AF4EBFFFFE90EFFF),
+    .INIT_08(256'hFFABFFFF6FFFEAFFEAAC2F21A83BFC13A3E6FFFFBAE6E6EFA5ABFFFFFFBBF924),
+    .INIT_09(256'hFFEBE3FF8FFFFEBFEAA4FE17A58D3D85BFF7FFFFFDFCBFAC2ABFEBFFFFAE95C3),
+    .INIT_0A(256'hFFCADEEE9BFFFCAFEAF2FE4ABE4EEE3EFFDBFFFA932AEB0EBFFAABFFFEBBC001),
+    .INIT_0B(256'hFF92A7EEEFFFE86BEBFFFE268DFE5F29BFBBFBFBAEFBB5AFFFFEABFEBFE505AA),
+    .INIT_0C(256'hFFE784ADAFFFCAE6BFF9BEA7692FFBB33E2BFAE8BFFD7EAAAAAABFFFFFEDBFFF),
+    .INIT_0D(256'hFFEBA6EEFEBF8DFDAFBDBA0E7E5AEF8D3E6BFA8EFFED40000153AAFFFFFBFFFF),
+    .INIT_0E(256'hFFCABCEFA6EBE72E9EAFAA6EF6E416D33CBAE9ABFFFAAAAAAAAEC5AAAFFEFFFF),
+    .INIT_0F(256'hFFE3BEB8BB2BE8A2F6DFA9DC90FFFAD4F9AFB6BFFFFEFFFFFFFFAAE4ABFBA4FF),
+    .INIT_10(256'hCECEE4B9BE86AAEABF73A9F8F8251151E6AB7FFC2AFFFFFFFFFFFFAAC6AAED4F),
+    .INIT_11(256'hEAB0A8E8BFE96A6BFABFB97EE8FC1FD0E2AEB0A30CBFFFFFFFFFFFFFFB5ABBA7),
+    .INIT_12(256'h7DADEE29BFFFC6DEBC66BB32D0C3A2B3AA877272A6EF056FFFFFFFFFFAF86ADA),
+    .INIT_13(256'h5F1DBBCAFFFFFB13260ABEB209B59125CAA91F13C1A901CBB06FFFFFF0107AE8),
+    .INIT_14(256'h9696EDBF6FFFFFBF8E3AFC7F334E9744B66C645B19DD707FCAD96AAABAAAAAFA),
+    .INIT_15(256'hC7E8BEB76FFFEFEFE6FFA95D1E24529E3F38EE9ABAEF907FF8505F3ABFFEBFFA),
+    .INIT_16(256'hF3EC7B5EBBFFFEBCAF3FADAE4BFFEFF17BAEBFFEABEF3943FFFFB1CF5BBFFFFF),
+    .INIT_17(256'hFB6E6BDDCBFFFFCC1B3FAEBDAFFFFFFEAFEEFFFFFFEAE1823FFFFFA50A2EAFFF),
+    .INIT_18(256'hFFAAAE0E8BFFFCB11BDFAA312FFFFFFEAAAEFFFFFFFABB8EE3FFFFEAE81CFAFB),
+    .INIT_19(256'hFFAEFA8A6BFFFB3DF89F8E2DAEBFFFFEAABFFFFFFFFFFC4F8FFFFFFFFFF3B3AA),
+    .INIT_1A(256'hFF5FFEAEEBFFE5CAE8BF5AE2AEBFFFFFFABFFFFFFFFEBE5A30FFFFFFFFFEADCA),
+    .INIT_1B(256'hFFE6FFEE86FFE23ABEDA08C8AEFFFFFFFEBFFFFEAFEABA6C1BFFFFFFFFFFECE1),
+    .INIT_1C(256'hFFE1ABE2E6FF3F6FFE4A5CA3FFFFFFFFFFFFFFFFAEEAA8C68CFFFFFFFFFFFFBE),
+    .INIT_1D(256'hFFF2BFE6FFFE2DFFFFFADDBAAFFFFFFFFFFFFFFFFEFAAE3AB06FFFFFFFFFFFFB),
+    .INIT_1E(256'hE7F92FE2FBFDE4EFFEBB9B9ABFFFFFFFFFFFFFFFFB62A61E792FFFFFFFFFFFFF),
+    .INIT_1F(256'h9B2DFEA7FBFE7B6FFCA9D75EFFFFFFFFFFFFFFFFEBA8A057998BFFFFFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -3578,10 +3465,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_000000_000  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4012,\U4/Addr [14:13]}),
-    .dia({open_n4016,open_n4017,open_n4018,open_n4019,open_n4020,open_n4021,open_n4022,1'b0,open_n4023}),
+    .csa({open_n3839,\U4/Addr [14:13]}),
+    .dia({open_n3843,open_n3844,open_n3845,open_n3846,open_n3847,open_n3848,open_n3849,1'b0,open_n3850}),
     .rsta(nRST_pad),
-    .doa({open_n4038,open_n4039,open_n4040,open_n4041,open_n4042,open_n4043,open_n4044,open_n4045,\U4/ROM0/inst_doa_i0_000 }));
+    .doa({open_n3865,open_n3866,open_n3867,open_n3868,open_n3869,open_n3870,open_n3871,open_n3872,\U4/ROM0/inst_doa_i0_000 }));
   // address_offset=0;data_offset=1;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0005"),
@@ -3601,38 +3488,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hBEABBE5C0AAAAAAAAAB0BD02AFD2BEF4BBD40AAAAAAAAAAAAAAAAAAABEEAEE80),
-    .INIT_01(256'hBBFA87CBDFFFFFFFFFBFBD16FA54BEF4BAD22FFFFFFFFAABAAAAAAAA86AFEEFF),
-    .INIT_02(256'hA3BEBBCBEFFFFFFFFEDBBD12EF4CAEB0AF08AFFFFEBAEAC47AAB110FB57BC9FF),
-    .INIT_03(256'hA3AFB59A3FFFFFFFFEF3AC5AFB92FEB0BC23FAFFFAAE0AE46FA0AE0EAAAAEFFF),
-    .INIT_04(256'hB2FAECDA8FFFFFFFFEEBAC0AAD1D3EB2ECAFFAFFEBCB0EFEB6BE4AABEEFF7FFF),
-    .INIT_05(256'hB2E3ED1AEFFFFFEAFAEBA82EBE90E2D2B4FFFFFFEBCAAAB2AC4FAFEFFACFFFFF),
-    .INIT_06(256'hA2FAEBABBFFFFFEAFA6EB52EB6575AD2D5BFFFFFEEAAE5BC44FAFFFEEB9FFFFF),
-    .INIT_07(256'hA3BEFB93FFFFFFEAFA8AF13AF8152ED6D4BFFFFFFAA6DC057EBFFFFEAA3FFFFF),
-    .INIT_08(256'hBBBCFEA3FFEAFFEAAEEFF0AAE19438D352FFFFBAAA294543ABFFFFFFB2EF47FF),
-    .INIT_09(256'hABBCFED3FFFEBFEAAFBEF1AB2D1503D557FFFFEADF5554EABFEBFFFFAABB91FF),
-    .INIT_0A(256'hBAA3EEABFFFFAFEAEDBEA0BD8D3540554BFFFAB9D0553EBFFAABFFFEBAFFFEFF),
-    .INIT_0B(256'hEEB2EEEFFFEAEBEBEF3EBEACB41554155BFBFA985153AFFFFEABFEBFEA917FFF),
-    .INIT_0C(256'hEEBFAEAFFFFAD6BFEFBEDEF1DD1906B52BFAEBD554EAAAAAAABFFFFFEFDFFFFF),
-    .INIT_0D(256'hE8AB2F5ABFBDB0AFAABAC2B6B25946B56BFABD5554AAAAAAAFAAFFFFFBB7FFFF),
-    .INIT_0E(256'hE7AB2F52ABEA6D1AABAAC2D741205534BAEB955555555555514BAAAFFEEDFFFF),
-    .INIT_0F(256'hE6ACFAD56BEAC652AAABBBD2D5C654D5AFBF555555555555555543ABFBAC7FBF),
-    .INIT_10(256'hFCEBBAD54EAAD01564AABACFD30E30D6ABB554A5555555555555554EAAEA7FB7),
-    .INIT_11(256'hBAABCBD554EAF55518BBCF5C60BB50D6BD52C5FA15555555555555553ABAD5A7),
-    .INIT_12(256'hEA2B8BD5554EA954AABA4F0F2E6AA5C2F620EB72552AA5555555555504EAACB8),
-    .INIT_13(256'hE3FA3AD555553B25EABA4A0C11B73C1EA86B1FBFABAFA152E5555552AABAEB8B),
-    .INIT_14(256'hBA2EB6B55555507FDAFB3D61020A167B7CC36AD46FE94557F4EAAABAAAAAFB9A),
-    .INIT_15(256'hEACEE2F5555541121BAA6D6D2BDB122E6CD508113FF3B54040117ABFFEBFFAF6),
-    .INIT_16(256'h2ACAD4B55554142D0BAE208D515553090555555545188B555540653ABFFFFFF8),
-    .INIT_17(256'hEEEAC4AD55554D7D5BAF35D5555554055555555555549935555545516AAFFFFC),
-    .INIT_18(256'h7AAEE53D5554DA8D23AAF5B55555555555555555555102F35555405101AAFBFE),
-    .INIT_19(256'hB2FAAD2D5554EC94B3BEA315555555555555555555548A8E5555555545A6AAFE),
-    .INIT_1A(256'hABFEAD4955570154A3EAD655555555555555555555544F3155555555540B1AFF),
-    .INIT_1B(256'hF9FFED5B554495546AEAD2D55555555555555555555523C95555555555452CFF),
-    .INIT_1C(256'hEBABEB43553A35543AAB995555555555555555555554A678D5555555555506FF),
-    .INIT_1D(256'hFDFFEB55556975557ACAC955555555555555555555543512255555555555507F),
-    .INIT_1E(256'hFEEFEF5554C965552BCB115555555555555555551353CC22655555555555555F),
-    .INIT_1F(256'h0F6EAF55552D25543A8F0555555555555555555554C4B4090D5555555555556C),
+    .INIT_00(256'hFFBEABBC742AAAAAAAAA92B50AAF5ABED6BB542AAAAAAAAAAAAAAAAAAABEEAEE),
+    .INIT_01(256'hFFBBFA0F6B7FFFFFFFFFBFB51EF856BED6BA58AFFFFFFFFAABAAAAAAAA0EAFEE),
+    .INIT_02(256'hFF8BBEBB6BEFFFFFFFFE7BB51AED66AE92AD22AFFFFEBAEA44FAA9112F95FB63),
+    .INIT_03(256'hFF8BAF9738BFFFFFFFFEDBA47AFB1AFE92B48BFAFFFAAC2AC4EF82AC2EAAAAEF),
+    .INIT_04(256'hFF9AFAE67A2FFFFFFFFEEBA42AA535BE9AE6AFFAFFEB692EFE9EBC6AABEEFDFF),
+    .INIT_05(256'hFF9ACBE53AEFFFFFEAFAEBA0AEBE12CA5A96FFFFFFEB6AAA9AA46FAFEFFA6FFF),
+    .INIT_06(256'hFF8AFAEBABBFFFFFEAF8EE95AE9C5D7A5A57BFFFFFEEAAC7B446FAFFFEEB3FFF),
+    .INIT_07(256'hFF8BBEFB1BFFFFFFEAFA2AD1BAF015AE5E56BFFFFFFA8E7405FEBFFFFEA8BFFF),
+    .INIT_08(256'hFFBBB6FE8BFFEAFFEAAEEFD2AAC314B2595AFFFFBAA8A1454BABFFFFFF9AED4F),
+    .INIT_09(256'hFFABB6FE5BFFFEBFEAAFBED3A9A5150B555FFFFFEA7D5556EABFEBFFFFAABB13),
+    .INIT_0A(256'hFFBA8BEEABFFFFAFEAE7BE82B7259540556BFFFAB35055BEBFFAABFFFEBAFFFE),
+    .INIT_0B(256'hFFEE9AEEEFFFEAEBEBEDBEBEA6941554157BFBFA30515BAFFFFEABFEBFEA11FF),
+    .INIT_0C(256'hFFEEBFAEAFFFFA5EBFEFBE7ED375310E95ABFAEB5556EAAAAAAABFFFFFEF7FFF),
+    .INIT_0D(256'hFFE2A9AD7ABFB792AFAABA4A9E98714E95EBFAB55556AAAAAAAFAAFFFFFB9FFF),
+    .INIT_0E(256'hBFCFA9AD5AABE8E53AABAA4A5D41805596BAEB155555555555516BAAAFFEE7FF),
+    .INIT_0F(256'h9FCEA6FA55EBEA4C5AAAABBB5A574C5657AFBD55555555555555554BABFBA4FF),
+    .INIT_10(256'h8FF6EBBA556EAA5015C6AABA6F592C925EAB955685555555555555556EAAE8FF),
+    .INIT_11(256'hB2BAAB6B5556EAD55532BB6D74C2B9525EB55A47F81555555555555555BABA57),
+    .INIT_12(256'h2BE8AB2B55556EA156AAB86D2DACEA874ADC82E9D855AA85555555555506EAA6),
+    .INIT_13(256'h3ACBF8BA555555B987EAB86824139DB43EA0E93FBFABAF815AC555555AAABAEB),
+    .INIT_14(256'hDEB8AE9E95555550FF7AF9B5C108281CF9F649EA54EFE1455FD6EAAABAAAAAFB),
+    .INIT_15(256'hF2EA6ECAD5555541183BA8E5E5AB7918ACE6552011BFDB95404011FABFFEBFFA),
+    .INIT_16(256'hF4AA6A5695555414A52BAC82255155592105555555453229555540C5BABFFFFF),
+    .INIT_17(256'hFEEEEA46A5555565F57BAD975555555405555555555556319555554551EAAFFF),
+    .INIT_18(256'hFCFAAEC5B555567A258BAAD795555555555555555555510AD95555405103AAFB),
+    .INIT_19(256'hFF9AFAA5A55556E6169BBE8915555555555555555555562A2C55555555478EAA),
+    .INIT_1A(256'hFFABFEA561555D01568BEA5C55555555555555555555546D915555555554293A),
+    .INIT_1B(256'hFFF3FFE57955461554EAEA5A55555555555555555555558B61555555555545A6),
+    .INIT_1C(256'hFFEBABE94955B89554BAAB3155555555555555555555568CF25555555555550E),
+    .INIT_1D(256'h7FF7FFE95555E1D555FA6A615555555555555555555554951885555555555550),
+    .INIT_1E(256'hE6FEEFED555661C555AB6911555555555555555555195B6488C5555555555555),
+    .INIT_1F(256'hED2DEEAD5555A58554BA2D055555555555555555555646942125555555555555),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -3649,10 +3536,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_000000_001  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4071,\U4/Addr [14:13]}),
-    .dia({open_n4075,open_n4076,open_n4077,open_n4078,open_n4079,open_n4080,open_n4081,1'b0,open_n4082}),
+    .csa({open_n3898,\U4/Addr [14:13]}),
+    .dia({open_n3902,open_n3903,open_n3904,open_n3905,open_n3906,open_n3907,open_n3908,1'b0,open_n3909}),
     .rsta(nRST_pad),
-    .doa({open_n4097,open_n4098,open_n4099,open_n4100,open_n4101,open_n4102,open_n4103,open_n4104,\U4/ROM0/inst_doa_i0_001 }));
+    .doa({open_n3924,open_n3925,open_n3926,open_n3927,open_n3928,open_n3929,open_n3930,open_n3931,\U4/ROM0/inst_doa_i0_001 }));
   // address_offset=0;data_offset=2;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0006"),
@@ -3672,38 +3559,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hE3FEDFBBEFFFFFFFFFEFEFEBFBB0EBBFEEFEFFFFFFFFFFFFFFFFFFFFFFAABE80),
-    .INIT_01(256'hF6AFFEBB2AAAAAAAAAF2EFABAFDB6BBFEEFDFAAAAAAAAFFFFFFFFFFEE8017C7F),
-    .INIT_02(256'hEEEBF7BF5AAAAAAAABF6EFBFBB2E3BBBFBB7FAAAABEFFEFAD555AEB05BAFE3FF),
-    .INIT_03(256'hEEFAFBEEDAAAAAAAABCEEFAFBC7A5BBBEECEAFAAAFFBB54BEABB04EBFFFF0FFF),
-    .INIT_04(256'hEFAFBFAEFAAAAAAAAB8EEEFFEDF78BBBAE5AAFAABEB5EBFFAD54FFFEBBF8FFFF),
-    .INIT_05(256'hEFBEBEEFBAAAAABFAE9EEEBBE0AACFFBBE2AAAAABB2FFFAC13EAFABAAFB3FFFF),
-    .INIT_06(256'hEFB7BF4EEAAAAABFAFDBFAFBB5FDE7FBFEEAAAAABBFFBE07EEAFAAABBF3FFFFF),
-    .INIT_07(256'hEEE3AF9EAAAAAABFAF7FBBEFD6BAA7FAFFEAAAAAAFFD73AFEBEAAAABE8FFFFFF),
-    .INIT_08(256'hF6E7AB9EAABFAABFFA3ABAFE9B7EA3FBFBAAAAEFFBD3EFEAFEAAAAAAFD15BEFF),
-    .INIT_09(256'hF6F3ABEEAAABEABFFE6BAAFACEBEE8FFFAAAAABEB4FFFEBFEABEAAAAFFEBEB7F),
-    .INIT_0A(256'hE7EDBBEEAAAAFABFBB6BAFEF2FDFBCFFEEAAAFFB3AFFABEAAFFEAAABEFAAAAFF),
-    .INIT_0B(256'hE3F9BBBAAABEFEBEBCEBB7EE5EAFBCBFEEAEAFF6FBFAFAAAABFEABEABA2BD57F),
-    .INIT_0C(256'hF7ECFAFAAAAFFBEABDEBF3BE37F3F93FBEAFBEFFFEBFFFFFFFEAAAAABA7FFFFF),
-    .INIT_0D(256'hF7F9FBEFEAEEFEFAFCEFAFBC28F7FC3FBEAFEFFFFEAAAAAAAAFFAAAAAEDFFFFF),
-    .INIT_0E(256'hEDFCFBFBFEBBBFAFFCFFFFF9EAAAEB3EEFBEBFFFFFFFFFFFFFEAFFFAABB3FFFF),
-    .INIT_0F(256'hF9FB6EFFBEBEEAFBEDFEDEECFF7CEA7EFAEFFFFFFFFFFFFFFFFFEAFEAEFEFFFF),
-    .INIT_10(256'hEDBA6EFFEBFFFABFBBFECEF4BAA8AE7FFEBFFEAFFFFFFFFFFFFFFFEBFFBE8FDF),
-    .INIT_11(256'h78FE7EFFFEBFBFFFB7EFFBF4D6846F7BFFFAFB05BFFFFFFFFFFFFFFFAFEFF3ED),
-    .INIT_12(256'hDCFF3EFFFFEBEFFEB3EFBBE041D15B6FE8BB115AFFAAAFFFFFFFFFFFFEBFED7F),
-    .INIT_13(256'hAC6FCFFFFFFFABAB07EFFAA4C25992EFD284B14054005BFAEFFFFFFAAAAFBE3F),
-    .INIT_14(256'hE97ADBBFFFFFFAC127AEAF9AA5C6A0DB547FC57A8012BFED4EBFFFEFFFFFAFBF),
-    .INIT_15(256'hBE7BDBBFFFFFEF4FA6FEAE9AF1F6FD1113AAFFEEC04ABFFFAAAFAFEAABEAAFEB),
-    .INIT_16(256'hFEBFAFFFFFFEBFD2B6FAEB7AAAAAAFB6FAAAAAAABAA42BFFFFFECBAFEAAAAAEB),
-    .INIT_17(256'h3BBFEEEFFFFFEE92F6FBFF2AAAAAABFAAAAAAAAAAAAE43BFFFFFFAAFBFFAAAFB),
-    .INIT_18(256'hDFFBAFEFFFFEF03ACEFFBB6AAAAAAAAAAAAAAAAAAAAEED5BFFFFEAFEAEFFAEFF),
-    .INIT_19(256'hDFAFEFBFFFFF13EBCEEBADEAAAAAAAAAAAAAAAAAAAAA0505FFFFFFFFFB1BFFFF),
-    .INIT_1A(256'hA6ABFFFBFFF84EABDEAFF9AAAAAAAAAAAAAAAAAAAAABE5BEFFFFFFFFFEE5EFFF),
-    .INIT_1B(256'hF3AABFEBFFEB2AAB8FAFEDAAAAAAAAAAAAAAAAAAAAAAFC2BFFFFFFFFFFEED2FF),
-    .INIT_1C(256'hF8FEBBEBFFB5EAAB8FAEB2AAAAAAAAAAAAAAAAAAAAABCBC6FFFFFFFFFFFFBD7F),
-    .INIT_1D(256'hFB6ABBFFFF978AAA8FEEF6AAAAAAAAAAAAAAAAAAAAAB8AE8AFFFFFFFFFFFFBFF),
-    .INIT_1E(256'hFE3ABBFFFE501AAADEEFFEAAAAAAAAAAAAAAAAAAEEAE7B940FFFFFFFFFFFFFFF),
-    .INIT_1F(256'h3EDBFBFFFFB4FAAADEEBAAAAAAAAAAAAAAAAAAAAB3BE7FE087FFFFFFFFFFFFD3),
+    .INIT_00(256'hFFCBFE7FBBEFFFFFFFFFEFEFEBFB92EBBFEEFEFFFFFFFFFFFFFFFFFFFFFFAABE),
+    .INIT_01(256'hFFDEAFFEB9AAAAAAAAAADAEFABAF79EBBFEEF7FAAAAAAAAFFFFFFFFFFEE001F4),
+    .INIT_02(256'hFFEEEBDFBD7AAAAAAAABDEEFBFB9ACBBBBFB9FFAAAABEFFEFA5557AE907BAFCB),
+    .INIT_03(256'hFFEEFAFBEE7AAAAAAAAB6EEFAFB4F87BBBEE6EAFAAAFFB956BEAB906EBFFFD2F),
+    .INIT_04(256'hFFEFAFBFAEFAAAAAAAAB2EEEFFE7DF2BBBAC7AAFAABE97EBFFA556FFFEBBF2FF),
+    .INIT_05(256'hFFEFBEBEEFBAAAAABFAE3EEEBBC2AA6FFBBCAAAAAAB9AFFFA41BEAFABAAF9BFF),
+    .INIT_06(256'hFFEF9FBD6EEAAAAABFAF7BFAFB97F7CFFBFEEAAAAABBFFBC0FEEAFAAABBDBFFF),
+    .INIT_07(256'hFFEECBAF3EAAAAAABFADFFBBEF5EBA8FFAFFEAAAAAAFF5DBAFEBEAAAABE2FFFF),
+    .INIT_08(256'hFFDECFAB3EAABFAABFF8BABAFE39FE8BFBFBAAAAEFFB5BEFEAFEAAAAAAF517BE),
+    .INIT_09(256'hFFDEDBABEEAAABEABFFCEBAAFA6EBEE2FFFAAAAABE96FFFEBFEABEAAAAFFEBE9),
+    .INIT_0A(256'hFFCFE7BBEEAAAAFABFB9EBAFEDAF7FB6FFEEAAAFF9BAFFABEAAFFEAAABEFAAAA),
+    .INIT_0B(256'hFFCBF3BBBAAABEFEBEB6EB9FEC7EAFB6BFEEAEAFDEFBFAFAAAABFEABEAB8AB55),
+    .INIT_0C(256'hFFDFE6FAFAAAAFFBEAB7EBDBBC9FDBF1BFBEAFBEFFFEBFFFFFFFEAAAAAB8FFFF),
+    .INIT_0D(256'hFFDFF3FBEFEAEEFEFAF6EFAFB4A2DFF4BFBEAFEFFFFEAAAAAAAAFFAAAAAE7FFF),
+    .INIT_0E(256'hFFE7F6FBFBFEBBBFAFF6FFFFF3EAAAE9BEEFBEBFFFFFFFFFFFFFEAFFFAAB9BFF),
+    .INIT_0F(256'h7FF3F9EEFFBEBEEAFBE7FE7EE6FDF6E8FEFAEFFFFFFFFFFFFFFFFFEAFEAEFEFF),
+    .INIT_10(256'hE7E7B8EEFFEBFFFABFBBFE6ED6BAA2ACFFFEBFFEAFFFFFFFFFFFFFFFEBFFBE2F),
+    .INIT_11(256'hFDF2FCFEFFFEBFBFFF9FEFFBD65E04EDFBFFFAF907BFFFFFFFFFFFFFFFAFEFDB),
+    .INIT_12(256'hBF76FDBEFFFFEBEFFE9BEFBBC0435179EFE2B9117AFFAAAFFFFFFFFFFFFEBFE5),
+    .INIT_13(256'hBFA4EF6FFFFFFFABA90FEFFA8648731AEF5A06914054007BFAEFFFFFFAAAAFBC),
+    .INIT_14(256'hEBE1FA7BBFFFFFFA418FAEAF3A874E827954FF45FA001ABFE56EBFFFEFFFFFAF),
+    .INIT_15(256'hEBBCFB7BBFFFFFED6F8EFEAE3AD3DEF5111BAAFFEE406ABFFFAAAFAFEAABEAAF),
+    .INIT_16(256'hFBFEBFAFFFFFFEBF5A9EFAE9FAAAAAAF9EFAAAAAAABA84ABFFFFFE6BAFEAAAAA),
+    .INIT_17(256'hFDBBBFEEEFFFFFEE1ADEFBFDAAAAAAABFAAAAAAAAAAAAC4BBFFFFFFAAFBFFAAA),
+    .INIT_18(256'hFF7FFBAFEFFFFED0BA6EFFB9EAAAAAAAAAAAAAAAAAAAAEE57BFFFFEAFEAEFFAE),
+    .INIT_19(256'hFF7FAFEFBFFFFD1BEB6EEBA7EAAAAAAAAAAAAAAAAAAAA80507FFFFFFFFF93BFF),
+    .INIT_1A(256'hFF8EABFFFBFFF06EAB7EAFF3AAAAAAAAAAAAAAAAAAAAABC7BEFFFFFFFFFEC7EF),
+    .INIT_1B(256'hFFDBAABFEBFFE9AAAB2FAFE7AAAAAAAAAAAAAAAAAAAAAAF4ABFFFFFFFFFFEE5A),
+    .INIT_1C(256'hFFF2FEBBEBFF97EAAB2FAE9AAAAAAAAAAAAAAAAAAAAAAB6B4EFFFFFFFFFFFFB5),
+    .INIT_1D(256'hFFF9EABBFFFF1F2AAA2FEEDEAAAAAAAAAAAAAAAAAAAAAB2AE2AFFFFFFFFFFFFB),
+    .INIT_1E(256'h5BFCBABBFFFC503AAA7EEFFEAAAAAAAAAAAAAAAAAAEEACFB142FFFFFFFFFFFFF),
+    .INIT_1F(256'hE5BE7BFBFFFF96FAAA7EEBAAAAAAAAAAAAAAAAAAAA9BBCFFC20FFFFFFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -3720,10 +3607,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_000000_002  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4130,\U4/Addr [14:13]}),
-    .dia({open_n4134,open_n4135,open_n4136,open_n4137,open_n4138,open_n4139,open_n4140,1'b0,open_n4141}),
+    .csa({open_n3957,\U4/Addr [14:13]}),
+    .dia({open_n3961,open_n3962,open_n3963,open_n3964,open_n3965,open_n3966,open_n3967,1'b0,open_n3968}),
     .rsta(nRST_pad),
-    .doa({open_n4156,open_n4157,open_n4158,open_n4159,open_n4160,open_n4161,open_n4162,open_n4163,\U4/ROM0/inst_doa_i0_002 }));
+    .doa({open_n3983,open_n3984,open_n3985,open_n3986,open_n3987,open_n3988,open_n3989,open_n3990,\U4/ROM0/inst_doa_i0_002 }));
   // address_offset=0;data_offset=3;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0007"),
@@ -3743,38 +3630,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hF5FFF63837FFFFFFFFC17807FFA5DFE1FF8A37FFFFFFFFFFFFFFFFFFDF57F700),
-    .INIT_01(256'hF7570FB59D55555555FDF20DF40BD7C975A6DF55555557D5D55555570D751D7F),
-    .INIT_02(256'hC575FF1D7DD5555555BD72AD5E39FFEF7C715DD555F7778ADD5502B57075B17F),
-    .INIT_03(256'hC57D63B47D555555554DF8B555AED7CFF9C557D557D61F4017C3DE3FD5F75FFF),
-    .INIT_04(256'hCDD7DD9FB5555555557F70357838776DF2F557D55FB73D7F65763F7FDDE6FFFF),
-    .INIT_05(256'hCDE55ABF5D55555FD77FFA7D5D494D0DC8FD55555D9FD76F52B57D5D5717FFFF),
-    .INIT_06(256'hC5DFDDD77555555FD4D7E87DCE04BF8F0B7755555DD5E5D41357D555DFBFFFFF),
-    .INIT_07(256'hCD77D4075555555FD537C87F58E2D90F237555555F67DA5835FF5555F4DFFFFF),
-    .INIT_08(256'hFF51554D555FD55FFDFDEBFD6700F90607D55577DE5AB8BFFFFF5555675F097F),
-    .INIT_09(256'hFF53552D5557F55FF9D7C97CF80807808D5555551E28A9577F5555557D740B7F),
-    .INIT_0A(256'hDFC5DDF75555FDDFD3DFC1731860AB02BF5557618F0A75FFFD555555F75F7F7F),
-    .INIT_0B(256'hD7ED7DFFD557BF7FD455F1D3C1822AEA1757FD11840F7F5D555555555FA9757F),
-    .INIT_0C(256'hF9F9FDFD555FA7D7D475BDE19816276A5F57FD08817FFFFFFFF555555DBFFFFF),
-    .INIT_0D(256'hF17C5437F57BEBFD7575AFECC3902DC87F55520009755555F77FFDD5576FFFFF),
-    .INIT_0E(256'hE774D4A57FDEF8FFFD77CD24986982C157DFE22A00A0A000AA37DFFD55D1FFFF),
-    .INIT_0F(256'hE771F5AAFF5F3D0D557F4F07810F81217D7022A80A80000002AA1D5FD57CFFFF),
-    .INIT_10(256'h79FDF78015F52540C35F5735261C4381F5C28BD2008082A000002A977FDC77CF),
-    .INIT_11(256'h5D7F9F0001FFE2A079D6541A61DE8325F20D835C4000000000002828FFFF0BEF),
-    .INIT_12(256'h7C5D9F80829572A9FDFE3414FC5FC39DCF6BDC4D82DF702AA800AAA2AB5FD35B),
-    .INIT_13(256'h655C5F20AAA0DEF355F4BDB80B75F015D4DCAD5F5FD744279800002F5FD7DF94),
-    .INIT_14(256'hF4FFE5E80AA027FF3F7450482C1826DE996B3F7A5F7A280761755555FFFFF725),
-    .INIT_15(256'hDFB7EFE800A012AA3556D262BEC896F6D00A80005DEF4A08882A77FFFF755FEF),
-    .INIT_16(256'hD5952B40000168D815D4FD62A8A8891A22AAAAAA82B31E800022E0F7F7555573),
-    .INIT_17(256'hFDDD89F2000ABA6855D460AAAA0A28AAAAAAAAAAAAAD1AC200002A00DFD55578),
-    .INIT_18(256'hF7F5C05200099D0A45DDC20AAAAAA8AAAAAAAAAAAAAA0D4E000215000B77577D),
-    .INIT_19(256'hCDD7F2F20001F0AA455D5F0AAAAAAAAAAAAAAAAAA0A9375400000000032D7FFE),
-    .INIT_1A(256'hDFD7F01E800CAAAAE7D7262AAAAAAAAAAAAAAAAAAAA8D4E2A0000008018F97FF),
-    .INIT_1B(256'hF35F72BC80138AAAF7FF8C2AAAAAAAAAAAAAAAAAAAA8071C0000000A00187B7F),
-    .INIT_1C(256'hF5FF5EB48074AAAAFFFFD22AAAAAAAAAAAAAAAAAAAAAE873000000000000677F),
-    .INIT_1D(256'hF9F55CAA00D3EAAA77BF32AAAAAAAAAAAAAAAAAAAAAAE02450000000000006FF),
-    .INIT_1E(256'hFDFD5CA8031242AADF3698AAAAAAAAAAAAAAAAAAE0A9E0EC780000000000001F),
-    .INIT_1F(256'h9EDDFEA802D802AAD7B680AAAAAAAAAAAAAAAAAAA00D163CF200000000000253),
+    .INIT_00(256'hFFD7FFDCB09FFFFFFFFF41F00FFF877FC3FF289FFFFFFFFFFFFFFFFFFF7D5FDD),
+    .INIT_01(256'hFFDD5D2F973555555557F7D827D42B5F61D78E7D5555555F575555555D25D535),
+    .INIT_02(256'hFF45D7FD35F755555557B5DAA57CB3FFEDF4D1775557DDDF2A75550A95D0D791),
+    .INIT_03(256'hFF45F5CB94F55555555567F29557AE5F6FF3455F555F5C3D401F4B7CBF57DD7F),
+    .INIT_04(256'hFF675F773F9555555555FDD095F0B0DDE7DAD55F557F9DB5FDC5DCBDFF77CEFF),
+    .INIT_05(256'hFF67C57ABD7555557F5DFFF8F57561652762F55555773F5DED5A95F5755D1FFF),
+    .INIT_06(256'hFF477F775DD555557F565FE0F76C06BF2D29DD55557757C754195F55577FBFFF),
+    .INIT_07(256'hFF65DF540D5555557F559F60FD72CA712D89D555557DCF787097FD5557D67FFF),
+    .INIT_08(256'hFFFD515565557F557FF7F7EBF5CD02F10C0F5555DF7C7AB2BFFFFD5555CD7D21),
+    .INIT_09(256'hFFFD5955A5555FD57FF35F61F6F0200F02255555553CA2A15DFD555555F5D429),
+    .INIT_0A(256'hFF7F4777DD5557F77F5B7F41D930C2A90ABD555DC32D28D7FFF5555557DD7DFD),
+    .INIT_0B(256'hFF5FE5F7FF555FBDFF5457D35B4308AAE81D5FF513042DFD75555555557FA1D5),
+    .INIT_0C(256'hFFF3F3F7F5557F8F5F54D7B7C3301C8DE87D5FF52201FFFFFFFFD5555577BFFF),
+    .INIT_0D(256'hFFD1F4549FD5FBEBF5D5D7AFE64B10A760FD55580021D55557DDFFF7555DEFFF),
+    .INIT_0E(256'hFFCDD65685FF7EF2FFF5DF658630E30A415F7FC8A802828002A89F7FF55753FF),
+    .INIT_0F(256'h6FCDD3D7AAFD7DB52555FD6D0F012F0181F5D08AA02A0000000AA8357F55F6FF),
+    .INIT_10(256'hEDF3F7DF0017D58542497D5D958C344B03D74A2B5802020A800000AA1DFF74DF),
+    .INIT_11(256'h7975FF3D0003FFCA80F35C5438C37E0987D8270974400000000000A0A2FFFD2B),
+    .INIT_12(256'h14F4773F020A15DAA3F7FC9416F47F4B376DEB74670A7DD0AAA002AA8AA97F59),
+    .INIT_13(256'h85C5747D82AA827ED957D6B7B029D7D0175676A57D7F5D448F300000AD7F5F7F),
+    .INIT_14(256'hEFD6FFC7E02A808FFDBDD45060A4308E7E31E9BDF87DF8A00DC1D55557FFFFDD),
+    .INIT_15(256'hDB7F9FEFE002801AA8955E58CABE621EDE502A000077ED682220A8DFFFFDD57F),
+    .INIT_16(256'hF25715A9400001E2701756F5CAA2A221388AAAAAAA0A993E00008AC2DFDD5555),
+    .INIT_17(256'hF7F77723D8002AB8E05754C2AAA828A2AAAAAAAAAAAAA53A480000A8027F5555),
+    .INIT_18(256'hFEDFD74058002335284777482AAAAAA2AAAAAAAAAAAAA8256C0008150029DD5D),
+    .INIT_19(256'hFF675FDAD80003D2A845757D2AAAAAAAAAAAAAAAAA82A19D540000000009A5FF),
+    .INIT_1A(256'hFF7F5FD03E0026AAAACF5D8CAAAAAAAAAAAAAAAAAAAAA256CA80000020032F1F),
+    .INIT_1B(256'hFFD97DDAB6001B2AAADFFF24AAAAAAAAAAAAAAAAAAAAA00D34000000280030F9),
+    .INIT_1C(256'hFFD7FD7E9600D6AAAAFFFF58AAAAAAAAAAAAAAAAAAAAAAE0D9000000000000CD),
+    .INIT_1D(256'h3FF3D576A8025BEAA8DFBD9AAAAAAAAAAAAAAAAAAAAAAAC0845000000000000E),
+    .INIT_1E(256'h5BF7F576A009184AAA7D9E32AAAAAAAAAAAAAAAAAAC2A3C2E4F0000000000000),
+    .INIT_1F(256'h763E77FEA00A700AAA5F9E02AAAAAAAAAAAAAAAAAA80251CB6D8000000000008),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -3791,10 +3678,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_000000_003  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4189,\U4/Addr [14:13]}),
-    .dia({open_n4193,open_n4194,open_n4195,open_n4196,open_n4197,open_n4198,open_n4199,1'b0,open_n4200}),
+    .csa({open_n4016,\U4/Addr [14:13]}),
+    .dia({open_n4020,open_n4021,open_n4022,open_n4023,open_n4024,open_n4025,open_n4026,1'b0,open_n4027}),
     .rsta(nRST_pad),
-    .doa({open_n4215,open_n4216,open_n4217,open_n4218,open_n4219,open_n4220,open_n4221,open_n4222,\U4/ROM0/inst_doa_i0_003 }));
+    .doa({open_n4042,open_n4043,open_n4044,open_n4045,open_n4046,open_n4047,open_n4048,open_n4049,\U4/ROM0/inst_doa_i0_003 }));
   // address_offset=0;data_offset=4;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0008"),
@@ -3814,38 +3701,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hCD559FFD5D555555557DDFD555E9757F55F75D5555555555555555557FDD7F80),
-    .INIT_01(256'hCD55D7FEFD555555554D5DDF57BC757755D975555555557FFFFFFFFDF08850FF),
-    .INIT_02(256'hD7554DD6B5555555556F5D7D56FE555757E5D5555555FDD70AAA75C80577E5FF),
-    .INIT_03(256'hDF555FD79D555555559F57DD58D7BD575F9F5555557FE89DDFFC2BD77F5CB7FF),
-    .INIT_04(256'hDF55515D5D55555555B5575553C79D75579D555555E855FFD08BF7D55573FFFF),
-    .INIT_05(256'hDF7757DD5555555555B55D556B75377577F5555556D5FFD805D7555555E7FFFF),
-    .INIT_06(256'hDF4D56BD55555555571D5FD5497B4DF575D55555557F78A17F75555554DFFFFF),
-    .INIT_07(256'hD74757355555555556DD5DD525FF45755F55555555DA0D7FFD555555597FFFFF),
-    .INIT_08(256'hCD65D5B7555555555475775516DFED7FFD55555575257F5DD5555555508275FF),
-    .INIT_09(256'hC56FD5FF5555555554F57D57BFDFD1FF7D55555FCBDF57755555555557D77C7F),
-    .INIT_0A(256'hED7BD55D5555D5555EF57556DF9F517D55555554F7F5FD555555555555DFFFFF),
-    .INIT_0B(256'hEF5BD5555555755559754D561FDFD175F55555CDFFFD555555555555545E2AFF),
-    .INIT_0C(256'hE559D555555D7F555B556D7CE7CFF075D55555FF7F7555555555555554FFFFFF),
-    .INIT_0D(256'hE5D375F5555FDD555BD5755BDFEDDA57F5555FFFF75555555F555555551FFFFF),
-    .INIT_0E(256'hF3DBF5DD55555F7D5355177B7DF5FCDF5555FDD5FF5F5FFF55F5D555554DFFFF),
-    .INIT_0F(256'hF3DC75D5F5555DF57BD535FBFEF1FE7FD555DD57F57FFFFFFD55FDD555517FDF),
-    .INIT_10(256'hF956D57FF5557FFFDFD5B561F75B5E7D577D7FDD7F7F7D5FFFFFD5775557BFBF),
-    .INIT_11(256'hD954D5FFFF757D5FEF551DE12508FEDF5FF7F4A1FFFFFFFFFFFFD7D7DD55EFD3),
-    .INIT_12(256'h33F6D5FF7D775D57EF55FFC2A128145D71F400B5FFDF7FD557FF555D57D57A7C),
-    .INIT_13(256'hFA77BD7F555FDF7EA55775C10482AF5F07ABE02A20809FDFFFFFFFFF557554FF),
-    .INIT_14(256'h52559557F55FDF8AC5577797C12563BC881C20A7A8275FF8BF755555555555D7),
-    .INIT_15(256'h547D3577FF5FFC956F55DD97C10DC208855FD555AA3F55F5F55D75555555557F),
-    .INIT_16(256'h775DFF5FFFFFD78F6F55DE37FDF7FC6FF7FFFFFFD7485F7FFFD735D55555557D),
-    .INIT_17(256'h75555755FFF55FAF07555E5FFFFFFFFFFFFFFFFFFFF02DDDFFFFDFFDF555557F),
-    .INIT_18(256'h3D5557DDFFF7EA5F3F557CDFFFFFFFFFFFFFFFFFFFFF5A37FFFDFFFDD5DD557E),
-    .INIT_19(256'h9F555555FFFC25FF175D585FFFFFFFFFFFFFFFFFFFFE28237FFFFFFFF4F7D57F),
-    .INIT_1A(256'hE55557FF7FF2B5FFBD5D7BFFFFFFFFFFFFFFFFFFFFFF837F5FFFFFF7FFD8F57F),
-    .INIT_1B(256'hEDD557557FF6FFFFBD75F97FFFFFFFFFFFFFFFFFFFFFD85FFFFFFFF5FFFF87FF),
-    .INIT_1C(256'hF1D5575D7FE1DFFF9D55677FFFFFFFFFFFFFFFFFFFFFBD857FFFFFFFFFFFF27F),
-    .INIT_1D(256'hFEF55557FF2C1FFF957547FFFFFFFFFFFFFFFFFFFFFF1FF35FFFFFFFFFFFFF7F),
-    .INIT_1E(256'h7E755757FC221FFF3555CDFFFFFFFFFFFFFFFFFFB5FC97881FFFFFFFFFFFFFDF),
-    .INIT_1F(256'hD79D5757FD415FFFBDD7FDFFFFFFFFFFFFFFFFFFED784949A5FFFFFFFFFFFD87),
+    .INIT_00(256'hFF65573FF57555555555F77F5557E1D5FD57DD75555555555555555555FF75FF),
+    .INIT_01(256'hFF65575FFEF55555555565777D5FB4D5DD5771D555555555FFFFFFFFF7D22052),
+    .INIT_02(256'hFF5D55675E9555555555ED75F55EFC555D5FC755555557F75D2AA8D76005DFC7),
+    .INIT_03(256'hFF7D557F5F35555555573D5F75725FB55D7F3D555555FFE2377FF4AB5DFD769F),
+    .INIT_04(256'hFF7D5551757555555557955D555B4F35D55F35555557E057FF522BDF5555DBFF),
+    .INIT_05(256'hFF7DDD5F755555555557957555E9D59DD5DFD555555E57FF70075D555557CFFF),
+    .INIT_06(256'hFF7D655EB5555555555D357F5561F967D5D755555555FDF281FDD55555567FFF),
+    .INIT_07(256'hFF5D4D5D95555555555E75775587FD45D57D555555577825FFF555555571FFFF),
+    .INIT_08(256'hFF65C7579D5555555554D5DD551E7FE5FFF5555555D585FD77555555555208D7),
+    .INIT_09(256'hFF45EF57FD5555555556D5F55FBF7F53FDF555557F6B7D5DD5555555555F5DF4),
+    .INIT_0A(256'hFFE5FB5575555755557ED5D55E7F3D51F555555556DFD7F55555555555577FFF),
+    .INIT_0B(256'hFFED7B55555555D55571D5655C3F7F51D7D5555767FFF5555555555555547CAA),
+    .INIT_0C(256'hFFC57355555575FD557955E5F6CF6FD0D7555557FDFDD555555555555556FFFF),
+    .INIT_0D(256'hFFC759D7D5557F75557B55D57B7FE7785FD5557FFFDD5555557D555555553FFF),
+    .INIT_0E(256'h7FDB7BD77555557DF559551DF9F7D7F67D5557F757FD7D7FFD57D755555567FF),
+    .INIT_0F(256'hBFDB74D757D55577D5FB5597FBFED3FCFF5557755FD5FFFFFFF557F7555551FF),
+    .INIT_10(256'h5BF15E55FFD555FFFF7F5795C3DD797CF55DF5FF75FDFDF57FFFFF55DD555FBF),
+    .INIT_11(256'hF6715657FFFDD5F57FED5537C18522FE7D7FDFD683FFFFFFFFFFFF5F5F7557EF),
+    .INIT_12(256'hFD9BDE57FDF5DD755FED57FF4A81A01475D3D40297FF7DFF555FFD55755F55F8),
+    .INIT_13(256'h5FF8DFB5FD557F7DFE855DD741060AAD7D0FABC0A882023F7FFFFFFFFD55D556),
+    .INIT_14(256'hFD5857155FD57F7F2A455DDF1F4185CBB62034828FA08D7FF2BDD55555555557),
+    .INIT_15(256'hF554F595DFFD7FF615ED57771F41274822057F5557A8BD57D7D575D555555555),
+    .INIT_16(256'hFDDD77FD7FFFFF5F2DED577C9FF7DFF4EFDFFFFFFF5D607DFFFF5D9755555555),
+    .INIT_17(256'hFCD5555D57FFD57FAD0D557C7FFFFFFFFFFFFFFFFFFFD0A777FFFF7FF7D55555),
+    .INIT_18(256'hFDB5555F77FFDFE87DBD55F67FFFFFFFFFFFFFFFFFFFFD789FFFF7FFF7577555),
+    .INIT_19(256'hFF3D555557FFF487FD1D75707FFFFFFFFFFFFFFFFFFFFCA089FFFFFFFFD6DF55),
+    .INIT_1A(256'hFFC5555FFDFFDA97FFB575FBFFFFFFFFFFFFFFFFFFFFFF09FD7FFFFFDFFF72D5),
+    .INIT_1B(256'hFFE7555D55FFDEFFFFB5D7F1FFFFFFFFFFFFFFFFFFFFFF707FFFFFFFD7FFFF0F),
+    .INIT_1C(256'hFFD3555D75FFC37FFF3555CDFFFFFFFFFFFFFFFFFFFFFFB705FFFFFFFFFFFFD8),
+    .INIT_1D(256'h7FFED5555FFDA43FFF15D54FFFFFFFFFFFFFFFFFFFFFFD3FD97FFFFFFFFFFFFD),
+    .INIT_1E(256'h0DFCD55D5FF4883FFD955767FFFFFFFFFFFFFFFFFF97F61F203FFFFFFFFFFFFF),
+    .INIT_1F(256'hDA5F355D5FF5417FFFB75FF7FFFFFFFFFFFFFFFFFFE5F0616387FFFFFFFFFFF7),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -3862,10 +3749,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_000000_004  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4248,\U4/Addr [14:13]}),
-    .dia({open_n4252,open_n4253,open_n4254,open_n4255,open_n4256,open_n4257,open_n4258,1'b0,open_n4259}),
+    .csa({open_n4075,\U4/Addr [14:13]}),
+    .dia({open_n4079,open_n4080,open_n4081,open_n4082,open_n4083,open_n4084,open_n4085,1'b0,open_n4086}),
     .rsta(nRST_pad),
-    .doa({open_n4274,open_n4275,open_n4276,open_n4277,open_n4278,open_n4279,open_n4280,open_n4281,\U4/ROM0/inst_doa_i0_004 }));
+    .doa({open_n4101,open_n4102,open_n4103,open_n4104,open_n4105,open_n4106,open_n4107,open_n4108,\U4/ROM0/inst_doa_i0_004 }));
   // address_offset=0;data_offset=5;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0009"),
@@ -3885,38 +3772,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hF2FB3FDAF3BFFFFFFFA6A6A1AA997E9BAA2E3FFFFFFFFFEFFABAFFFEBFA11A00),
-    .INIT_01(256'hFAFEEF4997BFFFFFFBBBE280EBE9EACABEEEBAFFFFFEAEFBAFFEBAAE77131C7F),
-    .INIT_02(256'hF6EFEBAFEFBFFFFFFABAA2BFE8CA0ECFE8FEFAFFEFFBFE5D5FAA4B4AA35BB5FF),
-    .INIT_03(256'hF2FBF9FA7FFFFFFFFAD3B703EF6BFEDFF7E7AAFFFEAC8B978149C621FEFED7FF),
-    .INIT_04(256'hF3FFB8A36FFFFFFFFFC2A67FE3FB93ADE2BFFAFFFA5E76FF8DAA7BBEBBE13BFF),
-    .INIT_05(256'hF39EFF37BFFFFFFFFB5FAE5FB56567A88FCBFFFFE8F2EE875C20BFBEAEC9FFFF),
-    .INIT_06(256'hE3FBFBE3FFFFFFFFFEDFF93A9AAFA62DBF7FFFFFFBABC948FF5BFFFFBACFFFFF),
-    .INIT_07(256'hE2A8FE57FFFFFFFFFABFFCFFFAED41B87ABFFFFFEBAA8CFAA3FFFFFFB42FFFFF),
-    .INIT_08(256'hAAADFE9AFFFFBFFFFA5B9B3E1EBAB5ABACFFFFFEADB9FBBD3EFFFFFFF3FA497F),
-    .INIT_09(256'hEBFCFBA2FFEEFFFFE82FD1A90B1A307FFFFFFFFA3E3BAF1BEABFFFFFFFB8657F),
-    .INIT_0A(256'hE7A7BBA7FFFA3FFFF9BE96AF8EFE8B7FA2FFFEA5CEEBB2EFEBFFFFFFFAA5547F),
-    .INIT_0B(256'hE4BDBFEBFFFA2AEAADAF89F26FC68F7FEAFAFBFBBEA9EFFEFBEFFFFFED103AFF),
-    .INIT_0C(256'hF9E07B2AFFE2FCEAEF3EFEDA5EAE88BECFFFEF2FFF0EAAAAABEBFFFFFB3FFFFF),
-    .INIT_0D(256'hFEEC7BABFFF72B2BFA2E86CFD7BAF75B9FEBF7FFFB41554400EBFBFFFABFFFFF),
-    .INIT_0E(256'hE3EB3AB8BFA9C3E2FAEF8BA9BD31F59E7FFA6FFFEAAAAAAAAAF17AFFFEABFBEB),
-    .INIT_0F(256'hFCFAFAFBDEFE7DEDF2FFB764ABEBB07B3FADBFFFFFEFFFFFFFAAF96BFEA87FBB),
-    .INIT_10(256'hF5E92A3EB7FEEFAAECFF2A7B0FCC5479EBDFEE9BFFFFFFFFFEEBAAF1FFFA06EF),
-    .INIT_11(256'hB87A4B7AEA4ACEFFEBEB0EAE6A062079FABAA9D37FFFFFFFFFFFFFEB92FEB9A6),
-    .INIT_12(256'h6F7A8B7ABEE5F2AEE0AA98E556FCB9FEB1E9FCBDFB9F2FFFFFFFFFFAEB7FA2EA),
-    .INIT_13(256'h93FFF3BBFFEAD7A887BFADC1AA2A5822EFC4C224FE5163FABBEBAFFB410FEA4E),
-    .INIT_14(256'hB9BF738FFFFFAFE32FFFDAB2347B7CF99DE6881BE39A17A7E34EFFFEFABFEEC7),
-    .INIT_15(256'hAE3FAD8FFFFFBEEFBBFE733923B37ADFF0F56FEB5FA25FFB40175AAFBFEFFFB4),
-    .INIT_16(256'hAE6A87BFFFFBFB7CFAFA3F8D511542B159555555786F1ABAAABD32DAFFFFFFE5),
-    .INIT_17(256'hCFFAC373FFFFEF40B2FB7A5541455555555555555516B0CFFFFAE113CEFFFFF9),
-    .INIT_18(256'hBFEBB3B3FFFAF9E5D2FFDD355555555555555555555456FAFFFFFEEA576BBFFA),
-    .INIT_19(256'hABFFE29BFFEE90549AF3DEF555555555555555555555D3A2BFFFFFEAADE8BFFF),
-    .INIT_1A(256'hD7FFEFA3FFFD3E546FF3AD55555555555555555555503BBD6FFFFFFFFABEFAFF),
-    .INIT_1B(256'hECFFFBA4FFF4A45523C330D55555555555555555555464CEEFFFFFFFFFFB797B),
-    .INIT_1C(256'hFC3FFBF8FEB56554678237D5555555555555555555541F4A3FFFFFFFFFFEBAFF),
-    .INIT_1D(256'hFCEFF8FFFB8DD5552FE760555555555555555555555070405FFFFFFFFFFFFFEF),
-    .INIT_1E(256'hFB4FF8FFEF6D85556EA7A75555555555555555540252EC3A5BFFFFFFFFFFFFDF),
-    .INIT_1F(256'h8F5BFDFFFECC3555EB24DB5555555555555555513096FF9466FFFFFFFFFFFFCD),
+    .INIT_00(256'hFFDAF9BF7ADBBFFFFFFF8E8E83AA31FE3BA8ACBFFFFFFFFFEFFABAFFFEBF8138),
+    .INIT_01(256'hFFFAFEED631FBFFFFFFBBBCA02EBE3EA6ABEEEBAFFFFFEAEFBAFFEBAACDD1934),
+    .INIT_02(256'hFFDEEFEBAFEFBFFFFFFABA8ABFE2682E6FE2FEFAFFEFFBFC757FA8696A897B97),
+    .INIT_03(256'hFFDAFBF3F8FFFFFFFFFA5B9D0BEDEBFE7FDFCFAAFFFEA62B1F01634C83FEFE5F),
+    .INIT_04(256'hFFDBFFB289EFFFFFFFFF4A8CFFCBFB1BA7CABFFAFFF87CDEFF27A8FBBEBBC1BB),
+    .INIT_05(256'hFFDB3EFD9FBFFFFFFFF97FAC7F95C5CFA22F6BFFFFE2DAEE0D7482BFBEAE63FF),
+    .INIT_06(256'hFFCBFBFBCBFFFFFFFFFE7FF1BA3AAF8CA7BDFFFFFFFBAB6162FD7BFFFFBA6FFF),
+    .INIT_07(256'hFFCAA2FC5FFFFFFFFFFABFF6FFFAE543B0FABFFFFFEBAA26FA8BFFFFFF94AFFF),
+    .INIT_08(256'hFFAAA7FE3AFFFFBFFFF87B39BC3EBA97ABA6FFFFFEA7B3FBB5BEFFFFFFDBF861),
+    .INIT_09(256'hFFEBF6FB8AFFEEFFFFE0AF53A1293890FFFFFFFFF8BCBBAD3BEABFFFFFFFB0C5),
+    .INIT_0A(256'hFFCF8FBB8FFFF8BFFFF3BE1EAF2EFE29FF8AFFFE876EEB9AEFEBFFFFFFFA8554),
+    .INIT_0B(256'hFFC6B7BFEBFFF8AAEAA7AF23D8EF4E2DFFEAFAFBFBBEA3EFFEFBEFFFFFE510BA),
+    .INIT_0C(256'hFFF3C0F9AAFFCAF6EAEDBEFE787EAE22BE6FFFEDAFFD2EAAAAABEBFFFFF9BFFF),
+    .INIT_0D(256'hEBFEE4FBABFFDDA9ABF8AE0E6F5FBADD7B3FEBDFFFF941554402EBFBFFFABFFF),
+    .INIT_0E(256'hBBCBE9BAB2BFA34BCAFAEF2BA3B593D73CFFF8EFFFEAAAAAAAAAD1FAFFFEABFB),
+    .INIT_0F(256'hEFF6FAFAFB7EFCF7E7DAFF9DC6ABEB90F9BFA7BFFFFFEFFFFFFFAAF1EBFEA0FF),
+    .INIT_10(256'h8ED7E1A8BE9FFEEFAAE6FDA8F92F6454F3EB7FEE3BFFFFFFFFFEEBAAD3FFF80E),
+    .INIT_11(256'hEAB0F869FAE86A6EFFEBE92EACE80C80F3FABAA359FFFFFFFFFFFFFFEB1AFEB3),
+    .INIT_12(256'h6CEDFA29FABEC7DAAEC2AA32C55EF6B3FE93E3F6B7FB3DAFFFFFFFFFFAE9FF8A),
+    .INIT_13(256'h4F1BFFDBBBFFEA5FA20FBFA743A8A8708AEF464886FC51CBFABBEBAFF9412FE8),
+    .INIT_14(256'h96B3BDDB2FFFFFAFC9AFFF7A9894F9F6F337CE203BCB381F8FC96EFFFEFABFEE),
+    .INIT_15(256'hC7ACBFA72FFFFFBEEFBBFCD9B18B99FA7FD2D5EFE97F887FF9401D7AAFBFEFFF),
+    .INIT_16(256'hF3ACEA0FBFFFFBF9F6FAF8BF2551154A9171555555F0ED3ABAAAB59A7AFFFFFF),
+    .INIT_17(256'hFA6FFA49DBFFFFED429AF9F8554145555555555555551E926FFFFAC11B6EFFFF),
+    .INIT_18(256'hFFBFEB9B9BFFFAF3C75AFF7595555555555555555555545EFAFFFFFEE85DEBBF),
+    .INIT_19(256'hFFABFFCA3BFFEE10563ADB7ED5555555555555555555575B8ABFFFFFEAA7E2BF),
+    .INIT_1A(256'hFB5FFFEF8BFFF5BC54EFDBA55555555555555555555550BBB5EFFFFFFFFABEFA),
+    .INIT_1B(256'hFFE6FFFB86FFD684558B49925555555555555555555554C66EEFFFFFFFFFF9F1),
+    .INIT_1C(256'hEFF4BFFBF2FE95C554CF089F55555555555555555555543D68BFFFFFFFFFFEBA),
+    .INIT_1D(256'h7FF6EFF2FFFB275555AFCDC05555555555555555555550D0407FFFFFFFFFFFFF),
+    .INIT_1E(256'h67F96FF2FFEDE70555EE8F8D555555555555555554085AE4B87BFFFFFFFFFFFF),
+    .INIT_1F(256'hDA2D7BF7FFFE649557E98679555555555555555551921EFF14CEFFFFFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -3933,10 +3820,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_000000_005  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4307,\U4/Addr [14:13]}),
-    .dia({open_n4311,open_n4312,open_n4313,open_n4314,open_n4315,open_n4316,open_n4317,1'b0,open_n4318}),
+    .csa({open_n4134,\U4/Addr [14:13]}),
+    .dia({open_n4138,open_n4139,open_n4140,open_n4141,open_n4142,open_n4143,open_n4144,1'b0,open_n4145}),
     .rsta(nRST_pad),
-    .doa({open_n4333,open_n4334,open_n4335,open_n4336,open_n4337,open_n4338,open_n4339,open_n4340,\U4/ROM0/inst_doa_i0_005 }));
+    .doa({open_n4160,open_n4161,open_n4162,open_n4163,open_n4164,open_n4165,open_n4166,open_n4167,\U4/ROM0/inst_doa_i0_005 }));
   // address_offset=0;data_offset=6;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x000A"),
@@ -3956,38 +3843,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hEBAFEF581EEAAAAAAAA0E947FFC3EBA4FED45AAAAAAAAABAAFEFAAABABAEFE80),
-    .INIT_01(256'hAEAA978A8AAAAAAAAAFAB957AA15ABA4AA172AAAAAAAABFAAFFEBAAAC3FB3CFF),
-    .INIT_02(256'hA6AABE9EBAAAAAAAABDAE832BE45FBE4BA48AAAAAAAFBAE04FFA440AE1ABC8FF),
-    .INIT_03(256'hB2AAE5CA2AAAAAAAAAD2F90EBBC1ABB4B922AAAAABAA4FD52EE4EA4EFFBABFFF),
-    .INIT_04(256'hA2BAB99E8AAAAAAAABBEF94AF84C6E82ADEAAAAAAFDA0FBFE5EF0BEAAAAE7FFF),
-    .INIT_05(256'hA2E6BC4AAAAAAAAAAFBAE46ABAC0B2C7A1FAAAAABBDEEBF2AC0AEAAAAA8FFFFF),
-    .INIT_06(256'hA2EEAAEEAAAAAAAAAF4AB42BB3535EC6C4EAAAAAAAAAA1E814AEAAAABFDFFFFF),
-    .INIT_07(256'hB2EFAEDEAAAAAAAAAADAF02ABCD53A9384EAAAAAAFE79D550AAAAAAAFB3FFFFF),
-    .INIT_08(256'hFEAFAAA2AAAAAAAAABAAF3EAA5C4988047AAAAABBE2D5417EAAAAAAAFEBE12FF),
-    .INIT_09(256'hFEA8ABD2AAABAAAABBAAB4FB241507C006AAAABA9E1400EEAAAAAAAABBFAD17F),
-    .INIT_0A(256'hFAA6AAEAAAABEAAABCABA1ECC06015801EAAAAE985000BAAAAAAAAAAAEBAAAFF),
-    .INIT_0B(256'hABE7AABAAAAF9EAAAC2AEAADB11505400EAAAB8D4017BAAAAAAAAAAABFC06AFF),
-    .INIT_0C(256'hEBBBABFAAABFC7AAAAEB8FE1995D13803AAABA9000FFFFFFFEAAAAAAABDFFFFF),
-    .INIT_0D(256'hE8BFEA4EAAADF1FABAEBD7F3A74D53A46AAAAC0005FEAAABEEBEAAAAAEF7FFFF),
-    .INIT_0E(256'hE6AA2B06EABF6D5FAAAA92D750150520AAAFC00014000000004BAFAAABA9FFFF),
-    .INIT_0F(256'hE2B9AE002AAAD202FAABAE96549344C0EAEA000000000000000016BEAAF97FFF),
-    .INIT_10(256'hEEBAEF800EAA800160ABAFCFC1132582AEE01431000000000114000EAAAA6FF7),
-    .INIT_11(256'hBAEFFE8501FFE10059AE8B4C75BE5582AC0000FF00000000000000017FAA85E2),
-    .INIT_12(256'hBF2B9F85400AE9540BAE4A1A2F3BA0D3B310FA33052090000000000045EAACE9),
-    .INIT_13(256'hF7AE6EC400013814AAAE4B1E05F76D4BACED4F7BABAEB41014005550BEAABFCE),
-    .INIT_14(256'hFA6ABBE00000056F4EAE6D7CC08AC6BE2FDB69112BFB0046F0EAAAABAFEAAACF),
-    .INIT_15(256'hBBDBB7E0000001438AAA6C6EA7DAF23B26EAEFFFCAF1A0111055AFFAAAAAAAF7),
-    .INIT_16(256'h2FCAD4F00000053B9AAA748AAAFABB56FEAAAAAAFE88C1455505617FAAAAAAED),
-    .INIT_17(256'hFAEBF5E80000043BD2ABA0EABEBAABFAAAAAAAAAAAF8CD30000544003FAAAAFD),
-    .INIT_18(256'h6AAAE46800041E8BD2ABA4AAAAAAAAAAAAAAAAAAAAAEF6B10000010014EEAAFB),
-    .INIT_19(256'hB2AAA8280014E6EA92AAB36AAAAAAAAAAAAAAAAAAAABCECF4000000554F6EAFF),
-    .INIT_1A(256'hFEAAA84C001316AAE6FEC2AAAAAAAAAAAAAAAAAAAAAFCB0510000000051E9FFF),
-    .INIT_1B(256'hECAAAC0A0019DAABEEBFC0AAAAAAAAAAAAAAAAAAAAABBD850000000000146CFF),
-    .INIT_1C(256'hEBEAA8160111AAABFAFED5AAAAAAAAAAAAAAAAAAAAAAD39C80000000000147FF),
-    .INIT_1D(256'hF9AAAE04053B4AAAAADE96AAAAAAAAAAAAAAAAAAFAAFEFFE200000000000057F),
-    .INIT_1E(256'hFBBAAA00108C5AABBA9B16AAAAAAAAAAAAAAAAAB9AAACFE3740000000000007F),
-    .INIT_1F(256'h1F4AAE00003AAAAB2E9F56AAAAAAAAAAAAAAAAAA9EB8E1EF490000000000004D),
+    .INIT_00(256'hFFEBAFED703EEAAAAAAA82E14FFF4BEB86FE547AAAAAAAAABAAFEFAAABABAEFE),
+    .INIT_01(256'hFFAEAA1F2A2AAAAAAAAAFAB15FA817AB86A81DAAAAAAAAABFAAFFEBAAA4BF9B6),
+    .INIT_02(256'hFF8EAABE3EBAAAAAAAAB7AE09ABC47FBC6B862AAAAAAAFBAC06FF8442AC3AB62),
+    .INIT_03(256'hFF9AAAC768AAAAAAAAAA5AF12EBB43AB96B18AAAAAABA86F55AEC6E86EFFBABF),
+    .INIT_04(256'hFF8ABAB33E2AAAAAAAABBEF16AF064EE0AA7EAAAAAAF782FBFC7ED2BEAAAACFF),
+    .INIT_05(256'hFF8ACEB46AAAAAAAAAAFBAC4EABA429A4F83FAAAAABB7EEBDAA42AEAAAAA2FFF),
+    .INIT_06(256'hFF8AEEAAEEAAAAAAAAAD6A94AB99597E4E46EAAAAAAAAA83E016AEAAAABF7FFF),
+    .INIT_07(256'hFF9AEFAE7EAAAAAAAAAA7AD0AAB655BA1B06EAAAAAAFCF35552AAAAAAAF9BFFF),
+    .INIT_08(256'hFFFEAFAA8AAAAAAAAAABAADBEA874632004FAAAAABBCA5541FEAAAAAAAFEBC1A),
+    .INIT_09(256'hFFFEA2AB5AAAABAAAABBAA96F984150F400EAAAABA3C1402EEAAAAAAAABBFA51),
+    .INIT_0A(256'hFFFA8EAAEAAAABEAAAB6AB83E640C017003EAAAAE305002BAAAAAAAAAAAEBAAA),
+    .INIT_0B(256'hFFABCFAABAAAAF3EAAA4AAEAA7911505402EAAAB25401FBAAAAAAAAAAABF40EA),
+    .INIT_0C(256'hFFEBBBABFAAABF4FAAAAEB2FC331751B00BAAABA1002FFFFFFFEAAAAAAAB7FFF),
+    .INIT_0D(256'hFFE2BFE86EAAA7D3FABAEB5FDB8D655B84EAAAA40007FEAAABEEBEAAAAAEDFFF),
+    .INIT_0E(256'hFFCEA8A90EEABDE57FAAAA1A5D50150582AAAF400014000000006BAFAAABA3FF),
+    .INIT_0F(256'hDFCAB3AC00AAAA580AFAABAE1C56194642EAE800000000000000001EBEAAF1FF),
+    .INIT_10(256'hCAEEBAEF002EAA0001C2ABAF6F4119870AAEC01491000000000114002EAAA8EF),
+    .INIT_11(256'hE3BAEFFE0503FFC10073AE2964D7BC570AA40002FD0000000000000001FFAA07),
+    .INIT_12(256'h6EBDAB3F05402AE1542BAC6838ADBB825B9912F899058210000000000047EAA6),
+    .INIT_13(256'h6FDFACEE440001B016AAAC693C07DDE56BA6E56DFBABAE941014005552BEAABF),
+    .INIT_14(256'hDFF8EABBC0000005ED6EACE5F6422A4EBCAF79E111ABF9004ED2EAAAABAFEAAA),
+    .INIT_15(256'hE7BB7B9FC00000014B2AA8E4EE8F7AD8B98EEAEFFF6AD380111057AFFAAAAAAA),
+    .INIT_16(256'hF5AF6A56D0000005BB3AA8D62AAAFAB95EFEAAAAAAFE2241455505C1FFAAAAAA),
+    .INIT_17(256'hFBFAEBD7E0000004BB5AAB82EABEBAABFAAAAAAAAAAAF2659000054400BFAAAA),
+    .INIT_18(256'hFDEAAAC4E000043E2B5AAB86AAAAAAAAAAAAAAAAAAAAAEDE910000010016EEAA),
+    .INIT_19(256'hFF9AAAA0A00016CEEA1AAA99EAAAAAAAAAAAAAAAAAAAAB6E6D4000000556DEEA),
+    .INIT_1A(256'hFFFEAAA06400191EAACEFE4AAAAAAAAAAAAAAAAAAAAAAF690510000000053E3F),
+    .INIT_1B(256'hFFE6AAA42800337AABEEBF42AAAAAAAAAAAAAAAAAAAAABB705000000000014E6),
+    .INIT_1C(256'hFFEBEAA01C0113AAABFAFE57AAAAAAAAAAAAAAAAAAAAAA5B360000000000014F),
+    .INIT_1D(256'hFFF3AAAC0405B96AAAAA7E1EAAAAAAAAAAAAAAAAAAFAAFEFFC80000000000005),
+    .INIT_1E(256'h67FBBAA80012247AABBA391EAAAAAAAAAAAAAAAAAB3AAA6FC9D4000000000000),
+    .INIT_1F(256'hB93D6AAC0000BAAAA9AE3D5EAAAAAAAAAAAAAAAAAA3EB2C3ED61000000000000),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4004,10 +3891,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_000000_006  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4366,\U4/Addr [14:13]}),
-    .dia({open_n4370,open_n4371,open_n4372,open_n4373,open_n4374,open_n4375,open_n4376,1'b0,open_n4377}),
+    .csa({open_n4193,\U4/Addr [14:13]}),
+    .dia({open_n4197,open_n4198,open_n4199,open_n4200,open_n4201,open_n4202,open_n4203,1'b0,open_n4204}),
     .rsta(nRST_pad),
-    .doa({open_n4392,open_n4393,open_n4394,open_n4395,open_n4396,open_n4397,open_n4398,open_n4399,\U4/ROM0/inst_doa_i0_006 }));
+    .doa({open_n4219,open_n4220,open_n4221,open_n4222,open_n4223,open_n4224,open_n4225,open_n4226,\U4/ROM0/inst_doa_i0_006 }));
   // address_offset=0;data_offset=7;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x000B"),
@@ -4027,38 +3914,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hB2AB9EFAAAAAAAAAAAFBAFAAABF0AABEAAFEAAAAAAAAAAAAAAAAAAAAFEBAEF80),
-    .INIT_01(256'hB2ABAFFF7AAAAAAAAAB2BFBEAFDA6AFEAAF8EAAAAAAAAAAFFAABEFFBA801AF7F),
-    .INIT_02(256'hAAAAB3AB4AAAAAAAAAF6BF9AAF6E2ABEAFE3AAAAAAAAEBEEF004ABB00BEFE3FF),
-    .INIT_03(256'hAEAABFAF9AAAAAAAABFEAFFAB93B5AAEBF9EAAAAAAFFB06EBFBA15AEAAAB4FFF),
-    .INIT_04(256'hBEBAAABABAAAAAAAAACAAEAAADB79ABAAF1AAAAAABE0AEFEAE14EEAAAAEDFFFF),
-    .INIT_05(256'hBEEAAFBAAAAAAAAAAACAAAAAF4FACEFAFF6AAAAAAF6BBEB802EEAAAAABE7FFFF),
-    .INIT_06(256'hBEF2AF1AAAAAAAAAAAFABFAAB4FCB2FAFBAAAAAAAAFEFB02FEEAAAAAAB3FFFFF),
-    .INIT_07(256'hAEA6AA9AAAAAAAAAAF2AFBAAC27EA2EEFEAAAAAAAABC32FFBAAAAAAAA8FFFFFF),
-    .INIT_08(256'hB2E6ABCEAAAAAAAAAA6AE8AACF3E32FBFAAAAAAAEAC2FFFBAAAAAAAAB904EBFF),
-    .INIT_09(256'hA2F7AAFEAAAAAAAAAB6AFAAF8FBFA9BFFEAAAAAFB5FFFEEAAAAAAAAAAEBEBBFF),
-    .INIT_0A(256'hB2F9AABAAAABAAAAAF6AEAAF2F9FE9FFEAAAAAAB7FFFBAAAAAAAAAAAABBFFFFF),
-    .INIT_0B(256'hF6B8AAAAAAAAAAAABEEAB2AE1FBFF8FFEAAAAAB3FFFBAAAAAAAAAAAAAA3ED57F),
-    .INIT_0C(256'hE2B9AAAAAABAFEAABCAAF6FB67B7AC3FAAAAABFFFEEAAAAAAAAAAAAAAB7FFFFF),
-    .INIT_0D(256'hE3A9ABEAAABFBEAAADAAEABD3DF3BC3FEAAABFFFFEAAAAAABEAAAAAAAA9FFFFF),
-    .INIT_0E(256'hEDBDEBFAAAAAAEFAACAAAEFCFBABFB3EAAABFFFFFFFFFFFFFFEFAAAAAAB3FFFF),
-    .INIT_0F(256'hEDAA6AFFEAAABBFAADABCBFCFF6DFE7FAAABFFFFFFFFFFFFFFFFFBAAAAAAFFBF),
-    .INIT_10(256'hFCAF2AFFEEAAFFFFFFAACAE0FBACBE7AAABFFEBEFFFFFFFFFFFFFFEEAAAFDF9F),
-    .INIT_11(256'h38AB6BFFFEEAFFFFF6AABBF0C2907F7EBFFAEF01FFFFFFFFFFFFFFFFBAABF7AD),
-    .INIT_12(256'hC8EF2BFFFFEEBFFEA6ABFFA504C00F3AEDAA414BFFAABFFFFFFFFFFFBEEAFC3A),
-    .INIT_13(256'hE96B9AFFFFFFBBBF42AAFBA5870C96BE8616A59501011FFABFFFFFFAAAEAAB3A),
-    .INIT_14(256'hBC2B9ABFFFFFFF91E2ABAFDFE792F45B143A97AB9140EFF95EEAAAAAAAAAABAA),
-    .INIT_15(256'hAA6ACAFFFFFFFB0BA6ABFFCFBCA3EC005AFFEFFEE05ABFEBEABBEAAAAAAAAAFE),
-    .INIT_16(256'hEAFBFEBFFFFFFF87E6ABBE2FFBEFFAFFFFFFFFFFFFE02BFFFFEECBBAAAAAAAFA),
-    .INIT_17(256'h6AEAEEAFFFFFEFC7BEABBE3FFFFFFFFFFFFFFFFFFFEB13BFFFFFAFFBEAAAAAFE),
-    .INIT_18(256'hDAAAEFBFFFFEF16FEEAAFA3FFFFFFFFFFFFFFFFFFFFFA84BFFFFFFFBABBAAAFE),
-    .INIT_19(256'h9EAAAFEFFFFB5AFEFEBAB8FFFFFFFFFFFFFFFFFFFFFE0044FFFFFFFFEB4FAAFE),
-    .INIT_1A(256'hA2AAAFEFFFED4FFE9AEAFDFFFFFFFFFFFFFFFFFFFFFFB4BEFFFFFFFFFFB07AFF),
-    .INIT_1B(256'hF3AAAFFBFFFE7FFF9AEBFEFFFFFFFFFFFFFFFFFFFFFFBF2FFFFFFFFFFFFF87FF),
-    .INIT_1C(256'hE9AAABFBFFBFBFFFDAABFFFFFFFFFFFFFFFFFFFFFFFEFBF2FFFFFFFFFFFFEC7F),
-    .INIT_1D(256'hFF6AABFFFEC6BFFF8AEAFFFFFFFFFFFFFFFFFFFFFFFE9FE8BFFFFFFFFFFFFEFF),
-    .INIT_1E(256'hFE6AAFFFFE413FFE8AEBAFFFFFFFFFFFFFFFFFFFABFA2BD01FFFFFFFFFFFFFFF),
-    .INIT_1F(256'h2FFAAFFFFFA5BFFF9BEFBFFFFFFFFFFFFFFFFFFFB2FB3BF5C7FFFFFFFFFFFFE6),
+    .INIT_00(256'hFF9AAB3EFAAAAAAAAAAAFBAFAAABD2AABEAAFEAAAAAAAAAAAAAAAAAAAAFEBAEF),
+    .INIT_01(256'hFF9AABAFFDFAAAAAAAAA9ABFBEAF78EAFEAAF2EAAAAAAAAAAFFAABEFFBA003AD),
+    .INIT_02(256'hFFAAAA9BA96AAAAAAAAADEBF3AADECAABEAFCBAAAAAAAAEBEED006AB902BEFCB),
+    .INIT_03(256'hFFAEAABFAF3AAAAAAAABFEAFFAB1B97AAEBF3EAAAAAAFF90EEBFB817AEAAA96F),
+    .INIT_04(256'hFFBEBAAABABAAAAAAAAA6AAEAAA79F3ABAAD3AAAAAABC2AEFEAC16EEAAAAE7FF),
+    .INIT_05(256'hFFBEEAAFBAAAAAAAAAAA6AAAAAD6FA6EFAFDEAAAAAADEBBEB00AEEAAAAABCFFF),
+    .INIT_06(256'hFFBEDAAD3AAAAAAAAAAAFABFAA96F69AFAFBAAAAAAAAFEF90AFEEAAAAAA9BFFF),
+    .INIT_07(256'hFFAE8EAA3AAAAAAAAAADAAFBAA48FE8AEEFEAAAAAAAAB49AFFBAAAAAAAA2FFFF),
+    .INIT_08(256'hFF9ACEAB6EAAAAAAAAA8EAE2AA6DBC9AFBFAAAAAAAEA4AFFFBAAAAAAAAB106EB),
+    .INIT_09(256'hFF8ADFAAFEAAAAAAAAA9EAFAAF2FBFA3BFFEAAAAAF97FFFEEAAAAAAAAAAEBEBB),
+    .INIT_0A(256'hFF9AF3AABAAAABAAAAADEAEAADAF3FE3FFEAAAAAA9FFFFBAAAAAAAAAAAABBFFF),
+    .INIT_0B(256'hFFDEB2AAAAAAAAAAAABEEA9AAC3FBFF2FFEAAAAA9BFFFBAAAAAAAAAAAAA8BE55),
+    .INIT_0C(256'hFFCAB3AAAAAABAFEAAB6AADEF9CF9FA4BFAAAAABFFFEEAAAAAAAAAAAAAA9FFFF),
+    .INIT_0D(256'hFFCBA3ABEAAABFBEAAA7AAEAB5B7DBB4BFEAAABFFFFEAAAAAABEAAAAAAAA3FFF),
+    .INIT_0E(256'hBFE7B7EBFAAAAAAEFAA6AAAEF6FBABF9BEAAABFFFFFFFFFFFFFFEFAAAAAA9BFF),
+    .INIT_0F(256'h3FE7A8EAFFEAAABBFAA7AB6BF6FDE7FCFFAAABFFFFFFFFFFFFFFFFFBAAAAAAFF),
+    .INIT_10(256'hA7F6ADAAFFEEAAFFFFFFAA6AC2FBA6BCFAAABFFEBEFFFFFFFFFFFFFFEEAAAF7F),
+    .INIT_11(256'hB8B2A9EBFFFEEAFFFFDEAABBD24A10FDFEBFFAED03FFFFFFFFFFFFFFFFBAABDF),
+    .INIT_12(256'hBA62EDABFFFFEEBFFE8EABFF8506402DBAE7A8416BFFAABFFFFFFFFFFFBEEAF4),
+    .INIT_13(256'hAAE1EB3AFFFFFFBBBD4AAAFB870D261EBE0C1E871501013FFABFFFFFFAAAEAA9),
+    .INIT_14(256'hFEB4AB3ABFFFFFFF13CAABAF7FCF1AD47914BA1FAB1142EFF17EEAAAAAAAAAAB),
+    .INIT_15(256'hFAA8EA6AFFFFFFF92B8EABFF6FB68BE4007AFFEFFEC07ABFEBEABBEAAAAAAAAA),
+    .INIT_16(256'hFEEAFBFEBFFFFFFF0FCEABBCAFFBEFFAFFFFFFFFFFFFC0ABFFFFEE6BBAAAAAAA),
+    .INIT_17(256'hFCEAEAEEAFFFFFEF4FBEABBCBFFFFFFFFFFFFFFFFFFFE91BBFFFFFAFFBEAAAAA),
+    .INIT_18(256'hFE7AAAEFBFFFFED1EFEEAAF8BFFFFFFFFFFFFFFFFFFFFFA06BFFFFFFFBABBAAA),
+    .INIT_19(256'hFF3EAAAFEFFFF97AFEFEBAB2FFFFFFFFFFFFFFFFFFFFFC0046FFFFFFFFE96FAA),
+    .INIT_1A(256'hFF8AAAAFEFFFE56FFE3AEAF7FFFFFFFFFFFFFFFFFFFFFF96BEFFFFFFFFFF90FA),
+    .INIT_1B(256'hFFDBAAAFFBFFFCFFFF3AEBFEFFFFFFFFFFFFFFFFFFFFFFBDAFFFFFFFFFFFFF0F),
+    .INIT_1C(256'hFFE3AAABFBFFBFBFFF7AABFFFFFFFFFFFFFFFFFFFFFFFEFBDAFFFFFFFFFFFFE4),
+    .INIT_1D(256'hFFFDEAABFFFE4EBFFF2AEAFFFFFFFFFFFFFFFFFFFFFFFE3FE2BFFFFFFFFFFFFE),
+    .INIT_1E(256'hCEFCEAAFFFFC41BFFE2AEBAFFFFFFFFFFFFFFFFFFFABF8AB503FFFFFFFFFFFFF),
+    .INIT_1F(256'hE5AFFAAFFFFF87BFFF3BEFBFFFFFFFFFFFFFFFFFFF9AF9BBD74FFFFFFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4075,10 +3962,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_000000_007  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4425,\U4/Addr [14:13]}),
-    .dia({open_n4429,open_n4430,open_n4431,open_n4432,open_n4433,open_n4434,open_n4435,1'b0,open_n4436}),
+    .csa({open_n4252,\U4/Addr [14:13]}),
+    .dia({open_n4256,open_n4257,open_n4258,open_n4259,open_n4260,open_n4261,open_n4262,1'b0,open_n4263}),
     .rsta(nRST_pad),
-    .doa({open_n4451,open_n4452,open_n4453,open_n4454,open_n4455,open_n4456,open_n4457,open_n4458,\U4/ROM0/inst_doa_i0_007 }));
+    .doa({open_n4278,open_n4279,open_n4280,open_n4281,open_n4282,open_n4283,open_n4284,open_n4285,\U4/ROM0/inst_doa_i0_007 }));
   // address_offset=8192;data_offset=0;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x000C"),
@@ -4098,38 +3985,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h3FBB2BFFFEAFAFFF2A74BBFFFFFFFFFFFFFFFFEAF28AB3E711FFFFFFFFFFFFB3),
-    .INIT_01(256'hF2BA4B3FFE64BEBB7A25AFFFFFFFFFFFFFFFFFEE8B8433AC93FFFFFFFFFFFFEF),
-    .INIT_02(256'hAE0B0A3FFFB6BEBBDBBB4FFFFFFFFFFFFFFFFFEFD9F136BF47FFFFFFFFFFE7BE),
-    .INIT_03(256'hAEE2F63FFAF6BEB9ECFA9FFFFFFFFFFFFFFFFFEBF9DEAEBBB2FAFFFFFFFE8D7F),
-    .INIT_04(256'hAAEECF3FE537FEB868C26FFFFFFFFFFFFFFFFFEAF9DC5AEA945AFFFFFFFFF57F),
-    .INIT_05(256'hACBECCFFFE9FEEBB3DE7AFFFFFFFFFFFFFFFFFEAF97AEBEAAB37FFFFFFFFA282),
-    .INIT_06(256'hAEAFBA8FCA3FFFAA49FC0FFFFFFFFFFFFFFFFFEAF9D4FEEAEC79FFFFFFFFBA6C),
-    .INIT_07(256'h6CBFB64EACEBFBEE4FCE5FFFFFFFFFFFFFFFFFFFEF64FBABA87CFFFFBE1FFFF3),
-    .INIT_08(256'hBF13A29FECBEAFEE2EDC23FFFFFFFFFFFFFFFFFFEFEBBBA9FB3BFFFFFCE9FFFA),
-    .INIT_09(256'hB384EEBE8CBFFFFE73FB06FFFFFFFFFFFFFFFFFFEFD7BA1846BEFFFFFECADFFF),
-    .INIT_0A(256'hB6C62CFEDFFFEAF8A66297FFFFFFFFFFFFFFFFFFEFAFD72FE8E77FFFFE9B7CFE),
-    .INIT_0B(256'hEBB618BE83FE6C2CF7C50C2FFFFFFFFFFFFFFFFFEFFB19BABED8DFFFFAE1F47F),
-    .INIT_0C(256'hFEFBD7F887BBBC7C7356F2ABFFFFFFFFFFFFFFFFFFECB2EFFFEF4FFFFFF97BFE),
-    .INIT_0D(256'hFC3BED7BC7B82AEB721D87CABFFFFFFFFFFFFFFFFAF6EFFFFFE86FFFFFEB5EFF),
-    .INIT_0E(256'hFB4E9F7BDEF612858078ABD3BFFFFFFFFFFFFFFFFAA1A2FFEBE57FFFFFEE97FF),
-    .INIT_0F(256'hFFA8EFFF2FC001204767CEEFBFFFFFFFFFFFFFFEEF93CAFFEBBA37FFFFFEFFFF),
-    .INIT_10(256'hFFF6DD5F2FD14B6162E468B9BFFFFFFFFFFFFFFEBA19AABFEBAC5BBFFFFFB5FF),
-    .INIT_11(256'hFFC6A7332B801EFCF739C4687FEFFFFFFFFFFFEA9D7BBFFFEBEFABFFFFFFE47F),
-    .INIT_12(256'hFFF168C23A80EAA0BB824C72EFFBBFFFFFFFFFEA14BBFFFFFFEBE3FFFFFFFCFF),
-    .INIT_13(256'hFFEE746D9B91AFF8F410D54CCAFBBFFFFFFFFEAD16FFEABFFFEF94FFFFFFFE7F),
-    .INIT_14(256'hFFFC5B86CBD7FFF9C3AE0C568AFFABFAFFFFFEB3CEEFFAFAFBFF0FFFFFFFFFFF),
-    .INIT_15(256'hFFFF3E004FCDFFFC8F282136DEBEFFFFFFFFFBCE61EAAAFEEBFF9BFFFFFFFFFF),
-    .INIT_16(256'hFFFE89BF2FCBFFFB8CFF9A7AD8BAABFEFFFFEEB4F7F8393BABFFB9FFFFFFFFFF),
-    .INIT_17(256'hFFFFCFD43A8FFFFA677FF8D56ABD2EBABFEFBAC62D6FFEA857AFF2AEAFFFFFFF),
-    .INIT_18(256'hFFFFFB029B81FFFF53FFB78A653A6EEFBFEABD6D1F140B05EBAF9277FFFFFFFF),
-    .INIT_19(256'hFFFFF46FC795FFFFAFFE61EA9D9EEEB2BFFAE6277000059B5EBF8D21AFFFFFFF),
-    .INIT_1A(256'hFFFFFC497785FFFE47FE1F7EC77CAFB9AFFB1CA0004B1701F3BFA86597FFFFFF),
-    .INIT_1B(256'hFFFFF12AF691FFFEAFFFFEFE031B2FE7EEB8980626FFFF8E18EABF45FFFFFFFF),
-    .INIT_1C(256'hFFFFE1909AAFFFFEFFFDFBBFC2F07FF7AB85A61811AAAAEF416AB8A30FFFFFFF),
-    .INIT_1D(256'hFFFFF1067AAFFFFFD7FD0F7F9BF0FFCCAFED9117FFFAAF5BC2EFC8AFA3FFFFFF),
-    .INIT_1E(256'hFFFFF0D28EB1FFFFAFF94D3FAB4CABC8EFBD0BCDFFFFFFEA95FFFBF7E3FFFFFF),
-    .INIT_1F(256'hFFFFEEC5FEEFFFFFCFF8913FF5F8AAE9C29A79ADFFFFFFFD13FAA2C383FFFFFF),
+    .INIT_00(256'hEDBFB9ABFFFEAFAFFDA8D6BBFFFFFFFFFFFFFFFFEADA2A9BCD13FFFFFFFFFFFF),
+    .INIT_01(256'hBEDAB869BFFCC6BEB9F887AFFFFFFFFFFFFFFFFFEE2B049BA61BFFFFFFFFFFFF),
+    .INIT_02(256'hFFAC2928BFFF9EBEBB7BB96FFFFFFFFFFFFFFFFFEF73D19EBD4FFFFFFFFFFFCF),
+    .INIT_03(256'hFFAECADCBFFADEBEB3E6FA3FFFFFFFFFFFFFFFFFEBF37EAEBB9AFAFFFFFFFE25),
+    .INIT_04(256'h0AAAEE6DBFC59FFEB0E248EFFFFFFFFFFFFFFFFFEAF3747AEA147AFFFFFFFFD5),
+    .INIT_05(256'hE6A6BE66FFFE3FEEB9B7CFAFFFFFFFFFFFFFFFFFEAF1FAEBEAA99FFFFFFFFF8A),
+    .INIT_06(256'hDBAEAFBA2F68BFFFA863F42FFFFFFFFFFFFFFFFFEAF356FEEAE4F3FFFFFFFFB8),
+    .INIT_07(256'hF8E6BF9C6EA6EBFBEC6F6C7FFFFFFFFFFFFFFFFFFFEDC6FBABA0F6FFFFBC3FFF),
+    .INIT_08(256'hFFBD1B8A3FE6BEAFECAE748BFFFFFFFFFFFFFFFFFFEFEBBBA3F9BBFFFFF6E3FF),
+    .INIT_09(256'hFE9B06EEBE26BFFFFCDBF90EFFFFFFFFFFFFFFFFFFEF5FB8304EBEFFFFFE6A7F),
+    .INIT_0A(256'hFF9E4CA6FE7FFFEAF28CCA1FFFFFFFFFFFFFFFFFFFEFAF5DAFE2CDFFFFFE39F6),
+    .INIT_0B(256'hFEEB9C32BE0BFCE4A6DF4524AFFFFFFFFFFFFFFFFFEFF933BABE727FFFFAC3D4),
+    .INIT_0C(256'hFFFEFB5FF20FBBB4F4D95EDAABFFFFFFFFFFFFFFFFFFE69AEFFFED6FFFFFF1FB),
+    .INIT_0D(256'hFFF4BBE5FB4FB0AAE9D8370F6ABFFFFFFFFFFFFFFFFADEEFFFFFE0EFFFFFE97E),
+    .INIT_0E(256'hFFF96E3DFB7EDC1A0700F2AB5BBFFFFFFFFFFFFFFFFA838AFFEBC5FFFFFFEE1F),
+    .INIT_0F(256'hFFFFA2EFFDAF4001804DCF6EEFBFFFFFFFFFFFFFFEEF1B6AFFEBB89FFFFFFEFF),
+    .INIT_10(256'hFFFFDE757DAF5169C1CAC4E2B3BFFFFFFFFFFFFFFEB833AABFEBA47BBFFFFF97),
+    .INIT_11(256'hFFFF4E8D99AB003EF6DDB344E0FFEFFFFFFFFFFFEA35FBBFFFEBEFABFFFFFFC4),
+    .INIT_12(256'hFFFFD1E248BA02EA82BB0864DAEFFBBFFFFFFFFFE816BBFFFFFFEBCBFFFFFFF6),
+    .INIT_13(256'hFFFFECD4E73B13AFF2D41255666AFBBFFFFFFFFEA51EFFEABFFFEF16FFFFFFFC),
+    .INIT_14(256'hFFFFF47B0E6B5FFFF34BAC245E2AFFABFAFFFFFE9B6EEFFAFAFBFD2FFFFFFFFF),
+    .INIT_15(256'hFFFFFDBC006F67FFF62DA0819E7EBEFFFFFFFFFB6CC3EAAAFEEBFF3BFFFFFFFF),
+    .INIT_16(256'hFFFFFE23BDAF6BFFFB26FF38FA72BAABFEFFFFEE96DFF0B1BBABFFB3FFFFFFFF),
+    .INIT_17(256'hFFFFFF6F54BA2FFFF8CDFFF255EAB5AEBABFEFBA4CA5EFFEA05FAFDAAEAFFFFF),
+    .INIT_18(256'hFFFFFFF90A3B03FFFD5BFF9F28C5B8EEEFBFEAB5E53D142907EBAF18DFFFFFFF),
+    .INIT_19(256'hFFFFFFD4EF4F17FFFFAFFCC3EA373EEE9ABFFACC8DD00007397EBF2583AFFFFF),
+    .INIT_1A(256'hFFFFFFF461DF07FFFC4FFC3DFE4DF6AFB3AFF9368000691D03DBBFA0C71FFFFF),
+    .INIT_1B(256'hFFFFFFD1AADE13FFFEAFFFFEFC0939AFCFEEB2300C8EFFFF2C32EABD47FFFFFF),
+    .INIT_1C(256'hFFFFFFC3123AAFFFFEFFF7FBBF4AD0FFDFAB078C3013AAAAED41EAB2892FFFFF),
+    .INIT_1D(256'hFFFFFFD10CFAAFFFFF5FF52DFF3BD2FF66AFE7111FFFFAAD7B4AEF62AF8BFFFF),
+    .INIT_1E(256'hFFFFFFD25A2E93FFFFAFF165BFA966AB62EFB52B67FFFFFFEA17FFFBDFCBFFFF),
+    .INIT_1F(256'hFFFFFFEE47FEEFFFFF6FF211BFD7F2AAE34A38F3A7FFFFFFF51BFA8A4B0BFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4146,10 +4033,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_008192_000  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4484,\U4/Addr [14:13]}),
-    .dia({open_n4488,open_n4489,open_n4490,open_n4491,open_n4492,open_n4493,open_n4494,1'b0,open_n4495}),
+    .csa({open_n4311,\U4/Addr [14:13]}),
+    .dia({open_n4315,open_n4316,open_n4317,open_n4318,open_n4319,open_n4320,open_n4321,1'b0,open_n4322}),
     .rsta(nRST_pad),
-    .doa({open_n4510,open_n4511,open_n4512,open_n4513,open_n4514,open_n4515,open_n4516,open_n4517,\U4/ROM0/inst_doa_i1_000 }));
+    .doa({open_n4337,open_n4338,open_n4339,open_n4340,open_n4341,open_n4342,open_n4343,open_n4344,\U4/ROM0/inst_doa_i1_000 }));
   // address_offset=8192;data_offset=1;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x000D"),
@@ -4169,38 +4056,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hA7BBAB55546155553A8B755555555555555555547170090FE55555555555556F),
-    .INIT_01(256'hAB47EBD554B355516ACA255555555555555555541C0DB152E95555555555556A),
-    .INIT_02(256'hAAEFAAD5542D55508B500555555555555555555538766D54DD55555555554D3E),
-    .INIT_03(256'hAEBADBD550CD5553DF50955555555555555555554335C5550A5555555554083F),
-    .INIT_04(256'hAAEEB3D5495555539F41D555555555555555555541B1355529B5555555554C0F),
-    .INIT_05(256'hAABEF2D552B55550CB719555555555555555555552D6555500ED555555550E8A),
-    .INIT_06(256'hAD2FB4B539955550AB213555555555555555555552C0555544FB55555555113E),
-    .INIT_07(256'h2ACFA8B44E555554ED62B555555555555555555554205501537C555554B5556E),
-    .INIT_08(256'hCBFBBD3558555554AD722D5555555555555555555471415454BD555555735578),
-    .INIT_09(256'hBADAED544B555551BC2085555555555555555555542D559910305555556F357E),
-    .INIT_0A(256'hD2A3AB5465554050FD62F5555555555555555555546526254514D5555521A27E),
-    .INIT_0B(256'hFCA26F144D543841ED8CFCD5555555555555555555548C955539B555500F9E7F),
-    .INIT_0C(256'hFEA3DB53AD55456B69CD5F1555555555555555555553A6555544C5555542F97F),
-    .INIT_0D(256'hF97FE6D12D5280564CDA32B55555555555555555554BE955554385555540BFFF),
-    .INIT_0E(256'hFFECDCD0D547043D9CEF43CC55555555555555555519AD55554A555555547FFF),
-    .INIT_0F(256'hFE7A3555D528001E5BAE21A455555555555555555536B55555546D5555540BFF),
-    .INIT_10(256'hFFFF5AB095289A800ABCA7EF5555555555555555548955555552D155555516FF),
-    .INIT_11(256'hFFBB03E8952934478CA70DB8D5555555555555552670555555541155555549FF),
-    .INIT_12(256'hFFE4C36D8528554DD496B3A255555555555555548D95555555550155555552FF),
-    .INIT_13(256'hFFFAC5C1A53CFFFBD7F04B65B5555555555555537241555555555B55555554FF),
-    .INIT_14(256'hFFFA2E34B539FFFF274411AB855455555555554FDD1555555554E5555555557F),
-    .INIT_15(256'hFFFF0BAAB533FFFF7FEA009E6555D5555555552B7B40005555551D555555557F),
-    .INIT_16(256'hFFFF88119533FFFB29FEB855CF519555555554213806F90505554B555555557F),
-    .INIT_17(256'hFFFFB05BD537FFFF997FFFC40C541555555551C1F9155001155549440555557F),
-    .INIT_18(256'hFFFFE8A89539FFFF1AFFAFB8AAD255575555136FE41410FB0D552C2D1555557F),
-    .INIT_19(256'hFFFFF4108D39FFFF6FFFF5ED50B3550255540877C000012CB5553D2E4555557F),
-    .INIT_1A(256'hFFFFFC2F2D29FFFFE7FE18FB8AD255095550770000EBE8002955093CED55557F),
-    .INIT_1B(256'hFFFFF5716D29FFFEC7FB9E7FC1F6D54D5551B004F155544800550E435555557F),
-    .INIT_1C(256'hFFFFE5CB651FFFFF97FF9F7FB1ACD50955710183EB55554542D50DACA555557F),
-    .INIT_1D(256'hFFFFE111250FFFFFBFFB5F3F84B0555B546573BFFFFFFBA4045569D4F155557F),
-    .INIT_1E(256'hFFFFE1C36513FFFFAFFB177FA72C550B448B2A9BFFFFFFEC9B5548CEB155557F),
-    .INIT_1F(256'hFFFFF9C1D550FFFFBFFBC17FEEE8542B2729F8E9FFFFFFFE915510A05155557F),
+    .INIT_00(256'hEA8FBBA95554C15555BA29D5555555555555555554D1D0212FC5555555555555),
+    .INIT_01(256'hBEA94FEB5556995551EA68855555555555555555543427915AE1555555555555),
+    .INIT_02(256'hBFAAEFAA5554A55552295005555555555555555555B0DCE55675555555555565),
+    .INIT_03(256'h2FAEBA7B555265555B7D52155555555555555555554997455528555555555420),
+    .INIT_04(256'h2AAAEE9B556155555B3D435555555555555555555543919555A3955555555564),
+    .INIT_05(256'hBEAABEDA555A95555269D3155555555555555555555A5C555502E5555555552E),
+    .INIT_06(256'hEEA5AF9695B3155552A981955555555555555555555A40555546F95555555511),
+    .INIT_07(256'hF0AA6FA2946C555556E5CA955555555555555555555480550159F45555569555),
+    .INIT_08(256'hFE6BFBB59570555556A5D8A555555555555555555554D1415456B5555555D955),
+    .INIT_09(256'hFEBA7AE55469555553B4820555555555555555555554A557311090555555ED95),
+    .INIT_0A(256'hFF5A8BA954C5554052F5CAD555555555555555555554C58C8545165555558388),
+    .INIT_0B(256'hFFF688ED146554B043E726F65555555555555555555556261555B39555502F3C),
+    .INIT_0C(256'hFFFE8B795BA55545E9E3657D155555555555555555555B8C5555464555554AF1),
+    .INIT_0D(256'hFFF1FFCE51A55A005C66789A955555555555555555556BE155554B05555542BF),
+    .INIT_0E(256'hFFFFE67652554D04B736ED4B6455555555555555555533A555556855555554FF),
+    .INIT_0F(256'hFFFCF8955755A0003C7BAC83845555555555555555559E95555554E55555542B),
+    .INIT_10(256'hFFFFFD7A9215A23A002AB68FED555555555555555556215555555A515555551E),
+    .INIT_11(256'hFFFFB90BE215A1944F268D27B255555555555555558CD0555555541155555563),
+    .INIT_12(256'hFFFFC649E705A05567561E9B885555555555555556271555555555015555555A),
+    .INIT_13(256'hFFFFFA474385B6FFFB5FD069C79555555555555559D841555555557955555556),
+    .INIT_14(256'hFFFFF8AC9695B3FFFD8D4413AB055455555555556F751555555556C555555555),
+    .INIT_15(256'hFFFFFD2BAA959BFFFDFFE8023CC5575555555555A9F940005555553555555555),
+    .INIT_16(256'hFFFFFF2013159BFFF9A3FEB0576D53155555555481B00EF10505556955555555),
+    .INIT_17(256'hFFFFFF907B559FFFFF31FFFF442454155555555343F115500115556144055555),
+    .INIT_18(256'hFFFFFFE2A215B3FFFD3AFFAFB2AA58555D555519EFC41412F92555A4A5155555),
+    .INIT_19(256'hFFFFFFD41225B3FFFDEFFFD7E552995508555420DF400001A69555B5AC455555),
+    .INIT_1A(256'hFFFFFFF4ADA5A3FFFFCFFC32FB2A5855215550DD0002EBE000A15521B6E55555),
+    .INIT_1B(256'hFFFFFFD5D1E5A3FFFE4FFB3CFF43DE556555539006D155546000552C49555555),
+    .INIT_1C(256'hFFFFFFC769C53FFFFF1FFF3DFF93A6552155D1030BE95555454A5527A6855555),
+    .INIT_1D(256'hFFFFFFC111852FFFFFBFF97DBF0690557954C5DBBFFFFFFB840455E356D15555),
+    .INIT_1E(256'hFFFFFFC349C51BFFFFAFF91DFF8DA455294629AA3BFFFFFFE63955626E915555),
+    .INIT_1F(256'hFFFFFFF3435552FFFFBFFB41FFEEE054A98DA3F2E3FFFFFFFE11551280515555),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4217,10 +4104,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_008192_001  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4543,\U4/Addr [14:13]}),
-    .dia({open_n4547,open_n4548,open_n4549,open_n4550,open_n4551,open_n4552,open_n4553,1'b0,open_n4554}),
+    .csa({open_n4370,\U4/Addr [14:13]}),
+    .dia({open_n4374,open_n4375,open_n4376,open_n4377,open_n4378,open_n4379,open_n4380,1'b0,open_n4381}),
     .rsta(nRST_pad),
-    .doa({open_n4569,open_n4570,open_n4571,open_n4572,open_n4573,open_n4574,open_n4575,open_n4576,\U4/ROM0/inst_doa_i1_001 }));
+    .doa({open_n4396,open_n4397,open_n4398,open_n4399,open_n4400,open_n4401,open_n4402,open_n4403,\U4/ROM0/inst_doa_i1_001 }));
   // address_offset=8192;data_offset=2;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x000E"),
@@ -4240,38 +4127,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hD4CEFFFFFED6AAABDEEBCAAAAAAAAAAAAAAAAAAB9CEDE6B82BFFFFFFFFFFFFED),
-    .INIT_01(256'hED5EBFFFFEDEAAAFDEEBDAAAAAAAAAAAAAAAAAABA327DEAF0BFFFFFFFFFFFFBE),
-    .INIT_02(256'hFE96BEFFFFDAAAAF3FFAFAAAAAAAAAAAAAAAAAAAE39E9AABE7FFFFFFFFFFEFEB),
-    .INIT_03(256'hFBEFEEFFFB3AAAAE3BFB2AAAAAAAAAAAAAAAAAAAB8EA3AAAE4FFFFFFFFFEB2EA),
-    .INIT_04(256'hFFBBBEFFEBBAAAAE7BBA2AAAAAAAAAAAAAAAAAAABA6FEAAAE03FFFFFFFFFE0FA),
-    .INIT_05(256'hFBEBBBFFFD0AAAAE7BCE6AAAAAAAAAAAAAAAAAAAAE29AAAAFC4FFFFFFFFFAD2F),
-    .INIT_06(256'hFBFAFFBFB56AAAAE3BDBEAAAAAAAAAAAAAAAAAAAAF6FAAAABE53FFFFFFFFBAF3),
-    .INIT_07(256'hFB7AEEBEF5AAAAAA3F8C6AAAAAAAAAAAAAAAAAAAAACFAAFEAF92FFFFFEBFFFED),
-    .INIT_08(256'h7F9EEFBFF3AAAAAA7F98DAAAAAAAAAAAAAAAAAAAAA8AAEAEABD7FFFFFB5BFFFE),
-    .INIT_09(256'hCFA3BFFEB6AAAAAA6FDC2AAAAAAAAAAAAAAAAAAAAA9AAA23FBD6FFFFFF55BFFF),
-    .INIT_0A(256'hFFACFBFE8AAABFAB6ECD1AAAAAAAAAAAAAAAAAAAAA9AE8DAAEA4FFFFFF9E5AFF),
-    .INIT_0B(256'hF7ECBBBFFAAA86BB6F3797AAAAAAAAAAAAAAAAAAAAABB36AAAE13FFFFAE3E1FF),
-    .INIT_0C(256'hE9FD2FFB1AAAAF80EA22A4EAAAAAAAAAAAAAAAAAAAAF4DAAAABC2FFFFFF8FF7F),
-    .INIT_0D(256'hFAED5AFB1AAFFFA8EE26FD6AAAAAAAAAAAAAAAAAAABD56AAAAB86FFFFFEE3FFF),
-    .INIT_0E(256'hFE3F36FB6AB9ABFF2A56BD7AAAAAAAAAAAAAAAAAAAE35AAAAAB87FFFFFFF8FFF),
-    .INIT_0F(256'hFFDBDFFE2AE00040AC40FB5AAAAAAAAAAAAAAAAAAA9D6AAAAAAA4FFFFFFEF7FF),
-    .INIT_10(256'hFF9BB2BE6AE03440ED5E5F56AAAAAAAAAAAAAAAAAA32AAAAAAAE1BFFFFFFA9FF),
-    .INIT_11(256'hFFA7AC4E6AE0BEF96C5EE7D3AAAAAAAAAAAAAAAAECCEAAAAAAAADBFFFFFFEA7F),
-    .INIT_12(256'hFFEAF8D66AE1FFEB7D45E84DAAAAAAAAAAAAAAABA36AAAAAAAAADBFFFFFFFA7F),
-    .INIT_13(256'hFFFCEFB26AF1FFFB68017FD36AAAAAAAAAAAAAAF8DAAAAAAAAAA83FFFFFFFEFF),
-    .INIT_14(256'hFFFAB4FD6AF5FFFB2D7C13E53AAAAAAAAAAAAABC22AAAAAAAAAB97FFFFFFFFFF),
-    .INIT_15(256'hFFFEF4786AF1FFFB347AC0799AAA2AAAAAAAAAF49EBFFFAAAAAAB7FFFFFFFFFF),
-    .INIT_16(256'hFFFFB36B6AF5FFFF337FB40F36AA6AAAAAAAABCB555407AAFAAAB3FFFFFFFFFF),
-    .INIT_17(256'hFFFFB36E2AF5FFFE66FFFB06F3AFEAAAAAAAAE2C07AAAAABFAAAA3EEAFFFFFFF),
-    .INIT_18(256'hFFFFF21F2AF3FFFEA7FFEFB449ACAAA8AAAAE8D7FABEAFFEB2AAE7CFBFFFFFFF),
-    .INIT_19(256'hFFFFFFCF7AF3FFFFD7FE8BFF1B68AAFDAAABA6C900000013EAAAE2C96FFFFFFF),
-    .INIT_1A(256'hFFFFF797DAE3FFFE8FFEBEFF0629AAE2AAAE9940041404015EAAF2C70FFFFFFF),
-    .INIT_1B(256'hFFFFFED69AE3FFFFDFFF7BFE8789AAA2AAAB30004FFFFFB413AAF48EDFFFFFFF),
-    .INIT_1C(256'hFFFFEE619AE5FFFFDFFB7EFF85C7AAA6AAFBC43AABFFFFEE81AAF35B9FFFFFFF),
-    .INIT_1D(256'hFFFFEAFDDAF1FFFF8FFBBEFFF563AAE6ABDA0AAFFFFFFEBF83AAB72B0BFFFFFF),
-    .INIT_1E(256'hFFFFEA3D1AF9FFFFDFFBBBFFF437AAF6BB70BF33FFFFFFFE16AAB7394BFFFFFF),
-    .INIT_1F(256'hFFFFF23E0AADFFFFBFFB2BFFE113ABD6ED92FB7BFFFFFFFA1EAAFF6DEBFFFFFF),
+    .INIT_00(256'hBE566EFFFFFE5EAAAB7EEB6AAAAAAAAAAAAAAAAAAB36E7CEB0ABFFFFFFFFFFFF),
+    .INIT_01(256'hEBE57EBFFFFE7EAAAF7EEB7AAAAAAAAAAAAAAAAAAB898F7EAD2BFFFFFFFFFFFF),
+    .INIT_02(256'hEAFE1EBEFFFF7AAAADBFFAFAAAAAAAAAAAAAAAAAAACB3E3AABCFFFFFFFFFFFEF),
+    .INIT_03(256'hFAFBEFEEFFF9BAAAACBBF9AAAAAAAAAAAAAAAAAAAAB2E8BAAAC6FFFFFFFFFE9A),
+    .INIT_04(256'hAFFFBBBEFFEBBAAAACFBB8AAAAAAAAAAAAAAAAAAAAB8EFEAAAC0BFFFFFFFFFC2),
+    .INIT_05(256'hDBFBEBBBFFF52AAAACFB6CEAAAAAAAAAAAAAAAAAAAACA3AAAAF46FFFFFFFFFA5),
+    .INIT_06(256'hE7FBFAFFBF95EAAAACBB7BEAAAAAAAAAAAAAAAAAAAADEFAAAABC5BFFFFFFFFBA),
+    .INIT_07(256'hFEF9FAEEBED7AAAAA8BF24EAAAAAAAAAAAAAAAAAAAAA6FAAFEAF1AFFFFFEBFFF),
+    .INIT_08(256'hFDFF3EEFBFDBAAAAA8FF327AAAAAAAAAAAAAAAAAAAAA2AAEAEAB5FFFFFF97BFF),
+    .INIT_09(256'hFF6F8BBFFE9EAAAAA8EF74AAAAAAAAAAAAAAAAAAAAAA3AA88BFB5EFFFFFD57BF),
+    .INIT_0A(256'hFFFFA6FBFE2AAABFA9EE653AAAAAAAAAAAAAAAAAAAAA3AE27AAE86FFFFFF3C7A),
+    .INIT_0B(256'hFFDFE6BBBFFAAA0EB9ED9F1FAAAAAAAAAAAAAAAAAAAAAB99EAAAC1BFFFFACBC3),
+    .INIT_0C(256'hFFE3F5AFF93AAAAF02E88A86EAAAAAAAAAAAAAAAAAAAAD67AAAAB4AFFFFFF2FD),
+    .INIT_0D(256'hFFFAE57AF93AAFFFA2EC8EF5EAAAAAAAAAAAAAAAAAAAB55EAAAAB0EFFFFFECBF),
+    .INIT_0E(256'hFFFCBD9EF9EAB3ABFDA85EB5FAAAAAAAAAAAAAAAAAAAC97AAAAAB0FFFFFFFF2F),
+    .INIT_0F(256'hFFFF7B7FFCAAC00042A442F97AAAAAAAAAAAAAAAAAAA35EAAAAAA86FFFFFFEDF),
+    .INIT_10(256'hFFFF3B9ABCEAC09442E57C7D5EAAAAAAAAAAAAAAAAA89AAAAAAAAC3BFFFFFFA3),
+    .INIT_11(256'hFFFF8FA46CEAC2BEF1E47ECF5BAAAAAAAAAAAAAAAAE66EAAAAAAAA7BFFFFFFE8),
+    .INIT_12(256'hFFFFEAF25CEAC3FFE9F547E067AAAAAAAAAAAAAAAB89EAAAAAAAAA7BFFFFFFF8),
+    .INIT_13(256'hFFFFF6EF98EAD3FFF9E001FF59EAAAAAAAAAAAAAAF27AAAAAAAAAA0BFFFFFFFE),
+    .INIT_14(256'hFFFFFA96F5EAD7FFF9A5F41BC5BAAAAAAAAAAAAAB48AAAAAAAAAAB1FFFFFFFFF),
+    .INIT_15(256'hFFFFFED4F0EAD3FFF994FA40F33AA8AAAAAAAAAAD63EBFFFAAAAAA9FFFFFFFFF),
+    .INIT_16(256'hFFFFFF99E9EAD7FFFD99FF942D9EA8EAAAAAAAAB6955540FAAFAAA9BFFFFFFFF),
+    .INIT_17(256'hFFFFFF99ECAAD7FFFCCEFFF90EDBAFEAAAAAAAACA40FAAAAABFAAA8BEEAFFFFF),
+    .INIT_18(256'hFFFFFFD83DAADBFFFE8FFFEF9463A6AAA2AAAAE25FFABEAFFE9AAACF6FBFFFFF),
+    .INIT_19(256'hFFFFFFFF6DFADBFFFF5FFE2BFD39E2AAF7AAAB8E610000001BEAAACA61EFFFFF),
+    .INIT_1A(256'hFFFFFFDF1F7ACBFFFE2FFEBEFD0CA3AACAAAAE3140041404017EAADA4D2FFFFF),
+    .INIT_1B(256'hFFFFFFFE5E3ACBFFFF7FFDFBFE0F23AA8AAAA990006FFFFF941BAAD62E7FFFFF),
+    .INIT_1C(256'hFFFFFFECC33AC7FFFF7FF9FEFF074FAA8EAAFB44BAABFFFFEE03AAD97B3FFFFF),
+    .INIT_1D(256'hFFFFFFEAF77AD3FFFF2FFBBEFFD5CBAACEAB782AAFFFFFFEBF0BAA9DA92BFFFF),
+    .INIT_1E(256'hFFFFFFE8B53AF3FFFF7FFBBBFFD49FAADEB9D2BD9BFFFFFFFC1EAA9DB16BFFFF),
+    .INIT_1F(256'hFFFFFFD8BC2AA7FFFFBFF9ABFFC11BAB5EE71AF9FBFFFFFFF83EAAFDE7EBFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4288,10 +4175,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_008192_002  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4602,\U4/Addr [14:13]}),
-    .dia({open_n4606,open_n4607,open_n4608,open_n4609,open_n4610,open_n4611,open_n4612,1'b0,open_n4613}),
+    .csa({open_n4429,\U4/Addr [14:13]}),
+    .dia({open_n4433,open_n4434,open_n4435,open_n4436,open_n4437,open_n4438,open_n4439,1'b0,open_n4440}),
     .rsta(nRST_pad),
-    .doa({open_n4628,open_n4629,open_n4630,open_n4631,open_n4632,open_n4633,open_n4634,open_n4635,\U4/ROM0/inst_doa_i1_002 }));
+    .doa({open_n4455,open_n4456,open_n4457,open_n4458,open_n4459,open_n4460,open_n4461,open_n4462,\U4/ROM0/inst_doa_i1_002 }));
   // address_offset=8192;data_offset=3;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x000F"),
@@ -4311,38 +4198,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hE7757C2801C8A2ABD5B642AAAAAAAAAAAAAAAAAAD22090A5420200000000005C),
-    .INIT_01(256'hDE855C8201F0AAABF5B64AAAAAAAAAAAAAAAAAAA1ABEDAA9D60280000000005D),
-    .INIT_02(256'h7DFDDFA20068AAAB940CC2AAAAAAAAAAAAAAAAAA9058C2AA5800000000001A7D),
-    .INIT_03(256'h7DDD3F22078AAAA996870AAAAAAAAAAAAAAAAAAAA48B2AAA97800000000132D5),
-    .INIT_04(256'hFFDFE7A2B992AAA9340F28AAAAAAAAAAAAAAAAAAAB058AAA9BE0000000001A95),
-    .INIT_05(256'hFDDFE50A05CAAAA9BE4B08AAAAAAAAAAAAAAAA8AA3A4AAA8A1D800000000753F),
-    .INIT_06(256'h587F494A7A2AAAABFCEB2AAAAAAAAAAAAAAAAAAAA94C8AAA8D7600000000467D),
-    .INIT_07(256'hDD3D7B6B12AAAAA172558AAAAAAAAAAAAAAAAAAAAAEEA8A889538000A1E20077),
-    .INIT_08(256'h1E67726298AAAAA950C462AAAAAAAAAAAAAAAAAAAAC88A2EA27A00000066207A),
-    .INIT_09(256'h771DD0A310AAAAA9584B0AAAAAAAAAAAAAAAAAAAAAC2A113726180000014E07F),
-    .INIT_0A(256'hB5457CA948A820ABF0E558AAAAAAAAAAAAAAAAAAAA682EEAA409800028C1E57F),
-    .INIT_0B(256'hF9647CE8E282D423FB1EFE8AAAAAAAAAAAAAAAAAAA001B228A19C0000595BCFF),
-    .INIT_0C(256'hF5EDBE2F42A08D567F3036AA2AAAAAAAAAAAAAAAA82B46AAAAA1B8000287F8FF),
-    .INIT_0D(256'hF855E726CAA2000E1BB897AAAAAAAAAAAAAAAAAAAAADD2AAAAADB0000299FF7F),
-    .INIT_0E(256'hFDF39927E29DAA05117A07422AAAAAAAAAAAAAAAA831C2AAAAA4820002825FFF),
-    .INIT_0F(256'hFEDEC0A32A90029C35F60BE2AAAAAAAAAAAAAAAAAA7D2AAAAA20DA0002A195FF),
-    .INIT_10(256'hFFC4BFE3AAB93D281F6DC1F2AAAAAAAAAAAAAAAAA33A2AAAAA29A680002AEFFF),
-    .INIT_11(256'hFFFEED598298CBA5196AFCF02AAAAAAAAAAAAA8A8A42AAAAAAAAAC00002299FF),
-    .INIT_12(256'hFFE30C9B0298201109AEA7EC2AAAAAAAAAAAAA8A312AAAAAAAAAA4000000247F),
-    .INIT_13(256'hFFFD26090A81F7FD2F404B8B8AAAAAAAAAAAAAA94C2AAAAAAAAA34000000017F),
-    .INIT_14(256'hFFFC74BB8A83FFFCE480003D82AA8AAAAAAAAAA59802AAAAAAAA40000000007F),
-    .INIT_15(256'hFFFE9D87088DFFFE575E01AEE2ABAAAAAAAAAA96E0AAAAAAAAAA3A20000002FF),
-    .INIT_16(256'hFFFF1200208DFFFCD37FF82130A90AAAAAAAAA60480BF70882AA3608A000007F),
-    .INIT_17(256'hFFFFE0E18A07FFFD32FFFF2E9AA70AA8AAA82B297FA828A95AAA94117800007F),
-    .INIT_18(256'hFFFFF9410201FFFEBDFFDDDB7C248AAC2AAA0E588034A0A8B0AA987A4800007F),
-    .INIT_19(256'hFFFFFD8B6283FFFED7FFE1F0A90EAA962AAA386C080000D2A2AA90D69000007F),
-    .INIT_1A(256'hFFFFF771C29BFFFF67FE937F35AEAABA8AA84E200375D280CA2892F77A80007F),
-    .INIT_1B(256'hFFFFF5404099FFFF07FF1CFF08642A902AA3680340AAAAB200AA9C0A0000007F),
-    .INIT_1C(256'hFFFFEF54CA97FFFF2FFF365FC1742A92AA92832F5CA80212842A93CA4800007F),
-    .INIT_1D(256'hFFFFE95BC2BFFFFFFFFF16FF83E0AA78A0CACDFFFFFD57C2A0AA9B83EC00007F),
-    .INIT_1E(256'hFFFFE15C6ABDFFFFD7FDAD7FCEDC2A58AB36D53FFFFFFFFA802A9B2F4C00007F),
-    .INIT_1F(256'hFFFFF95DA8A9FFFFF7FDA35FFD782A78ACDF5BD9FFFFFFFF90AABB2AC400007F),
+    .INIT_00(256'h77CDD5F4A003628AAB579C4AAAAAAAAAAAAAAAAAAA5882128548080000000000),
+    .INIT_01(256'hF77E05760803D2AAABD79C6AAAAAAAAAAAAAAAAAA83ABE7AA35C0A0000000000),
+    .INIT_02(256'h55F7F77F8800E2AAAB14264AAAAAAAAAAAAAAAAAAA10724AA870000000000038),
+    .INIT_03(256'h15F775BD880F2AAAA31E0D2AAAAAAAAAAAAAAAAAAA8629AAAA1F00000000019A),
+    .INIT_04(256'hBFFF7FCF8AB31AAAA1942DA2AAAAAAAAAAAAAAAAAAA9072AAA3BC0000000003A),
+    .INIT_05(256'hF7F77FC528076AAAA3BC6922AAAAAAAAAAAAAAAA2A8B86AAA2837000000000D5),
+    .INIT_06(256'hDD70FD6168F8AAAAABF6E9AAAAAAAAAAAAAAAAAAAAA1662AAA25DC000000004C),
+    .INIT_07(256'hFA75B5F9E91AAAAA81D8572AAAAAAAAAAAAAAAAAAAAAEEA2A2215B000283C800),
+    .INIT_08(256'hFD3CCDD8CA32AAAAA15244CAAAAAAAAAAAAAAAAAAAAA6228AE88F8000000CC80),
+    .INIT_09(256'hFDDD37528912AAAAA170692AAAAAAAAAAAAAAAAAAAAA4A8119D8C300000016C0),
+    .INIT_0A(256'hFF9545F6A162A082ABD2C572AAAAAAAAAAAAAAAAAAA8E0AEEA84230000A243C5),
+    .INIT_0B(256'hFFF1C4F6E2CA0A548BF93EFE2AAAAAAAAAAAAAAAAAA800398A283340000717B6),
+    .INIT_0C(256'hFFD7E7BCAD4A82255CFD909EA8AAAAAAAAAAAAAAAAA0A94EAAAA83B0000A0FF2),
+    .INIT_0D(256'hFFF057CD8E6A88002C3BB21FAAAAAAAAAAAAAAAAAAAAA75AAAAAA790000A33FD),
+    .INIT_0E(256'hFFF7DB318FCA37A80511F80D48AAAAAAAAAAAAAAAAA0934AAAAA8608000A087F),
+    .INIT_0F(256'hFFFE7E4289AA100A3497DC2BCAAAAAAAAAAAAAAAAAA8F5AAAAA88278000A8317),
+    .INIT_10(256'hFFFF46BFCBAAB1B5A03DE743DAAAAAAAAAAAAAAAAA89B8AAAAA8A38E0000AAEF),
+    .INIT_11(256'hFFFFFEE5730A326B8531EAF6D0AAAAAAAAAAAAAA2A284AAAAAAAAAA400008A33),
+    .INIT_12(256'hFFFFC926390A30801123AE8FE4AAAAAAAAAAAAAA2891AAAAAAAAAA8400000084),
+    .INIT_13(256'hFFFFF58C212A03DFF5AD406B2B2AAAAAAAAAAAAAA164AAAAAAAAA89400000001),
+    .INIT_14(256'hFFFFF4D6BB2A0BFFF6C60000B70AAA2AAAAAAAAA87300AAAAAAAA84000000000),
+    .INIT_15(256'hFFFFFE370D2227FFFC5D7C03AECAABAAAAAAAAAA1EC2AAAAAAAAA8B88000000A),
+    .INIT_16(256'hFFFFFD18008227FFF659FFF08192A12AAAAAAAA8C0602BDD220AA89C22800000),
+    .INIT_17(256'hFFFFFFC2C3280FFFF59AFFFDAE3A8D2AA2AAA0A9A1FFA0A2A17AAA1411F00000),
+    .INIT_18(256'hFFFFFFF1410803FFFEB7FF7779F4862AA4AAA82C72009682A292AA30F8600000),
+    .INIT_19(256'hFFFFFFF729CA0BFFFE5FFFC3D2A12EAA1CAAA8B0E42000025A8AAA125E100000),
+    .INIT_1A(256'hFFFFFFDDD34A3BFFFDCFFE19FD97AEAABA2AA06C8009D75A0268A21ADDFA0000),
+    .INIT_1B(256'hFFFFFFD5404233FFFD0FFD36FD20C4AA10AA89E00942AAAA9802AA3428000000),
+    .INIT_1C(256'hFFFFFFED566A1FFFFDAFFD9C7F41D4AA1AAA1A09AD76A0081A04AA1B68600000),
+    .INIT_1D(256'hFFFFFFE17B4ABFFFFFFFFD1EFF0BC2A8F2826A67FFFFF55F4A82AA3B0BE40000),
+    .INIT_1E(256'hFFFFFFC174EAB7FFFF5FF7A5FF6E74A872A99E55BFFFFFFFFA00AA39AD640000),
+    .INIT_1F(256'hFFFFFFF177A2A3FFFFDFF7897FF5F0A8F2A67D7B73FFFFFFFF12AAB9AA440000),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4359,10 +4246,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_008192_003  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4661,\U4/Addr [14:13]}),
-    .dia({open_n4665,open_n4666,open_n4667,open_n4668,open_n4669,open_n4670,open_n4671,1'b0,open_n4672}),
+    .csa({open_n4488,\U4/Addr [14:13]}),
+    .dia({open_n4492,open_n4493,open_n4494,open_n4495,open_n4496,open_n4497,open_n4498,1'b0,open_n4499}),
     .rsta(nRST_pad),
-    .doa({open_n4687,open_n4688,open_n4689,open_n4690,open_n4691,open_n4692,open_n4693,open_n4694,\U4/ROM0/inst_doa_i1_003 }));
+    .doa({open_n4514,open_n4515,open_n4516,open_n4517,open_n4518,open_n4519,open_n4520,open_n4521,\U4/ROM0/inst_doa_i1_003 }));
   // address_offset=8192;data_offset=4;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0010"),
@@ -4382,38 +4269,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h0B1555D7FFA7F7FE3D559FFFFFFFFFFFFFFFFFFF8B51EFF055FDFFFFFFFFFFF2),
-    .INIT_01(256'h709FD5FDFF8DFFFEBDD71FFFFFFFFFFFFFFFFFFF6E6B27FC37FD7FFFFFFFFFD7),
-    .INIT_02(256'h5727D55DFF1FFFFE7DFF37FFFFFFFFFFFFFFFFFFC58597FF2FFFFFFFFFFFFFD5),
-    .INIT_03(256'h557D7DDDFE7FFFFCDF7EFFFFFFFFFFFFFFFFFFFFF95E5FFFE3FFFFFFFFFFE575),
-    .INIT_04(256'h55555DDD5E6FFFFCDFFE7FFFFFFFFFFFFFFFFFFFFC50DFFFC07FFFFFFFFFE37D),
-    .INIT_05(256'h57557F75FABFFFFC75B4DFFFFFFFFFFFFFFFFFFFFED9FFFDF21FFFFFFFFFF255),
-    .INIT_06(256'hD5D55F55E0FFFFFED5BCDFFFFFFFFFFFFFFFFFFFFC99FFFFF8AFFFFFFFFFFFCD),
-    .INIT_07(256'h76755555C17FFFF6F7B8DFFFFFFFFFFFFFFFFFFFFF19FFFDFC8DFFFF5FFDFFFB),
-    .INIT_08(256'hF5355DFD6FFFFFFCD73937FFFFFFFFFFFFFFFFFFFF95DF79772DFFFFFEBFDFFD),
-    .INIT_09(256'h15EF575DE5FFFFFE7F10D5FFFFFFFFFFFFFFFFFFFFB7F4468F05FFFFFE837FFE),
-    .INIT_0A(256'hE773D5579DFFF5FC7F1027FFFFFFFFFFFFFFFFFFFF1FF19FF3C3FFFFD71C95FF),
-    .INIT_0B(256'hEFDB775797FF89D4F6C92B7FFFFFFFFFFFFFFFFFFFFF4677FFC85FFFFFC7CBFF),
-    .INIT_0C(256'hF150FDD697FFF223F6CF43FFFFFFFFFFFFFFFFFFFFFCB9FFFFF8DFFFFD717CFF),
-    .INIT_0D(256'hFFF2B75EB7F5555BF4C5CAFFFFFFFFFFFFFFFFFFFFF887FFFFFA7FFFFD7C5FFF),
-    .INIT_0E(256'hFEF66F5E17C8DDD85E2D7A377FFFFFFFFFFFFFFFFD6497FFFFF07DFFFD7F3FFF),
-    .INIT_0F(256'hFF3D3F5E5FC800A17A81DEB7FFFFFFFFFFFFFFFFFFA27FFFFFF43DFFFD5FC5FF),
-    .INIT_10(256'hFF95EFFCFFE8480170BABC07FFFFFFFFFFFFFFFFF4CD7FFFFFFCBD7FFFD57B7F),
-    .INIT_11(256'hFFCDFA3CD7C95FF8F095A1A57FFFFFFFFFFFFFFFDB95FFFFFFFF97FFFFDD7CFF),
-    .INIT_12(256'hFFFFFB2C57C97FF6FA29DA33FFFFFFFFFFFFFFFF4C5FFFFFFFFFBFFFFFFFDD7F),
-    .INIT_13(256'hFFFB73E4DFCB7FFCFAA89426DFFFFFFFFFFFFFFC1BFFFFFFFFFF8DFFFFFFFF7F),
-    .INIT_14(256'hFFFF4B4ADFC9FFFED2F007E2F7FF7FFFFFFFFFF24757FFFFFFFF27FFFFFFFFFF),
-    .INIT_15(256'hFFFFC852DFC1FFFEEAF500731FFEFFFFFFFFFFC395FFFFFFFFFF4DDFFFFFFD7F),
-    .INIT_16(256'hFFFFCEF4FFC1FFFCC4FF481665FCDFFFFFFFFF3E02022AD7D7FF6FF75FFFFFFF),
-    .INIT_17(256'hFFFFC4345FCBFFFECDFFFCA1E7F05FFFFFFFFEF0A277FF5487FFE77FD7FFFFFF),
-    .INIT_18(256'hFFFFECB477CDFFFFCD7FFFC89173DFF37FFFD10D5DC157D5C7FFC59FF7FFFFFF),
-    .INIT_19(256'hFFFFE0B4B7CDFFFFA7FF17F69EDB7FC37FFF6F12A8000227D7FFCF125FFFFFFF),
-    .INIT_1A(256'hFFFFE22E37CDFFFFB7FF5D7C86D3FFEFFFFD9A800220A000BFFFC7021D7FFFFF),
-    .INIT_1B(256'hFFFFE22717C5FFFF37FEDDFFA5117FEFFFF448023FFFFF400DFFC3151FFFFFFF),
-    .INIT_1C(256'hFFFFF009BFCBFFFF9FFCFFFFA9A17FCFFFC780F5F5FFFDF7A17FCC173FFFFFFF),
-    .INIT_1D(256'hFFFFFE089FE1FFFF9FFED75FCAC7FF0DF5B6BD7FFFFFFDDF0DFFC6F497FFFFFF),
-    .INIT_1E(256'hFFFFFE0A97E3FFFF97FE545FC0637F05F441D6E5FFFFFFF78DFFC47297FFFFFF),
-    .INIT_1F(256'hFFFFEE0835F17FFFDFFE5E7FE88F7F25F987FC5DFFFFFFFE05FFE453B7FFFFFF),
+    .INIT_00(256'h5D2915575FFF8FDFFCB5573FFFFFFFFFFFFFFFFFFF2953EFD057F7FFFFFFFFFF),
+    .INIT_01(256'h55D23F57F7FF27FFFEB75D3FFFFFFFFFFFFFFFFFFDECE98FF49FF5FFFFFFFFFF),
+    .INIT_02(256'hD55D8F5577FD3FFFFCF7FD9FFFFFFFFFFFFFFFFFFF47071FFDAFFFFFFFFFFFFF),
+    .INIT_03(256'hF555F5F777FCFFFFF67DFEFFFFFFFFFFFFFFFFFFFFF17C7FFFCBFFFFFFFFFFC5),
+    .INIT_04(256'h55555577757CEFFFF67FFCFFFFFFFFFFFFFFFFFFFFF4527FFF40FFFFFFFFFFC9),
+    .INIT_05(256'h655D55FDD7FABFFFF4D7967FFFFFFFFFFFFFFFFFFFFE73FFF7D83FFFFFFFFFD8),
+    .INIT_06(256'hFB57557D57C2FFFFFE57B67FFFFFFFFFFFFFFFFFFFF633FFFFF2AFFFFFFFFFFF),
+    .INIT_07(256'hF5DCD5555741FFFFDEDFB27FFFFFFFFFFFFFFFFFFFFD33FFF7F627FFFD7FF7FF),
+    .INIT_08(256'hFED59577F5EFFFFFF65DB19FFFFFFFFFFFFFFFFFFFFF177DF1DDA7FFFFFEBF7F),
+    .INIT_09(256'hFD17ED5D77C7FFFFFCFD1257FFFFFFFFFFFFFFFFFFFF9FD44E2D07FFFFFE09FF),
+    .INIT_0A(256'hFFCDDB555F37FFD7F4FD108FFFFFFFFFFFFFFFFFFFFD3FD33FDB4BFFFF5D3617),
+    .INIT_0B(256'hFFEF79DD5F1FFF2356DE61A9FFFFFFFFFFFFFFFFFFFFFD4CDFFF607FFFFF4F6B),
+    .INIT_0C(256'hFFD152F75E1FFFD88BDE6D4BFFFFFFFFFFFFFFFFFFFFF6B3FFFFF27FFFF5D1F6),
+    .INIT_0D(256'hFFFFDA9D7E9FD5557BD6476AFFFFFFFFFFFFFFFFFFFFF20FFFFFF8FFFFF5F47F),
+    .INIT_0E(256'hFFFEDCED7C1F6277707CA5F89DFFFFFFFFFFFFFFFFF5C61FFFFFD0F7FFF5FDBF),
+    .INIT_0F(256'hFFFDB5BD7C7F600281FA037E9FFFFFFFFFFFFFFFFFFF88FFFFFFD4B7FFF57F47),
+    .INIT_10(256'hFFFF17EFF6FFE06001D2BAB40FFFFFFFFFFFFFFFFFD665FFFFFFF6B5FFFF55F9),
+    .INIT_11(256'hFFFF67F8B65F617FF2D2178385FFFFFFFFFFFFFFFF7B17FFFFFFFF1FFFFF75F6),
+    .INIT_12(256'hFFFFFFF9A45F61FFDEF8A3789BFFFFFFFFFFFFFFFD647FFFFFFFFFBFFFFFFF75),
+    .INIT_13(256'hFFFFF9DBC67F69FFF6FAA2148E7FFFFFFFFFFFFFF43BFFFFFFFFFF27FFFFFFFD),
+    .INIT_14(256'hFFFFFD696A7F63FFFE5AD00FCADFFDFFFFFFFFFFD84D5FFFFFFFFD8FFFFFFFFF),
+    .INIT_15(256'hFFFFFF605A7F43FFFEEAD500D93FFEFFFFFFFFFF4B17FFFFFFFFFD677FFFFFF5),
+    .INIT_16(256'hFFFFFF6ED6FF43FFF646FD601CC7F67FFFFFFFFDBC0808AA5F5FFDEFDD7FFFFF),
+    .INIT_17(256'hFFFFFF44947F6BFFFE67FFF683CFD07FFFFFFFFED288DFFD560FFFCDFF5FFFFF),
+    .INIT_18(256'hFFFFFFE694DF67FFFF65FFFF6211DB7FD9FFFF512577415F574FFF473FDFFFFF),
+    .INIT_19(256'hFFFFFFC2969F67FFFF8FFD1FDE3E79FF49FFFDED1AA000088F5FFF6D187FFFFF),
+    .INIT_1A(256'hFFFFFFC8AC9F67FFFF9FFD75F60E5BFFEFFFF73A0008828002BFFF4D0835FFFF),
+    .INIT_1B(256'hFFFFFFC88D1F47FFFD9FFE77FF8511FFEFFFD46008BFFFFD4027FF49153FFFFF),
+    .INIT_1C(256'hFFFFFFD023BF6BFFFF3FF6FFFFA381FF6FFF4F02D7D7FFF7DF81FF641DBFFFFF),
+    .INIT_1D(256'hFFFFFFFC223FC3FFFF3FFE5D7F6A4FFD27D79EB5FFFFFFF77D27FF4ED61FFFFF),
+    .INIT_1E(256'hFFFFFFFC2A1FCBFFFF1FFC547F40C9FD07D4435EC7FFFFFFDF27FF44DA1FFFFF),
+    .INIT_1F(256'hFFFFFFEC2097D1FFFF7FFC7CFFE22DFD87F30FF477FFFFFFFC07FFC45B9FFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4430,10 +4317,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_008192_004  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4720,\U4/Addr [14:13]}),
-    .dia({open_n4724,open_n4725,open_n4726,open_n4727,open_n4728,open_n4729,open_n4730,1'b0,open_n4731}),
+    .csa({open_n4547,\U4/Addr [14:13]}),
+    .dia({open_n4551,open_n4552,open_n4553,open_n4554,open_n4555,open_n4556,open_n4557,1'b0,open_n4558}),
     .rsta(nRST_pad),
-    .doa({open_n4746,open_n4747,open_n4748,open_n4749,open_n4750,open_n4751,open_n4752,open_n4753,\U4/ROM0/inst_doa_i1_004 }));
+    .doa({open_n4573,open_n4574,open_n4575,open_n4576,open_n4577,open_n4578,open_n4579,open_n4580,\U4/ROM0/inst_doa_i1_004 }));
   // address_offset=8192;data_offset=5;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0011"),
@@ -4453,38 +4340,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h2EBFBEFFFFB90D50AE35955555555555555555501625C84DC4FFFFFFFFFFFFF2),
-    .INIT_01(256'hB6DB7EFAFEA355516EA795555555555555555554AF04DD5747FBFFFFFFFFFFAB),
-    .INIT_02(256'hEE0F4E3EFEA555550AEE1D555555555555555554374B895593BFFFFFFFFFAFFA),
-    .INIT_03(256'hFEB6F62BEFE55552BDBEF55555555555555555555670015519BFFFFFFFFFB83F),
-    .INIT_04(256'hFEFECA3FE8295553ED96D5555555555555555555527E3555283FFFFFFFFFF43F),
-    .INIT_05(256'hF9FBCDBFAEF55556B9A2F555555555555555555551C05557073FFFFFFFFFA3D7),
-    .INIT_06(256'hEFBFEECFAA45554009D031555555555555555555533B5555522BFFFFEFFEFF6E),
-    .INIT_07(256'h39BBA34EED1555595A8F3555555555555555555550DB5006422DFFFFBEEFFEF7),
-    .INIT_08(256'hFE07E7AFBF5551542E8C2D5555555555555555555080647E08BFFFFFEDFBBFBB),
-    .INIT_09(256'hBBD4FBAF87555142E7FE0E55555555555555555550AD5CB6FD87FFFFFA9EFFBE),
-    .INIT_0A(256'hA3932CFFEB551E43A2610555555555555555555550150A04460BFFFFFB8F7DFF),
-    .INIT_0B(256'hFEB31CBE0D5086DBB3D3C99555555555555555555540E80D0039DFFFFEE5B17F),
-    .INIT_0C(256'hEAAF92FAAD5112D076559B9555555555555555555543315555549FFFFFF96EFE),
-    .INIT_0D(256'hF96FEC2EED1AFFB276CE269555555555555555555501C55555410FFFFFFE1EFF),
-    .INIT_0E(256'hFB4ECE7EAD643D3F402E8249D55555555555555542CCCD55554F3FFFFFFE97FF),
-    .INIT_0F(256'hFEE8BFFB9530003B432922E0555555555555555540421555554C2FFFFFFFFBFF),
-    .INIT_10(256'hFFA2DABB05001A7026A2C64555555555555555555D1BD55555570BFFFFFFE1FF),
-    .INIT_11(256'hFFC2EFFA6D314FBEA4235E62D5555555555555552C0655555554FBFFFFFFED7F),
-    .INIT_12(256'hFFE52116ED20FFE0AFC077A21555555555555550B6515555555462FFFFFEFD7F),
-    .INIT_13(256'hFFAF31DDA534BAA8B111BFCDE555555555555556B3055555555570FFFFFFFE7F),
-    .INIT_14(256'hBFF85C72B527FFF9D6FC068AB95415555555541DA8BC55555554EFFFFFFFFFFF),
-    .INIT_15(256'hFFFF3CED3535FFF98F2860CFF5551555555555222E5455055155BFFFFFFFFEAA),
-    .INIT_16(256'hFFFE89DC1137FFFEC9FFDA3403506555555545E45C00A0957D55BBBFFFFFFFFF),
-    .INIT_17(256'hFFFFD54B9533FFFA377BF8803F0FF555555515D1B0F55445BD555BAFFFFFFFFF),
-    .INIT_18(256'hFFFFF98F7D25FFFF06FBDADE369CB541D55463CBB5FAF02A59552A7BFFFFFFFF),
-    .INIT_19(256'hFFFEE0670D35FFFFFFFF51EB8C23557D9551A71E200004967D553D25BFFFFFFF),
-    .INIT_1A(256'hFFFFE6938D31FFFF07FFFA7EC306554E1557B8E0150B5301C555623D1FFFFFFF),
-    .INIT_1B(256'hFFFFE6DD0D3DFFFFBFFC1A7F1620D51D551E581132BFFBCE1A55667F4FFFFFFF),
-    .INIT_1C(256'hFFFFE7EF316BFFFFAFF97E3FC7AED40D552DA22D15AFEEF203C5618C93FFFFFF),
-    .INIT_1D(256'hFFFFF2A40053FFFFC7FA7F7FFAFF54BB5A481527FFEFEA5BC05521C923FFFFFF),
-    .INIT_1E(256'hFFFFE7B0250DFFFFFFFE40BFF98FD4A219694929FFFFFFFB9755774F53FFFFFF),
-    .INIT_1F(256'hFFFFFBA63314FFFF8FFB40BFE47FD592108F3E75FFFFFFFC0F54463E07FFFFFF),
+    .INIT_00(256'hA9AEBFBEFFFFB12552AC97155555555555555555501C87606746FFFFFFFFFFFF),
+    .INIT_01(256'hFA9E79FEFAFE895551EE8F15555555555555555556AD06755D4FFBFFFFFFFFFF),
+    .INIT_02(256'hBFEC2D6CBEFE8555552AEC355555555555555555549D6B21571BBFFFFFFFFFAF),
+    .INIT_03(256'hBFFE9EDCABEFC5555AB7BED55555555555555555555CD0015533BFFFFFFFFFB0),
+    .INIT_04(256'h5FFEFE68BFE0A1555BE71E5555555555555555555558FC9555A0BFFFFFFFFFD4),
+    .INIT_05(256'hEEF3FB67BFAED5555EB38AD55555555555555555555340555D0DBFFFFFFFFF8B),
+    .INIT_06(256'hDFEFBFEE6FA845554023509155555555555555555559B9555558ABFFFFEFFEFD),
+    .INIT_07(256'hB9B3BB896EE51555717A2D955555555555555555555279500C48A7FFFFBEEFFE),
+    .INIT_08(256'hBEFC0FCFAFBD555154AE24A55555555555555555555200C4FC22BFFFFFE7FBBF),
+    .INIT_09(256'hFFBB56FBAF0D55514ACFFC2C55555555555555555552A5769EF70FFFFFFA3EFF),
+    .INIT_0A(256'hFF8B19A6FFE9553C4B88C105555555555555555555501528044C2BFFFFFB2DF7),
+    .INIT_0B(256'hFEFE9936BC25520E7B9B5B631555555555555555555542E02500B37FFFFEC791),
+    .INIT_0C(256'hFFEAAF1AFAA5511A50DC573B1555555555555555555549915555563FFFFFF1EE),
+    .INIT_0D(256'hFFF1EFE4AEE53AFF98DE6C8E1555555555555555555503455555412FFFFFFC3E),
+    .INIT_0E(256'hFFF96E6CFEA5C4B5BD40AE086355555555555555554A666555556DBFFFFFFE1F),
+    .INIT_0F(256'hFFFEE2BFFB159000B949A18AC05555555555555555404815555564AFFFFFFFFB),
+    .INIT_10(256'hFFFF8A7AB9050038D08E8A4C455555555555555555753B5555555D2BFFFFFFC3),
+    .INIT_11(256'hFFFF4AEFF8E5916FBE84897CCA5555555555555555A40C55555556FBFFFFFFE5),
+    .INIT_12(256'hFFFFC5811EE582FFC2AF40DF8815555555555555529C5155555554CAFFFFFEF5),
+    .INIT_13(256'hFFFFAD93778596BAA29113BF67C55555555555555E990555555555D2FFFFFFFC),
+    .INIT_14(256'hAABFF074DA958FFFF35EF40E2AB154155555555437A2B455555556EFFFFFFFFF),
+    .INIT_15(256'hFFFFFDB6E59597FFF32DA0C26FD555155555555588AC5455055157BFFFFFFFFE),
+    .INIT_16(256'hFFFFFE2374119FFFFE63FF78940950C555555547C474028215F557BBBFFFFFFF),
+    .INIT_17(256'hFFFFFF556B159BFFF89DFBF200BD2FD5555555175392D55447B5557BAFFFFFFF),
+    .INIT_18(256'hFFFFFFF32DF587FFFD0EFB7A7C9E3695435554CB6B97FAD0A87155A8FBFFFFFF),
+    .INIT_19(256'hFFFFFEC0CD2597FFFFFFFD53EB248955F715538D3C8000061CF555B587BFFFFF),
+    .INIT_1A(256'hFFFFFFCE1B2593FFFD0FFFF8FE490C556C155FB2C0152959034555C8B53FFFFF),
+    .INIT_1B(256'hFFFFFFCE7525B7FFFFBFF438FD1C825535553C70119ABFFB6C3855CCFD6FFFFF),
+    .INIT_1C(256'hFFFFFFCFED91EBFFFFAFF1FCBF4FAE542555A788A517AFEED80B45C3261BFFFF),
+    .INIT_1D(256'hFFFFFFDA84005BFFFF4FF8FDFFFAFD56B97860158FFFEFE87B405583618BFFFF),
+    .INIT_1E(256'hFFFFFFCF908527FFFFFFFC42BFF32F568831E161A3FFFFFFFB1D55DD6D5BFFFF),
+    .INIT_1F(256'hFFFFFFFB8C9916FFFF2FF942BFC4FF5718122DBCD7FFFFFFF42D544CBC0FFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4501,10 +4388,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_008192_005  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4779,\U4/Addr [14:13]}),
-    .dia({open_n4783,open_n4784,open_n4785,open_n4786,open_n4787,open_n4788,open_n4789,1'b0,open_n4790}),
+    .csa({open_n4606,\U4/Addr [14:13]}),
+    .dia({open_n4610,open_n4611,open_n4612,open_n4613,open_n4614,open_n4615,open_n4616,1'b0,open_n4617}),
     .rsta(nRST_pad),
-    .doa({open_n4805,open_n4806,open_n4807,open_n4808,open_n4809,open_n4810,open_n4811,open_n4812,\U4/ROM0/inst_doa_i1_005 }));
+    .doa({open_n4632,open_n4633,open_n4634,open_n4635,open_n4636,open_n4637,open_n4638,open_n4639,\U4/ROM0/inst_doa_i1_005 }));
   // address_offset=8192;data_offset=6;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0012"),
@@ -4524,38 +4411,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hE6EBEB000127AAAE6B8E4AAAAAAAAAAAAAAAAAABC4FF7BADF10000000000003B),
-    .INIT_01(256'hBB72EA050062AAAF6A091AAAAAAAAAAAAAAAAAAB88D996AA3C0400000000003B),
-    .INIT_02(256'hBBFBBB81016AAAAF0B141AAAAAAAAAAAAAAAAAAAB5C70EAA8D4000000000452B),
-    .INIT_03(256'hABBBDE94148AAAAB8E45DAAAAAAAAAAAAAAAAAAAAEBE7EAAEB4000000001292A),
-    .INIT_04(256'hABABF7800006AAABCA55AAAAAAAAAAAAAAAAAAAAB9382AAABC80000000001C1A),
-    .INIT_05(256'hAAAAE6C057AAAAAFDF64EAAAAAAAAAAAAAAAAAAAABE9AAAAEDE0000000004A8E),
-    .INIT_06(256'hB86AB0A00CFAAAAFFB242EAAAAAAAAAAAAAAAAAAAB51AAAAB9F800001000047F),
-    .INIT_07(256'h2ADAF8E14AEAAAAAED73AAAAAAAAAAAAAAAAAAAAAF15ABFFAA3900000010017B),
-    .INIT_08(256'h9EEEB8104DAAAAAFA8722AAAAAAAAAAAAAAAAAAAAE4BAF85FAEC00001060007C),
-    .INIT_09(256'hFF9FAC1102AAAAB9F83096AAAAAAAAAAAAAAAAAAAE6ABB9417990000052A007E),
-    .INIT_0A(256'hC2A2FA0166AAFFB8EC2022AAAAAAAAAAAAAAAAAAAEDAB21FACB400000561F37E),
-    .INIT_0B(256'hF8E27A400AAF017CFC98BCAAAAAAAAAAAAAAAAAAAAAAD97ABEB9A000010B9F7F),
-    .INIT_0C(256'hEBA3DF00AAAAAD027D9ABA6AAAAAAAAAAAAAAAAAAAAB75AAAAAE10000047F97F),
-    .INIT_0D(256'hF82BE7956ABAFFEE1C4AA6AAAAAAAAAAAAAAAAAAAAE8C6AAAABF90000011FEFF),
-    .INIT_0E(256'hFBFD99859AE416BD08EFBF0AAAAAAAAAAAAAAAAAABF9CAAAAAAB400000043FFF),
-    .INIT_0F(256'hFE3F2005EAA8005E4BEDB8EEAAAAAAAAAAAAAAAAAFE32AAAAABA200000010FFF),
-    .INIT_10(256'hFFAB5804EAA9CB811BA9DF42AAAAAAAAAAAAAAAABFC9AAAAAAABD400000057FF),
-    .INIT_11(256'hFFFB4FA0EAB935569EEF8CB0AAAAAAAAAAAAAAAAA65EAAAAAAAE1400000000FF),
-    .INIT_12(256'hFFE487FDEAB8400891C4FFB7EAAAAAAAAAAAAAAADD3AAAAAAAAB94000001037F),
-    .INIT_13(256'hFFFAC5A0AAA9EFFAD6E04E34AAAAAAAAAAAAAAAB76FAAAAAAAAACA00000000FF),
-    .INIT_14(256'hFFFA7DA5AAADFFFB63061CBBDAABAAAAAAAAAAACCFAAAAAAAAAAE0000000007F),
-    .INIT_15(256'hFFFF19AEAABBFFFE2EBE01EE7AAA6AAAAAAAAAA33BABFFFAAAAB8C000000007F),
-    .INIT_16(256'hFFFE993AEEBBFFFB2CFEE81F46AA6AAAAAAAABF59ABAA02EFAAA98400000007F),
-    .INIT_17(256'hFFFFFB8AAABFFFFACD7FFBD009BC6AAEAAAAAEC7B01AAFAF12AAAD100000007F),
-    .INIT_18(256'hFFFFEAFF1AA9FFFF5BFFB7A9EAB96AB9AAAAEF5BFF140EFBB2AABD644000007F),
-    .INIT_19(256'hFFFFE60F0AADFFFF2FFEB5E8153BAAE5AAAB9C5280000460BAAAA82B5000007F),
-    .INIT_1A(256'hFFFFF1274ABDFFFEE7FEFDFE8BAFAAEDAAAF760004EBAD014EAAE27C2000007F),
-    .INIT_1B(256'hFFFFE05ECAA9FFFE87FF9B7F80FCAAAAAAB97000A155554C11AAF343F000007F),
-    .INIT_1C(256'hFFFFF11BFAEFFFFED7FFFA7FE0A8ABBEAAA504B2BB50041D42AAF18AE400007F),
-    .INIT_1D(256'hFFFFE4121AE3FFFFFFFCEF7FD0F1AB8AAFC423DFFFFAAFB057AAB4EB3400007F),
-    .INIT_1E(256'hFFFFE505EAE3FFFFAFF8B6BFA139AB82BE4B2BBFFFFFFFED8AAAF02E4400007F),
-    .INIT_1F(256'hFFFFE9001EFBFFFFEFF9EEFFEC29ABC3B53CFAADFFFFFFFF96AAE0658400007F),
+    .INIT_00(256'hBBCEEBE900018FAAACEB2C6AAAAAAAAAAAAAAAAAAB46FDFBA7D1000000000000),
+    .INIT_01(256'hABB9DAE80500CAAAADE8213AAAAAAAAAAAAAAAAAAB22731EA8B4040000000000),
+    .INIT_02(256'hAABBFBBB0101EAAAAD29143AAAAAAAAAAAAAAAAAAA974D2EAA25400000000045),
+    .INIT_03(256'h3AABBB7E14162AAAAB2C477AAAAAAAAAAAAAAAAAAAAEBCFEAAE94000000001A1),
+    .INIT_04(256'h2EABABDF00000EAAAB6857AAAAAAAAAAAAAAAAAAAAB1B0AAAAB6000000000034),
+    .INIT_05(256'hFFAAAACE405FAAAAAF7DC6EAAAAAAAAAAAAAAAAAAAABE3AAAAE7C0000000006A),
+    .INIT_06(256'hFBB0EA928026FAAAAFF984AEAAAAAAAAAAAAAAAAAAA953AAAAB3F00000100004),
+    .INIT_07(256'hF4AA7AF2C16AEAAAAAE5DBAAAAAAAAAAAAAAAAAAAAAD17ABFFA8B10000001001),
+    .INIT_08(256'hFE3EEEB01067AAAAAFA0D8AAAAAAAAAAAAAAAAAAAAAC6BAF07FAE4000010C000),
+    .INIT_09(256'hFEFF3FA4110AAAAAB3F0921EAAAAAAAAAAAAAAAAAAACEABB141F31000005A800),
+    .INIT_0A(256'hFF4A8AF801CEAAFFB2E4808AAAAAAAAAAAAAAAAAAAAE7A983FA694000005C3D9),
+    .INIT_0B(256'hFFF2C8F8402AAD01F6F632B6AAAAAAAAAAAAAAAAAAAAAA71FABEB38000012B3D),
+    .INIT_0C(256'hFFEB8B7D02AAAAA508F73AB8EAAAAAAAAAAAAAAAAAAAA9D7AAAAAC1000004FF1),
+    .INIT_0D(256'hFFF0ABCF15EABAFFEC346A8EAAAAAAAAAAAAAAAAAAAAE24EAAAABF10000013FE),
+    .INIT_0E(256'hFFFBF733073AC41EB522EFBD2AAAAAAAAAAAAAAAAAABF36AAAAAA940000004BF),
+    .INIT_0F(256'hFFFCBD8007EAA0007C6BE7B2EEAAAAAAAAAAAAAAAAAFC9AAAAAAB8800000012F),
+    .INIT_10(256'hFFFFA97006EAA36B013BA37D4AAAAAAAAAAAAAAAAABF63AAAAAAAB540000005F),
+    .INIT_11(256'hFFFFF96F82EAB1955E3EEF2692AAAAAAAAAAAAAAAA8C7EAAAAAAAC1400000002),
+    .INIT_12(256'hFFFFC60FF7EAB040221346FF9FEAAAAAAAAAAAAAAA75BAAAAAAAAB1400000109),
+    .INIT_13(256'hFFFFFA4782AAA3EFFA5EC06C96AAAAAAAAAAAAAAA9DEFAAAAAAAAA6800000002),
+    .INIT_14(256'hFFFFF8F787AAA7FFF9C90C36BB7AABAAAAAAAAAAA66FAAAAAAAAAAC000000000),
+    .INIT_15(256'hFFFFFD33AEAABBFFFCAEBC03ECFAA8EAAAAAAAAA89BBABFFFAAAAB2400000000),
+    .INIT_16(256'hFFFFFE31BAEEBBFFF9A6FEE03D4EA8EAAAAAAAABD73ABA80AEFAAA3040000000),
+    .INIT_17(256'hFFFFFFFB2AAABFFFFA65FFFB5023B4EAAEAAAAAE4F903AAFAD1AAAA510000000),
+    .INIT_18(256'hFFFFFFEAFD3AA3FFFD7BFF9FA3EAB1EAB3AAAAED7BFD142EFB9AAAB5C4400000),
+    .INIT_19(256'hFFFFFFCC2D2AA7FFFDAFFE97E015BBAAC7AAAB345A000004C2BAAAA0A9500000),
+    .INIT_1A(256'hFFFFFFD18D6AB7FFFECFFEF7FE2BAFAAE7AAADDC0006EBA5016EAAC8F4800000),
+    .INIT_1B(256'hFFFFFFC07E6AA3FFFE0FFF39FF02F6AAAAAAB1D0028155556413AAD94BD00000),
+    .INIT_1C(256'hFFFFFFD13BFAEFFFFE5FFFF8FFC2A2ABBEAA85069AB95004354AAAD32AC40000),
+    .INIT_1D(256'hFFFFFFC4183ACBFFFFFFF6EDFF52D3AB2AAF448B7FFFFAAF905FAA96E9940000),
+    .INIT_1E(256'hFFFFFFC507EACBFFFFAFF29EBF81B3AB0ABC69ABBFFFFFFFE72AAAD0AC440000),
+    .INIT_1F(256'hFFFFFFE1003EFBFFFFEFF3EEFFE4A3AB4B95B6FAA7FFFFFFFF1EAAC0C7040000),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4572,10 +4459,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_008192_006  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4838,\U4/Addr [14:13]}),
-    .dia({open_n4842,open_n4843,open_n4844,open_n4845,open_n4846,open_n4847,open_n4848,1'b0,open_n4849}),
+    .csa({open_n4665,\U4/Addr [14:13]}),
+    .dia({open_n4669,open_n4670,open_n4671,open_n4672,open_n4673,open_n4674,open_n4675,1'b0,open_n4676}),
     .rsta(nRST_pad),
-    .doa({open_n4864,open_n4865,open_n4866,open_n4867,open_n4868,open_n4869,open_n4870,open_n4871,\U4/ROM0/inst_doa_i1_006 }));
+    .doa({open_n4691,open_n4692,open_n4693,open_n4694,open_n4695,open_n4696,open_n4697,open_n4698,\U4/ROM0/inst_doa_i1_006 }));
   // address_offset=8192;data_offset=7;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0013"),
@@ -4595,38 +4482,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h948BABFFFFC7FFFF9AEBFFFFFFFFFFFFFFFFFFFFA8A8F7EB2FFFFFFFFFFFFFED),
-    .INIT_01(256'hE94FEAFFFE8BFFFEDAEAFFFFFFFFFFFFFFFFFFFFE322EFFBCFFFFFFFFFFFFFAE),
-    .INIT_02(256'hAEC7AAFFFE8FFFFFFBFFBFFFFFFFFFFFFFFFFFFFABBBAFFEB7FFFFFFFFFFEFAA),
-    .INIT_03(256'hAAFAFBFFFE2FFFFA3FFE7FFFFFFFFFFFFFFFFFFFF9BEBFFFF1FFFFFFFFFF86EA),
-    .INIT_04(256'hAAAABBFFEEBFFFFB3FFF7FFFFFFFFFFFFFFFFFFFFEBABFFFB13FFFFFFFFFE5EA),
-    .INIT_05(256'hAEAAFAFFF85FFFFF6BDA7FFFFFFFFFFFFFFFFFFFFB3BFFFFF80FFFFFFFFFEC2A),
-    .INIT_06(256'hABAABEBFB07FFFFE2B8ABFFFFFFFFFFFFFFFFFFFFBBBFFFFFE53FFFFFFFFFFB6),
-    .INIT_07(256'hEE6AAEBFA1FFFFFE6FD83FFFFFFFFFFFFFFFFFFFFFFBFFFFFA97FFFFFEBFFFEC),
-    .INIT_08(256'h6ACABFBFF7FFFFFA2FD8CFFFFFFFFFFFFFFFFFFFFEBBFEAAFE93FFFFFF5BFFFA),
-    .INIT_09(256'h9AF2AFFFFBFFFFFB3E893FFFFFFFFFFFFFFFFFFFFECFFB6FABF3FFFFFF05BFFF),
-    .INIT_0A(256'hEEEDABFFCFFFFFFE7FCFCFFFFFFFFFFFFFFFFFFFFEBFB9FFEBB4FFFFFE9B0BFE),
-    .INIT_0B(256'hF7BCEFFEAFFFBBBF6F36D2FFFFFFFFFFFFFFFFFFFFFEA7FFFFA03FFFFFA7F5FF),
-    .INIT_0C(256'hE8F97BFB4FFFEEEDEF67F4FFFFFFFFFFFFFFFFFFFFFB8FFFFFFC7FFFFFE8FB7F),
-    .INIT_0D(256'hFFED4EFF4FFAFFF9EA23A93FFFFFFFFFFFFFFFFFFFEF7FFFFFF83FFFFFFA3FFF),
-    .INIT_0E(256'hFF6E76FE7FEAFBABBE53F9AFFFFFFFFFFFFFFFFFFFF32FFFFFEC7FFFFFFEDFFF),
-    .INIT_0F(256'hFFDADFFF3FA00114FD12BB1FFFFFFFFFFFFFFFFFFF8DBFFFFFFA4FFFFFFFA3FF),
-    .INIT_10(256'hFF8BF2BB7FB03000E84F7BFBFFFFFFFFFFFFFFFFFA37FFFFFFFA5FFFFFFFFCFF),
-    .INIT_11(256'hFFB7E14B7FA0BFED6D1BB2DEFFFFFFFFFFFFFFFFA9EFFFFFFFFE8FFFFFFFEB7F),
-    .INIT_12(256'hFFFFE8937FA0FFEF7C56AD49FFFFFFFFFFFFFFFEE7FFFFFFFFFFDFFFFFFFFBFF),
-    .INIT_13(256'hFFFCEAE23FA4FFFB7D502B873FFFFFFFFFFFFFFAD9FFFFFFFFFFD3FFFFFFFEFF),
-    .INIT_14(256'hFFFEA6AC3FA1FFFF2D6C17B57FFEFFFFFFFFFFEE67FFFFFFFFFEC7FFFFFFFFFF),
-    .INIT_15(256'hFFFFA7283FB1FFFF756A8178DFFFFFFFFFFFFFBD8BFFFFFFFFFFF3FFFFFFFFFF),
-    .INIT_16(256'hFFFFA67A7FB1FFFB237FB00FFBFBFFFFFFFFFF8B65511BABFFFFA3FFFFFFFFFF),
-    .INIT_17(256'hFFFFB22B3FB5FFFF33FFFF43E3FAFFFBFFFFFE6D0BAFFAAEAFFFF6FFFFFFFFFF),
-    .INIT_18(256'hFFFFF30EFFA3FFFFB2FFAFB00CFFFFEFFFFFFDE6BBEBEEABBFFFB38FFFFFFFFF),
-    .INIT_19(256'hFFFFEEDFAFA3FFFFC7FF9FEF5BB8FFEFFFFFA2F81000001ABFFFA78C3FFFFFFF),
-    .INIT_1A(256'hFFFFFEDAEFA3FFFFCFFE1AFB067DFFE7FFFFDD00044140006FFFF993CFFFFFFF),
-    .INIT_1B(256'hFFFFEEF6AFB3FFFECFFB7AFEC2CAFFF7FFFFB0005FFFFEA007FFFCDADFFFFFFF),
-    .INIT_1C(256'hFFFFEFB5DFE5FFFF9FFF1EFF91D2FFB7FFAB810BEBFFFBFFC4FFFE6E8FFFFFFF),
-    .INIT_1D(256'hFFFFFEACFFF9FFFF9FFA5FBFE537FFE3FFEE5BBFFFFFFBAE83FFBF3F9FFFFFFF),
-    .INIT_1E(256'hFFFFFFAF5FF9FFFF8FFA5E7FA767FFBBFBB5AA53FFFFFFEF03FFFBE9FFFFFFFF),
-    .INIT_1F(256'hFFFFF3AB8FECFFFFBFFB507FF797FFFBAF87F96BFFFFFFFE0FFFEBB9BFFFFFFF),
+    .INIT_00(256'hAE162BABFFFF4FFFFF3AEBFFFFFFFFFFFFFFFFFFFFA2A2DFE9AFFFFFFFFFFFFF),
+    .INIT_01(256'hAAE16FEAFFFE2BFFFE7AEAFFFFFFFFFFFFFFFFFFFFC98AEFFB6FFFFFFFFFFFFF),
+    .INIT_02(256'hEAAE4FAAFFFE2FFFFFFBFFBFFFFFFFFFFFFFFFFFFFABBBAFFE9FFFFFFFFFFFEF),
+    .INIT_03(256'hEAAAFAFBFFFCAFFFF8BFFCFFFFFFFFFFFFFFFFFFFFF3BEBFFFD3FFFFFFFFFF0E),
+    .INIT_04(256'hAAAAAABBFFEEBFFFF9BFFDFFFFFFFFFFFFFFFFFFFFFEBABFFF91BFFFFFFFFFC7),
+    .INIT_05(256'h9EAEAAFAFFF07FFFFDEB78FFFFFFFFFFFFFFFFFFFFF9BBFFFFF02FFFFFFFFFE4),
+    .INIT_06(256'hE6ABAABEBF90FFFFFCAB2ABFFFFFFFFFFFFFFFFFFFFBBBFFFFFC5BFFFFFFFFFF),
+    .INIT_07(256'hFAECEAAEBF83FFFFFCEF70BFFFFFFFFFFFFFFFFFFFFFFBFFFFFA1FFFFFFEBFFF),
+    .INIT_08(256'hFDEA6ABFBFDFFFFFF8AF726FFFFFFFFFFFFFFFFFFFFEBBFEAAFE1BFFFFFD7BFF),
+    .INIT_09(256'hFE3ADAAFFFFBFFFFF9BE21BFFFFFFFFFFFFFFFFFFFFE6FF9EFABDBFFFFFD07BF),
+    .INIT_0A(256'hFFEEE7ABFF6FFFFFFCFF6F6FFFFFFFFFFFFFFFFFFFFEBFB3FFEB96FFFFFE392B),
+    .INIT_0B(256'hFFDFB6EFFEAFFFBBBDED9E5AFFFFFFFFFFFFFFFFFFFFFE8FFFFF80BFFFFF8FD7),
+    .INIT_0C(256'hFFE2F1FBF96FFFEEE7EDCFD6FFFFFFFFFFFFFFFFFFFFFB2FFFFFF4FFFFFFE2F9),
+    .INIT_0D(256'hFFFFE56EFD6FFAFFF3E88BA1BFFFFFFFFFFFFFFFFFFFEDFFFFFFF0BFFFFFF8BF),
+    .INIT_0E(256'hFFFDECDEFCFFEAFBABBC5BF3AFFFFFFFFFFFFFFFFFFFD9AFFFFFE4FFFFFFFE7F),
+    .INIT_0F(256'hFFFF7A7FFDBF800116F51AB93FFFFFFFFFFFFFFFFFFF27BFFFFFF86FFFFFFF8B),
+    .INIT_10(256'hFFFF2BDAB9FF909002E06DFBFBFFFFFFFFFFFFFFFFF89FFFFFFFF87FFFFFFFF6),
+    .INIT_11(256'hFFFF9FC169FF82BFE5E53B9A7EFFFFFFFFFFFFFFFFA3EFFFFFFFFE2FFFFFFFE9),
+    .INIT_12(256'hFFFFFFE219FF82FFEDF45EA563FFFFFFFFFFFFFFFECFFFFFFFFFFF7FFFFFFFFB),
+    .INIT_13(256'hFFFFF6EAC8BF86FFF9F550AB0DBFFFFFFFFFFFFFFA73FFFFFFFFFF5BFFFFFFFE),
+    .INIT_14(256'hFFFFFE8EA4BF83FFFDA5E41F95FFFEFFFFFFFFFFECCFFFFFFFFFFE4FFFFFFFFF),
+    .INIT_15(256'hFFFFFF8DA0BF93FFFDD5EA01F27FFFFFFFFFFFFFB72BFFFFFFFFFFDBFFFFFFFF),
+    .INIT_16(256'hFFFFFF8CF8FF93FFF989FF902FFBFBFFFFFFFFFF29C5513BABFFFF8BFFFFFFFF),
+    .INIT_17(256'hFFFFFF98A9BF97FFFD9BFFFD4BCBFAFFFBFFFFFCE52BAFFAAEAFFFDEFFFFFFFF),
+    .INIT_18(256'hFFFFFFD92EFF8BFFFF9AFFAF9026FFFFEFFFFFF7CEBBEBEEABBFFF9B2FFFFFFF),
+    .INIT_19(256'hFFFFFFEE7FAF8BFFFF4FFF3FED7BB2FFEFFFFF8AF01000003ABFFF8F24BFFFFF),
+    .INIT_1A(256'hFFFFFFFE7AEF8BFFFF6FFC3AF90CF7FFCFFFFF750004414000EFFFF31B6FFFFF),
+    .INIT_1B(256'hFFFFFFEEDEAF9BFFFE6FF9FAFE4A6AFFDFFFFF90007FFFFE800FFFF67A7FFFFF),
+    .INIT_1C(256'hFFFFFFEF977FC7FFFF3FFD3EFF135AFF9FFFAB012BEBFFFBFF46FFFCEE2FFFFF),
+    .INIT_1D(256'hFFFFFFFEA6FFF3FFFF3FF87FBFC59FFFCBFFEC7BBFFFFFFBAE0BFFBDBF3FFFFF),
+    .INIT_1E(256'hFFFFFFFFAD7FF3FFFF2FF87CFF8DCFFFBBFB97A85BFFFFFFED0BFFFBE3FFFFFF),
+    .INIT_1F(256'hFFFFFFDBAB2FE6FFFFBFF950FFDF1FFFFBAF0FF1EBFFFFFFFC2FFFEBB3BFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4643,10 +4530,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_008192_007  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4897,\U4/Addr [14:13]}),
-    .dia({open_n4901,open_n4902,open_n4903,open_n4904,open_n4905,open_n4906,open_n4907,1'b0,open_n4908}),
+    .csa({open_n4724,\U4/Addr [14:13]}),
+    .dia({open_n4728,open_n4729,open_n4730,open_n4731,open_n4732,open_n4733,open_n4734,1'b0,open_n4735}),
     .rsta(nRST_pad),
-    .doa({open_n4923,open_n4924,open_n4925,open_n4926,open_n4927,open_n4928,open_n4929,open_n4930,\U4/ROM0/inst_doa_i1_007 }));
+    .doa({open_n4750,open_n4751,open_n4752,open_n4753,open_n4754,open_n4755,open_n4756,open_n4757,\U4/ROM0/inst_doa_i1_007 }));
   // address_offset=16384;data_offset=0;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0014"),
@@ -4666,38 +4553,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFE86216ACEFFFFFF8807FF061EEFDA747EEBFFFFFFFFE8BFAE4E013FFFFFF),
-    .INIT_01(256'hFFFFE36B44EBEFFFFFFC837FE211AADAF29FFFF9FFFFFFFC03FAF059C3FFFFFF),
-    .INIT_02(256'hFFFFE67148FE7FFFFFFEB3BFFB40DC3B8CFFEA3BFFFFFFFC1BFEAA669BFFFFFF),
-    .INIT_03(256'hFFFFFE30ACFD9FFFFFFF9EBFF72EA76935FFF10CFFFFFFF9EBFE9CDE9BFFFFFF),
-    .INIT_04(256'hFFFFF8CD2CBFC7FFFFFFFFFFFFCF78B75FFFF805FFFFFFEC9BFFCF1CE8AFFFFF),
-    .INIT_05(256'hFFFFFD8D47BBA9FFFFFFFFFEDADBE87CC9FFE813FFFFFFFDAFFF950FF84BAAFF),
-    .INIT_06(256'hFFFFFED3B3AAEE7FFFFFFFFB7ABEFEEC77FFF41DFFFFFFF62BFE9D066284F87F),
-    .INIT_07(256'hFFFFFF863BAABEBFFFFFFFB5FAFFFAB8FFFFEC5BFFFFFF8BAFEE425503B2E07F),
-    .INIT_08(256'hFFFFFF9440AAAEBDFFFFFED7FFFFFEBFB7EFFBD7FFFFFFD2AEE89DDB5DA3FFFF),
-    .INIT_09(256'hFFFFFFC7F72AABA48FFF866EFFFFFEFEB7FFFE5FFFFFFEFEAFEBD5DB63E3FFFF),
-    .INIT_0A(256'hFFFFFFF9F32AAABB471B83AABFFBFEBEE7FFFFFFFFFFFFDEAFBAA8235DFB3FFF),
-    .INIT_0B(256'hFFFFFFE9432AAAAAAC16EAAABFFEFEBEECFFFFFFFFFFFEBFEBA819738A8B3FFF),
-    .INIT_0C(256'hFFFFFFFF5CAAAFFFFFFEABFABFFFBEBEBBFFFFFFFFFFF81FFBAF8875C5CEDFFF),
-    .INIT_0D(256'hFFFFFFFFE9FFFFFFFFFEBFFFFFFBFBFFFEBFFFFFFFFFF1FFFEFFB8BBA9EEDFFF),
-    .INIT_0E(256'hFFFFFFFF827FFFFFFFFFFFFFFFED6BFFFBA3FFFFFFFFFCFFFA9A89997AA3DFFF),
-    .INIT_0F(256'hFFFFFFFFA77FFFFFFFFFFFFFFFB76BFFFAEDFFFFFFFF8EBFFBBC97447B9AAEFF),
-    .INIT_10(256'hFFFFFFFFB88FFFFFFFFFFFFFFF922FFFFABA5FFFFFFF5EBFEAD3D879FFCFCBFF),
-    .INIT_11(256'hFFFFFFF8DCCFFFFFFFFFFFFFFFD23FFFFEEE85FFFFE6BBFFFF2101A7FB97C7FF),
-    .INIT_12(256'hFFFFFFB7CD4BFFFFFFFFFAAAFBB76BFFFFFB9654D674FBFFEF07624FFFEFF17F),
-    .INIT_13(256'hFFFFFFE5306AFFFFFFFFFAAAFBF0FFFFFFFAEFC41223FFFFEF39D17FFFB9B9FF),
-    .INIT_14(256'hFFFFE685C4DAFFFFFFFFFFFFFFFBFEAAAAAAFEBEEBABFFFFEA3F4E9FFFE86FFF),
-    .INIT_15(256'hFFFFCA378A82BFFFFFFFFAAAABFE820EBABABAAAAAABFFFFAA9829D12BFABEFF),
-    .INIT_16(256'hFFFFFFFE7172BFFFFFFFEABF82E97B40B96CFAFFFFFFFFFEABE4FD4072FB1BFF),
-    .INIT_17(256'hFFFFFFFA251ABFFFFFFFA0E1C4E0B4D7FA085AFFFFEBFFFEFB9BFFFFCBAFF6FF),
-    .INIT_18(256'hFFFFFFC05BEEBFFFFFAE69E49C2FFFFFFFFDB6FFFFABFFFAB2BCFFFFEDC26BFF),
-    .INIT_19(256'hFFFFEFAF47D2BFFFEE81A37FFFFFFFFFFFFF93FFFFFFFFEB48967FFFFE92B3FF),
-    .INIT_1A(256'hFFFEA6B77DB8BFFFEAE1FFFFFFFFFFFFFFFFD16AFFFFFFEBB8D63FFFFFFA6EFF),
-    .INIT_1B(256'h503512A57537BFFFEAE9FFFFFFFFFFFFFFFFD8DAFFFFFFA8EB21FFFFFFFFFFFF),
-    .INIT_1C(256'h6158B554457C2FFFAAE2F27FEE1BBAC45E7FDBB2FFFFFFBDEA8E3FFFFFFFFF85),
-    .INIT_1D(256'hAAB5554554AF6FFFEB278D555555755552ADCC9CBFFFFEA95ABB27FFFFFFFF80),
-    .INIT_1E(256'h5555555554FD2BFEFA733FEAAAAAAAAABAB3CEBEAFFFFEAE2A099EFFFFFFFFAA),
-    .INIT_1F(256'h5555555550AE4BFEFA0FFEAEAABBFFA94AEEBBE32FFFEFF5E45987FFFFFFFFD5),
+    .INIT_00(256'hFFFFFFE0C81EA6EFFFFFF200FFD0C3EEF78D4FEEBFFFFFFFFE2BFAC6C01BFFFF),
+    .INIT_01(256'hFFFFFFC9E946EBEFFFFFF609FFC813AA7ADA3FFFF3FFFFFFF40BFAD0734BFFFF),
+    .INIT_02(256'hFFFFFFCCD162FCFFFFFFFE9BBFF94274BB26FFE8BBFFFFFFF43BFEA8CE3BFFFF),
+    .INIT_03(256'hFFFFFFFC92A6F73FFFFFFF3EBFDDAE8DE197FFD126FFFFFFF3EBFE367E3BFFFF),
+    .INIT_04(256'hFFFFFFF265A6BF4FFFFFFFFFFFFF6DF29D7FFFF007FFFFFFE63BFF6D36E2AFFF),
+    .INIT_05(256'hFFFFFFF7254FBBA3FFFFFFFFFE7A7BE0F663FFE01BFFFFFFF7AFFF152FF06BAA),
+    .INIT_06(256'hFFFFFFFE5B9BAAECFFFFFFFFF9FABEFEE4DFFFD437FFFFFFDCABFE350CCA06F0),
+    .INIT_07(256'hFFFFFFFF0CBBAABEBFFFFFFF97FAFFFAB2FFFFE47BFFFFFF2BAFEC48550B9AC0),
+    .INIT_08(256'hFFFFFFFF1442AAAEB7FFFFFE5FFFFFFEBF9FEFFB5FFFFFFF5AAEE23779778BFF),
+    .INIT_09(256'hFFFFFFFF4FDDAAAB862FFF0CEEFFFFFEFE9FFFFC7FFFFFFEFEAFEB5779CBCBFF),
+    .INIT_0A(256'hFFFFFFFFF3D9AAAAB94D3B0BAABFFBFEBECFFFFFFFFFFFFF7EAFBAA08977F9BF),
+    .INIT_0B(256'hFFFFFFFFE149AAAAAAA41EEAAABFFEFEBEE6FFFFFFFFFFFEBFEBA031DB2A29BF),
+    .INIT_0C(256'hFFFFFFFFFD76AAAFFFFFFEABFABFFFBEBEBBFFFFFFFFFFF03FFBAF20D7476E7F),
+    .INIT_0D(256'hFFFFFFFFFFE3FFFFFFFFFEBFFFFFFBFBFFFEBFFFFFFFFFD3FFFEFFB2BBA3EE7F),
+    .INIT_0E(256'hFFFFFFFFFF08FFFFFFFFFFFFFFFFE5EBFFFB8BFFFFFFFFF6FFFA3A2331FA8B7F),
+    .INIT_0F(256'hFFFFFFFFFF8DFFFFFFFFFFFFFFFF9DEBFFFAE7FFFFFFFF2EBFFBB61D44FB3AAE),
+    .INIT_10(256'hFFFFFFFFFFB22FFFFFFFFFFFFFFF18AFFFFAB87FFFFFFD7EBFEA5B70F3FF6F6B),
+    .INIT_11(256'hFFFFFFFFF2766FFFFFFFFFFFFFFF58BFFFFEEE07FFFFCEBBFFFD81038FFB1F4F),
+    .INIT_12(256'hFFFFFFFF9F656BFFFFFFFFFAAAFB9DEBFFFFFB1C565CD6FBFFED0DC86FFFEFD1),
+    .INIT_13(256'hFFFFFFFFC590EAFFFFFFFFFAAAFBD2FFFFFFFAEF44188BFFFFEDB351FFFFB3B3),
+    .INIT_14(256'hFFFFFFCE07467AFFFFFFFFFFFFFFFBFEAAAAAAFEBEEBABFFFFE8BD6E3FFFE0EF),
+    .INIT_15(256'hFFFFFF689F2A0ABFFFFFFFFAAAABFE082EBABABAAAAAABFFFFAA30A351ABFABE),
+    .INIT_16(256'hFFFFFFFFFCD1DABFFFFFFFEABF0AE1F942B1E6FAFFFFFFFFFEABC6F540DAF93B),
+    .INIT_17(256'hFFFFFFFFF8853ABFFFFFFF82C346C2965FF8207AFFFFEBFFFEFB3BFFFF6BAFDE),
+    .INIT_18(256'hFFFFFFFF407BEEBFFFFFACE3C634AFFFFFFFF79EFFFFABFFFA9AB6FFFFE748EB),
+    .INIT_19(256'hFFFFFFEFAD4F5ABFFFEE0389FFFFFFFFFFFFFF1BFFFFFFFFE9621CFFFFFE1A9B),
+    .INIT_1A(256'hFFFFFE8E9DF7B2BFFFEAC3FFFFFFFFFFFFFFFF51EAFFFFFFEBB25CBFFFFFF8EE),
+    .INIT_1B(256'h0550951A85D59FBFFFEAE3FFFFFFFFFFFFFFFF727AFFFFFFA2E983FFFFFFFFFF),
+    .INIT_1C(256'h00C172955445F4AFFFAACAD8FFEC3BBA447CFF7B9AFFFFFFB7EA2CBFFFFFFFFF),
+    .INIT_1D(256'hAAAA95554556ADEFFFE98F25555555D5555AA76636BFFFFEA17AB98FFFFFFFFF),
+    .INIT_1E(256'h555555555556F5ABFEF8D9BFEAAAAAAAAABA9B6EBEAFFFFEACA8233EFFFFFFFF),
+    .INIT_1F(256'h555555555552AC6BFEF82FFEAEAABBFFA16AEEBBC9AFFFEFD7C4730FFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4714,10 +4601,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_016384_000  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n4956,\U4/Addr [14:13]}),
-    .dia({open_n4960,open_n4961,open_n4962,open_n4963,open_n4964,open_n4965,open_n4966,1'b0,open_n4967}),
+    .csa({open_n4783,\U4/Addr [14:13]}),
+    .dia({open_n4787,open_n4788,open_n4789,open_n4790,open_n4791,open_n4792,open_n4793,1'b0,open_n4794}),
     .rsta(nRST_pad),
-    .doa({open_n4982,open_n4983,open_n4984,open_n4985,open_n4986,open_n4987,open_n4988,open_n4989,\U4/ROM0/inst_doa_i2_000 }));
+    .doa({open_n4809,open_n4810,open_n4811,open_n4812,open_n4813,open_n4814,open_n4815,open_n4816,\U4/ROM0/inst_doa_i2_000 }));
   // address_offset=16384;data_offset=1;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0015"),
@@ -4737,38 +4624,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFE86325477FFFFFFBD17FF639442F313BEF78FFFFFFFA45554593C155557F),
-    .INIT_01(256'hFFFFE66A3746FFFFFFFED6FFFB4D8C5ED47FF37AFFFFFFFA6D5544634155557F),
-    .INIT_02(256'hFFFFEF606B54BFFFFFFF75FFF805BCC17A7FE77CFFFFFFFC555542D11955557F),
-    .INIT_03(256'hFFFFFF20CB53DFFFFFFFAFFFED3596C8E3FFF029FFFFFFFF1555020D1955557F),
-    .INIT_04(256'hFFFFFC88BB553FFFFFFFFFFFA41453030DFFF141FFFFFFFCA555441D1B05557F),
-    .INIT_05(256'hFFFFFFC989555FFFFFFFFFFFF5554050CFFFE151FFFFFFE15555461D0A65007F),
-    .INIT_06(256'hFFFFFF92095556FFFFFFFFFFD55555515FFFFD4BFFFFFFEED5550A089869F97F),
-    .INIT_07(256'hFFFFFF371D55549FFFFFFFF9555555515FFFED4FFFFFFFF155540A1A995BBFFF),
-    .INIT_08(256'hFFFFFFF11055542BFFFFFA55555555554FFFFCEFFFFFFFD154538182CB13FFFF),
-    .INIT_09(256'hFFFFFFED62D55503BFFFF345555555555FFFFFFFFFFFFEE55550F984A14A7FFF),
-    .INIT_0A(256'hFFFFFFE8C2D555512F5141555555555541FFFFFFFFFFFF455554C828E355BFFF),
-    .INIT_0B(256'hFFFFFFEFC6D555541551555555555555537FFFFFFFFFFB955544C92137307FFF),
-    .INIT_0C(256'hFFFFFFF832555555555555555555555551DFFFFFFFFFF93555463823EB8477FF),
-    .INIT_0D(256'hFFFFFFFEC755555555555555555455555477FFFFFFFFEE55555178A5401C4FFF),
-    .INIT_0E(256'hFFFFFFFE5E5555555555555555515555551DFFFFFFFFF8555529A9C354FE29FF),
-    .INIT_0F(256'hFFFFFFFEFB555555555555555546555555427FFFFFFF89555502663CD1DB97FF),
-    .INIT_10(256'hFFFFFFFE8CB55555555555555546155555509FFFFFFE255554419DEB556EE67F),
-    .INIT_11(256'hFFFFFFFEC6B55555555555555507155555547BFFFFEF955554DC07AD5547ECFF),
-    .INIT_12(256'hFFFFFFF722B555555555555555035555555571CEE86C555555761FA5555FFB7F),
-    .INIT_13(256'hFFFFFE21C7D555555555555555515555555544AEAF49555554BD2AD55505FD7F),
-    .INIT_14(256'hFFFFB06F72955555555555555555555555555415415555555434E2355540FEFF),
-    .INIT_15(256'hFFFFFA1EB0CD555555555555555428A550155555555555555512A273D555FFFF),
-    .INIT_16(256'hFFFFFFFF7A6D55555555555528513EBFBEB2555555555555554BFE9F5D501FFF),
-    .INIT_17(256'hFFFFFFFB89E5555555550A45AF4EE53BFACE355555555555553DFFFCF9057FFF),
-    .INIT_18(256'hFFFFFFF2AEB5555555043B4FC7BFFFFFFFFAAD55555555544C42FFFFB184CBFF),
-    .INIT_19(256'hFFFFFCB772915555544BF4BFFFFFFFFFFFFF895555555554AA377FFFFFB6EBFF),
-    .INIT_1A(256'hFFFB7B2DCE9F55555423FFFFFFFFFFFFFFFFF6D55555555546C9FFFFFFFEC1FF),
-    .INIT_1B(256'h557BCAA3BFC955555463FFFFFFFFFFFFFFFFE0B555555552E6129FFFFFFFFFFF),
-    .INIT_1C(256'h6056BFEEEECCD5555424E82ABE45145145BFE46D5555555358207FFFFFFFFFD5),
-    .INIT_1D(256'hAABFFFEFFE46D55554F4E55555555555504FB64B55555541B01ADFFFFFFFFF80),
-    .INIT_1E(256'hFFFFFFFFFF16155554B100000000000000153C145555554683373FFFFFFFFFAA),
-    .INIT_1F(256'hFFFFFFFFFF51B55554A0001400115502A1042016D5555555FEE50BFFFFFFFFFF),
+    .INIT_00(256'hFFFFFFE0C9854DFFFFFFFB51FFDCB144AD91BBEDF2FFFFFFF84555471B415555),
+    .INIT_01(256'hFFFFFFCCE89D4EFFFFFFFE5EFFF967247E54FFD9FAFFFFFFF8E55544C9415555),
+    .INIT_02(256'hFFFFFFEDC0E956BFFFFFFDD7FFF007B641F8FFCDF6FFFFFFF455554A51315555),
+    .INIT_03(256'hFFFFFFFD82695B7FFFFFFFAFFFE5971E62CBFFD0A3FFFFFFFD15550825315555),
+    .INIT_04(256'hFFFFFFF622B955BFFFFFFFFFFF8414590927FFD143FFFFFFF685554435390555),
+    .INIT_05(256'hFFFFFFFF6321557FFFFFFFFFFFD55540526FFFC153FFFFFFC155554C3528C500),
+    .INIT_06(256'hFFFFFFFF1821555EFFFFFFFFFF555555517FFFF56BFFFFFFEE5555282230E3F1),
+    .INIT_07(256'hFFFFFFFD9D3555563FFFFFFFF1555555517FFFE56FFFFFFFD15554283A317BBF),
+    .INIT_08(256'hFFFFFFFFD1105554ABFFFFF855555555556FFFF6EFFFFFFF51545B030A691BFF),
+    .INIT_09(256'hFFFFFFFFE5CA55550BBFFFD945555555557FFFFFFFFFFFFEC55552F3068168FF),
+    .INIT_0A(256'hFFFFFFFFE24A555551AD5141555555555543FFFFFFFFFFFD45555660A2C957BF),
+    .INIT_0B(256'hFFFFFFFFEF4E555554155155555555555559FFFFFFFFFFFB15554661819D90FF),
+    .INIT_0C(256'hFFFFFFFFF0985555555555555555555555537FFFFFFFFFF195554CB08BEB04DF),
+    .INIT_0D(256'hFFFFFFFFFE4D555555555555555554555554DFFFFFFFFFEC555551F28540346F),
+    .INIT_0E(256'hFFFFFFFFFC7C55555555555555555155555537FFFFFFFFF05555A3A34956FCA3),
+    .INIT_0F(256'hFFFFFFFFFEF955555555555555554C55555548FFFFFFFF21555508CCB6537B1F),
+    .INIT_10(256'hFFFFFFFFFE2695555555555555554C155555523FFFFFFC8555544337E955EECC),
+    .INIT_11(256'hFFFFFFFFFE4E95555555555555550D15555554FBFFFFEF155556740FA5554FE6),
+    .INIT_12(256'hFFFFFFFFDD8A95555555555555550955555555D36EE0E4555555DC3F85557FF9),
+    .INIT_13(256'hFFFFFFFC834F5555555555555555515555555546AEAD61555556B5AA555507F5),
+    .INIT_14(256'hFFFFFF90EDDA155555555555555555555555555415415555555496C8955542FE),
+    .INIT_15(256'hFFFFFFF83E92655555555555555554A2855015555555555555551A88DB5557FF),
+    .INIT_16(256'hFFFFFFFFFDF8E5555555555555A051BEBFBE98555555555555556BFE3D75503F),
+    .INIT_17(256'hFFFFFFFFFB23C5555555552847AD6EC5BBFA6C95555555555555B7FFF6F105FF),
+    .INIT_18(256'hFFFFFFFFDAAE9555555504B96F4FBFFFFFFFFAA55555555554644AFFFF93066B),
+    .INIT_19(256'hFFFFFFF69DDA115555546BD6BFFFFFFFFFFFFF215555555556A89DFFFFFF9EEB),
+    .INIT_1A(256'hFFFFF9F9A76E3D5555548BFFFFFFFFFFFFFFFFDE55555555554E63FFFFFFFE43),
+    .INIT_1B(256'h5555FB6A8BBF61555554CBFFFFFFFFFFFFFFFFC2955555555ACC1A3FFFFFFFFF),
+    .INIT_1C(256'h00C05EBFEEEE6655555486E0AABC45145147BFC4E5555555597080FFFFFFFFFF),
+    .INIT_1D(256'hAAAABFFFEFFC4E555556D6C55555555555506F9C6955555543903A7FFFFFFFFF),
+    .INIT_1E(256'hFFFFFFFFFFFD1C155556910000000000000015B4145555554E099DBFFFFFFFFF),
+    .INIT_1F(256'hFFFFFFFFFFFD539555568000140011550A8104801E55555557FEC52BFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4785,10 +4672,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_016384_001  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5015,\U4/Addr [14:13]}),
-    .dia({open_n5019,open_n5020,open_n5021,open_n5022,open_n5023,open_n5024,open_n5025,1'b0,open_n5026}),
+    .csa({open_n4842,\U4/Addr [14:13]}),
+    .dia({open_n4846,open_n4847,open_n4848,open_n4849,open_n4850,open_n4851,open_n4852,1'b0,open_n4853}),
     .rsta(nRST_pad),
-    .doa({open_n5041,open_n5042,open_n5043,open_n5044,open_n5045,open_n5046,open_n5047,open_n5048,\U4/ROM0/inst_doa_i2_001 }));
+    .doa({open_n4868,open_n4869,open_n4870,open_n4871,open_n4872,open_n4873,open_n4874,open_n4875,\U4/ROM0/inst_doa_i2_001 }));
   // address_offset=16384;data_offset=2;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0016"),
@@ -4808,38 +4695,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFF39D8ABDFFFFFFFB2AFFECD2ABD6CE0FF8FFFFFFFFFF1AAAAB61EBFFFFFF),
-    .INIT_01(256'hFFFFED959ABD7FFFFFFB2CFFEDE673E57D3FFCFBFFFFFFFA1AAAAAD0EBFFFFFF),
-    .INIT_02(256'hFFFFE99FD6AA7FFFFFFFDFFFEFEE67B781FFFCFFFFFFFFFA2AAAB81CB3FFFFFF),
-    .INIT_03(256'hFFFFF9DF56AE3FFFFFFFFFFFEBCA79B259FFEABBFFFFFFF86AAAB970B3FFFFFF),
-    .INIT_04(256'hFFFFFB7646AA8FFFFFFFFFFFFAEBA8F9F3FFEAABFFFFFFF96AAAFDE0B3AFFFFF),
-    .INIT_05(256'hFFFFFA7726AAA3FFFFFFFFFFEAEABAAF73FFFABFFFFFFFF8AAAAEDE0B39FAAFF),
-    .INIT_06(256'hFFFFFF6D66AAA8FFFFFFFFFFAAAAAAAFBFFFFEB3FFFFFFE1AAAAB1E5A28352FF),
-    .INIT_07(256'hFFFFFF9862AAAB7FFFFFFFFAAAAAAAAAAFFFFEF7FFFFFFB6AAAAA5F1A3E7EAFF),
-    .INIT_08(256'hFFFFFF9E3BAAABD3FFFFFFFAAAAAAAAAAFFFFF0FFFFFFFFEABAF3675F3ADFFFF),
-    .INIT_09(256'hFFFFFFE20DAAAAE93FFFADBAAAAAAAAABFFFFEBFFFFFFF9AAAAF1673CBEDFFFF),
-    .INIT_0A(256'hFFFFFFF30DAAAAAF81AEEEAAAAAAAAAAAFFFFFFFFFFFFEFAAAAB57C79BFE7FFF),
-    .INIT_0B(256'hFFFFFFF9E9AAAAABEFFAAAAAAAAAAAAAA9FFFFFFFFFFFE6AAABE16DE9DBADFFF),
-    .INIT_0C(256'hFFFFFFFFE9AAAAAAAAAAAAAAAAAAAAAAAE7FFFFFFFFFFBEAAAB907DE092E9FFF),
-    .INIT_0D(256'hFFFFFFFF38AAAAAAAAAAAAAAAAAAAAAAAB9FFFFFFFFFE9AAAAAD474B6BF6B7FF),
-    .INIT_0E(256'hFFFFFFFFF8AAAAAAAAAAAAAAAAAFAAAAAAE7FFFFFFFFE3AAAAF51678FF6DB7FF),
-    .INIT_0F(256'hFFFFFFFF9DAAAAAAAAAAAAAAAAB9AAAAAAB9FFFFFFFFB6AAAAF119E6FB3F79FF),
-    .INIT_10(256'hFFFFFFFFD36AAAAAAAAAAAAAAAF9EAAAAAAE3FFFFFFE9AAAABE46793FF9F9DFF),
-    .INIT_11(256'hFFFFFFFB716AAAAAAAAAAAAAAAF9EAAAAAAB83FFFFE86AAAABC7EE4FFFAFA37F),
-    .INIT_12(256'hFFFFFFEDB86AAAAAAAAAAAAAAAB9AAAAAAAAFC2BAE87AAAAABD9B82FFFF3F9FF),
-    .INIT_13(256'hFFFFFFCA4A2AAAAAAAAAAAAAAABEAAAAAAAABB0401BEAAAAAA46E0FFFFBBFB7F),
-    .INIT_14(256'hFFFFED018B2AAAAAAAAAAAAAAAAAAAAAAAAAABEABEAAAAAAAADBD5BFFFEAFF7F),
-    .INIT_15(256'hFFFFB4EF9A7AAAAAAAAAAAAAAAABFFFAAFEAAAAAAAAAAAAAAAAE590BFFFF7FFF),
-    .INIT_16(256'hFFFFFFFE9A9AAAAAAAAAAAAAFFABC000404FAAAAAAAAAAAAAAB97E20FFFABFFF),
-    .INIT_17(256'hFFFFFFFE6A1AAAAAAAAAFFAE05414BAFFEB0EAAAAAAAAAAAAAE5FEBF17AF9FFF),
-    .INIT_18(256'hFFFFFFA935CAAAAAAAFAC1413EFFFFFFFFFB5AAAAAAAAAABA3B1FFFFFB3EF7FF),
-    .INIT_19(256'hFFFFFF5C8FBEAAAAABE04EFFFFFFFFFFFFFFA6AAAAAAAAAB978CFFFFFFAD45FF),
-    .INIT_1A(256'hFFFFC5EC7BE6AAAAAB8BFFFFFFFFFFFFFFFFB9AAAAAAAAAADF6E7FFFFFFEBFFF),
-    .INIT_1B(256'hAAC02FE8EAE6AAAAAB9BFFFFFFFFFFFFFFFFBB6AAAAAAAAF1CAB7FFFFFFFFFFF),
-    .INIT_1C(256'hCABBEAABBAF7AAAAABCFEED554BFBFAABEFFBF1AAAAAAAAF56A4DFFFFFFFFFAA),
-    .INIT_1D(256'hFFEAAABAAAF9AAAAAB851000000000000553B916AAAAAABA3AB44FFFFFFFFFAA),
-    .INIT_1E(256'hAAAAAAAAABF8EAAAAB845555555555555545B143AAAAAAB828B997FFFFFFFFFF),
-    .INIT_1F(256'hAAAAAAAAABFC6AAAAB9555540011550001515541AAAAAABF481B27FFFFFFFFAA),
+    .INIT_00(256'hFFFFFFDB372AB7FFFFFFF9AAFFE65AAB5E6C2FF2FFFFFFFFFD3AAAA9C3EBFFFF),
+    .INIT_01(256'hFFFFFFE7173AB5FFFFFFF9A6FFE7CCDBC5F5BFF6FBFFFFFFF83AAAAA52EBFFFF),
+    .INIT_02(256'hFFFFFFE33F5EA8FFFFFFFF7FFFEFECCF9F03FFF6FFFFFFFFF8AAAAB0369BFFFF),
+    .INIT_03(256'hFFFFFFF37D5EACBFFFFFFFFFFFEB68F39873FFEABBFFFFFFF0EAAAB1D29BFFFF),
+    .INIT_04(256'hFFFFFFF9DC4EAA2FFFFFFFFFFFFAEBA2F3DBFFEAABFFFFFFF1EAAAF7C29BAFFF),
+    .INIT_05(256'hFFFFFFF8DD8EAA8BFFFFFFFFFFEAEABAADDBFFFABFFFFFFFF2AAAAE7C29B3FAA),
+    .INIT_06(256'hFFFFFFFDE5CEAAA2FFFFFFFFFFAAAAAAAFBFFFFE9BFFFFFFC3AAAA93C78A095A),
+    .INIT_07(256'hFFFFFFFF30CAAAA9FFFFFFFFFAAAAAAAAAAFFFFEDFFFFFFF9EAAAA87D38BCFEA),
+    .INIT_08(256'hFFFFFFFF3CBBAAAB5BFFFFFFFAAAAAAAAAAFFFFD2FFFFFFFFEABAD9CD7DBA7FF),
+    .INIT_09(256'hFFFFFFFFC827AAAAE1BFFFA7BAAAAAAAAABFFFFEBFFFFFFF3AAAAD1CDB6BE7FF),
+    .INIT_0A(256'hFFFFFFFFD927AAAAAF03AEEEAAAAAAAAAAAFFFFFFFFFFFFEFAAAA95F4F3BFCFF),
+    .INIT_0B(256'hFFFFFFFFF3E3AAAAABEFFAAAAAAAAAAAAAA3FFFFFFFFFFFCEAAABC1E7E37BA7F),
+    .INIT_0C(256'hFFFFFFFFFFE3AAAAAAAAAAAAAAAAAAAAAAACFFFFFFFFFFFBEAAAB10F7C21AE3F),
+    .INIT_0D(256'hFFFFFFFFFDB2AAAAAAAAAAAAAAAAAAAAAAAB3FFFFFFFFFE3AAAAA54D69EBDE9F),
+    .INIT_0E(256'hFFFFFFFFFFF2AAAAAAAAAAAAAAAAAFAAAAAACFFFFFFFFFCBAAAAD51CF2FDE79F),
+    .INIT_0F(256'hFFFFFFFFFF37AAAAAAAAAAAAAAAAB3AAAAAAB3FFFFFFFF9EAAAAD133CEF9BDF3),
+    .INIT_10(256'hFFFFFFFFFF59EAAAAAAAAAAAAAAAF3EAAAAAACBFFFFFFE3AAAABC4CF1BFF3F37),
+    .INIT_11(256'hFFFFFFFFF9D1EAAAAAAAAAAAAAAAF3EAAAAAAB0BFFFFE0EAAAAB4FEC6FFFAF89),
+    .INIT_12(256'hFFFFFFFFE7B0EAAAAAAAAAAAAAAAB3AAAAAAAAF4ABAE0FAAAAAB73B0AFFFDBF3),
+    .INIT_13(256'hFFFFFFFF6868AAAAAAAAAAAAAAAABEAAAAAAAAB90403BEAAAAA84EC2FFFFBBF9),
+    .INIT_14(256'hFFFFFFE50329AAAAAAAAAAAAAAAAAAAAAAAAAAABEABEAAAAAAAA7B57BFFFEAFD),
+    .INIT_15(256'hFFFFFF96EF38FAAAAAAAAAAAAAAAABFFFAAFEAAAAAAAAAAAAAAAAC712BFFFDFF),
+    .INIT_16(256'hFFFFFFFFFE3A3AAAAAAAAAAAAAFFAB4000406FAAAAAAAAAAAAAAB1FC82FFFABF),
+    .INIT_17(256'hFFFFFFFFFCE83AAAAAAAAAFFAC05416BAFFE92EAAAAAAAAAAAAAC7FEBD1FAF3F),
+    .INIT_18(256'hFFFFFFFFA1976AAAAAAAFA4141BEFFFFFFFFF97AAAAAAAAAAB8B93FFFFF9BEDF),
+    .INIT_19(256'hFFFFFFFD762FBEAAAAABC06EFFFFFFFFFFFFFF8EAAAAAAAAAB1F26FFFFFFA547),
+    .INIT_1A(256'hFFFFFF47E4FBCEAAAAAB2BFFFFFFFFFFFFFFFFB3AAAAAAAAAA7DECFFFFFFFEBF),
+    .INIT_1B(256'hAAAA40AFE2EACEAAAAAB3BFFFFFFFFFFFFFFFFB9EAAAAAAAAD36A9FFFFFFFFFF),
+    .INIT_1C(256'hAA6ABBEAABBADFAAAAAB6FEE5556BFBFAABEFFBD3AAAAAAAAD5E867FFFFFFFFF),
+    .INIT_1D(256'hFFFFEAAABAAAF3AAAAAB05100000000000055BB11EAAAAAAB8BA946FFFFFFFFF),
+    .INIT_1E(256'hAAAAAAAAAAABF2EAAAAB045555555555555547914BAAAAAAB0A2B31FFFFFFFFF),
+    .INIT_1F(256'hAAAAAAAAAAABF4EAAAAB1555540011550001515543AAAAAABD60398FFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4856,10 +4743,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_016384_002  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5074,\U4/Addr [14:13]}),
-    .dia({open_n5078,open_n5079,open_n5080,open_n5081,open_n5082,open_n5083,open_n5084,1'b0,open_n5085}),
+    .csa({open_n4901,\U4/Addr [14:13]}),
+    .dia({open_n4905,open_n4906,open_n4907,open_n4908,open_n4909,open_n4910,open_n4911,1'b0,open_n4912}),
     .rsta(nRST_pad),
-    .doa({open_n5100,open_n5101,open_n5102,open_n5103,open_n5104,open_n5105,open_n5106,open_n5107,\U4/ROM0/inst_doa_i2_002 }));
+    .doa({open_n4927,open_n4928,open_n4929,open_n4930,open_n4931,open_n4932,open_n4933,open_n4934,\U4/ROM0/inst_doa_i2_002 }));
   // address_offset=16384;data_offset=3;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0017"),
@@ -4879,38 +4766,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFFBD5C0207FFFFFFD80FFE2C222724AF7FE79FFFFFFFC22AA098C6E00007F),
-    .INIT_01(256'hFFFFE75570A57FFFFFFD077FFFDFBA5D325FEC5F7FFFFFFC62AA2026E600007F),
-    .INIT_02(256'hFFFFF5DDB2AB7FFFFFFE53FFF365BEA2FE7FEC79FFFFFFFA02AA0BBA1CAAAAFF),
-    .INIT_03(256'hFFFFF575B0A93FFFFFFFDFFFF141B43BFFFFE05B7FFFFFFCAAAA0ED2368AAAFF),
-    .INIT_04(256'hFFFFFBD7D8AA5FFFFFFFFFFFE263869F7BFFE08BFFFFFFFB0AAA43D896F0807F),
-    .INIT_05(256'hFFFFFF749A8A97FFFFFFFFFF82EAA027DFFFE891FFFFFFEAA2AA41D21CCA7FFF),
-    .INIT_06(256'hFFFFFFFCB2AAA77FFFFFFFFE0A8A2AAF27FFEC3FFFFFFFFE2AAA3FF09FF378FF),
-    .INIT_07(256'hFFFFFED61AAAA39FFFFFFFC82AAAAAA897FFFE57FFFFFFC0AAA83F64BE3D757F),
-    .INIT_08(256'hFFFFFFDE9A2AAAF5FFFFFE72AAAAAAAA9FFFFBDFFFFFFFD82A29856CDE6DFFFF),
-    .INIT_09(256'hFFFFFFB8642AA8A557FFED2AAAAAAAAA875FFD5FFFFFFFE2AA29CD40461CFFFF),
-    .INIT_0A(256'hFFFFFFFBA42AA8ABF58AE22AAAAAAAAAABDFFFFFFFFFFEC2A2A3BD72E401DFFF),
-    .INIT_0B(256'hFFFFFFF6E62AAAAA0FD802AAAAAAAAAAAE7FFFFFFFFFFF0AA2A5B572CEE65FFF),
-    .INIT_0C(256'hFFFFFFF924AAA82AAA0AAA2AAAAAAAAAA11FFFFFFFFFF98AAAA6D7797FB9EFFF),
-    .INIT_0D(256'hFFFFFFFF0CAAAAAAAAAAAAAAAAA8AAAAAAC75FFFFFFFF6AAAA8ADF4218B1BFFF),
-    .INIT_0E(256'hFFFFFFFEEEAAAAAAAAAAAAAAAAA5AAAAAA9BDFFFFFFFF8AAAA915D46817479FF),
-    .INIT_0F(256'hFFFFFFFF6F8AAAAAAAAAAAAAAA9F0AAAAAACFFFFFFFFB2AAAA8C7D1DAFBD877F),
-    .INIT_10(256'hFFFFFFFFB32AAAAAAAAAAAAAAADD0AAAAAA19FFFFFFEEAAAAA6B567EAA77EEFF),
-    .INIT_11(256'hFFFFFFFD450AAAAAAAAAAAAAAAFD0AAAAAAA7FFFFFFDAAAAAA954158022FFBFF),
-    .INIT_12(256'hFFFFFFCC650AAAAAAAAAAAAAAABD8AAAAAAA993F7ADCAAAAA99D0D720095E57F),
-    .INIT_13(256'hFFFFFEE38502AAAAAAAAAAAAAAB62AAAAAAAA159F580AAAAA974150002C1F8FF),
-    .INIT_14(256'hFFFFEA56EFA2AAAAAAAAAAAAA808AAAAAAAAAA8A200AAAAAAA782442AA39FFFF),
-    .INIT_15(256'hFFFFFC1FC462AAAAAAAAAAAAAAA8000A220AAAAAAAAAAAAAAA81EE64AA035F7F),
-    .INIT_16(256'hFFFFFFFE4E40AAAAAAAAAAA00221DFFFF76A8AAAAA82AAAAAAA7791428069FFF),
-    .INIT_17(256'hFFFFFFFD1368AAAAAAAA8027D89D48FF7D3C0AAAAAAAAAAAAA13FFDB78F2CFFF),
-    .INIT_18(256'hFFFFFFE5FD62AAAAAA2AD6158957FFFFFFFDEAAAAAAAAAAA98877FFFEB8935FF),
-    .INIT_19(256'hFFFFF3466592AAAAAAD5C97FFFFFFFFFFFFF9A2AAAAAAAAAF84CFFFFFF4D5DFF),
-    .INIT_1A(256'hFFFE56539730AAAAAACFFFFFFFFFFFFFFFFFDEAAAAAAAAAA03515FFFFFFF017F),
-    .INIT_1B(256'hA85F9F675F90AAAAA2EDFFFFFFFFFFFFFFFFE38AAAAAAAA96CEF3FFFFFFFFFFF),
-    .INIT_1C(256'h60AD5FFFFF962AAAA0E97AD7D608C8200B7FE8C2AAAAAAA899FAFFFFFFFFFF82),
-    .INIT_1D(256'h555FFFF7FFACAAAAAA4B6802AAA80002A817C418AAAAAAA34FFD37FFFFFFFF80),
-    .INIT_1E(256'hFFFFFFFFFE2CAAAAA2E0880AAAAAAAA00A08DA20AAAAAAAFF2C4DFFFFFFFFFD5),
-    .INIT_1F(256'hFFFFFFFFFC2B8AAAA2C02883F5EE8A5FF6A8E2A42AAAAABD576897FFFFFFFFFF),
+    .INIT_00(256'hFFFFFFFB574080FFFFFFF702FFCA4888D86ADFFCF3FFFFFFF48AA82324EC0000),
+    .INIT_01(256'hFFFFFFCD55D285FFFFFFF50DFFFF7FB875987FE47DFFFFFFF4CAA8808ECC0000),
+    .INIT_02(256'hFFFFFFD7779AA9FFFFFFFC5BFFD9C7BE8AFCFFE4F3FFFFFFF80AA82BB836AAAA),
+    .INIT_03(256'hFFFFFFD5D792A1BFFFFFFF7FFFD14394BBFFFFC079FFFFFFF6AAA82E589E2AAA),
+    .INIT_04(256'hFFFFFFFB5F72A87FFFFFFFFFFFC8CB0E3DFBFFC22BFFFFFFF92AA84B721ED200),
+    .INIT_05(256'hFFFFFFFDD63A2A1FFFFFFFFFFF0AEA808F7FFFE213FFFFFFEA8AA843583668FF),
+    .INIT_06(256'hFFFFFFFFF69AAA8DFFFFFFFFFC2A28AAAD8FFFE4BFFFFFFFFCAAA8BFD23FD9F2),
+    .INIT_07(256'hFFFFFFFE5C3AAA8B3FFFFFFF60AAAAAAA21FFFFC5FFFFFFF42AAA0BDC6BCB5D5),
+    .INIT_08(256'hFFFFFFFF7E38AAAAD7FFFFFCDAAAAAAAAA3FFFFB7FFFFFFF70A8A305E67CE7FF),
+    .INIT_09(256'hFFFFFFFFB0C4AAA2855FFFE5AAAAAAAAAA0D7FF57FFFFFFFCAA8A365404C36FF),
+    .INIT_0A(256'hFFFFFFFFFB84AAA2ABD72AC8AAAAAAAAAAAB7FFFFFFFFFFE4A8A8BB5DAC4037F),
+    .INIT_0B(256'hFFFFFFFFDECCAAAAA82F700AAAAAAAAAAAACFFFFFFFFFFFD2A8A8795DA6ECC7F),
+    .INIT_0C(256'hFFFFFFFFF186AAA0AAA82AA8AAAAAAAAAA813FFFFFFFFFF32AAA8E5DF1FFB3EF),
+    .INIT_0D(256'hFFFFFFFFFD26AAAAAAAAAAAAAAAAA2AAAAAA4D7FFFFFFFDEAAAA2A7D483293BF),
+    .INIT_0E(256'hFFFFFFFFFEEEAAAAAAAAAAAAAAAA87AAAAAA3B7FFFFFFFF2AAAA11754E01D4F3),
+    .INIT_0F(256'hFFFFFFFFFDEF2AAAAAAAAAAAAAAA3D2AAAAAA6FFFFFFFF9AAAAA24F537AFB70D),
+    .INIT_10(256'hFFFFFFFFFF99AAAAAAAAAAAAAAAA752AAAAA833FFFFFFEEAAAA8E95CFEA8DFEE),
+    .INIT_11(256'hFFFFFFFFF5452AAAAAAAAAAAAAAAF52AAAAAA8FFFFFFF7AAAAAA15417008AFFB),
+    .INIT_12(256'hFFFFFFFF64C52AAAAAAAAAAAAAAAB72AAAAAAA31BDFA76AAAAA33525D80217C5),
+    .INIT_13(256'hFFFFFFFECB050AAAAAAAAAAAAAAA9CAAAAAAAA8173D702AAAAA1D415000A43F2),
+    .INIT_14(256'hFFFFFFE85EEF8AAAAAAAAAAAAAA022AAAAAAAAAA28802AAAAAA8F0844AA8B3FF),
+    .INIT_15(256'hFFFFFFF43F44CAAAAAAAAAAAAAAAA00028882AAAAAAAAAAAAAAA03ECC6A8097D),
+    .INIT_16(256'hFFFFFFFFFC6C42AAAAAAAAAA8008837FFFDDEA2AAAAA0AAAAAAA8DF114A00E3F),
+    .INIT_17(256'hFFFFFFFFF519E2AAAAAAAA008F723562FDF5B42AAAAAAAAAAAA81BFF79F2DA6F),
+    .INIT_18(256'hFFFFFFFFC7F5CAAAAAA8AA5C17215FFFFFFFF7EAAAAAAAAAAA320DFFFFEB2197),
+    .INIT_19(256'hFFFFFFD94CC71AAAAAAA5761FFFFFFFFFFFFFF38AAAAAAAAAAF066FFFFFD6577),
+    .INIT_1A(256'hFFFFFC5C5B1D92AAAAAA6FFFFFFFFFFFFFFFFF7EAAAAAAAAA809517FFFFFFD01),
+    .INIT_1B(256'h0AA07F3DCD7F12AAAA8AE7FFFFFFFFFFFFFFFFCB2AAAAAAAA1E6EDBFFFFFFFFF),
+    .INIT_1C(256'h00C2A57FFFFF1CAAAA82E1FA5F5C22608029FFE24AAAAAAAA233FAFFFFFFFFFF),
+    .INIT_1D(256'h55557FFFDFFFA6AAAAA869E00AAAA0000AA01F4432AAAAAA896FF59FFFFFFFFF),
+    .INIT_1E(256'hFFFFFFFFFFFCA6AAAA8AC2202AAAAAAA8028227882AAAAAAAFDA467FFFFFFFFF),
+    .INIT_1F(256'hFFFFFFFFFFF4AB2AAA8A40A20BD7EE287FDEA2CA84AAAAAAB55DE21FFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4927,10 +4814,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_016384_003  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5133,\U4/Addr [14:13]}),
-    .dia({open_n5137,open_n5138,open_n5139,open_n5140,open_n5141,open_n5142,open_n5143,1'b0,open_n5144}),
+    .csa({open_n4960,\U4/Addr [14:13]}),
+    .dia({open_n4964,open_n4965,open_n4966,open_n4967,open_n4968,open_n4969,open_n4970,1'b0,open_n4971}),
     .rsta(nRST_pad),
-    .doa({open_n5159,open_n5160,open_n5161,open_n5162,open_n5163,open_n5164,open_n5165,open_n5166,\U4/ROM0/inst_doa_i2_003 }));
+    .doa({open_n4986,open_n4987,open_n4988,open_n4989,open_n4990,open_n4991,open_n4992,open_n4993,\U4/ROM0/inst_doa_i2_003 }));
   // address_offset=16384;data_offset=4;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0018"),
@@ -4950,38 +4837,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFE4001DF3FFFFFFFE7FFFF3ADF72D3C9DFBDD7FFFFFFE3FFF7461B7FFFFFF),
-    .INIT_01(256'hFFFFF08005F2FFFFFFFE797FF82A6D0AE27FF1FF7FFFFFFE17FF5F8397FFFFFF),
-    .INIT_02(256'hFFFFF28825FCDFFFFFFF2FFFFE90E1E5AB7FF15F7FFFFFFE77FF5E2BEF55557F),
-    .INIT_03(256'hFFFFFAA085FCFFFFFFFFFFFFF61EE14EABFFF7D7FFFFFFFA7FFF7089EF75557F),
-    .INIT_04(256'hFFFFFE008DFF1FFFFFFFFFFFFF9E794A8DFFF77FFFFFFFF25FFF1081CF7F7FFF),
-    .INIT_05(256'hFFFFFE80E7DFCFFFFFFFFFFFDFBFF77807FFF76FFFFFFFF377FFBA0945BDFFFF),
-    .INIT_06(256'hFFFFFEA2CDFFF3FFFFFFFFFF7FFFFFF8FFFFF3E7FFFFFFE37FFF40034F84AD7F),
-    .INIT_07(256'hFFFFFF8867FFF4FFFFFFFFF7FFFFFFFDFFFFFB2DFFFFFFE7FFFD40096FCDDFFF),
-    .INIT_08(256'hFFFFFF8A6D7FFF87FFFFFD85FFFFFFFFF7FFFE1FFFFFFF8D7FFC400307F1FFFF),
-    .INIT_09(256'hFFFFFFCCBB7FFDFA5FFFF85FFFFFFFFFF7FFFF7FFFFFFF1FFFFE880D17F97FFF),
-    .INIT_0A(256'hFFFFFFEEB97FFDFE0257BF7FFFFFFFFFF7FFFFFFFFFFFF17FFF6202F95FEDFFF),
-    .INIT_0B(256'hFFFFFFF39B7FFFFF5205D7FFFFFFFFFFF17FFFFFFFFFFCFFFFF22827B17F3FFF),
-    .INIT_0C(256'hFFFFFFFEDBFFFFFFFF5FFFFFFFFFFFFFF6DFFFFFFFFFFEDFFFF02024B8DFBFFF),
-    .INIT_0D(256'hFFFFFFFE7B7FFFFFFFFFFFFFFFFF7FFFFFB7FFFFFFFFF9FFFFD220167D4FE7FF),
-    .INIT_0E(256'hFFFFFFFFB3FFFFFFFFFFFFFFFFFAFFFFFFE7FFFFFFFFE7FFFFCA083BFE7B47FF),
-    .INIT_0F(256'hFFFFFFFF985FFFFFFFFFFFFFFFE2DFFFFFF97FFFFFFFC7FFFFE2A0C1D6FC5BFF),
-    .INIT_10(256'hFFFFFFFF04DFFFFFFFFFFFFFFFA25FFFFFF6FFFFFFFF9FFFFF2A032755B7337F),
-    .INIT_11(256'hFFFFFFFE085FFFFFFFFFFFFFFF82DFFFFFFF8DFFFFF2FFFFFFA8149FFDD7E67F),
-    .INIT_12(256'hFFFFFFFBD05FFFFFFFFFFFFFFFC2DFFFFFFFC8777521FFFFFC20F2FDFF6DF07F),
-    .INIT_13(256'hFFFFFF14B477FFFFFFFFFFFFFFE1FFFFFFFFF68AA2D5FFFFFC81417FFD77FEFF),
-    .INIT_14(256'hFFFFD823B677FFFFFFFFFFFFFFFFFFFFFFFFFFDFF55FFFFFFFA52B5D55DD7E7F),
-    .INIT_15(256'hFFFFE95F1F37FFFFFFFFFFFFFFFD555FDF5FFFFFFFFFFFFFFF5490BDD5FCFFFF),
-    .INIT_16(256'hFFFFFFFF9F37FFFFFFFFFFF557D62200289FFFFFFFFFFFFFFFF0FCEBFFFF5FFF),
-    .INIT_17(256'hFFFFFFFC569FFFFFFFFFD5DA2A0235DDFD63DFFFFFFFFFFFFFC3FF5EADFD9FFF),
-    .INIT_18(256'hFFFFFFF8C337FFFFFFFD2A08F5DFFFFFFFFEBFFFFFFFFFFFCDE97FFFDCDF65FF),
-    .INIT_19(256'hFFFFFE9BBD67FFFFFF801FDFFFFFFFFFFFFFE77FFFFFFFFF85BB7FFFFFDA21FF),
-    .INIT_1A(256'hFFFDA9DAF74DFFFFFFBDFFFFFFFFFFFFFFFFC1FFFFFFFFFF1E14FFFFFFFF57FF),
-    .INIT_1B(256'hFFA8F551DFEFFFFFF7B5FFFFFFFFFFFFFFFFFCDFFFFFFFFC19765FFFFFFFFFFF),
-    .INIT_1C(256'h357F5FF7FF6B7FFFF59775282B77DF7FD7DFF6B7FFFFFFFC0DE93FFFFFFFFFFF),
-    .INIT_1D(256'h555FFFF7FFD3FFFFFF28A002AAA80002A827F805FFFFFFF45FE8BFFFFFFFFFD5),
-    .INIT_1E(256'hFFFFFFFFFFD97FFFFF8202A00000000AA00BE88DFFFFFFFA7F5B8FFFFFFFFFD5),
-    .INIT_1F(256'hFFFFFFFFFFD05FFFFF828222A0AAAA00022008037FFFFFE23236C5FFFFFFFFFF),
+    .INIT_00(256'hFFFFFFC40037DBFFFFFFFCFFFFDBA7DDA5B637FB75FFFFFFFCBFFDD4C39FFFFF),
+    .INIT_01(256'hFFFFFFD20007DAFFFFFFFCF1FFF0A8E52AC8FFD3FDFFFFFFFC1FFD7F0B1FFFFF),
+    .INIT_02(256'hFFFFFFDA2087F67FFFFFFDAFFFFE12C3C7A9FFD17DFFFFFFFCDFFD7CABED5555),
+    .INIT_03(256'hFFFFFFFA8207F6FFFFFFFFFFFFDC3EC16EABFFDF5FFFFFFFF8FFFDD223EDD555),
+    .INIT_04(256'hFFFFFFFC0227FD3FFFFFFFFFFFFF3CF16A27FFDDFFFFFFFFD87FFD12036DFDFF),
+    .INIT_05(256'hFFFFFFFE02CF7F6FFFFFFFFFFF7FBFDDF00FFFDDEFFFFFFFD9DFFFB82147B7FF),
+    .INIT_06(256'hFFFFFFFE8A67FFDBFFFFFFFFFDFFFFFFF2FFFFDBCFFFFFFFC9FFFD40096F06A5),
+    .INIT_07(256'hFFFFFFFF20CFFFD6FFFFFFFFDFFFFFFFF7FFFFF9A7FFFFFFCFFFF54021EF677F),
+    .INIT_08(256'hFFFFFFFF28E5FFFF0FFFFFF707FFFFFFFFDFFFFC3FFFFFFF25FFF440090FD3FF),
+    .INIT_09(256'hFFFFFFFF66B9FFF7F87FFFF07FFFFFFFFFDFFFFDFFFFFFFD3FFFFE20251FF1FF),
+    .INIT_0A(256'hFFFFFFFFEEB1FFF7FC085FBDFFFFFFFFFFDFFFFFFFFFFFFD1FFFDC80AF17FE7F),
+    .INIT_0B(256'hFFFFFFFFDB39FFFFFD58075FFFFFFFFFFFD1FFFFFFFFFFF6FFFFD8A08F91FDBF),
+    .INIT_0C(256'hFFFFFFFFFE7BFFFFFFFD7FFFFFFFFFFFFFDE7FFFFFFFFFFE7FFFD08086B27FBF),
+    .INIT_0D(256'hFFFFFFFFFCF9FFFFFFFFFFFFFFFFFDFFFFFF9FFFFFFFFFF3FFFF58801CF56FCF),
+    .INIT_0E(256'hFFFFFFFFFF9BFFFFFFFFFFFFFFFFFAFFFFFFCFFFFFFFFFCFFFFF6820BBFCF94F),
+    .INIT_0F(256'hFFFFFFFFFF307FFFFFFFFFFFFFFFCA7FFFFFF1FFFFFFFF4FFFFFCA82435EF47B),
+    .INIT_10(256'hFFFFFFFFFD067FFFFFFFFFFFFFFF887FFFFFDEFFFFFFFF3FFFFDA8098D579D99),
+    .INIT_11(256'hFFFFFFFFFC207FFFFFFFFFFFFFFF0A7FFFFFFF27FFFFDAFFFFFFA0163FF75FCC),
+    .INIT_12(256'hFFFFFFFFFB507FFFFFFFFFFFFFFF4A7FFFFFFF60DDD583FFFFF482DAF7FDE7D0),
+    .INIT_13(256'hFFFFFFFD1694DFFFFFFFFFFFFFFFC3FFFFFFFFDE2A8A57FFFFF60141FFF5DFFE),
+    .INIT_14(256'hFFFFFF708B9CDFFFFFFFFFFFFFFFFFFFFFFFFFFF7FD57FFFFFFF85A9755775FC),
+    .INIT_15(256'hFFFFFFE17D3D9FFFFFFFFFFFFFFFF5557F7D7FFFFFFFFFFFFFFD5612B757F6FF),
+    .INIT_16(256'hFFFFFFFFFF3D9FFFFFFFFFFFD55F5C8800A23FFFFFFFFFFFFFFFD2F6EBFFFD7F),
+    .INIT_17(256'hFFFFFFFFF45E3FFFFFFFFF5778A8089777F5CB7FFFFFFFFFFFFF4BFD7EA7F73F),
+    .INIT_18(256'hFFFFFFFFF2499FFFFFFFF5A822D77FFFFFFFFEBFFFFFFFFFFF67E1FFFF767DC7),
+    .INIT_19(256'hFFFFFFFE3BB5CFFFFFFF003F7FFFFFFFFFFFFFCDFFFFFFFFFF07B9FFFFFF7883),
+    .INIT_1A(256'hFFFFF7A37ADD67FFFFFFB7FFFFFFFFFFFFFFFF43FFFFFFFFFD3C16FFFFFFFD5F),
+    .INIT_1B(256'hFFFFA2D5537FEFFFFFDF97FFFFFFFFFFFFFFFFF67FFFFFFFF431DC7FFFFFFFFF),
+    .INIT_1C(256'h5595FD7FDFFDE9FFFFD71DD5A0A9DF7DFF5F7FDE9FFFFFFFF427E1BFFFFFFFFF),
+    .INIT_1D(256'h55557FFFDFFF5BFFFFFDA2800AAAA0000AA08FF007FFFFFFD47FE2BFFFFFFFFF),
+    .INIT_1E(256'hFFFFFFFFFFFF71FFFFFF080A800000002A802BE227FFFFFFF8FD7B2FFFFFFFFF),
+    .INIT_1F(256'hFFFFFFFFFFFF507FFFFF0A088A82AAA80008802009FFFFFFC8989E47FFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -4998,10 +4885,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_016384_004  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5192,\U4/Addr [14:13]}),
-    .dia({open_n5196,open_n5197,open_n5198,open_n5199,open_n5200,open_n5201,open_n5202,1'b0,open_n5203}),
+    .csa({open_n5019,\U4/Addr [14:13]}),
+    .dia({open_n5023,open_n5024,open_n5025,open_n5026,open_n5027,open_n5028,open_n5029,1'b0,open_n5030}),
     .rsta(nRST_pad),
-    .doa({open_n5218,open_n5219,open_n5220,open_n5221,open_n5222,open_n5223,open_n5224,open_n5225,\U4/ROM0/inst_doa_i2_004 }));
+    .doa({open_n5045,open_n5046,open_n5047,open_n5048,open_n5049,open_n5050,open_n5051,open_n5052,\U4/ROM0/inst_doa_i2_004 }));
   // address_offset=16384;data_offset=5;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0019"),
@@ -5021,38 +4908,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFEFEEEB5DEFFFEFFB45FFFD8701C62313E7BAFFFFFFFAD554965E97FFFFFF),
-    .INIT_01(256'hFFFFE5FFBB5CEFFFFFF9156FF1EC05ECA28FECBAFFFFFFF86954941067FFFFFF),
-    .INIT_02(256'hFFFFF3E3C7407ABFFFFFC5BFE8B7966289FEF4BBFFFFFFF86955C7333FFFFFFF),
-    .INIT_03(256'hFFFFEFCA4653DBFFFFEFC6BFFD658DC940FFF033FFFFFFFDC154ADF26FFFFFFF),
-    .INIT_04(256'hFFFFFD7F9B0467FFFFEAFFFFB4359363B3FFE403FFFFFFE82555AC674AFFFFFF),
-    .INIT_05(256'hFFFFF9FF6D7409FFFFFFFFFEA4744B07D1FFE011BFFFFFF85D5454AAC946BFFF),
-    .INIT_06(256'hFFFFFF8CCD55467FFFFFFEFBD515544793FEEC17FFFFFFE295554BBA9681BD7F),
-    .INIT_07(256'hFFFFFFEC92550DFEFFFFFFF6555155455FFEE0D7FFFFFF815553C4A2F6A7A47F),
-    .INIT_08(256'hFFFFFFA5E3D54055FFFFFF98555555554FFFF94FFFFFFF86D45313F4EBE7FFFF),
-    .INIT_09(256'hFFFFFF95A9D5474E0FFFD095555555551EFFAE5BFFFFFEB45550F3A5D7EBFFFF),
-    .INIT_0A(256'hFFFFFFFCE9D55740AA6F99D5555555550BBFABFBFFFFFEB9454FA2D86DFF7FFF),
-    .INIT_0B(256'hFFFFFFF86AD55551F6F92D5555555555526FAAFFFFFFFED1555852C89FBE7BFF),
-    .INIT_0C(256'hFFFFFFFA7205555051E155555555555549DBFFFFFFFFF934555AC6DB889FDFFF),
-    .INIT_0D(256'hFFFFFFFF4755555555555555555055555036FFFFFFFFE355557357B739EFCFFF),
-    .INIT_0E(256'hFFFFFFFE9E955555555555555547D555555FFFFFFFFFAE55552222B53AB78FFF),
-    .INIT_0F(256'hFFFFFFFEA1F55555555555555548F5555446FFFFFFFFC4555511FBA8FE9FB8FF),
-    .INIT_10(256'hFFFFFFEFA7355555555555555578F55554491FFFFEFE355551D36BBBFFDE8FFF),
-    .INIT_11(256'hFFFFFABD9F35555555555555553DF555555065FFFFE6D555545FB7AFFB97C1FF),
-    .INIT_12(256'hFFFFEFA38CE5555555555555545DB555555524C4C77F5555538FCA2FFFBBE17F),
-    .INIT_13(256'hFFFEFAF0649D55555555555555535555555519601A4F555553DDFD7FFFADBDFF),
-    .INIT_14(256'hFFFEA6C0C6ED55555555555555515515555505645FF5555551C69BDFFFB86FFF),
-    .INIT_15(256'hFFFFCE27CF0D5555555555554513AEB045E5551545555555544A7DC0FFBFBEFF),
-    .INIT_16(256'hFFFFFFFF2B3D55555555414FAC1796AEFF8D155555555555554AFD416AFE5BFF),
-    .INIT_17(256'hFFFFBFFA7631555555546A4C7550E782EF1EF555555555540537FFBF9AFBAEFF),
-    .INIT_18(256'hFFFFFF900BA155555414C846887FFFFFFFF9E155555555545F39FFFFADD77FFF),
-    .INIT_19(256'hFFFFFBAB168C5555553A923FFFFFFFFFFFFF98D55555555463167FFFFED3F3FF),
-    .INIT_1A(256'hFFFAF3F238FE55555525FFFFFFFFFFFFFFFFE2155555555110037FFFFFFE2BFF),
-    .INIT_1B(256'h442516E1213155554D79FFFFFFFFFFFFFFFFCCF5555555532876FFFFFFEFFFFF),
-    .INIT_1C(256'h754DF0150078D5555B53E27BEB5ACAD57E7FDAFD555555535FAA2FFFFFFFFFD1),
-    .INIT_1D(256'hBFB0011801FA555554F58AAD5517BFFC53F98EE61555555ADFFA37FFFEBFFFD4),
-    .INIT_1E(256'h0000000000BED555543AAABEBAFBFFAAAEF79AA8555555522F19DFFFFFFFFFFF),
-    .INIT_1F(256'h0000000001EEA555542AEBB15F0040BAB83AAEBB9555551D301897BFFFFFFF80),
+    .INIT_00(256'hFFFFFFEFEEE977EFFFEFF947FFF70D034C891BCFBAFFFFFFFA55561C7E1FFFFF),
+    .INIT_01(256'hFFFFFFC7FFB976EFFFFFF115EFD3E407E68A2FE6BAFFFFFFF0E1561410CFFFFF),
+    .INIT_02(256'hFFFFFFDBCB4D40FABFFFFF47BFE29F1CCA23FED6BBFFFFFFF0E1574D99BFFFFF),
+    .INIT_03(256'hFFFFFFEF684C5B7BFFFFEF4EBFF5C7276142FFD09BFFFFFFF74156A7D8EFFFFF),
+    .INIT_04(256'hFFFFFFF5FF3904CFFFFFEAFFFF949719CB9BFFC40BFFFFFFE08557A4CD6AFFFF),
+    .INIT_05(256'hFFFFFFF3FDE5D423FFFFFFFFFE84D4690F53FFC013BFFFFFF0755456AA614EBF),
+    .INIT_06(256'hFFFFFFFF2665554CFFFFFFFEFB5515544F1BFEE41FFFFFFFCA15556BBA1E03B5),
+    .INIT_07(256'hFFFFFFFFE6185527FEFFFFFFDC555155457FFEC25FFFFFFF01555B468ADE8F84),
+    .INIT_08(256'hFFFFFFFF87CB554057FFFFFF30555555556FFFF16FFFFFFF0E54591BD6EBCFFF),
+    .INIT_09(256'hFFFFFFFF17A3554D6C2FFF5215555555553EFFAC7BFFFFFE945552DB875FEBFF),
+    .INIT_0A(256'hFFFFFFFFF6E3555D42A8EF3355555555552BBFABFBFFFFFEB1456F8A70E7FDFF),
+    .INIT_0B(256'hFFFFFFFFF0EA555553DEF1A5555555555558EFAAFFFFFFFE5155705A623FBCFB),
+    .INIT_0C(256'hFFFFFFFFF8D805555053C1555555555555637BFFFFFFFFF194557A4E7B223F7F),
+    .INIT_0D(256'hFFFFFFFFFD4D5555555555555555505555509EFFFFFFFFC95555D95F9DB3EF6F),
+    .INIT_0E(256'hFFFFFFFFFE3E15555555555555554F5555557FFFFFFFFFAC5555888A95BA9F2F),
+    .INIT_0F(256'hFFFFFFFFFE83D55555555555555562D555544EFFFFFFFF44555513FBA2FE3FB2),
+    .INIT_10(256'hFFFFFFFFEF8D9555555555555555F2D55554613FFFFEFC95555359EBBBFF7E2F),
+    .INIT_11(256'hFFFFFFFAB73D9555555555555555B7D5555550C7FFFFCE5555547F9FAFFB1F43),
+    .INIT_12(256'hFFFFFFEF8B26C555555555555554779555555586464DFD55555B2F68AFFFBBC1),
+    .INIT_13(256'hFFFFFEFAD0C63555555555555555595555555531C0386D55555B77F5FFFFA7B7),
+    .INIT_14(256'hFFFFFE8E424EE555555555555555515515555505C47FD55555534E3B7FFFB0EF),
+    .INIT_15(256'hFFFFFF6C8F6D25555555555555451BAE9047C55515455555555468F742FFBFBE),
+    .INIT_16(256'hFFFFFFFFFDA9B555555555416FA41F1EAEFF25155555555555556AF541EAFC7B),
+    .INIT_17(256'hFFFFFFBFF8DC9155555554E864D552CF0AED3ED55555555554059FFFBF3AFBAE),
+    .INIT_18(256'hFFFFFFFF102B8155555416604E20FFFFFFFFF3C155555555547DB3FFFFA75DFF),
+    .INIT_19(256'hFFFFFFFBA91E24555555BA18BFFFFFFFFFFFFF325555555554C91CFFFFFE5BDB),
+    .INIT_1A(256'hFFFFFADBD8B2FC55555587FFFFFFFFFFFFFFFFC815555555511009FFFFFFFCAB),
+    .INIT_1B(256'h5144851EC18191555565F3FFFFFFFFFFFFFFFF66D555555559A0DEFFFFFFEFFF),
+    .INIT_1C(256'h54D567D01500F25555795BC8FBE97A6A55FCFF7AF5555555597FA8AFFFFFFFFF),
+    .INIT_1D(256'hFFBF90013003F8555556D72AA5551FBFF45BF32ECC1555557A7FF89FFFFEBFFF),
+    .INIT_1E(256'h000000000002BE555554BAAABEBAFBFFAAAEDF3AA055555558AD337FFFFFFFFF),
+    .INIT_1F(256'h000000000003EE855554AAEB917D0042BAB0BAAEBB1555553590321FBFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5069,10 +4956,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_016384_005  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5251,\U4/Addr [14:13]}),
-    .dia({open_n5255,open_n5256,open_n5257,open_n5258,open_n5259,open_n5260,open_n5261,1'b0,open_n5262}),
+    .csa({open_n5078,\U4/Addr [14:13]}),
+    .dia({open_n5082,open_n5083,open_n5084,open_n5085,open_n5086,open_n5087,open_n5088,1'b0,open_n5089}),
     .rsta(nRST_pad),
-    .doa({open_n5277,open_n5278,open_n5279,open_n5280,open_n5281,open_n5282,open_n5283,open_n5284,\U4/ROM0/inst_doa_i2_005 }));
+    .doa({open_n5104,open_n5105,open_n5106,open_n5107,open_n5108,open_n5109,open_n5110,open_n5111,\U4/ROM0/inst_doa_i2_005 }));
   // address_offset=16384;data_offset=6;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x001A"),
@@ -5092,38 +4979,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFF84576BA7FFFFFF8FAFFF248EFD7F17FE8FCFFFFFFFA0AAAF573D400007F),
-    .INIT_01(256'hFFFFE55462BCFFFFFFFEEBFFED5877DDC57FF3F9FFFFFFFA6AAAA52A9400007F),
-    .INIT_02(256'hFFFFEA4022BBFFFFFFFE29FFFF08B09D2A7FE7BDFFFFFFFC5AAAA6C1DC00007F),
-    .INIT_03(256'hFFFFFB4162AADFFFFFFFFFFFEADAE4A9C3FFF68AFFFFFFFA6AABD710DC00007F),
-    .INIT_04(256'hFFFFF8118AAABFFFFFFFFFFFBB9F3BE311FFE7BBFFFFFFEC2AABC604A850007F),
-    .INIT_05(256'hFFFFFED0CEABFFFFFFFFFFFFEA8BBDE927FFF7EDFFFFFFE0AAAB9309BB25557F),
-    .INIT_06(256'hFFFFFE843AAAFBFFFFFFFFFFAAAAAFA92FFFE3EDFFFFFFFEAAAB9E48AD2CF97F),
-    .INIT_07(256'hFFFFFF2171AABFDFFFFFFFACAAAAAAAEAFFFFBABFFFFFFBEAAAE484BCC1AFBFF),
-    .INIT_08(256'hFFFFFFF141AAAF83FFFFFF13AAAAAAAAFFFFF9F7FFFFFF96ABAB0D09D843FFFF),
-    .INIT_09(256'hFFFFFFBE74AAAAF72FFFA13AAAAAAAAABFFFFEFFFFFFFFBAAAAEED1A84077FFF),
-    .INIT_0A(256'hFFFFFFEC90AAAABE6E0407AAAAAAAAAAE1FFFFFFFFFFFE5ABAB8800EF201BFFF),
-    .INIT_0B(256'hFFFFFFEFD2AAAAABF913FAAAAAAAAAAABFFFFFFFFFFFFEAAAAB9904767053FFF),
-    .INIT_0C(256'hFFFFFFF86FAAAAAAAFFEAAAAAAAAAAAABEFFFFFFFFFFFC2AAABB3042E7D177FF),
-    .INIT_0D(256'hFFFFFFFE3FAAAAAAAAAAAAAAAAABAAAAAFBFFFFFFFFFEFAAAAB9D14991495FFF),
-    .INIT_0E(256'hFFFFFFFE1B6AAAAAAAAAAAAAAAAC2AAAAAB9FFFFFFFFEDAAAAB4711F40EA79FF),
-    .INIT_0F(256'hFFFFFFFEBD6AAAAAAAAAAAAAAAF56AAAAABB7FFFFFFF86AAAAEE653805DB83FF),
-    .INIT_10(256'hFFFFFFFFD42AAAAAAAAAAAAAAAC06AAAAABFDFFFFFFE7AAAAB9510F8006FF77F),
-    .INIT_11(256'hFFFFFFFA972AAAAAAAAAAAAAAAC56AAAAAAFAFFFFFFAEAAAAAF81AA00117F9FF),
-    .INIT_12(256'hFFFFFFB662AAAAAAAAAAAAAAABA46AAAAAAAA3DEFC3DAAAAAF357A90004BEE7F),
-    .INIT_13(256'hFFFFFF6597AAAAAAAAAAAAAAAAB9AAAAAAAABB3FAA2EAAAAAF92AA800041F97F),
-    .INIT_14(256'hFFFFF42F60DAAAAAAAAAAAAAAAAEAAAAAAAAABFABFAAAAAAAA4EF2300011FFFF),
-    .INIT_15(256'hFFFFFA1FB50AAAAAAAAAAAAAAAEFAEBEEFFAAAAAAAAAAAAAABFAF6760004BEFF),
-    .INIT_16(256'hFFFFFFFE202AAAAAAAAAAABFAFA953FEEFC3AAAAAAAAAAAAAAAEFA8A44051FFF),
-    .INIT_17(256'hFFFFFFFB8BFAAAAAAAABEBF07BEAB47FFACF2AAAAAAAAAAAFAB1FEBDE94127FF),
-    .INIT_18(256'hFFFFFFE3FABEAAAAAAFF4FFF92AFFFFFFFFAEEAAAAAAAAABBF96FFFFF490CBFF),
-    .INIT_19(256'hFFFFEDA673D6AAAAABDAC0FFFFFFFFFFFFFFCFAAAAAAAAAAA3F67FFFFEB2BBFF),
-    .INIT_1A(256'hFFFE3F3D8E8AAAAAABB3FFFFFFFFFFFFFFFFE6EAAAAAAAAFFA1CBFFFFFFA80FF),
-    .INIT_1B(256'h503F9AA6BE9EAAAAABE3FFFFFFFFFFFFFFFFE1AAAAAAAAAA2551DFFFFFFFFFFF),
-    .INIT_1C(256'h6152BFEFFF9CAAAAAB80F87FEE01701554FFF02AAAAAAAABE9157FFFFFFFFF85),
-    .INIT_1D(256'hAABFFEFFFF42AAAAAAA7E55555551555500FA652AAAAAAB9B54ACFFFFFFFFF80),
-    .INIT_1E(256'hFFFFFFFFFE576AAAAAB115414504005550112957AAAAAABED7273FFFFFFFFFAA),
-    .INIT_1F(256'hFFFFFFFFFB45AAAAAAA5541FFFFFBFFABEC16152AAAAAAF17EF54FFFFFFFFFFF),
+    .INIT_00(256'hFFFFFFF045DEB8FFFFFFF2FAFFD862EF5FD1FFE2F6FFFFFFF82AAAD5DB540000),
+    .INIT_01(256'hFFFFFFC554CAB6FFFFFFFEEBFFE570DF7745FFDBF3FFFFFFF8EAAA85AA140000),
+    .INIT_02(256'hFFFFFFE8408ABBFFFFFFFCA3FFFD229235A8FFCFB7FFFFFFF47AAA8E43740000),
+    .INIT_03(256'hFFFFFFF941CAAA7FFFFFFFFFFFEA7AC6A34BFFDE2AFFFFFFF8EAAB5D12740000),
+    .INIT_04(256'hFFFFFFF0132AAABFFFFFFFFFFFBB3DBBC913FFCFBBFFFFFFE4AAAB4C06A05000),
+    .INIT_05(256'hFFFFFFFE526EABFFFFFFFFFFFFEA2BB7E18FFFDFE7FFFFFFC2AAAB1923B98555),
+    .INIT_06(256'hFFFFFFFE04BAAAFBFFFFFFFFFFAAAAAFA1AFFFCBE7FFFFFFFEAAAB3C62A5A6F1),
+    .INIT_07(256'hFFFFFFFD81D3AABF7FFFFFFFA6AAAAAAAEAFFFFBABFFFFFFBEAAAC606B643AFB),
+    .INIT_08(256'hFFFFFFFFD143AAAF0BFFFFFD1BAAAAAAAAFFFFF3DFFFFFFF1EABA92523704BFF),
+    .INIT_09(256'hFFFFFFFFBCD6AAAADDAFFF81BAAAAAAAAABFFFFEFFFFFFFFBAAAAEE53A040DFF),
+    .INIT_0A(256'hFFFFFFFFE612AAAABCEC040FAAAAAAAAAAC3FFFFFFFFFFFC7ABAB2002ED803BF),
+    .INIT_0B(256'hFFFFFFFFEF5AAAAAABF11BFAAAAAAAAAAABFFFFFFFFFFFFEAAAAB3104DCD05BF),
+    .INIT_0C(256'hFFFFFFFFF0EFAAAAAAAFFEAAAAAAAAAAAABEFFFFFFFFFFF4AAAAB9904ACF51DF),
+    .INIT_0D(256'hFFFFFFFFFCBFAAAAAAAAAAAAAAAAABAAAAAFBFFFFFFFFFEFAAAAB3516311617F),
+    .INIT_0E(256'hFFFFFFFFFC39EAAAAAAAAAAAAAAAA4AAAAAAB3FFFFFFFFE7AAAA94D13D42E8F3),
+    .INIT_0F(256'hFFFFFFFFFEB5EAAAAAAAAAAAAAAAD5EAAAAAB9FFFFFFFF0EAAAAECC5B0077B0B),
+    .INIT_10(256'hFFFFFFFFFF54AAAAAAAAAAAAAAAA40EAAAAABF7FFFFFFCFAAAAB1512F000EFDD),
+    .INIT_11(256'hFFFFFFFFFA1DAAAAAAAAAAAAAAAA45EAAAAAAFAFFFFFFAEAAAAAF03A80011FF3),
+    .INIT_12(256'hFFFFFFFF9CCAAAAAAAAAAAAAAAAB84EAAAAAAA8B7EF4B7AAAAAD95FA10006BEC),
+    .INIT_13(256'hFFFFFFFDC71FAAAAAAAAAAAAAAAAB3AAAAAAAAB9BFA8AEAAAAAF1AAA000043F1),
+    .INIT_14(256'hFFFFFFD4ADC27AAAAAAAAAAAAAAAAEAAAAAAAAABFABFAAAAAAA86ED8900013FF),
+    .INIT_15(256'hFFFFFFF83F952AAAAAAAAAAAAAAAEFAEBEEFFAAAAAAAAAAAAAABFADCDC0006BE),
+    .INIT_16(256'hFFFFFFFFFC80AAAAAAAAAAAABFAFA15BFEEF4BAAAAAAAAAAAAAAAEFA2844053F),
+    .INIT_17(256'hFFFFFFFFFB2BFAAAAAAAABEBD0FBEA94FFFA6DAAAAAAAAAAAAFA93FEB7E1418F),
+    .INIT_18(256'hFFFFFFFFCBFABEAAAAAAFD6FFF1AAFFFFFFFFAEEAAAAAAAAABBF1EFFFFD6126B),
+    .INIT_19(256'hFFFFFFE78CDB5EAAAAAB7A42FFFFFFFFFFFFFF6FAAAAAAAAAA8BDCFFFFFE9ABB),
+    .INIT_1A(256'hFFFFFCBDB72E2AAAAAAB9BFFFFFFFFFFFFFFFFCEEAAAAAAAAFF836BFFFFFFA02),
+    .INIT_1B(256'h0550BF3A8EBE3EAAAAABCBFFFFFFFFFFFFFFFFC3AAAAAAAAA885537FFFFFFFFF),
+    .INIT_1C(256'h00C15ABFEFFF36AAAAAB02F0FFEC01D01556FFD0AAAAAAAAABE115FFFFFFFFFF),
+    .INIT_1D(256'hAAAABFFEFFFD4AAAAAAA8FC55555551555502F8C5AAAAAAAB3956A6FFFFFFFFF),
+    .INIT_1E(256'hFFFFFFFFFFFC5DEAAAAA911541450400555011A15FAAAAAABE5D8DBFFFFFFFFF),
+    .INIT_1F(256'hFFFFFFFFFFF947AAAAAA85543FFFFFBFFABE41C15AAAAAAAD1FED56FFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5140,10 +5027,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_016384_006  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5310,\U4/Addr [14:13]}),
-    .dia({open_n5314,open_n5315,open_n5316,open_n5317,open_n5318,open_n5319,open_n5320,1'b0,open_n5321}),
+    .csa({open_n5137,\U4/Addr [14:13]}),
+    .dia({open_n5141,open_n5142,open_n5143,open_n5144,open_n5145,open_n5146,open_n5147,1'b0,open_n5148}),
     .rsta(nRST_pad),
-    .doa({open_n5336,open_n5337,open_n5338,open_n5339,open_n5340,open_n5341,open_n5342,open_n5343,\U4/ROM0/inst_doa_i2_006 }));
+    .doa({open_n5163,open_n5164,open_n5165,open_n5166,open_n5167,open_n5168,open_n5169,open_n5170,\U4/ROM0/inst_doa_i2_006 }));
   // address_offset=16384;data_offset=7;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x001B"),
@@ -5163,38 +5050,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFE6EE9FF9FFFFFFFB517FF9E7EFFA9F0BE87BFFFFFFFE5FFFEFF4AFFFFFFF),
-    .INIT_01(256'hFFFFEEFECBFF7FFFFFFE54FFFEB3FBA66C7FFC7AFFFFFFFE4FFFFA95EFFFFFFF),
-    .INIT_02(256'hFFFFE9EA9BFE3FFFFFFFC7FFEEBA2EB3C4FFED7EFFFFFFFE7FFFAC0CF7FFFFFF),
-    .INIT_03(256'hFFFFF8EBDBFA7FFFFFFFEFFFFFEE6AF66DFFF92DFFFFFFFC7FFFE839F7FFFFFF),
-    .INIT_04(256'hFFFFFFBB63FFDFFFFFFFFFFFFEAEECE8BBFFE945FFFFFFFDBFFFACBDB3FFFFFF),
-    .INIT_05(256'hFFFFFE3A77FFA7FFFFFFFFFFBFFFFFFBFFFFE943FFFFFFEDFFFFA8A1A3CBFFFF),
-    .INIT_06(256'hFFFFFF2F77FFE8FFFFFFFFFEFFFFFFFAEFFFE953FFFFFFE0FFFEA4B4B7C352FF),
-    .INIT_07(256'hFFFFFFDF6BFFFA3FFFFFFFEFFFFFFFFFEFFFE917FFFFFFF7FFFFA6A4F7F3BFFF),
-    .INIT_08(256'hFFFFFFCB6FFFFFFFFFFFFAAFFFFFFFFFBFFFFE4FFFFFFFAFFFFBB3B6A3F9FFFF),
-    .INIT_09(256'hFFFFFFA21EFFFFFDBFFFFEFFFFFFFFFFEFFFFFFFFFFFFE9FFFFF43B2EFE8FFFF),
-    .INIT_0A(256'hFFFFFFF31EFFFFFFD0EABFFFFFFFFFFFFFFFFFFFFFFFFEBFFFFA5AF6CBFF3FFF),
-    .INIT_0B(256'hFFFFFFECB8FFFFFFEEAAFFFFFFFFFFFFEDFFFFFFFFFFFA7FFFFA5AEE98BEDFFF),
-    .INIT_0C(256'hFFFFFFFEBDFFFFFFFFFFFFFFFFFFFFFFFE7FFFFFFFFFFABFFFF80AEA493FDFFF),
-    .INIT_0D(256'hFFFFFFFFFCFFFFFFFFFFFFFFFFFEFFFFFF9FFFFFFFFFFDFFFFED6BEB7AB7E7FF),
-    .INIT_0E(256'hFFFFFFFFA9FFFFFFFFFFFFFFFFFBFFFFFFF7FFFFFFFFE7FFFFB99BF9FE7CA7FF),
-    .INIT_0F(256'hFFFFFFFF8EFFFFFFFFFFFFFFFFAEFFFFFFFCFFFFFFFFBFFFFFF04EB2FF7A39FF),
-    .INIT_10(256'hFFFFFFFE9FBFFFFFFFFFFFFFFFAEFFFFFFFE3FFFFFFFDFFFFFA0BE83FFCECCFF),
-    .INIT_11(256'hFFFFFFFE24BFFFFFFFFFFFFFFFAAFFFFFFFFD3FFFFE87FFFFED2BA0FFFEFE27F),
-    .INIT_12(256'hFFFFFFFDA93FFFFFFFFFFFFFFFABFFFFFFFFAD6EEA93FFFFFE8EA93FFFF3E8FF),
-    .INIT_13(256'hFFFFFE8B4B7FFFFFFFFFFFFFFFFAFFFFFFFFFFC050AFFFFFFF7FB0FFFFEFFF7F),
-    .INIT_14(256'hFFFFB845DA7FFFFFFFFFFFFFFFFBFFFFFFFFFFFFFFFFFFFFFFEE84BFFFFAFE7F),
-    .INIT_15(256'hFFFFF0BE9FAFFFFFFFFFFFFFFFFFAEBFBFFFFFFFFFFFFFFFFEFB095AFFFB7FFF),
-    .INIT_16(256'hFFFFFFFF8A8FFFFFFFFFFFFFAFEEE954056BFFFFFFFFFFFFFFED7B75EFFEBFFF),
-    .INIT_17(256'hFFFFFFFA295FFFFFFFFFEBBBC1444FBBFAE5BFFFFFFFFFFFFFADFEBE53FF8FFF),
-    .INIT_18(256'hFFFFFFF924CFFFFFFFFBE1456BBFFFFFFFFF0FFFFFFFFFFFB7A0FFFFBB3EE3FF),
-    .INIT_19(256'hFFFFFE1DCAAFFFFFFFA47FBFFFFFFFFFFFFFB7FFFFFFFFFEDB9DFFFFFFBC41FF),
-    .INIT_1A(256'hFFFBC0AD6EA3FFFFFF8BFFFFFFFFFFFFFFFFECFFFFFFFFFEDBAB7FFFFFFEAFFF),
-    .INIT_1B(256'hFFD16AA9BFE7FFFFFF8BFFFFFFFFFFFFFFFFFA3FFFFFFFFB9EEA3FFFFFFFFFFF),
-    .INIT_1C(256'hCAFEBFEFFEE2FFFFFFEEEA8014EFFEEAEFBFEF0FFFFFFFFB53B0DFFFFFFFFFFF),
-    .INIT_1D(256'hAABFFFFFFFA8FFFFFE944555555515555047FC5BFFFFFFFF3FF15FFFFFFFFFAA),
-    .INIT_1E(256'hFFFFFFFFFFBDFFFFFE910000000000000015F003FFFFFFF87CBD97FFFFFFFFAA),
-    .INIT_1F(256'hFFFFFFFFFEB93FFFFEC000055555555015001010FFFFFFEBCC4F23FFFFFFFFFF),
+    .INIT_00(256'hFFFFFFCEEE3FF3FFFFFFF951FFF3CFEFFA3D2BE0FBFFFFFFFC7FFFEFD6AFFFFF),
+    .INIT_01(256'hFFFFFFEEFE6BFDFFFFFFFC56FFFE9BFB8CE4FFF4FAFFFFFFFC6FFFFA17EFFFFF),
+    .INIT_02(256'hFFFFFFE3EA3BFCBFFFFFFF4FFFEEB8AE9B46FFE5FEFFFFFFFCFFFFA426DFFFFF),
+    .INIT_03(256'hFFFFFFF2EB7BF8FFFFFFFFEFFFFFECEADCE7FFF1A7FFFFFFF4FFFFE0B3DFFFFF),
+    .INIT_04(256'hFFFFFFFFB9CBFF7FFFFFFFFFFFFEAEE6E2BBFFE147FFFFFFF7BFFFA6B79BFFFF),
+    .INIT_05(256'hFFFFFFFCB8DFFF8FFFFFFFFFFFBFFFFFFBFFFFE14BFFFFFFE7FFFFA2838B6BFF),
+    .INIT_06(256'hFFFFFFFDADDFFFE2FFFFFFFFFEFFFFFFFAEFFFE15BFFFFFFC2FFFE86969F495A),
+    .INIT_07(256'hFFFFFFFF7DEBFFF8BFFFFFFFEFFFFFFFFFEFFFE11FFFFFFFDFFFFF8E86DFDBBF),
+    .INIT_08(256'hFFFFFFFF69EFFFFFFFFFFFFAAFFFFFFFFFBFFFFC6FFFFFFFAFFFFB9B9E8BF3FF),
+    .INIT_09(256'hFFFFFFFF883EFFFFF7BFFFFEFFFFFFFFFFEFFFFFFFFFFFFE3FFFFD4B9AEFE2FF),
+    .INIT_0A(256'hFFFFFFFFD93EFFFFFF52EABFFFFFFFFFFFFFFFFFFFFFFFFEBFFFF87ADE6BFDBF),
+    .INIT_0B(256'hFFFFFFFFE6B2FFFFFFEEAAFFFFFFFFFFFFE7FFFFFFFFFFF8FFFFF87AEE32BE7F),
+    .INIT_0C(256'hFFFFFFFFFEB7FFFFFFFFFFFFFFFFFFFFFFFCFFFFFFFFFFFABFFFF02AE861BF7F),
+    .INIT_0D(256'hFFFFFFFFFFF6FFFFFFFFFFFFFFFFFEFFFFFF3FFFFFFFFFF7FFFFE5EBE9FA9FCF),
+    .INIT_0E(256'hFFFFFFFFFFA3FFFFFFFFFFFFFFFFFBFFFFFFDFFFFFFFFFCFFFFFB33BF3FCF68F),
+    .INIT_0F(256'hFFFFFFFFFF2EFFFFFFFFFFFFFFFFAEFFFFFFF6FFFFFFFFBFFFFFD06E9AFDF8B3),
+    .INIT_10(256'hFFFFFFFFFE3FBFFFFFFFFFFFFFFFAEFFFFFFFCBFFFFFFF7FFFFF82BE0BFF6E66),
+    .INIT_11(256'hFFFFFFFFFC86BFFFFFFFFFFFFFFFAAFFFFFFFF5BFFFFE0FFFFFE5AB82FFFEFC8),
+    .INIT_12(256'hFFFFFFFFF7A1BFFFFFFFFFFFFFFFABFFFFFFFFA5EEEA1BFFFFFE2EA1BFFFDBE2),
+    .INIT_13(256'hFFFFFFFE2969FFFFFFFFFFFFFFFFFAFFFFFFFFFF4052AFFFFFFDFF92FFFFEFFD),
+    .INIT_14(256'hFFFFFFB04778FFFFFFFFFFFFFFFFFBFFFFFFFFFFFFFFFFFFFFFFEE06BFFFFAFC),
+    .INIT_15(256'hFFFFFFD2BE3FAFFFFFFFFFFFFFFFFFAEBFBFFFFFFFFFFFFFFFFEF9217AFFF9FF),
+    .INIT_16(256'hFFFFFFFFFF2A2FFFFFFFFFFFFFAFEEE15405EBFFFFFFFFFFFFFFE5F9D7EFFEBF),
+    .INIT_17(256'hFFFFFFFFF8A17FFFFFFFFFEBBB41446FBBFAC7BFFFFFFFFFFFFFA7FEBC5BFF2F),
+    .INIT_18(256'hFFFFFFFFF1866FFFFFFFFBC145EBBFFFFFFFFD2FFFFFFFFFFF9F82FFFFB9BECB),
+    .INIT_19(256'hFFFFFFFC376AAFFFFFFF84FFBFFFFFFFFFFFFF9FFFFFFFFFFE7B37FFFFFFB443),
+    .INIT_1A(256'hFFFFFB42A5EE8BFFFFFF2BFFFFFFFFFFFFFFFFE6FFFFFFFFFE7BA9FFFFFFFEAF),
+    .INIT_1B(256'hFFFF51EAA3BFCFFFFFFF2BFFFFFFFFFFFFFFFFF8BFFFFFFFFB3EE8BFFFFFFFFF),
+    .INIT_1C(256'hAA6AFEBFEFFECAFFFFFFEEEA0016EFFEEAEFBFED2FFFFFFFF95B927FFFFFFFFF),
+    .INIT_1D(256'hAAAABFFFFFFFA2FFFFFE14455555551555504FF47BFFFFFFFDBFD17FFFFFFFFF),
+    .INIT_1E(256'hFFFFFFFFFFFFB7FFFFFE110000000000000017D00BFFFFFFF0F6B71FFFFFFFFF),
+    .INIT_1F(256'hFFFFFFFFFFFEB1BFFFFE4000055555555015001012FFFFFFEB646D8BFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5211,10 +5098,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_016384_007  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5369,\U4/Addr [14:13]}),
-    .dia({open_n5373,open_n5374,open_n5375,open_n5376,open_n5377,open_n5378,open_n5379,1'b0,open_n5380}),
+    .csa({open_n5196,\U4/Addr [14:13]}),
+    .dia({open_n5200,open_n5201,open_n5202,open_n5203,open_n5204,open_n5205,open_n5206,1'b0,open_n5207}),
     .rsta(nRST_pad),
-    .doa({open_n5395,open_n5396,open_n5397,open_n5398,open_n5399,open_n5400,open_n5401,open_n5402,\U4/ROM0/inst_doa_i2_007 }));
+    .doa({open_n5222,open_n5223,open_n5224,open_n5225,open_n5226,open_n5227,open_n5228,open_n5229,\U4/ROM0/inst_doa_i2_007 }));
   // address_offset=24576;data_offset=0;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x001C"),
@@ -5234,38 +5121,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h5555555555FD82BEFE8FEBC000501055405EEFEBEFFFAFF68AA2EBFFFFFFFFD5),
-    .INIT_01(256'h5555555557A98EBEFEBFAA15555555555545BFFDDFFFAEEBECACB9BFFFFFFFD5),
-    .INIT_02(256'h5555555542AA8CBEFFFFAD555555555555541FAA5FFFAE4AA97726FFFFFFFFD5),
-    .INIT_03(256'h5555555557F6F02FEEBEE15555555555555512EFBFFFAC0AF9553409FFFFFFD5),
-    .INIT_04(256'h555555555FCEB9EFEF7EDAA555555555555470EF47FEACFAFC15551B0FFFFFD5),
-    .INIT_05(256'h555555554AAAB95BEF7BABF355555555558F99AB27FFA5AAB495555670FFFFD5),
-    .INIT_06(256'h555555555B0AAFA2AB7B6FF955555555577FA47E82FF54AAAB055555736FFFD5),
-    .INIT_07(256'h555555553BDEAB94AADE7BFBB555555555FFF97B46F966AAAC455555463CE3D5),
-    .INIT_08(256'h555555557F7AAAE538EFFFFED4D5555D4BFFF8B90AF586AAB9555555553C95D5),
-    .INIT_09(256'h555555557F2AAEE18C4B7FFFBA500047BFFFFDBAFE9236AAFA7555555554E955),
-    .INIT_0A(256'h555555552B3EAED5E6EC3FFFFAFFFFABFFFFAAAEE754F3ABEB755555555555D5),
-    .INIT_0B(256'h55555555296AAF93AEDE7FFFFFFFFFFFFFFFB6EE3913B6AAAD35555555555555),
-    .INIT_0C(256'h555555543BEAAFC2DFEB1FFFFFFFFFFFFFFEAEEF659FB6AAAF85555555555555),
-    .INIT_0D(256'h55555554292AABE7F87D56BFFFFFFFFFFFAB83FB9E7FB7AABA6D555555555555),
-    .INIT_0E(256'h555555503CAAABA7F981FC3ABFFFFAAEBFEE6AE859FFF3AABD8D555555555555),
-    .INIT_0F(256'h5555555135EAAFE7FD4850812AAAABFC156A83EEE3FFE7AAAA5D555555555555),
-    .INIT_10(256'h555555557FAAAFC7FBBA7E1ABF7FABEAAF5D9CA347FFE7AAE61D555555555555),
-    .INIT_11(256'h5555555404AAAF87FE015FB4D55413E282FEFF1657FFA1AAB2BD555555555555),
-    .INIT_12(256'h5555555502AAABD7FF1B4FFFEAFFFFFFFFFFFF3F1FFFA1ABC43D555555555555),
-    .INIT_13(256'h555555546EAAAB97FF8AADFFFFFFFFFFFFFFF09F5FFFA5AFD06D555555555555),
-    .INIT_14(256'h5555555485AAAF97FF8BE2FFFFFFFFFFFFFEBA6C7FFFA1AA5575555555555555),
-    .INIT_15(256'h55555555A8EAAE97FFBFF887FFFFFFFFFFEAA0793FFFA5B95435555555555555),
-    .INIT_16(256'h55555554243AAE97FFF5FEF17FB01BA113D098F5FFFFB3ED5405555555555555),
-    .INIT_17(256'h555555552D1EAAEFFFE1EC14640552FAACDC43F0FFFFB3E55485555555555555),
-    .INIT_18(256'h55555552FD56AAEFFFEDBE25E4010001559B4F97FFFFA69554D5555555555555),
-    .INIT_19(256'h555555564D53AEEFFFFCFA567B8FFEC25129AF87FFFFE15554B5555555555555),
-    .INIT_1A(256'h55555552B554FEAFFFFCEB94C3D0013316C83E1FFFFFE2D554F5555555555555),
-    .INIT_1B(256'h5555555055555EAFFFFE4BB4005080BD2AD6AFDFFFFFF0D55475555555555555),
-    .INIT_1C(256'h00151157800053EFFFFE1EE4D156FB902BC67C7FFFFFB955542C051040000055),
-    .INIT_1D(256'h10001412D444146FFFFEAEAA2800502A02D4BF7FFFFEFD555448150000110001),
-    .INIT_1E(256'h410054024141056FFFFF9EE12A802ABA423FE1FFFFFE735554A8010044011104),
-    .INIT_1F(256'h1155554D3415536FFFFFC6B880000000014AE9FFFFF9725554D3454511445440),
+    .INIT_00(256'h555555555557F70ABEFE2FEB4000501055407EEFEBEFFFAFDE2A8AEBFFFFFFFF),
+    .INIT_01(256'h55555555555FA32EBEFEBFA815555555555547BFF77FFFAEEBE6A6B3BFFFFFFF),
+    .INIT_02(256'h55555555554AAA26BEFFFFA5555555555555543FA87FFFAC6AA1DD8EFFFFFFFF),
+    .INIT_03(256'h55555555555FDED0AFEEBEC1555555555555551AEFBFFFA42AF1559423FFFFFF),
+    .INIT_04(256'h55555555557F6EB3EFEDFE7A85555555555554D2ED4FFEA6FAF41555392FFFFF),
+    .INIT_05(256'h55555555556AAAB17BEDFBABD955555555572F33A98FFF87AA9615555CD2FFFF),
+    .INIT_06(256'h5555555555792AAF8AA9F9EFF1555555555DFF84FE0AFD56AAA9055555D9EFFF),
+    .INIT_07(256'h5555555555BB7EAB16AA7CFBFB9555555557FFF1F94EF1CEAAA44555554CB6CB),
+    .INIT_08(256'h5555555555FDFAAAC5B2EFFFFE565555756BFFF2B12AD70EAAB155555555B617),
+    .INIT_09(256'h5555555555FDAAAEC32469FFFFB850004FBFFFF7BAFE189EAAF8D555555556E1),
+    .INIT_0A(256'h5555555555A9BEAE57CEE4BFFFFAFFFFABFFFFAAAECD56DBABE9D55555555557),
+    .INIT_0B(256'h5555555555A1EAAF1BAE7CFFFFFFFFFFFFFFFF9EECB11B9EAAA5955555555555),
+    .INIT_0C(256'h5555555554BBEAAF4A7FE93FFFFFFFFFFFFFFEAEEDC73F9EAAAF055555555555),
+    .INIT_0D(256'h5555555554A1AAABCFF0F55EBFFFFFFFFFFFAB0BFB3CFF9FAAB8E55555555555),
+    .INIT_0E(256'h5555555550B6AAAB8FF303F4BABFFFFAAEBFECEAE073FFDBAAB7255555555555),
+    .INIT_0F(256'h555555555197EAAFCFF5605201AAAAABF415EA0BEECBFFCFAAA8755555555555),
+    .INIT_10(256'h5555555555FFAAAF4FFBB8FC3ABDFFABEAAD7736894FFFCFAACC355555555555),
+    .INIT_11(256'h555555555406AAAF0FFC017F9655541BCA0AFEFD1C5FFF83AA9AB55555555555),
+    .INIT_12(256'h55555555550AAAAB5FFD396FFFEAFFFFFFFFFFFDBD3FFF83AB44B55555555555),
+    .INIT_13(256'h5555555554EEAAAB1FFF2AA7FFFFFFFFFFFFFFD23D7FFF87AF50E55555555555),
+    .INIT_14(256'h555555555607AAAF1FFF2BCAFFFFFFFFFFFFFEB8E4FFFF83A855D55555555555),
+    .INIT_15(256'h5555555557A2EAAE1FFFBFF20FFFFFFFFFFFEA80F1BFFF87B154955555555555),
+    .INIT_16(256'h555555555484BAAE1FFFD7FED1FF903B811B5232D7FFFF9BE554055555555555),
+    .INIT_17(256'h5555555555A53EAAEFFFC3E414C4055AFAA6744BD2FFFF9BC556055555555555),
+    .INIT_18(256'h555555555AF55EAAEFFFE7BC87C401000157396F1FFFFF8E1556555555555555),
+    .INIT_19(256'h555555555C655BAEEFFFF6F85CFB2FFE4851A3AF0FFFFFC15556955555555555),
+    .INIT_1A(256'h555555555A9556FEAFFFF6EB164B5001991E60BC3FFFFFCA5556D55555555555),
+    .INIT_1B(256'h555555555055557EAFFFFC6B94005202B5AA5EAF7FFFFFD25554D55555555555),
+    .INIT_1C(256'h010015115F00005BEFFFFC3EC6515EFB10AB4CF4FFFFFFB15554A40510400000),
+    .INIT_1D(256'h041000141A544414EFFFFEAEA8A00050A80A56BDFFFFFEF55554601500001100),
+    .INIT_1E(256'h4041005408414105EFFFFF3EC1AA00AAB848BFC3FFFFFCD95556A00100440111),
+    .INIT_1F(256'h5511555565941559EFFFFF4EB200000000016AE3FFFFF1D85556594545114454),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5282,10 +5169,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_024576_000  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5428,\U4/Addr [14:13]}),
-    .dia({open_n5432,open_n5433,open_n5434,open_n5435,open_n5436,open_n5437,open_n5438,1'b0,open_n5439}),
+    .csa({open_n5255,\U4/Addr [14:13]}),
+    .dia({open_n5259,open_n5260,open_n5261,open_n5262,open_n5263,open_n5264,open_n5265,1'b0,open_n5266}),
     .rsta(nRST_pad),
-    .doa({open_n5454,open_n5455,open_n5456,open_n5457,open_n5458,open_n5459,open_n5460,open_n5461,\U4/ROM0/inst_doa_i3_000 }));
+    .doa({open_n5281,open_n5282,open_n5283,open_n5284,open_n5285,open_n5286,open_n5287,open_n5288,\U4/ROM0/inst_doa_i3_000 }));
   // address_offset=24576;data_offset=1;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x001D"),
@@ -5305,38 +5192,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFFFFFFA5B8D555460003FFFAFEFAABFB040015555554D665E8BFFFFFFFFFF),
-    .INIT_01(256'hFFFFFFFFFC416555544005EAAAAAAAAAAABB0004B555547D79ED2CBFFFFFFFFF),
-    .INIT_02(256'hFFFFFFFFFD140B55550012AAAAAAAAAAAAABA000B555553541BBAB37FFFFFFFF),
-    .INIT_03(256'hFFFFFFFFE97D58D555001BAAAAAAAAAAAAAAE800155550D54BFFBEF8FFFFFFFF),
-    .INIT_04(256'hFFFFFFFFF16D435554403AAAAAAAAAAAAAAF8A014D5542C55CFFFFA99FFFFFFF),
-    .INIT_05(256'hFFFFFFFFF50554B554406BF8AAAAAAAAAA7FA7016D550655407FFFFBECFFFFFF),
-    .INIT_06(256'hFFFFFFFFA53555BD5140EFFEAAAAAAAAA9FFAB902D551A55456FFFFFAEB3FFFF),
-    .INIT_07(256'hFFFFFFFF85F1557350C0FBFE0AAAAAAAABFFFEC16D50645553AFFFFFEB8F9FFF),
-    .INIT_08(256'hFFFFFFFFC5F55510C3C4FFFFEA2AAAA2FBFFFF65A551D455577FFFFFFFAF1FFF),
-    .INIT_09(256'hFFFFFFFFC495511536C0FFFFBEFFFFEBBFFFFB0575471455123FFFFFFFFEAB7F),
-    .INIT_0A(256'hFFFFFFFFD0C151554DE2BFFFFAFFFFABFFFFBDC06808155413BFFFFFFFFFFEFF),
-    .INIT_0B(256'hFFFFFFFFD1D5515501EDFFFFFFFFFFFFFFFFBC012020515554BFFFFFFFFFFFFF),
-    .INIT_0C(256'hFFFFFFFFD3D551154580BFFFFFFFFFFFFFFEE30170405155516FFFFFFFFFFFFF),
-    .INIT_0D(256'hFFFFFFFFD755557014C6BEBFFFFFFFFFFFABE811DD00515541CFFFFFFFFFFFFF),
-    .INIT_0E(256'hFFFFFFFBC3555570040A52FABFFFFAAEBFFBCC05A4001555468FFFFFFFFFFFFF),
-    .INIT_0F(256'hFFFFFFFAC715513005FC333AFFFFFEAABE81281768001555520FFFFFFFFFFFFF),
-    .INIT_10(256'hFFFFFFFECF555170004AFB750080015554EE3A45500015550A0FFFFFFFFFFFFF),
-    .INIT_11(256'hFFFFFFFEBD5551700108BFECAAABFAF13BFEFE88B00053555B6FFFFFFFFFFFFF),
-    .INIT_12(256'hFFFFFFFFFD555530013537FFFFFFFFFFFFFFFF45400053542EEFFFFFFFFFFFFF),
-    .INIT_13(256'hFFFFFFFECD555530004541FFFFFFFFFFFFFFF914800053517BEFFFFFFFFFFFFF),
-    .INIT_14(256'hFFFFFFFED2555130004845BFFFFFFFFFFFFF9BD500005755FFFFFFFFFFFFFFFF),
-    .INIT_15(256'hFFFFFFFEF3155130000406EFFFFFFFFFFFFCF35640005743FEBFFFFFFFFFFFFF),
-    .INIT_16(256'hFFFFFFFEBFC55130000112BCC015504ABD5E8E5000004317FE9FFFFFFFFFFFFF),
-    .INIT_17(256'hFFFFFFFEAFE15540001314C35AAAAFFAAB68194D0000471FFEDFFFFFFFFFFFFF),
-    .INIT_18(256'hFFFFFFFA6FE95540000445A1CD0000000FCA2D400000573FFECFFFFFFFFFFFFF),
-    .INIT_19(256'hFFFFFFFA4FF851400001C52720CFFE92AC28D530000010FFFE8FFFFFFFFFFFFF),
-    .INIT_1A(256'hFFFFFFFA9FFE0140000555649625547C82CDF540000010FFFE8FFFFFFFFFFFFF),
-    .INIT_1B(256'hFFFFFFFEFFFFA14000015568053BEE482AC75540000012FFFE8FFFFFFFFFFFFF),
-    .INIT_1C(256'hFFFFFFFCBFFFEC0000017108D007AEC02BD05100000047FFFE87FFEFBFFFFFFF),
-    .INIT_1D(256'hEFFFFFFC6BBBFE800000110E2800002A028A5500000157FFFEC7EEFFFFEEFFFF),
-    .INIT_1E(256'hFFFFFFEE7FFFFF8000005D522A802ABA022144000000CBFFFEA7FEFFBBFFFFFB),
-    .INIT_1F(256'hBBFFFFEEBEBFFB9000004D56800000000069500000029EFFFEEBEFEFBBEEFEFF),
+    .INIT_00(256'hFFFFFFFFFFF87B255554C000BFFFAFEFAABF90400155555565CC7E2BFFFFFFFF),
+    .INIT_01(256'hFFFFFFFFFFF441C555544007EAAAAAAAAAAAB90006955554F5F3E5A6BFFFFFFF),
+    .INIT_02(256'hFFFFFFFFFFF514295555001AAAAAAAAAAAAAAB80029555559543BBA99FFFFFFF),
+    .INIT_03(256'hFFFFFFFFFFE1F5725555003BAAAAAAAAAAAAAAE000155552556BFFBEF2FFFFFF),
+    .INIT_04(256'hFFFFFFFFFFD1E549555440BAAAAAAAAAAAAAAF280165554A4576FFFFA33FFFFF),
+    .INIT_05(256'hFFFFFFFFFFD50556955440EBF2AAAAAAAAA8FF8D01E5550C5540FFFFFBE6FFFF),
+    .INIT_06(256'hFFFFFFFFFF859557B55142EFFEAAAAAAAAA3FFAB10A555385545EFFFFFAE9BFF),
+    .INIT_07(256'hFFFFFFFFFF07D155D95242FBFC2AAAAAAAABFFFE41E550C4555BAFFFFFEB2F3F),
+    .INIT_08(256'hFFFFFFFFFF47D555124B46FFFFE8AAAA8AFBFFFDC7855354555DFFFFFFFFAD3F),
+    .INIT_09(256'hFFFFFFFFFF461551159E42FFFFBEFFFFEBBFFFF905D54D145518BFFFFFFFFEA9),
+    .INIT_0A(256'hFFFFFFFFFF5241515567CABFFFFAFFFFABFFFFB740E02015541BBFFFFFFFFFFE),
+    .INIT_0B(256'hFFFFFFFFFF5355515503E7FFFFFFFFFFFFFFFFB4018080515556BFFFFFFFFFFF),
+    .INIT_0C(256'hFFFFFFFFFF5B5551154702BFFFFFFFFFFFFFFEC901D040515551EFFFFFFFFFFF),
+    .INIT_0D(256'hFFFFFFFFFF5D5555D0164EBEBFFFFFFFFFFFABE01375005155436FFFFFFFFFFF),
+    .INIT_0E(256'hFFFFFFFFFB495555D004285AFABFFFFAAEBFFB6407840015554E2FFFFFFFFFFF),
+    .INIT_0F(256'hFFFFFFFFFA4D15519007F499BAFFFFFEAABE01A01DE0001555582FFFFFFFFFFF),
+    .INIT_10(256'hFFFFFFFFFE6D5551D0006AF9D50200015556ECB84550001555282FFFFFFFFFFF),
+    .INIT_11(256'hFFFFFFFFFEB55551D00122BFE6AAABFAD1BBFEFE229000595579EFFFFFFFFFFF),
+    .INIT_12(256'hFFFFFFFFFFF555559001959FFFFFFFFFFFFFFFFD4540005954AEEFFFFFFFFFFF),
+    .INIT_13(256'hFFFFFFFFFE65555590004543FFFFFFFFFFFFFFF11600005951FBEFFFFFFFFFFF),
+    .INIT_14(256'hFFFFFFFFFE58555190006047BFFFFFFFFFFFFF3B5500005D57FFFFFFFFFFFFFF),
+    .INIT_15(256'hFFFFFFFFFED915519000040EEFFFFFFFFFFFF6D95C40005D4BFEBFFFFFFFFFFF),
+    .INIT_16(256'hFFFFFFFFFEBF45519000011AB64015506AB57E2C500000491FFE3FFFFFFFFFFF),
+    .INIT_17(256'hFFFFFFFFFEAFC15540001916497AAAAFFAA9E0316500004D3FFE7FFFFFFFFFFF),
+    .INIT_18(256'hFFFFFFFFF8EFE1554000044783650000002F68A54000005DBFFE6FFFFFFFFFFF),
+    .INIT_19(256'hFFFFFFFFF86FF051400003458D826FFE1AA4A25590000012FFFE2FFFFFFFFFFF),
+    .INIT_1A(256'hFFFFFFFFFA3FFC0140000555C61C8554F60A67D540000012FFFE2FFFFFFFFFFF),
+    .INIT_1B(256'hFFFFFFFFFEFFFF8140000155E005BBEC60AA4D554000001AFFFE2FFFFFFFFFFF),
+    .INIT_1C(256'hFFFFFFFFF6BFFFE4000001D122500FAE40AB50510000004FFFFE0FFFEFBFFFFF),
+    .INIT_1D(256'hFBEFFFFFF4EBBBFE000000112CA00000A80A28550000015FFFFE4FEEFFFFEEFF),
+    .INIT_1E(256'hFFFFFFFFECFFFFFF0000007558AA00AAB80881440000026BFFFE8FFEFFBBFFFF),
+    .INIT_1F(256'hFFBBFFFFEEBEBFFB100000655E0000000000E15000000A3EFFFEEBEFEFBBEEFE),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5353,10 +5240,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_024576_001  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5487,\U4/Addr [14:13]}),
-    .dia({open_n5491,open_n5492,open_n5493,open_n5494,open_n5495,open_n5496,open_n5497,1'b0,open_n5498}),
+    .csa({open_n5314,\U4/Addr [14:13]}),
+    .dia({open_n5318,open_n5319,open_n5320,open_n5321,open_n5322,open_n5323,open_n5324,1'b0,open_n5325}),
     .rsta(nRST_pad),
-    .doa({open_n5513,open_n5514,open_n5515,open_n5516,open_n5517,open_n5518,open_n5519,open_n5520,\U4/ROM0/inst_doa_i3_001 }));
+    .doa({open_n5340,open_n5341,open_n5342,open_n5343,open_n5344,open_n5345,open_n5346,open_n5347,\U4/ROM0/inst_doa_i3_001 }));
   // address_offset=24576;data_offset=2;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x001E"),
@@ -5376,38 +5263,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hAAAAAAAAABF13AAAABD555000000000000151554AAAAAAA38DE575FFFFFFFFAA),
-    .INIT_01(256'hAAAAAAAAAFE39AAAABD5540000000000000155516AAAAB97D37B5B7FFFFFFFAA),
-    .INIT_02(256'hAAAAAAAAAFF6B6AAAAD5500000000000000015546AAAAB9FE26E8FDFFFFFFFAA),
-    .INIT_03(256'hAAAAAAAAAFC7E3AAAAD5440000000000000005556AAAAA3FF02AEBB3FFFFFFAA),
-    .INIT_04(256'hAAAAAAAABF87F8AAAA95104000000000000001547AAAA97FF02AAAFE7FFFFFAA),
-    .INIT_05(256'hAAAAAAAABF9FFA6AAA95414000000000001541541AAABDFFE92AAAAEC3FFFFAA),
-    .INIT_06(256'hAAAAAAAABE9FFF5AAF94455000000000005510451AABF0FFFC3AAAAAEC5FFFAA),
-    .INIT_07(256'hAAAAAAAABF1FFF9EAF15515400000000055550545AAB84FFF83AAAAABEF16FAA),
-    .INIT_08(256'hAAAAAAAAFE5FFFE3AE155555000000001155515A1ABE04FFF8AAAAAAAAFBA12A),
-    .INIT_09(256'hAAAAAAAAFE7FFFE0EA115555150000151555517F8AF844FFFCEAAAAAAAABFAAA),
-    .INIT_0A(256'hAAAAAAAAFE7FFFA03A111555505555015555157F9BE145FFF86AAAAAAAAAABAA),
-    .INIT_0B(256'hAAAAAAAAFA7FFFA45E74555555555555555505FECF8545FFFA6AAAAAAAAAAAAA),
-    .INIT_0C(256'hAAAAAAAAFD7FFFA51278555555555555555445FF9F1545FFFF3AAAAAAAAAAAAA),
-    .INIT_0D(256'hAAAAAAAAF8FFFFC54078041555555555550107EE605545FFFA7AAAAAAAAAAAAA),
-    .INIT_0E(256'hAAAAAAAEF9FFFFC5512D515015555004155457FA115545FFFB7AAAAAAAAAAAAA),
-    .INIT_0F(256'hAAAAAAAEE9FFFFC55012A9055555555540010FF9455545FFFEBAAAAAAAAAAAAA),
-    .INIT_10(256'hAAAAAAAAF5FFFF855574FE950000015554113BECA55545FFEFBAAAAAAAAAAAAA),
-    .INIT_11(256'hAAAAAAABA3FFFF85542A3FEB0000054FAFFFFEA6855541FFEFDAAAAAAAAAAAAA),
-    .INIT_12(256'hAAAAAAAAA7FFFF85541E9FFFFFFFFFFFFFFFFEDE955541FFBADAAAAAAAAAAAAA),
-    .INIT_13(256'hAAAAAAABF7FFFF85551FE3FFFFFFFFFFFFFFEB3E155541FFAEDAAAAAAAAAAAAA),
-    .INIT_14(256'hAAAAAAABABFFFF855513ED7FFFFFFFFFFFFFE47A555541FEAACAAAAAAAAAAAAA),
-    .INIT_15(256'hAAAAAAABDFFFFF855557F90FFFFFFFFFFFFF18F8555541FAAB8AAAAAAAAAAAAA),
-    .INIT_16(256'hAAAAAAABCAFFFF855543FD52FFEAAFEABEE160E9555545FAABAAAAAAAAAAAAAA),
-    .INIT_17(256'hAAAAAAAADABFFFD55541FA78400000055057F7E1555545EAABAAAAAAAAAAAAAA),
-    .INIT_18(256'hAAAAAAAFDAAFFFD55551FE5E07FFFFFFE47597A5555545AAABAAAAAAAAAAAAAA),
-    .INIT_19(256'hAAAAAAAEBAABFFD555517E99D570017C47D75F85555542AAABEAAAAAAAAAAAAA),
-    .INIT_1A(256'hAAAAAAAF2AAAFFD555517F9B791FFF947D375E95555547AAABEAAAAAAAAAAAAA),
-    .INIT_1B(256'hAAAAAAAB2AAABFD555543FC7FF900547D5397F15555543AAABEAAAAAAAAAAAAA),
-    .INIT_1C(256'hAAAAAAAF6AAAAFD555541FE72FF8017FD43CFA55555552AAABEAAAAAAAAAAAAA),
-    .INIT_1D(256'hAAAAAAAFAAAAAAD555555FB1D7FFFFD5FD60FC55555552AAABAAAAAAAAAAAAAA),
-    .INIT_1E(256'hAAAAAABDAAAAAAD5555517E9D57FD545FDD7E955555446AAAB8AAAAAAAAAAAAA),
-    .INIT_1F(256'hEEAAAAB8EBEAAED5555507F97FFFFFFFFFC3F555555047AAAB8EBABAEEBBABAA),
+    .INIT_00(256'hAAAAAAAAAAABD1BAAAAB5555000000000000151556AAAAAA8B27C5D7FFFFFFFF),
+    .INIT_01(256'hAAAAAAAAAAAFCB3AAAAB5554000000000000015551EAAAAB1F59F979FFFFFFFF),
+    .INIT_02(256'hAAAAAAAAAAAFDE9EAAAA5550000000000000001554EAAAAB3FC8EE2F7FFFFFFF),
+    .INIT_03(256'hAAAAAAAAAAAF4FCBAAAA5544000000000000000555EAAAA8BFD0AAEB9BFFFFFF),
+    .INIT_04(256'hAAAAAAAAAABF0FF2AAAA1510400000000000000154FAAAA1FFD0AAAAFCFFFFFF),
+    .INIT_05(256'hAAAAAAAAAABF3FF8EAAA15414000000000001541543AAAB7FFE1AAAAAE4BFFFF),
+    .INIT_06(256'hAAAAAAAAAABE3FFD7AAF14455000000000005510453AABD2FFF4BAAAAAE47FFF),
+    .INIT_07(256'hAAAAAAAAAABD3FFF3EAD15515400000000055550547AAB06FFF0BAAAAABED1EF),
+    .INIT_08(256'hAAAAAAAAAAFC7FFFCBAC15555500000000115551783ABC06FFF2AAAAAAAAFB81),
+    .INIT_09(256'hAAAAAAAAAAFCFFFFC2E811555515000015155551FF2AF046FFF6EAAAAAAAABFA),
+    .INIT_0A(256'hAAAAAAAAAAFCFFFF80B811155550555501555515FF3BC147FFF0EAAAAAAAAAAB),
+    .INIT_0B(256'hAAAAAAAAAAF8FFFF847CD4555555555555555507FE6F0547FFF8EAAAAAAAAAAA),
+    .INIT_0C(256'hAAAAAAAAAAF5FFFF8518F0555555555555555447FF3D1547FFFDBAAAAAAAAAAA),
+    .INIT_0D(256'hAAAAAAAAAAF2FFFF4540F004155555555555010FECC05547FFF8FAAAAAAAAAAA),
+    .INIT_0E(256'hAAAAAAAAAEF3FFFF4551A551501555500415545FF8115547FFF9FAAAAAAAAAAA),
+    .INIT_0F(256'hAAAAAAAAAEE3FFFF45501AA1055555555540012FF1455547FFFEBAAAAAAAAAAA),
+    .INIT_10(256'hAAAAAAAAAAD7FFFF0555D6FE15000001555411BBE6855547FFEFBAAAAAAAAAAA),
+    .INIT_11(256'hAAAAAAAAAB8BFFFF0554A8BFE90000056FAFFFFE8E055543FFEF7AAAAAAAAAAA),
+    .INIT_12(256'hAAAAAAAAAA8FFFFF05543E3FFFFFFFFFFFFFFFFE7E155543FFBA7AAAAAAAAAAA),
+    .INIT_13(256'hAAAAAAAAABDFFFFF05553FCBFFFFFFFFFFFFFFE9BC155543FFAE7AAAAAAAAAAA),
+    .INIT_14(256'hAAAAAAAAABABFFFF05551BE5FFFFFFFFFFFFFFC4F8555543FEAA6AAAAAAAAAAA),
+    .INIT_15(256'hAAAAAAAAAB7FFFFF05555FF12FFFFFFFFFFFFD32F0555543FAAB2AAAAAAAAAAA),
+    .INIT_16(256'hAAAAAAAAAB6AFFFF05554BF55AFFEAAFEABEC1C2E1555547FAABAAAAAAAAAAAA),
+    .INIT_17(256'hAAAAAAAAAA7ABFFF555543F8F040000005505FDFC1555547EAABAAAAAAAAAAAA),
+    .INIT_18(256'hAAAAAAAAAF7AAFFF555553FC7C0FFFFFFFC4D71F85555547AAABAAAAAAAAAAAA),
+    .INIT_19(256'hAAAAAAAAAEBAABFF555551FE3355D001F44F5D7F0555554AAAABEAAAAAAAAAAA),
+    .INIT_1A(256'hAAAAAAAAADAAAAFF555551FF39F13FFF14F59D7E1555554FAAABEAAAAAAAAAAA),
+    .INIT_1B(256'hAAAAAAAAA9AAAABF555554BF4FFF10054F55B1FD1555554BAAABEAAAAAAAAAAA),
+    .INIT_1C(256'hAAAAAAAAADEAAAAF5555543FCDAFF001FF54B6F85555555AAAABEAAAAAAAAAAA),
+    .INIT_1D(256'hAAAAAAAAAFAAAAAA5555557F935FFFFF57F5C2F45555555AAAABAAAAAAAAAAAA),
+    .INIT_1E(256'hAAAAAAAAB7AAAAAA5555551FE355FF5547F75FE15555544EAAAB2AAAAAAAAAAA),
+    .INIT_1F(256'hAAEEAAAAB2EBEAAE5555550FF1FFFFFFFFFF4BD55555504FAAAB2EBABAEEBBAB),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5424,10 +5311,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_024576_002  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5546,\U4/Addr [14:13]}),
-    .dia({open_n5550,open_n5551,open_n5552,open_n5553,open_n5554,open_n5555,open_n5556,1'b0,open_n5557}),
+    .csa({open_n5373,\U4/Addr [14:13]}),
+    .dia({open_n5377,open_n5378,open_n5379,open_n5380,open_n5381,open_n5382,open_n5383,1'b0,open_n5384}),
     .rsta(nRST_pad),
-    .doa({open_n5572,open_n5573,open_n5574,open_n5575,open_n5576,open_n5577,open_n5578,open_n5579,\U4/ROM0/inst_doa_i3_002 }));
+    .doa({open_n5399,open_n5400,open_n5401,open_n5402,open_n5403,open_n5404,open_n5405,open_n5406,\U4/ROM0/inst_doa_i3_002 }));
   // address_offset=24576;data_offset=3;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x001F"),
@@ -5447,38 +5334,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFFFFFFC9522AAA2808857FFFFFFFFFF6A88AAAAAAAAB0741F3FFFFFFFFFFF),
-    .INIT_01(256'hFFFFFFFFFA9A6AAAAAA8AB7FF557FFFFF5FC00A90AAAAA72595051DFFFFFFFFF),
-    .INIT_02(256'hFFFFFFFFF20B32AAAA8AADF7FFFFFFFFFFD5E229AAAAA16211FF366FFFFFFFFF),
-    .INIT_03(256'hFFFFFFFFFA7AB2222A0AB5FFFFFFFFFFFFFFF8AAAAAAA3823DFFDF51FFFFFFFF),
-    .INIT_04(256'hFFFFFFFFEAE80C82A8AAF87FFFFFFFFFFFFD7E2AC2AA85AA3B5FFFF1B7FFFFFF),
-    .INIT_05(256'hFFFFFFFFC0602BAAA88AE1D7FFFFFFFFFFF7FC8A42AA188A8A5FFFFD7B7FFFFF),
-    .INIT_06(256'hFFFFFFFFE8C00B60A90945FDFFFFFFFFFF7F970A42AB4DA000D7FFFFF5E7FFFF),
-    .INIT_07(256'hFFFFFFFFC9EA82D8A98BDBF5FFFFFFFFFF5FDF28A2A963000777FFFFFF1F35FF),
-    .INIT_08(256'hFFFFFFFFABE80020A989DFFD7FFFFFFF71FFDE496A952B808CFFFFFFFFDE1FFF),
-    .INIT_09(256'hFFFFFFFF890000000B27DFFF1DDD557797FF5E80E2FEA920AC7FFFFFFFFF747F),
-    .INIT_0A(256'hFFFFFFFF810A800883451FFFF057FF81DFFF1120E1D220A0A3FFFFFFFFFFFF7F),
-    .INIT_0B(256'hFFFFFFFF01AA0022AB195FFFFFFFD5FD7FFF10006760288003DFFFFFFFFFFFFF),
-    .INIT_0C(256'hFFFFFFFF0DA000A2AB0DF5FFFFFFFFFD7FD65683DCA82A8002D7FFFFFFFFFFFF),
-    .INIT_0D(256'hFFFFFFFF268000C2A107FC1FFFFFFFFFFF03D203782A8A200D37FFFFFFFFFFFF),
-    .INIT_0E(256'hFFFFFFFF862002C2A89C0FF21555500415FD3A8BE02AA880AD97FFFFFFFFFFFF),
-    .INIT_0F(256'hFFFFFFFF8EA002E2ABFACE5D57FFFD5F5DDE7A0C50AAA082243FFFFFFFFFFFFF),
-    .INIT_10(256'hFFFFFFFF9E8002E2A89D7E60FFFFFC28297C5EAA02AAA2A0361FFFFFFFFFFFFF),
-    .INIT_11(256'hFFFFFFFFD20002C2AA137FF17FFF5DEAFD7F7731EAAAA4A09C5FFFFFFFFFFFFF),
-    .INIT_12(256'hFFFFFFFFD02000EAAACAE7FFF57FFFFFFFFFFE002AAA848AFF5FFFFFFFFFFFFF),
-    .INIT_13(256'hFFFFFFFF308000CAAA8039FFFFFFFFFFFFFDF0ABAAAA86A2FF77FFFFFFFFFFFF),
-    .INIT_14(256'hFFFFFFFF068002CAAA94A3DFFFFFFFFFFF7F1F028AAAA4A97FFFFFFFFFFFFFFF),
-    .INIT_15(256'hFFFFFFFFC420024AAA8AADDFFFFFFFFFFFF3568EAAAAAE8DFF3FFFFFFFFFFFFF),
-    .INIT_16(256'hFFFFFFFF570A024AAAAAAD4B00A8803D42DFDF8A2AAAACA7FF97FFFFFFFFFFFF),
-    .INIT_17(256'hFFFFFFFFD7CA8022AAA4A15E3D5F57F5D63548382AAAACB7FF1FFFFFFFFFFFFF),
-    .INIT_18(256'hFFFFFFFC7FFA0022AAAA895F37D7F7F5F9D57A0AAAAAA65FFF3FFFFFFFFFFFFF),
-    .INIT_19(256'hFFFFFFFE37FCA222AAAB207DEB5557553D5508C2AAAAA1FFFF1FFFFFFFFFFFFF),
-    .INIT_1A(256'hFFFFFFFD5FFF2A02AAAA225D545D55C97D546A0AAAAAA17FFF3FFFFFFFFFFFFF),
-    .INIT_1B(256'hFFFFFFFDFFFFEA02AAAA2A7555C750BDF55C22AAAAAAAD7FFF3FFFFFFFFFFFFF),
-    .INIT_1C(256'h5557D57BD55578A2AAAA4A3D5555FDD55752222AAAAAADFFFF1757DD7555557F),
-    .INIT_1D(256'h5D555F5A7F775F22AAAA807D55557D55555FA2AAAAAAAFFFFF155FDD555FD555),
-    .INIT_1E(256'h5555775CF555D7A2AAAA1A8DD5555555754A00AAAAAB3DFFFF3D55D5775DD5D7),
-    .INIT_1F(256'hFFFFFFF5DFDFFDA2AAAAB207D5555555552602AAAAADBFFFFF7DFFFFFFFFFF55),
+    .INIT_00(256'hFFFFFFFFFFF6158AAA8A02205FFFFFFFFFFDEA22AAAAAAAA90D43DBFFFFFFFFF),
+    .INIT_01(256'hFFFFFFFFFFFA38EAAAAAA2A9FFD55FFFFFD7F402A12AAAA8D87150537FFFFFFF),
+    .INIT_02(256'hFFFFFFFFFFD8299AAAAA2AA7DFFFFFFFFFFF57C8A3AAAA81C813FD9CEFFFFFFF),
+    .INIT_03(256'hFFFFFFFFFFF8FA9888A82A97FFFFFFFFFFFFFFF2AAAAAA8B08B7FF7D53FFFFFF),
+    .INIT_04(256'hFFFFFFFFFFEAE0260AA2AAF0FFFFFFFFFFFFF5FCAA4AAA07A8B97FFFD39FFFFF),
+    .INIT_05(256'hFFFFFFFFFF40C0ABAAA22AC35FFFFFFFFFFFDFF6284AA8322A287FFFF5F9FFFF),
+    .INIT_06(256'hFFFFFFFFFFE24029C2A12147F7FFFFFFFFFDFF1D284AA96780025FFFFFD7CFFF),
+    .INIT_07(256'hFFFFFFFFFF63EA0A72A32B7BD7FFFFFFFFFD7F7DA28AA1C9000DDFFFFFFD3D97),
+    .INIT_08(256'hFFFFFFFFFFABE00082A3237FF5FFFFFFFDD3FF7C61EA15AB0226FFFFFFFF7C3F),
+    .INIT_09(256'hFFFFFFFFFF21000000298F7FFD377555DF1FFD7E02CAFEA182A4FFFFFFFFFDD4),
+    .INIT_0A(256'hFFFFFFFFFF012A002209453FFFD05FFF037FFD1182C35882828BFFFFFFFFFFFD),
+    .INIT_0B(256'hFFFFFFFFFD03A8008AA9317FFFFFFF57F5FFFD1000CDC0A2000B7FFFFFFFFFFF),
+    .INIT_0C(256'hFFFFFFFFFD2780028AA927D7FFFFFFFFF5FF5C5E0B76A0AA000A5FFFFFFFFFFF),
+    .INIT_0D(256'hFFFFFFFFFD8E00024A810FF43FFFFFFFFFFD0B5809F0AA2880259FFFFFFFFFFF),
+    .INIT_0E(256'hFFFFFFFFFF0C800A4AA2342FD81555500417F5BA2BC0AAA202A71FFFFFFFFFFF),
+    .INIT_0F(256'hFFFFFFFFFF2E800ACAABFA6C755FFFF57D777CF82452AA820884BFFFFFFFFFFF),
+    .INIT_10(256'hFFFFFFFFFF3E000ACAA235FCC2FFFFF4A0A1F47EA80AAA8A809C3FFFFFFFFFFF),
+    .INIT_11(256'hFFFFFFFFFF58000A4AA819FFD1FFFD77EAF5FDDD93EAAA8682347FFFFFFFFFFF),
+    .INIT_12(256'hFFFFFFFFFF508002EAAA6ACFFFD5FFFFFFFFFFFC00AAAA062AFD7FFFFFFFFFFF),
+    .INIT_13(256'hFFFFFFFFFD9200026AAA00B3FFFFFFFFFFFFF7D2ABAAAA0E8AFDDFFFFFFFFFFF),
+    .INIT_14(256'hFFFFFFFFFD0E000A6AAA168B7FFFFFFFFFFDFD3D0A2AAA86A1FFFFFFFFFFFFFF),
+    .INIT_15(256'hFFFFFFFFFF4480086AAA2AA77FFFFFFFFFFFD95E2EAAAAAE27FDBFFFFFFFFFFF),
+    .INIT_16(256'hFFFFFFFFFD5D28086AAAAAA56902A200B54A7F7F28AAAAA68FFF1FFFFFFFFFFF),
+    .INIT_17(256'hFFFFFFFFFF5F6A008AAA86817CB57D5FD75C9560B0AAAAA69FFD3FFFFFFFFFFF),
+    .INIT_18(256'hFFFFFFFFF4FFF8008AAAAA217D9F5FDFD7F355F82AAAAA8C7FFDBFFFFFFFFFFF),
+    .INIT_19(256'hFFFFFFFFFC9FF6888AAAA980F7E9555D55B555224AAAAA83FFFD3FFFFFFFFFFF),
+    .INIT_1A(256'hFFFFFFFFF57FFDA80AAAA8887554755761F554E82AAAAA81FFFDBFFFFFFFFFFF),
+    .INIT_1B(256'hFFFFFFFFF7FFFFE80AAAA8A8D5574D52B7D5748AAAAAAAA5FFFDBFFFFFFFFFFF),
+    .INIT_1C(256'h55555F55FB5555F28AAAA868B55557F7555D5888AAAAAAA7FFFD1D5F75D55555),
+    .INIT_1D(256'h5D75557D78FDDD7D8AAAAA00F55555F555557F8AAAAAAAAFFFFD157F75557F55),
+    .INIT_1E(256'h555555DD76D5575F8AAAA83A2755555555D56802AAAAA9B7FFFDB55755DD7757),
+    .INIT_1F(256'hFFFFFFFFD77F7FF78AAAAA980F55555555558C0AAAAAA7BFFFFDF7FFFFFFFFFD),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5495,10 +5382,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_024576_003  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5605,\U4/Addr [14:13]}),
-    .dia({open_n5609,open_n5610,open_n5611,open_n5612,open_n5613,open_n5614,open_n5615,1'b0,open_n5616}),
+    .csa({open_n5432,\U4/Addr [14:13]}),
+    .dia({open_n5436,open_n5437,open_n5438,open_n5439,open_n5440,open_n5441,open_n5442,1'b0,open_n5443}),
     .rsta(nRST_pad),
-    .doa({open_n5631,open_n5632,open_n5633,open_n5634,open_n5635,open_n5636,open_n5637,open_n5638,\U4/ROM0/inst_doa_i3_003 }));
+    .doa({open_n5458,open_n5459,open_n5460,open_n5461,open_n5462,open_n5463,open_n5464,open_n5465,\U4/ROM0/inst_doa_i3_003 }));
   // address_offset=24576;data_offset=4;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0020"),
@@ -5518,38 +5405,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFFFFFFD6857FFFFA2020AAAAAAAAAAA8A02037FFFFFCF9B6041FFFFFFFFFF),
-    .INIT_01(256'hFFFFFFFFFF6F9FFFFF8200AAA002AAAAA0AAAA00DFFFFFA7A6F69E5FFFFFFFFF),
-    .INIT_02(256'hFFFFFFFFFDCDC5FFFF0002A2AAAAAAAAAA80A880FFFFF43DE4DDF59FFFFFFFFF),
-    .INIT_03(256'hFFFFFFFFF5AF6577FF202A2AAAAAAAAAAAAAA200DFFFF6FDE0FFDF6D7FFFFFFF),
-    .INIT_04(256'hFFFFFFFFFDBFF357FD8007AAAAAAAAAAAAA82A8017FFD275EA7FFFF4FFFFFFFF),
-    .INIT_05(256'hFFFFFFFFFFB7DE7FFD803E2AAAAAAAAAAA802AA037FF4B75707FFFFDA57FFFFF),
-    .INIT_06(256'hFFFFFFFFD79FF637FC02BA00AAAAAAAAAA806A8017FE0BDFF2F7FFFFD21DFFFF),
-    .INIT_07(256'hFFFFFFFFD6BD7D8DFC022408AAAAAAAAAAA02288B7FC2B7FF8D7FFFFFDC2DFFF),
-    .INIT_08(256'hFFFFFFFFF6BFFFC77C82A0020AAAAAAA0600229E3FC00BFF7BFFFFFFFFD7CAFF),
-    .INIT_09(256'hFFFFFFFFF65FFFC95E28A000E0A0000A6800A07FBFA28BDF595FFFFFFFFF55FF),
-    .INIT_0A(256'hFFFFFFFFFC757FE8568AE0000FA8007E2000E27F360A0BDF5EDFFFFFFFFFFF7F),
-    .INIT_0B(256'hFFFFFFFFFCF5FFC896C8200000002A028000E3FF18280BFFFE5FFFFFFFFFFFFF),
-    .INIT_0C(256'hFFFFFFFFF8FFFFC82EF08A0000000002802983FE002009FFFCF7FFFFFFFFFFFF),
-    .INIT_0D(256'hFFFFFFFFD9FFFF8800D823E00000000000FE05FEA20029DFF4F7FFFFFFFFFFFF),
-    .INIT_0E(256'hFFFFFFFF71DFFDA802522A8FEAAAAFFBEA002F7C0A800BFF5657FFFFFFFFFFFF),
-    .INIT_0F(256'hFFFFFFFF73DFFD8802AF72A28000000AA0A0B5FA00000BFDDD57FFFFFFFFFFFF),
-    .INIT_10(256'hFFFFFFFF63FFFDA800617D0A8000002A8208DD73E8000BDFD557FFFFFFFFFFFF),
-    .INIT_11(256'hFFFFFFFFCFFFFDA800D4DFFCAAAA029DDDFF7FCDA80009DF7DB7FFFFFFFFFFFF),
-    .INIT_12(256'hFFFFFFFFEFDFFF88009F9FFFFFFFFFFFFFFFFF1F800029F55F37FFFFFFFFFFFF),
-    .INIT_13(256'hFFFFFFFF677FFF880037CFFFFFFFFFFFFFFFF6DE000029DDFFB7FFFFFFFFFFFF),
-    .INIT_14(256'hFFFFFFFF7D7FFD88002572FFFFFFFFFFFFFFEA7E00000BD7FFBFFFFFFFFFFFFF),
-    .INIT_15(256'hFFFFFFFF3DDFFD8800075097FFFFFFFFFFFE03F8000003F5FF7FFFFFFFFFFFFF),
-    .INIT_16(256'hFFFFFFFF1FF5FD880005DA2F5F55D7F7F70289F8000001DFFFDFFFFFFFFFFFFF),
-    .INIT_17(256'hFFFFFFFF17F57FA00009DC080000AAA000A805E2800003DFFF77FFFFFFFFFFFF),
-    .INIT_18(256'hFFFFFFFD37F5FFA00003762020000000200007E000000BDFFF77FFFFFFFFFFFF),
-    .INIT_19(256'hFFFFFFFD77FD5DA00000FF8022800002A800978800000D7FFF57FFFFFFFFFFFF),
-    .INIT_1A(256'hFFFFFFFC5FFF55A00002FD880228008AA000BFA000000D7FFF57FFFFFFFFFFFF),
-    .INIT_1B(256'hFFFFFFFEFFFFD5A00000FDA800A0A22820007EA000000D7FFF57FFFFFFFFFFFF),
-    .INIT_1C(256'hFFFFFFFE5FFFF7000000BDC80002288000037C80000007FFFF57FFF7DFFFFFFF),
-    .INIT_1D(256'hF7FFFFFD75DDFF0000001FE0000000000001DA8000002FFFFF77F777FFF57FFF),
-    .INIT_1E(256'hFFFFFFFBFFFFFF800000AF7800000000202DF200000025FFFF7FFF7FDDF7FFFD),
-    .INIT_1F(256'hFFFFFFF35FDFFD88000027FA800000000037EA0000000DFFFF35FFFFFFFFFF7F),
+    .INIT_00(256'hFFFFFFFFFFF5E05FFFFF88082AAAAAAAAAAA280809FFFFFF6F39C043FFFFFFFF),
+    .INIT_01(256'hFFFFFFFFFFFDEF3FFFFF0802AA800AAAAA82AAA8027FFFFF8F8EDE3C7FFFFFFF),
+    .INIT_02(256'hFFFFFFFFFFF76747FFFD000A8AAAAAAAAAAA02A202FFFFD4B7C677D73FFFFFFF),
+    .INIT_03(256'hFFFFFFFFFFD7ADC5DFFD80A8AAAAAAAAAAAAAA88027FFFDEF7C2FF7DE5FFFFFF),
+    .INIT_04(256'hFFFFFFFFFFF7BFD95FF7000FAAAAAAAAAAAAA0AA001FFF58D7E8FFFFD6FFFFFF),
+    .INIT_05(256'hFFFFFFFFFFFF9F7CFFF700BCAAAAAAAAAAAA00AA809FFD69D5D0FFFFF785FFFF),
+    .INIT_06(256'hFFFFFFFFFF5F3FDC9FF40AB802AAAAAAAAAA00EA001FFC2B7FDADFFFFF5837FF),
+    .INIT_07(256'hFFFFFFFFFF5EB5F727F4088422AAAAAAAAAA808A229FF4A9FFF25FFFFFF74A7F),
+    .INIT_08(256'hFFFFFFFFFFDEBFFF4DF60A80082AAAAAA80C008A3CBF402BFDFBFFFFFFFF5F6A),
+    .INIT_09(256'hFFFFFFFFFFDC7FFF617CA28002C2800028E00280FFBF8A2B7D717FFFFFFFFD57),
+    .INIT_0A(256'hFFFFFFFFFFF4D5FFE05E2AC0002FA000FC8002C8FD9C282B7D7E7FFFFFFFFFFD),
+    .INIT_0B(256'hFFFFFFFFFFF6D7FF621E6080000000A80A0002CBFD30A02BFFFC7FFFFFFFFFFF),
+    .INIT_0C(256'hFFFFFFFFFFF2FFFF60AED228000000000A00A30BFC008023FFF6DFFFFFFFFFFF),
+    .INIT_0D(256'hFFFFFFFFFF73FFFF2002708BC00000000002FC07FE8800A37FD6DFFFFFFFFFFF),
+    .INIT_0E(256'hFFFFFFFFFDD37FF7A00858AA2FEAAAAFFBE800ADF42A002BFD5C5FFFFFFFFFFF),
+    .INIT_0F(256'hFFFFFFFFFDDB7FF7200AADDA8A0000002A828297F800002BF7755FFFFFFFFFFF),
+    .INIT_10(256'hFFFFFFFFFDCBFFF7A000C1F52A000000AA082275DBE0002B7F555FFFFFFFFFFF),
+    .INIT_11(256'hFFFFFFFFFF6FFFF7A002567FF6AAA80A3777FDFF67A000237DF79FFFFFFFFFFF),
+    .INIT_12(256'hFFFFFFFFFFEF7FFF20023F3FFFFFFFFFFFFFFFFD3F0000A3D57D9FFFFFFFFFFF),
+    .INIT_13(256'hFFFFFFFFFDCDFFFF20009F6FFFFFFFFFFFFFFFDE7C0000A377FF9FFFFFFFFFFF),
+    .INIT_14(256'hFFFFFFFFFDF5FFF7200085DAFFFFFFFFFFFFFFE8FC00002B5FFFBFFFFFFFFFFF),
+    .INIT_15(256'hFFFFFFFFFDB77FF720000D521FFFFFFFFFFFFC0BF000000BD7FDFFFFFFFFFFFF),
+    .INIT_16(256'hFFFFFFFFFD3FD7F720000778AD7D575FDFDD0A23F00000037FFF7FFFFFFFFFFF),
+    .INIT_17(256'hFFFFFFFFFD1FD5FF80002374200002AA8002A007CA00000B7FFDDFFFFFFFFFFF),
+    .INIT_18(256'hFFFFFFFFF59FD7FF800009DC808000000080000FC000002B7FFDDFFFFFFFFFFF),
+    .INIT_19(256'hFFFFFFFFF5DFF577800002FF008A00000AA0021F20000025FFFD5FFFFFFFFFFF),
+    .INIT_1A(256'hFFFFFFFFF47FFD5780000AF72008A0022A8002BF80000025FFFD5FFFFFFFFFFF),
+    .INIT_1B(256'hFFFFFFFFFEFFFF57800002F7A0028288A08000FE80000025FFFD5FFFFFFFFFFF),
+    .INIT_1C(256'hFFFFFFFFFC7FFFDD000002B7600008A2000009F60000000FFFFD5FFFDF7FFFFF),
+    .INIT_1D(256'hF7DFFFFFF5D777FD0000003FC00000000000037A000000AFFFFDDFDDDFFFD5FF),
+    .INIT_1E(256'hFFFFFFFFFBFFFFFF000002ADF00000000080A7D800000087FFFDFFFDFF77DFFF),
+    .INIT_1F(256'hFFFFFFFFD97F7FF72000008FFA00000000009FE800000027FFFD97FFFFFFFFFD),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5566,10 +5453,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_024576_004  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5664,\U4/Addr [14:13]}),
-    .dia({open_n5668,open_n5669,open_n5670,open_n5671,open_n5672,open_n5673,open_n5674,1'b0,open_n5675}),
+    .csa({open_n5491,\U4/Addr [14:13]}),
+    .dia({open_n5495,open_n5496,open_n5497,open_n5498,open_n5499,open_n5500,open_n5501,1'b0,open_n5502}),
     .rsta(nRST_pad),
-    .doa({open_n5690,open_n5691,open_n5692,open_n5693,open_n5694,open_n5695,open_n5696,open_n5697,\U4/ROM0/inst_doa_i3_004 }));
+    .doa({open_n5517,open_n5518,open_n5519,open_n5520,open_n5521,open_n5522,open_n5523,open_n5524,\U4/ROM0/inst_doa_i3_004 }));
   // address_offset=24576;data_offset=5;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0021"),
@@ -5589,38 +5476,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h0000000014E82955540AEB2AFFFAFFFFEEB2BAAE1555555F9EF6EAEFFFFFFF80),
-    .INIT_01(256'h0000000006FBA515541AA8AAA002AAAAA0EB6ABF35554472BDEDECBAFFFFFF80),
-    .INIT_02(256'h0000000007AED755551AE6A3EEBFFFAAFE808AAB15550BCAF46773BFBFFFFF80),
-    .INIT_03(256'h0000000013E3EE8D512ABC2FAAABFEAAAEAABAFB85554E1FBC41218DFFFFFF80),
-    .INIT_04(256'h000000000EDFE82D53ABBA8BAAAAAAAAABAC78BFAD5526BFBD40015B5FFFFF80),
-    .INIT_05(256'h000000004EEBFC9152AF4EF6AAAAAAAAABCE9A2BED5480BFE590004624FFFF80),
-    .INIT_06(256'h000000014A0FFB6957ABBEACFEAAAAAEAE2AF2DEFC5135FFAB180001376FFF80),
-    .INIT_07(256'h000000004E8FFEF6566E3AABEFAAAAAAACAABF9E0D45F77FBC5800001378B780),
-    .INIT_08(256'h000000007F7FFEAB92BC6AAB8BAAAABB5EABFB59D42667FFEC00000000389580),
-    .INIT_09(256'h000000007F3FFEE2309F6AAAFE055451EAABFF6EB53F76FFFB3000000010ED00),
-    .INIT_0A(256'h000000012B2BFE878DEB6AAAAAABFFBAAAABA93FADF9E3FFEE30000000000580),
-    .INIT_0B(256'h00000001783FFFD2209E6EAAAEAAAAAAAAABB4EAD787E7FFEC20000000000000),
-    .INIT_0C(256'h000000006ABFFF87CBEE9AAAAAAAAAAAAAAEBEAF0A5FA3FFFAD8000000000000),
-    .INIT_0D(256'h000000057D3FFFC6BF0EF7AAAAAAAAAAAABF8EBA96FFE6FFFD68000000000000),
-    .INIT_0E(256'h0000000578FFFEE6BD87073AFAAAAFFBAFBB0EABB9AAF2FFECE8000000000000),
-    .INIT_0F(256'h0000000430FFFEA6AC491D357EAAAAA415EB02FE52AAF7FFEA18000000000000),
-    .INIT_10(256'h000000047AFFFE86AEEB7FF57EFFFFD500AE98B607AAF6FFA798000000000000),
-    .INIT_11(256'h0000000100FFFED7AE051FF2D001ABC7C3FAEE56A6AAE0FFB2E8000000000000),
-    .INIT_12(256'h0000000153FFFA87AF0E5EFFBFEABFFFFFFFFFCB0AAAF5FE9538000000000000),
-    .INIT_13(256'h00000001AFFFFAD7AEDEFDFFFFFFFFFFFFFFF8CA5AAAE1FF8428000000000000),
-    .INIT_14(256'h0000000190FFFE97AB9DF6BAFFFBFFFFEFFFAEE96AAAF5FE1020000000000000),
-    .INIT_15(256'h00000001AEBFFF92ABAFFBB7FFFFFFFFFFFE5D6C6AAAF5E811F0000000000000),
-    .INIT_16(256'h00000001B02FFF92AAB4EE404EFB2AF5039F2BE1AEAAF2BC0540000000000000),
-    .INIT_17(256'h00000000394FFBEEAAF4EEA2DABABFB50286A2A4EAAAE6B400D4000000000000),
-    .INIT_18(256'h00000003B857FBFEAAF8BBCB6BFBEAAB9A3EFB92AAAAF7900080000000000000),
-    .INIT_19(256'h000000064804FEBAAABDBB6ED27FFFEC9FFB4A96AAAAB00400E1010000000000),
-    .INIT_1A(256'h00000002D0013EFAAABDBEA3AA62AA049FBB7F0AAAAAA78400A1010000000000),
-    .INIT_1B(256'h0000000100011EBAAAAA1BBAAB2EF84FDFA97B9AAAAAA08401A4001044000000),
-    .INIT_1C(256'h01551543E45547FAAAAB5EF3AAE93D6AFFBE786AAAABFD0001B4050100000000),
-    .INIT_1D(256'h155104568044113AAAABAAFCFAAAFAFEAFB9FB6AAAABE80001D4051145554011),
-    .INIT_1E(256'h555014534541057AAAABDBB3FFAAFFFE8E9BE1BAAAAE720000FD101040515140),
-    .INIT_1F(256'h5455540C2174126FAFFE87BC2AAAAAAAAA86FDFEBFF9775554821110441545C0),
+    .INIT_00(256'h000000000016E0A155542AE9AAFFFAFFFFEE9ABAAC1555557F3EDEEAEFFFFFFF),
+    .INIT_01(256'h00000000000EFB8515543AA2AA800AAAAA82E9EABD955544DAB7E7E6BAFFFFFF),
+    .INIT_02(256'h00000000000FAE5D55553ACE8BEEBFFFAAFE022AA915552B6AD4CDDBBFBFFFFF),
+    .INIT_03(256'h00000000001BCBEE2551AAB4AFAAABFEAAAEAABAFB05556C3FB4418327FFFFFF),
+    .INIT_04(256'h00000000002E7FE0A55BABBA2BAAAAAAAAABA4F2BFA5558EBFB54001797FFFFF),
+    .INIT_05(256'h00000000006EEBF6115AAD6EDEAAAAAAAAAB6E38ABE55602BFC710004C86FFFF),
+    .INIT_06(256'h0000000001682FF9E15FABBEA6FEAAAAAEACAADA7EF45197FFA93000019DEFFF),
+    .INIT_07(256'h00000000006E2FFEDC5CECBAABEFAAAAAAA6AABF3C2547DDFFB470000019F29F),
+    .INIT_08(256'h0000000000FDFFFEAB1AB4EAAB2BAAAAB97EABF973548CCFFFE400000000B217),
+    .INIT_09(256'h0000000000FDBFFEC8923DEAAAFC055453EAABFDEE95BDDEFFF99000000012E5),
+    .INIT_0A(256'h0000000001A9ABFE0F27E9EAAAAAABFFBAAAABA1BFA7F3CBFFEC900000000007),
+    .INIT_0B(256'h0000000001F0BFFF58823CEEAAAEAAAAAAAAAB96EA5F0FCFFFE4800000000000),
+    .INIT_0C(256'h0000000000EABFFF0F6BEE3AAAAAAAAAAAAAAEBEAD287F8BFFFA700000000000),
+    .INIT_0D(256'h0000000005F5BFFF4EBD2EDFAAAAAAAAAAAABF2EBA1EFFCEFFF5E00000000000),
+    .INIT_0E(256'h0000000005F2FFFECEB70D0DBAFAAAAFFBAFB92EABB3AADAFFE6E00000000000),
+    .INIT_0F(256'h000000000492FFFE8EA4613595FEAAAA8417E90AFC5AAADFFFE8300000000000),
+    .INIT_10(256'h0000000004FAFFFE0EAEE9FFD5FEFFFF5502AE329C0FAADEFF8F300000000000),
+    .INIT_11(256'h000000000102FFFE5FAC053FDA5003AB4F4BFAEC5E8EAAC2FF9AE00000000000),
+    .INIT_12(256'h00000000015BFFFA0FAD2C7EFFBFEABFFFFFFFFF692AAAD7FE15B00000000000),
+    .INIT_13(256'h0000000003AFFFFA5FAE7EF7FFFFFFFFFFFFFFF2687AAAC3FF04A00000000000),
+    .INIT_14(256'h000000000312FFFE1FAB37DEBAFFFBFFFFEFFFAEE1EAAAD7FC10800000000000),
+    .INIT_15(256'h0000000003AEBFFF1AABAFFB9FFFFFFFFFFFFC75E4EAAAD7E013D00000000000),
+    .INIT_16(256'h000000000390AFFF1AAA96EC406EF9AAD50B3DABC3AEAADAB405400000000000),
+    .INIT_17(256'h0000000000B16FFBEEAAD6EE8A7ABABF950A0E8A86EAAACE9402540000000000),
+    .INIT_18(256'h000000000BB05FFBFEAAF2BB69EBFBEAAB38BEFB1AAAAADF1002000000000000),
+    .INIT_19(256'h000000000C6006FEBAAAB7B9EE58FFFFE63FF96A1EAAAA900402C10100000000),
+    .INIT_1A(256'h000000000A5001BEFAAAB7BE8BA8CAA8063FB9FD2AAAAA8F0402810100000000),
+    .INIT_1B(256'h000000000100013EBAAAA83BBAA9AEF06F7FA1FB3AAAAA820403840010440000),
+    .INIT_1C(256'h110155154BC4554FFAAAA97EDBAAE1B5EAFFBCF0EAAAABF50003940501000000),
+    .INIT_1D(256'h401551045E004411BAAAABAAF6FAAAFAFEAFB3F9EAAAABE00003540511455540),
+    .INIT_1E(256'h4055501459454105FAAAAB7B9BFFAAFFFE2E3BC3BAAAACD80002F51010405151),
+    .INIT_1F(256'h555455542481D418EFAFFE0FB4AAAAAAAAAA0EF7FEBFF1DD5556081110441547),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5637,10 +5524,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_024576_005  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5723,\U4/Addr [14:13]}),
-    .dia({open_n5727,open_n5728,open_n5729,open_n5730,open_n5731,open_n5732,open_n5733,1'b0,open_n5734}),
+    .csa({open_n5550,\U4/Addr [14:13]}),
+    .dia({open_n5554,open_n5555,open_n5556,open_n5557,open_n5558,open_n5559,open_n5560,1'b0,open_n5561}),
     .rsta(nRST_pad),
-    .doa({open_n5749,open_n5750,open_n5751,open_n5752,open_n5753,open_n5754,open_n5755,open_n5756,\U4/ROM0/inst_doa_i3_005 }));
+    .doa({open_n5576,open_n5577,open_n5578,open_n5579,open_n5580,open_n5581,open_n5582,open_n5583,\U4/ROM0/inst_doa_i3_005 }));
   // address_offset=24576;data_offset=6;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0022"),
@@ -5660,38 +5547,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFFFFFFB1F0AAAABA551BFAAAFAAAAABFC0554EAAAAAF8361EDFFFFFFFFFFF),
-    .INIT_01(256'hFFFFFFFFF9127AAAABE543EAA002AAAAA0BE95552AAAABA57DA829BFFFFFFFFF),
-    .INIT_02(256'hFFFFFFFFED1512AAABA50AA2AAAAAAAAAA81B551AAAAAE6059BAEE77FFFFFFFF),
-    .INIT_03(256'hFFFFFFFFEC7D18AAAED5482AAAAAAAAAAAAAED553AAABD854BFFBFA9FFFFFFFF),
-    .INIT_04(256'hFFFFFFFFF53956EAAF14710AAAAAAAAAAAAD6B554AAAEED548BFFEE9CFFFFFFF),
-    .INIT_05(256'hFFFFFFFFA44141AAAF11C406AAAAAAAAABD05F952AABA715103FFFBAFCFFFFFF),
-    .INIT_06(256'hFFFFFFFFF125557AAE109400AAAAAAAAAE0003E42AAFDF55013FFFFFEBE7FFFF),
-    .INIT_07(256'hFFFFFFFFF1F55522AE511005EAAAAAAAAC0012E16ABE75D516FFFFFFFE9ECBFF),
-    .INIT_08(256'hFFFFFFFF90E55454AA8200000BAAAABA40015781FAF95555577FFFFFFFAE0BFF),
-    .INIT_09(256'hFFFFFFFF90955405ABC7000011100141000153C16A821155426FFFFFFFEEAA7F),
-    .INIT_0A(256'hFFFFFFFE809554542AA2000000015500000112546F18505547EFFFFFFFFFFEFF),
-    .INIT_0B(256'hFFFFFFFEC1D554404EBB040004000000000107511861545541BFFFFFFFFFFFFF),
-    .INIT_0C(256'hFFFFFFFED3D554454486C0000000000000045F5051951455553FFFFFFFFFFFFF),
-    .INIT_0D(256'hFFFFFFFFC715544545E2A40000000000000148519155555557CFFFFFFFFFFFFF),
-    .INIT_0E(256'hFFFFFFFFC6555525510EAB500000000005417945F155415553CFFFFFFFFFFFFF),
-    .INIT_0F(256'hFFFFFFFF9755556555FC73B10155500544FFFC43C9554155424FFFFFFFFFFFFF),
-    .INIT_10(256'hFFFFFFFF9F555565510EFE6EFEFFFAFFEFFB3B41455545554B0FFFFFFFFFFFFF),
-    .INIT_11(256'hFFFFFFFFAC5555255409FFBDEFFFBBC02AFEFE98155543550A7FFFFFFFFFFFFF),
-    .INIT_12(256'hFFFFFFFFF9555175553177FFEABFFFFFFFFFFF64155553557EAFFFFFFFFFFFFF),
-    .INIT_13(256'hFFFFFFFFC9555135550055FFFFFFFFFFFFFFFD15D55547547EEFFFFFFFFFFFFF),
-    .INIT_14(256'hFFFFFFFE97555535550F01BFFFFFFFFFFFFEDF8515555754EFFFFFFFFFFFFFFF),
-    .INIT_15(256'hFFFFFFFEA6555435551157EFFFFFFFFFFFE8571755555353EFEFFFFFFFFFFFFF),
-    .INIT_16(256'hFFFFFFFFBE9554355555565DE514444FEC1F5E1455555343FB8FFFFFFFFFFFFF),
-    .INIT_17(256'hFFFFFFFFAFF55045554344C77AAFFAF0067048585555575FFEDFFFFFFFFFFFFF),
-    .INIT_18(256'hFFFFFFFA6FE9504555451585190000010E552C155555563FFEDFFFFFFFFFFFFF),
-    .INIT_19(256'hFFFFFFFA4FFF54455554D1354D555515B8513125555551FBFE9EFEFFFFFFFFFF),
-    .INIT_1A(256'hFFFFFFFAFFFFD4055554542112A5545F8514A115555540FBFEDEFEFFFFFFFFFF),
-    .INIT_1B(256'hFFFFFFFBFFFFF4055554403C047AEAE855049555555552FBFFDFFFEFBBFFFFFF),
-    .INIT_1C(256'hAAAAAABCEEAAB9455554341D00002D0055040455555447FFFF9AAABBEAAAAAFF),
-    .INIT_1D(256'hBFEBBAEC7EEEAEC55554000C50000054054F4555555557FFFF9ABBBBEFFFEAAA),
-    .INIT_1E(256'hAAAAEAFB6EAAAFC555555D02550055540454015555548BFFFEF7BBBAEEBAEAEE),
-    .INIT_1F(256'hFFFFFFEBBFFFFBC555554D0300000000017405555552CFFFFEFBFFFFFFFFFFAA),
+    .INIT_00(256'hFFFFFFFFFFF93D2AAAAB8553BFAAAFAAAAABF40556EAAAAAF09C3E7FFFFFFFFF),
+    .INIT_01(256'hFFFFFFFFFFF118FAAAABC54BEA800AAAAA82BE1555AAAAAB85F7A0A3BFFFFFFF),
+    .INIT_02(256'hFFFFFFFFFFE5151AAAAB852A8AAAAAAAAAAA039553AAAAACC073BAECDFFFFFFF),
+    .INIT_03(256'hFFFFFFFFFFE4F532AAAE5560AAAAAAAAAAAAAAE555BAAAB7056BFFBFA3FFFFFF),
+    .INIT_04(256'hFFFFFFFFFFD5B15EEAAD14D12AAAAAAAAAAAA5E9556AAAEE5562BFFEE36FFFFF),
+    .INIT_05(256'hFFFFFFFFFF844143AAAD13440EAAAAAAAAAB507F15AAAB8D1510BFFFBAF6FFFF),
+    .INIT_06(256'hFFFFFFFFFFD18555FAAC121402AAAAAAAAAC000BC4AAAF7D5501BFFFFFEBCFFF),
+    .INIT_07(256'hFFFFFFFFFFD3D5558AAC511007EAAAAAAAA4001AC1EABCD7551EFFFFFFFE3E6B),
+    .INIT_08(256'hFFFFFFFFFF12C55456AA0800002BAAAAB840015F03FAF155555DFFFFFFFFAC2B),
+    .INIT_09(256'hFFFFFFFFFF12155407AB4D00001110014100015B41EA08115548EFFFFFFFEEA8),
+    .INIT_0A(256'hFFFFFFFFFE02155454AA8800000001550000011854ED3050554FEFFFFFFFFFFE),
+    .INIT_0B(256'hFFFFFFFFFE435554406EB904000400000000010D5130C1545543BFFFFFFFFFFF),
+    .INIT_0C(256'hFFFFFFFFFE5B555445460E40000000000000047D505315145555BFFFFFFFFFFF),
+    .INIT_0D(256'hFFFFFFFFFF4D15544547CA84000000000000016053115555555F6FFFFFFFFFFF),
+    .INIT_0E(256'hFFFFFFFFFF4C555585512EA950000000000541F147D15541555B6FFFFFFFFFFF),
+    .INIT_0F(256'hFFFFFFFFFF1D5555C557F4DB910155500546FFF44B61554155486FFFFFFFFFFF),
+    .INIT_10(256'hFFFFFFFFFF3D5555C5512EFCEEFEFFFAFFEFF9B94145554555692FFFFFFFFFFF),
+    .INIT_11(256'hFFFFFFFFFFA45555855423FFB7EFFFBB40AAFEFE301555495528FFFFFFFFFFFF),
+    .INIT_12(256'hFFFFFFFFFFF15551D55591DFFFEABFFFFFFFFFFDC415555955FEAFFFFFFFFFFF),
+    .INIT_13(256'hFFFFFFFFFF61555195550057FFFFFFFFFFFFFFF51755554D54FEEFFFFFFFFFFF),
+    .INIT_14(256'hFFFFFFFFFE1D555595552D03BFFFFFFFFFFFFE7F0515555D56EFFFFFFFFFFFFF),
+    .INIT_15(256'hFFFFFFFFFE8C55549555115FEFFFFFFFFFFFE05D1D5555595BEFEFFFFFFFFFFF),
+    .INIT_16(256'hFFFFFFFFFFBE15549555555C77C514446FE43D7C145555594BFB2FFFFFFFFFFF),
+    .INIT_17(256'hFFFFFFFFFFAFD550455549464DFAAFFAD00CD0607055555D7FFE7FFFFFFFFFFF),
+    .INIT_18(256'hFFFFFFFFF8EFE1504555451705310000012C55A41555555CBFFE7FFFFFFFFFFF),
+    .INIT_19(256'hFFFFFFFFF86FFD54455556519565555517B0519185555553FBFE3EFEFFFFFFFF),
+    .INIT_1A(256'hFFFFFFFFFAFFFF5405555454811A85547F05168115555542FBFE7EFEFFFFFFFF),
+    .INIT_1B(256'hFFFFFFFFFBFFFFD405555440B404FAEAE05506155555555AFBFF7FFFEFBBFFFF),
+    .INIT_1C(256'hAAAAAAAAB6EEAAB145555494350000A5005504045555544FFFFF3AAABBEAAAAA),
+    .INIT_1D(256'hEEBFEBBAE4FEEEAE455554002450000054056D455555555FFFFF3ABBBBEFFFEA),
+    .INIT_1E(256'hAAAAAAEAF9EEAAAF4555557508550055540454015555562BFFFEDFBBBAEEBAEA),
+    .INIT_1F(256'hFFFFFFFFEBBFFFFB45555565090000000001D40555555A6FFFFEFBFFFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5708,10 +5595,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_024576_006  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5782,\U4/Addr [14:13]}),
-    .dia({open_n5786,open_n5787,open_n5788,open_n5789,open_n5790,open_n5791,open_n5792,1'b0,open_n5793}),
+    .csa({open_n5609,\U4/Addr [14:13]}),
+    .dia({open_n5613,open_n5614,open_n5615,open_n5616,open_n5617,open_n5618,open_n5619,1'b0,open_n5620}),
     .rsta(nRST_pad),
-    .doa({open_n5808,open_n5809,open_n5810,open_n5811,open_n5812,open_n5813,open_n5814,open_n5815,\U4/ROM0/inst_doa_i3_006 }));
+    .doa({open_n5635,open_n5636,open_n5637,open_n5638,open_n5639,open_n5640,open_n5641,open_n5642,\U4/ROM0/inst_doa_i3_006 }));
   // address_offset=24576;data_offset=7;depth=8192;width=1;num_section=1;width_per_section=1;section_size=8;working_depth=8192;working_width=1;address_step=1;bytes_in_per_section=1;
   EG_PHY_BRAM #(
     //.RID("0x0023"),
@@ -5731,38 +5618,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'hFFFFFFFFFAF1EFFFFF8000000000000000100001FFFFFFB3D8E021FFFFFFFFFF),
-    .INIT_01(256'hFFFFFFFFFEF1DFFFFFC004000AA800000A010005BFFFFF9FC26F1E3FFFFFFFFF),
-    .INIT_02(256'hFFFFFFFFFAB3ABFFFEC0100800000000002A00003FFFFE9FB33BCB9FFFFFFFFF),
-    .INIT_03(256'hFFFFFFFFEBD6F6FFFE80078000000000000000007FFFFE7AE17FBFF2FFFFFFFF),
-    .INIT_04(256'hFFFFFFFFFBD6A9FFFF800FA0000000000002C0012FFFEC6AF47FFFEB7FFFFFFF),
-    .INIT_05(256'hFFFFFFFFFBCEBF3FFF803BFC00000000012FF1010FFFA8EAE87FFFFBC2FFFFFF),
-    .INIT_06(256'hFFFFFFFFAF9AAF8FFE806BFA0000000005FFF8004FFFA1AAED7FFFFFAC1BFFFF),
-    .INIT_07(256'hFFFFFFFFEF5AABCBFFC1EFFB4000000007FFE8510FFE85AAE93FFFFFFBA53FFF),
-    .INIT_08(256'hFFFFFFFFEF5AABB6FA04FFFEE1000010AFFEA87F1FFAD5AAB9FFFFFFFFAFB57F),
-    .INIT_09(256'hFFFFFFFFEE2AABB4BB45FFFFEBEAAABAFFFEA93F9FE915AAB8BFFFFFFFFEABFF),
-    .INIT_0A(256'hFFFFFFFFFA6AABF46E01FFFFFFFEAAFFFFFEEDEA8AB415AABD3FFFFFFFFFFEFF),
-    .INIT_0B(256'hFFFFFFFFBB6AABB41E24FBFFFBFFFFFFFFFEFCAFEA9011AABE3FFFFFFFFFFFFF),
-    .INIT_0C(256'hFFFFFFFFB96AABB0526C7FFFFFFFFFFFFFFBB1AEAB4051AAAB7FFFFFFFFFFFFF),
-    .INIT_0D(256'hFFFFFFFEB9EAABF0047C1BFFFFFFFFFFFFFEA3AE290011AAAE6FFFFFFFFFFFFF),
-    .INIT_0E(256'hFFFFFFFEA9AAABD0042C51AFFFFFFFFFFAAAC6BF440015AAAE6FFFFFFFFFFFFF),
-    .INIT_0F(256'hFFFFFFFEEDAAAB900556B80FAAAAAAAFFA540BB9600015AABAAFFFFFFFFFFFFF),
-    .INIT_10(256'hFFFFFFFEE5AAABD00070FB915455550014443EEDF00015AAABAFFFFFFFFFFFFF),
-    .INIT_11(256'hFFFFFFFFB7AAABD0012A3FEE0000507BBBFEFFA2900011AAFB8FFFFFFFFFFFFF),
-    .INIT_12(256'hFFFFFFFFA6AAAF90011F8FFFFFFFFFFFFFFFFFDFC00001AABECFFFFFFFFFFFFF),
-    .INIT_13(256'hFFFFFFFFE6AAAF90004FB3FFFFFFFFFFFFFFFB3E000011ABFFCFFFFFFFFFFFFF),
-    .INIT_14(256'hFFFFFFFEEAAAAB900046ED7FFFFFFFFFFFFFA17E000001ABFFDFFFFFFFFFFFFF),
-    .INIT_15(256'hFFFFFFFEDFAAAB900006AC4FFFFFFFFFFFFFA8F8000005ABFFDFFFFFFFFFFFFF),
-    .INIT_16(256'hFFFFFFFF8FEAAB900003B9E6FABFEBEAAEB5A5F8000001BFFFBFFFFFFFFFFFFF),
-    .INIT_17(256'hFFFFFFFE8FAAAFC00011BF2D5555500FFC1AA3E5000001AFFEAFFFFFFFFFFFFF),
-    .INIT_18(256'hFFFFFFFACFEAAFC00004EF6A86AAAAAAB1BEC7E0000005BFFEEFFFFFFFFFFFFF),
-    .INIT_19(256'hFFFFFFFAEFFEABC000016ECEF1BFFFAF12FBCF90000002FFFEAFFFFFFFFFFFFF),
-    .INIT_1A(256'hFFFFFFFA7FFFABC000056BCBA94AAAA52FBA5EC0000012FFFEAFFFFFFFFFFFFF),
-    .INIT_1B(256'hFFFFFFFF7FFFABC000017FD2AAC45142FFAB6F40000012FFFFAFFFFFFFFFFFFF),
-    .INIT_1C(256'hFFFFFFFE7BFFEE8000015BA3AAAE83AAFFA8FB00000003FFFFBFFFEEBFFFFFFF),
-    .INIT_1D(256'hEABEFFBAEBBBFE8000001FE2FAAAAAFEAFB1BD00000057FFFFFFEEEEBAAABFFF),
-    .INIT_1E(256'hFFFFFFBDFBFFFF80000016FCFFAAFFFEAEE3EC00000043FFFEDAEEEFBBEFBFBB),
-    .INIT_1F(256'hFFFFFFECBFFFFB90000046FDAAAAAAAAAA9FF400000013FFFECBFFFFFFFFFFFF),
+    .INIT_00(256'hFFFFFFFFFFFAD3EFFFFF0000000000000000100003FFFFFF9B72C083FFFFFFFF),
+    .INIT_01(256'hFFFFFFFFFFFED37FFFFF4004002AA0000028010007BFFFFF3F48ED3CBFFFFFFF),
+    .INIT_02(256'hFFFFFFFFFFFA9BABFFFE4010200000000000A80000BFFFFE3F99BB6B3FFFFFFF),
+    .INIT_03(256'hFFFFFFFFFFEB5EDEFFFE000F000000000000000000FFFFFCFAC1FFBFDAFFFFFF),
+    .INIT_04(256'hFFFFFFFFFFFB5EA3FFFF002F8000000000000A4001AFFFE4EAD4FFFFE9FFFFFF),
+    .INIT_05(256'hFFFFFFFFFFFB6EBDBFFF00BBF40000000001AFD1012FFFA2EAE0FFFFFB4AFFFF),
+    .INIT_06(256'hFFFFFFFFFFAF3AAF2FFE00EBF80000000007FFF0006FFF83AAE5FFFFFFA43BFF),
+    .INIT_07(256'hFFFFFFFFFFED7AAB6BFF43EFF9400000000FFFE0512FFE07AAE1BFFFFFFB85BF),
+    .INIT_08(256'hFFFFFFFFFFED7AAB9EF806FFFEC1000012AFFEA0FD3FFA57AAB3FFFFFFFFAF95),
+    .INIT_09(256'hFFFFFFFFFFECAAAB96B947FFFFEBEAAABAFFFEA1BF3FE117AAB2BFFFFFFFFEAB),
+    .INIT_0A(256'hFFFFFFFFFFF8EAABD4EC03FFFFFFFEAAFFFFFEE7EA2A9417AAB5BFFFFFFFFFFE),
+    .INIT_0B(256'hFFFFFFFFFFB9EAAB943C86FBFFFBFFFFFFFFFEF6AFEA1013AABCBFFFFFFFFFFF),
+    .INIT_0C(256'hFFFFFFFFFFB1EAAB9058E4FFFFFFFFFFFFFFFB93AEA94053AAA9FFFFFFFFFFFF),
+    .INIT_0D(256'hFFFFFFFFFEB3EAABD004F43BFFFFFFFFFFFFFE8BACA10013AAACEFFFFFFFFFFF),
+    .INIT_0E(256'hFFFFFFFFFEA3AAAB5004A453AFFFFFFFFFFAAA4EBD440017AAACEFFFFFFFFFFF),
+    .INIT_0F(256'hFFFFFFFFFEE7AAAB10055EB02FAAAAAAAFF8542BB1C00017AABAAFFFFFFFFFFF),
+    .INIT_10(256'hFFFFFFFFFEC7AAAB5000D2FB11545555001444BEE7D00017AAABAFFFFFFFFFFF),
+    .INIT_11(256'hFFFFFFFFFF9FAAAB5001A8BFEC000050FBBBFEFF8A100013AAFB2FFFFFFFFFFF),
+    .INIT_12(256'hFFFFFFFFFF8EAAAF10013F2FFFFFFFFFFFFFFFFF7F400003AABE6FFFFFFFFFFF),
+    .INIT_13(256'hFFFFFFFFFFCEAAAF10006F9BFFFFFFFFFFFFFFF9BC000013ABFF6FFFFFFFFFFF),
+    .INIT_14(256'hFFFFFFFFFEEAAAAB10004EE5FFFFFFFFFFFFFF81FC000003ABFF7FFFFFFFFFFF),
+    .INIT_15(256'hFFFFFFFFFE7FAAAB10000EA46FFFFFFFFFFFFFA2F0000007ABFF7FFFFFFFFFFF),
+    .INIT_16(256'hFFFFFFFFFF2FEAAB10000BB3CEFABFEBEAAE9787F0000003BFFFBFFFFFFFFFFF),
+    .INIT_17(256'hFFFFFFFFFE2FAAAF400013BDA55555502FF43A8BC5000003AFFEAFFFFFFFFFFF),
+    .INIT_18(256'hFFFFFFFFFA6FEAAF400006EDEA0EAAAAAA93BE4FC0000007BFFEEFFFFFFFFFFF),
+    .INIT_19(256'hFFFFFFFFFAEFFEAB400001EE6ED3BFFFAD1AFB6F1000000AFFFEAFFFFFFFFFFF),
+    .INIT_1A(256'hFFFFFFFFF8FFFFAB400005EB6BA16AAA85AFB87E4000001AFFFEAFFFFFFFFFFF),
+    .INIT_1B(256'hFFFFFFFFFDFFFFAB400001FF5AAA44514AFFA9ED4000001AFFFFAFFFFFFFFFFF),
+    .INIT_1C(256'hFFFFFFFFFCFBFFEE0000017B8BAAAE0BAAFFA2F90000000BFFFFBFFFEEBFFFFF),
+    .INIT_1D(256'hBBEABEFFBAEBBBFE0000003FCAFAAAAAFEAF93B50000005FFFFFFFEEEEBAAABF),
+    .INIT_1E(256'hFFFFFFFFB7FBFFFF0000001EF6FFAAFFFEAECBE40000004BFFFE7AEEEFBBEFBF),
+    .INIT_1F(256'hFFFFFFFFE6BFFFFB1000004EF7AAAAAAAAAA3FD40000001BFFFE6BFFFFFFFFFF),
     .MODE("SP8K"),
     .OCEAMUX("0"),
     .OCEBMUX("0"),
@@ -5779,12 +5666,12 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     \U4/ROM0/inst_32768x8_sub_024576_007  (
     .addra(\U4/Addr [12:0]),
     .clka(CLK_100M),
-    .csa({open_n5841,\U4/Addr [14:13]}),
-    .dia({open_n5845,open_n5846,open_n5847,open_n5848,open_n5849,open_n5850,open_n5851,1'b0,open_n5852}),
+    .csa({open_n5668,\U4/Addr [14:13]}),
+    .dia({open_n5672,open_n5673,open_n5674,open_n5675,open_n5676,open_n5677,open_n5678,1'b0,open_n5679}),
     .rsta(nRST_pad),
-    .doa({open_n5867,open_n5868,open_n5869,open_n5870,open_n5871,open_n5872,open_n5873,open_n5874,\U4/ROM0/inst_doa_i3_007 }));
+    .doa({open_n5694,open_n5695,open_n5696,open_n5697,open_n5698,open_n5699,open_n5700,open_n5701,\U4/ROM0/inst_doa_i3_007 }));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add0/ucin_al_u364"),
+    //.MACRO("U4/add0/ucin_al_u422"),
     //.R_POSITION("X0Y1Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5797,18 +5684,18 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add0/u11_al_u367  (
+    \U4/add0/u11_al_u425  (
     .a({\U4/AddrCtrl [13],\U4/AddrCtrl [11]}),
     .b({\U4/AddrCtrl [14],\U4/AddrCtrl [12]}),
     .c(2'b00),
     .d(2'b00),
     .e(2'b00),
     .fci(\U4/add0/c11 ),
-    .f({\U4/n1 [13],\U4/n1 [11]}),
+    .f({\U4/n2 [13],\U4/n2 [11]}),
     .fco(\U4/add0/c15 ),
-    .fx({\U4/n1 [14],\U4/n1 [12]}));
+    .fx({\U4/n2 [14],\U4/n2 [12]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add0/ucin_al_u364"),
+    //.MACRO("U4/add0/ucin_al_u422"),
     //.R_POSITION("X0Y2Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5821,14 +5708,14 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add0/u15_al_u368  (
-    .a({open_n5902,\U4/AddrCtrl [15]}),
+    \U4/add0/u15_al_u426  (
+    .a({open_n5729,\U4/AddrCtrl [15]}),
     .c(2'b00),
-    .d({open_n5907,1'b0}),
+    .d({open_n5734,1'b0}),
     .fci(\U4/add0/c15 ),
-    .f({open_n5924,\U4/n1 [15]}));
+    .f({open_n5751,\U4/n2 [15]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add0/ucin_al_u364"),
+    //.MACRO("U4/add0/ucin_al_u422"),
     //.R_POSITION("X0Y0Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5841,18 +5728,18 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add0/u3_al_u365  (
+    \U4/add0/u3_al_u423  (
     .a({\U4/AddrCtrl [5],\U4/AddrCtrl [3]}),
     .b({\U4/AddrCtrl [6],\U4/AddrCtrl [4]}),
     .c(2'b00),
     .d(2'b00),
     .e(2'b00),
     .fci(\U4/add0/c3 ),
-    .f({\U4/n1 [5],\U4/n1 [3]}),
+    .f({\U4/n2 [5],\U4/n2 [3]}),
     .fco(\U4/add0/c7 ),
-    .fx({\U4/n1 [6],\U4/n1 [4]}));
+    .fx({\U4/n2 [6],\U4/n2 [4]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add0/ucin_al_u364"),
+    //.MACRO("U4/add0/ucin_al_u422"),
     //.R_POSITION("X0Y1Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5865,18 +5752,18 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add0/u7_al_u366  (
+    \U4/add0/u7_al_u424  (
     .a({\U4/AddrCtrl [9],\U4/AddrCtrl [7]}),
     .b({\U4/AddrCtrl [10],\U4/AddrCtrl [8]}),
     .c(2'b00),
     .d(2'b00),
     .e(2'b00),
     .fci(\U4/add0/c7 ),
-    .f({\U4/n1 [9],\U4/n1 [7]}),
+    .f({\U4/n2 [9],\U4/n2 [7]}),
     .fco(\U4/add0/c11 ),
-    .fx({\U4/n1 [10],\U4/n1 [8]}));
+    .fx({\U4/n2 [10],\U4/n2 [8]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add0/ucin_al_u364"),
+    //.MACRO("U4/add0/ucin_al_u422"),
     //.R_POSITION("X0Y0Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5889,17 +5776,17 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add0/ucin_al_u364  (
+    \U4/add0/ucin_al_u422  (
     .a({\U4/AddrCtrl [1],1'b0}),
     .b({\U4/AddrCtrl [2],\U4/AddrCtrl [0]}),
     .c(2'b00),
     .d(2'b01),
     .e(2'b01),
-    .f({\U4/n1 [1],open_n5983}),
+    .f({\U4/n2 [1],open_n5810}),
     .fco(\U4/add0/c3 ),
-    .fx({\U4/n1 [2],\U4/n1 [0]}));
+    .fx({\U4/n2 [2],\U4/n2 [0]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add1/ucin_al_u369"),
+    //.MACRO("U4/add1/ucin_al_u427"),
     //.R_POSITION("X0Y1Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5912,17 +5799,38 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add1/u11_al_u372  (
-    .a({\U4/Addr [13],\U4/Addr [11]}),
-    .b({\U4/Addr [14],\U4/Addr [12]}),
+    \U4/add1/u11_al_u430  (
+    .a({\U4/LineConut [13],\U4/LineConut [11]}),
+    .b({\U4/LineConut [14],\U4/LineConut [12]}),
     .c(2'b00),
     .d(2'b00),
     .e(2'b00),
     .fci(\U4/add1/c11 ),
-    .f({\U4/n5 [13],\U4/n5 [11]}),
-    .fx({\U4/n5 [14],\U4/n5 [12]}));
+    .f({\U4/n7 [13],\U4/n7 [11]}),
+    .fco(\U4/add1/c15 ),
+    .fx({\U4/n7 [14],\U4/n7 [12]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add1/ucin_al_u369"),
+    //.MACRO("U4/add1/ucin_al_u427"),
+    //.R_POSITION("X0Y2Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add1/u15_al_u431  (
+    .a({open_n5831,\U4/LineConut [15]}),
+    .c(2'b00),
+    .d({open_n5836,1'b0}),
+    .fci(\U4/add1/c15 ),
+    .f({open_n5853,\U4/n7 [15]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add1/ucin_al_u427"),
     //.R_POSITION("X0Y0Z1"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5935,18 +5843,18 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add1/u3_al_u370  (
-    .a({\U4/Addr [5],\U4/Addr [3]}),
-    .b({\U4/Addr [6],\U4/Addr [4]}),
+    \U4/add1/u3_al_u428  (
+    .a({\U4/LineConut [5],\U4/LineConut [3]}),
+    .b({\U4/LineConut [6],\U4/LineConut [4]}),
     .c(2'b00),
     .d(2'b00),
     .e(2'b00),
     .fci(\U4/add1/c3 ),
-    .f({\U4/n5 [5],\U4/n5 [3]}),
+    .f({\U4/n7 [5],\U4/n7 [3]}),
     .fco(\U4/add1/c7 ),
-    .fx({\U4/n5 [6],\U4/n5 [4]}));
+    .fx({\U4/n7 [6],\U4/n7 [4]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add1/ucin_al_u369"),
+    //.MACRO("U4/add1/ucin_al_u427"),
     //.R_POSITION("X0Y1Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5959,18 +5867,18 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add1/u7_al_u371  (
-    .a({\U4/Addr [9],\U4/Addr [7]}),
-    .b({\U4/Addr [10],\U4/Addr [8]}),
+    \U4/add1/u7_al_u429  (
+    .a({\U4/LineConut [9],\U4/LineConut [7]}),
+    .b({\U4/LineConut [10],\U4/LineConut [8]}),
     .c(2'b00),
     .d(2'b00),
     .e(2'b00),
     .fci(\U4/add1/c7 ),
-    .f({\U4/n5 [9],\U4/n5 [7]}),
+    .f({\U4/n7 [9],\U4/n7 [7]}),
     .fco(\U4/add1/c11 ),
-    .fx({\U4/n5 [10],\U4/n5 [8]}));
+    .fx({\U4/n7 [10],\U4/n7 [8]}));
   EG_PHY_LSLICE #(
-    //.MACRO("U4/add1/ucin_al_u369"),
+    //.MACRO("U4/add1/ucin_al_u427"),
     //.R_POSITION("X0Y0Z0"),
     .DEMUX0("E"),
     .DEMUX1("E"),
@@ -5983,15 +5891,267 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFXMUX0("SUM"),
     .LSFXMUX1("SUM"),
     .MODE("RIPPLE"))
-    \U4/add1/ucin_al_u369  (
+    \U4/add1/ucin_al_u427  (
+    .a({\U4/LineConut [1],1'b0}),
+    .b({\U4/LineConut [2],\U4/LineConut [0]}),
+    .c(2'b00),
+    .d(2'b01),
+    .e(2'b01),
+    .f({\U4/n7 [1],open_n5912}),
+    .fco(\U4/add1/c3 ),
+    .fx({\U4/n7 [2],\U4/n7 [0]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add2/ucin_al_u436"),
+    //.R_POSITION("X0Y1Z1"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add2/u11_al_u439  (
+    .a({open_n5915,\U4/Count [15]}),
+    .c(2'b00),
+    .d({open_n5920,1'b0}),
+    .fci(\U4/add2/c11 ),
+    .f({open_n5937,\U4/n14 [11]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add2/ucin_al_u436"),
+    //.R_POSITION("X0Y0Z1"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add2/u3_al_u437  (
+    .a({\U4/Count [9],\U4/Count [7]}),
+    .b({\U4/Count [10],\U4/Count [8]}),
+    .c(2'b00),
+    .d(2'b00),
+    .e(2'b00),
+    .fci(\U4/add2/c3 ),
+    .f({\U4/n14 [5],\U4/n14 [3]}),
+    .fco(\U4/add2/c7 ),
+    .fx({\U4/n14 [6],\U4/n14 [4]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add2/ucin_al_u436"),
+    //.R_POSITION("X0Y1Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add2/u7_al_u438  (
+    .a({\U4/Count [13],\U4/Count [11]}),
+    .b({\U4/Count [14],\U4/Count [12]}),
+    .c(2'b00),
+    .d(2'b00),
+    .e(2'b00),
+    .fci(\U4/add2/c7 ),
+    .f({\U4/n14 [9],\U4/n14 [7]}),
+    .fco(\U4/add2/c11 ),
+    .fx({\U4/n14 [10],\U4/n14 [8]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add2/ucin_al_u436"),
+    //.R_POSITION("X0Y0Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'h000A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add2/ucin_al_u436  (
+    .a({\U4/Count [5],1'b0}),
+    .b({\U4/Count [6],\U4/Count [4]}),
+    .c(2'b00),
+    .d(2'b01),
+    .e(2'b01),
+    .f({\U4/n14 [1],open_n5996}),
+    .fco(\U4/add2/c3 ),
+    .fx({\U4/n14 [2],\U4/n14 [0]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add3/ucin_al_u444"),
+    //.R_POSITION("X0Y0Z1"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add3/u3_al_u445  (
+    .a({\U4/XPos [13],\U4/XPos [11]}),
+    .b({\U4/XPos [14],\U4/XPos [12]}),
+    .c(2'b00),
+    .d(2'b00),
+    .e(2'b00),
+    .fci(\U4/add3/c3 ),
+    .f({\U4/n20 [5],\U4/n20 [3]}),
+    .fco(\U4/add3/c7 ),
+    .fx({\U4/n20 [6],\U4/n20 [4]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add3/ucin_al_u444"),
+    //.R_POSITION("X0Y1Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add3/u7_al_u446  (
+    .a({open_n6017,\U4/XPos [15]}),
+    .c(2'b00),
+    .d({open_n6022,1'b0}),
+    .fci(\U4/add3/c7 ),
+    .f({open_n6039,\U4/n20 [7]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add3/ucin_al_u444"),
+    //.R_POSITION("X0Y0Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'h000A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add3/ucin_al_u444  (
+    .a({\U4/XPos [9],1'b0}),
+    .b({\U4/XPos [10],\U4/XPos [8]}),
+    .c(2'b00),
+    .d(2'b01),
+    .e(2'b01),
+    .f({\U4/n20 [1],open_n6062}),
+    .fco(\U4/add3/c3 ),
+    .fx({\U4/n20 [2],\U4/n20 [0]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add4/ucin_al_u432"),
+    //.R_POSITION("X0Y1Z1"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add4/u11_al_u435  (
+    .a({\U4/Addr [13],\U4/Addr [11]}),
+    .b({\U4/Addr [14],\U4/Addr [12]}),
+    .c(2'b00),
+    .d(2'b00),
+    .e(2'b00),
+    .fci(\U4/add4/c11 ),
+    .f({\U4/n23 [13],\U4/n23 [11]}),
+    .fx({\U4/n23 [14],\U4/n23 [12]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add4/ucin_al_u432"),
+    //.R_POSITION("X0Y0Z1"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add4/u3_al_u433  (
+    .a({\U4/Addr [5],\U4/Addr [3]}),
+    .b({\U4/Addr [6],\U4/Addr [4]}),
+    .c(2'b00),
+    .d(2'b00),
+    .e(2'b00),
+    .fci(\U4/add4/c3 ),
+    .f({\U4/n23 [5],\U4/n23 [3]}),
+    .fco(\U4/add4/c7 ),
+    .fx({\U4/n23 [6],\U4/n23 [4]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add4/ucin_al_u432"),
+    //.R_POSITION("X0Y1Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add4/u7_al_u434  (
+    .a({\U4/Addr [9],\U4/Addr [7]}),
+    .b({\U4/Addr [10],\U4/Addr [8]}),
+    .c(2'b00),
+    .d(2'b00),
+    .e(2'b00),
+    .fci(\U4/add4/c7 ),
+    .f({\U4/n23 [9],\U4/n23 [7]}),
+    .fco(\U4/add4/c11 ),
+    .fx({\U4/n23 [10],\U4/n23 [8]}));
+  EG_PHY_LSLICE #(
+    //.MACRO("U4/add4/ucin_al_u432"),
+    //.R_POSITION("X0Y0Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'h000A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/add4/ucin_al_u432  (
     .a({\U4/Addr [1],1'b0}),
     .b({\U4/Addr [2],\U4/Addr [0]}),
     .c(2'b00),
     .d(2'b01),
     .e(2'b01),
-    .f({\U4/n5 [1],open_n6058}),
-    .fco(\U4/add1/c3 ),
-    .fx({\U4/n5 [2],\U4/n5 [0]}));
+    .f({\U4/n23 [1],open_n6137}),
+    .fco(\U4/add4/c3 ),
+    .fx({\U4/n23 [2],\U4/n23 [0]}));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt0_0|U4/lt0_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -6001,7 +6161,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("RIPPLE"))
     \U4/lt0_0|U4/lt0_cin  (
     .a({\U4/AddrCtrl [0],1'b0}),
-    .b({1'b1,open_n6061}),
+    .b({1'b0,open_n6140}),
     .fco(\U4/lt0_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt0_0|U4/lt0_cin"),
@@ -6012,7 +6172,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("RIPPLE"))
     \U4/lt0_10|U4/lt0_9  (
     .a(\U4/AddrCtrl [10:9]),
-    .b(2'b00),
+    .b(2'b11),
     .fci(\U4/lt0_c9 ),
     .fco(\U4/lt0_c11 ));
   EG_PHY_MSLICE #(
@@ -6048,7 +6208,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("RIPPLE"))
     \U4/lt0_2|U4/lt0_1  (
     .a(\U4/AddrCtrl [2:1]),
-    .b(2'b11),
+    .b(2'b00),
     .fci(\U4/lt0_c1 ),
     .fco(\U4/lt0_c3 ));
   EG_PHY_MSLICE #(
@@ -6060,7 +6220,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("RIPPLE"))
     \U4/lt0_4|U4/lt0_3  (
     .a(\U4/AddrCtrl [4:3]),
-    .b(2'b11),
+    .b(2'b10),
     .fci(\U4/lt0_c3 ),
     .fco(\U4/lt0_c5 ));
   EG_PHY_MSLICE #(
@@ -6072,7 +6232,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("RIPPLE"))
     \U4/lt0_6|U4/lt0_5  (
     .a(\U4/AddrCtrl [6:5]),
-    .b(2'b11),
+    .b(2'b10),
     .fci(\U4/lt0_c5 ),
     .fco(\U4/lt0_c7 ));
   EG_PHY_MSLICE #(
@@ -6084,7 +6244,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("RIPPLE"))
     \U4/lt0_8|U4/lt0_7  (
     .a(\U4/AddrCtrl [8:7]),
-    .b(2'b01),
+    .b(2'b11),
     .fci(\U4/lt0_c7 ),
     .fco(\U4/lt0_c9 ));
   EG_PHY_MSLICE #(
@@ -6098,7 +6258,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .a({1'b0,\U4/AddrCtrl [15]}),
     .b(2'b10),
     .fci(\U4/lt0_c15 ),
-    .f({\U4/n4 ,open_n6273}));
+    .f({\U4/n1 ,open_n6352}));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt1_0|U4/lt1_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -6107,8 +6267,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt1_0|U4/lt1_cin  (
-    .a({\U4/AddrCtrl [0],1'b0}),
-    .b({1'b0,open_n6279}),
+    .a(2'b01),
+    .b({\U4/Count [4],open_n6358}),
     .fco(\U4/lt1_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt1_0|U4/lt1_cin"),
@@ -6118,34 +6278,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt1_10|U4/lt1_9  (
-    .a(\U4/AddrCtrl [10:9]),
-    .b(2'b11),
+    .a(2'b00),
+    .b(\U4/Count [14:13]),
     .fci(\U4/lt1_c9 ),
     .fco(\U4/lt1_c11 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("U4/lt1_0|U4/lt1_cin"),
-    //.R_POSITION("X0Y3Z0"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \U4/lt1_12|U4/lt1_11  (
-    .a(\U4/AddrCtrl [12:11]),
-    .b(2'b00),
-    .fci(\U4/lt1_c11 ),
-    .fco(\U4/lt1_c13 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("U4/lt1_0|U4/lt1_cin"),
-    //.R_POSITION("X0Y3Z1"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \U4/lt1_14|U4/lt1_13  (
-    .a(\U4/AddrCtrl [14:13]),
-    .b(2'b00),
-    .fci(\U4/lt1_c13 ),
-    .fco(\U4/lt1_c15 ));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt1_0|U4/lt1_cin"),
     //.R_POSITION("X0Y0Z1"),
@@ -6154,8 +6290,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt1_2|U4/lt1_1  (
-    .a(\U4/AddrCtrl [2:1]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\U4/Count [6:5]),
     .fci(\U4/lt1_c1 ),
     .fco(\U4/lt1_c3 ));
   EG_PHY_MSLICE #(
@@ -6166,8 +6302,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt1_4|U4/lt1_3  (
-    .a(\U4/AddrCtrl [4:3]),
-    .b(2'b00),
+    .a(2'b01),
+    .b(\U4/Count [8:7]),
     .fci(\U4/lt1_c3 ),
     .fco(\U4/lt1_c5 ));
   EG_PHY_MSLICE #(
@@ -6178,8 +6314,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt1_6|U4/lt1_5  (
-    .a(\U4/AddrCtrl [6:5]),
-    .b(2'b10),
+    .a(2'b01),
+    .b(\U4/Count [10:9]),
     .fci(\U4/lt1_c5 ),
     .fco(\U4/lt1_c7 ));
   EG_PHY_MSLICE #(
@@ -6190,22 +6326,22 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt1_8|U4/lt1_7  (
-    .a(\U4/AddrCtrl [8:7]),
-    .b(2'b00),
+    .a(2'b01),
+    .b(\U4/Count [12:11]),
     .fci(\U4/lt1_c7 ),
     .fco(\U4/lt1_c9 ));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt1_0|U4/lt1_cin"),
-    //.R_POSITION("X0Y4Z0"),
+    //.R_POSITION("X0Y3Z0"),
     .ALUTYPE("A_LE_B"),
     .INIT_LUT0(16'b1001100110011100),
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
-    \U4/lt1_cout|U4/lt1_15  (
-    .a({1'b0,\U4/AddrCtrl [15]}),
-    .b(2'b10),
-    .fci(\U4/lt1_c15 ),
-    .f({\U4/n8 ,open_n6491}));
+    \U4/lt1_cout|U4/lt1_11  (
+    .a(2'b00),
+    .b({1'b1,\U4/Count [15]}),
+    .fci(\U4/lt1_c11 ),
+    .f({\U4/n10 ,open_n6522}));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt2_0|U4/lt2_cin"),
     //.R_POSITION("X0Y0Z0"),
@@ -6214,8 +6350,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt2_0|U4/lt2_cin  (
-    .a({\U4/AddrCtrl [0],1'b0}),
-    .b({1'b0,open_n6497}),
+    .a(2'b01),
+    .b({\U4/Count [4],open_n6528}),
     .fco(\U4/lt2_c1 ));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt2_0|U4/lt2_cin"),
@@ -6225,34 +6361,10 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt2_10|U4/lt2_9  (
-    .a(\U4/AddrCtrl [10:9]),
-    .b(2'b00),
+    .a(2'b00),
+    .b(\U4/Count [14:13]),
     .fci(\U4/lt2_c9 ),
     .fco(\U4/lt2_c11 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("U4/lt2_0|U4/lt2_cin"),
-    //.R_POSITION("X0Y3Z0"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \U4/lt2_12|U4/lt2_11  (
-    .a(\U4/AddrCtrl [12:11]),
-    .b(2'b00),
-    .fci(\U4/lt2_c11 ),
-    .fco(\U4/lt2_c13 ));
-  EG_PHY_MSLICE #(
-    //.MACRO("U4/lt2_0|U4/lt2_cin"),
-    //.R_POSITION("X0Y3Z1"),
-    .ALUTYPE("A_LE_B"),
-    .INIT_LUT0(16'b1001100110011100),
-    .INIT_LUT1(16'b1001100110011100),
-    .MODE("RIPPLE"))
-    \U4/lt2_14|U4/lt2_13  (
-    .a(\U4/AddrCtrl [14:13]),
-    .b(2'b00),
-    .fci(\U4/lt2_c13 ),
-    .fco(\U4/lt2_c15 ));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt2_0|U4/lt2_cin"),
     //.R_POSITION("X0Y0Z1"),
@@ -6261,8 +6373,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt2_2|U4/lt2_1  (
-    .a(\U4/AddrCtrl [2:1]),
-    .b(2'b00),
+    .a(2'b10),
+    .b(\U4/Count [6:5]),
     .fci(\U4/lt2_c1 ),
     .fco(\U4/lt2_c3 ));
   EG_PHY_MSLICE #(
@@ -6273,8 +6385,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt2_4|U4/lt2_3  (
-    .a(\U4/AddrCtrl [4:3]),
-    .b(2'b00),
+    .a(2'b10),
+    .b(\U4/Count [8:7]),
     .fci(\U4/lt2_c3 ),
     .fco(\U4/lt2_c5 ));
   EG_PHY_MSLICE #(
@@ -6285,8 +6397,8 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt2_6|U4/lt2_5  (
-    .a(\U4/AddrCtrl [6:5]),
-    .b(2'b00),
+    .a(2'b10),
+    .b(\U4/Count [10:9]),
     .fci(\U4/lt2_c5 ),
     .fco(\U4/lt2_c7 ));
   EG_PHY_MSLICE #(
@@ -6297,36 +6409,571 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
     \U4/lt2_8|U4/lt2_7  (
-    .a(\U4/AddrCtrl [8:7]),
-    .b(2'b10),
+    .a(2'b00),
+    .b(\U4/Count [12:11]),
     .fci(\U4/lt2_c7 ),
     .fco(\U4/lt2_c9 ));
   EG_PHY_MSLICE #(
     //.MACRO("U4/lt2_0|U4/lt2_cin"),
+    //.R_POSITION("X0Y3Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt2_cout|U4/lt2_11  (
+    .a(2'b00),
+    .b({1'b1,\U4/Count [15]}),
+    .fci(\U4/lt2_c11 ),
+    .f({\U4/XPos [2],open_n6692}));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
+    //.R_POSITION("X0Y0Z0"),
+    .ALUTYPE("A_LE_B_CARRY"),
+    .INIT_LUT0(16'b0000000000001010),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt3_0|U4/lt3_cin  (
+    .a(2'b01),
+    .b({\U4/AddrCtrl [0],open_n6698}),
+    .fco(\U4/lt3_c1 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
+    //.R_POSITION("X0Y2Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt3_10|U4/lt3_9  (
+    .a(\U4/XPos [10:9]),
+    .b(\U4/AddrCtrl [10:9]),
+    .fci(\U4/lt3_c9 ),
+    .fco(\U4/lt3_c11 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
+    //.R_POSITION("X0Y3Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt3_12|U4/lt3_11  (
+    .a(\U4/XPos [12:11]),
+    .b(\U4/AddrCtrl [12:11]),
+    .fci(\U4/lt3_c11 ),
+    .fco(\U4/lt3_c13 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
+    //.R_POSITION("X0Y3Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt3_14|U4/lt3_13  (
+    .a(\U4/XPos [14:13]),
+    .b(\U4/AddrCtrl [14:13]),
+    .fci(\U4/lt3_c13 ),
+    .fco(\U4/lt3_c15 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
+    //.R_POSITION("X0Y0Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt3_2|U4/lt3_1  (
+    .a({\U4/XPos [2],1'b1}),
+    .b(\U4/AddrCtrl [2:1]),
+    .fci(\U4/lt3_c1 ),
+    .fco(\U4/lt3_c3 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
+    //.R_POSITION("X0Y1Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt3_4|U4/lt3_3  (
+    .a({\U4/XPos [4],\U4/XPos [2]}),
+    .b(\U4/AddrCtrl [4:3]),
+    .fci(\U4/lt3_c3 ),
+    .fco(\U4/lt3_c5 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
+    //.R_POSITION("X0Y1Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt3_6|U4/lt3_5  (
+    .a(\U4/XPos [6:5]),
+    .b(\U4/AddrCtrl [6:5]),
+    .fci(\U4/lt3_c5 ),
+    .fco(\U4/lt3_c7 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
+    //.R_POSITION("X0Y2Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt3_8|U4/lt3_7  (
+    .a(\U4/XPos [8:7]),
+    .b(\U4/AddrCtrl [8:7]),
+    .fci(\U4/lt3_c7 ),
+    .fco(\U4/lt3_c9 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt3_0|U4/lt3_cin"),
     //.R_POSITION("X0Y4Z0"),
     .ALUTYPE("A_LE_B"),
     .INIT_LUT0(16'b1001100110011100),
     .INIT_LUT1(16'b1001100110011100),
     .MODE("RIPPLE"))
-    \U4/lt2_cout|U4/lt2_15  (
+    \U4/lt3_cout|U4/lt3_15  (
+    .a({1'b0,\U4/XPos [15]}),
+    .b({1'b1,\U4/AddrCtrl [15]}),
+    .fci(\U4/lt3_c15 ),
+    .f({\U4/n19 ,open_n6910}));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y0Z0"),
+    .ALUTYPE("A_LE_B_CARRY"),
+    .INIT_LUT0(16'b0000000000001010),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_0|U4/lt4_cin  (
+    .a({\U4/AddrCtrl [0],1'b0}),
+    .b({1'b0,open_n6916}),
+    .fco(\U4/lt4_c1 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y2Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_10|U4/lt4_9  (
+    .a(\U4/AddrCtrl [10:9]),
+    .b(\U4/n20 [2:1]),
+    .fci(\U4/lt4_c9 ),
+    .fco(\U4/lt4_c11 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y3Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_12|U4/lt4_11  (
+    .a(\U4/AddrCtrl [12:11]),
+    .b(\U4/n20 [4:3]),
+    .fci(\U4/lt4_c11 ),
+    .fco(\U4/lt4_c13 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y3Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_14|U4/lt4_13  (
+    .a(\U4/AddrCtrl [14:13]),
+    .b(\U4/n20 [6:5]),
+    .fci(\U4/lt4_c13 ),
+    .fco(\U4/lt4_c15 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y0Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_2|U4/lt4_1  (
+    .a(\U4/AddrCtrl [2:1]),
+    .b({\U4/XPos [2],1'b1}),
+    .fci(\U4/lt4_c1 ),
+    .fco(\U4/lt4_c3 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y1Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_4|U4/lt4_3  (
+    .a(\U4/AddrCtrl [4:3]),
+    .b({\U4/XPos [4],\U4/XPos [2]}),
+    .fci(\U4/lt4_c3 ),
+    .fco(\U4/lt4_c5 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y1Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_6|U4/lt4_5  (
+    .a(\U4/AddrCtrl [6:5]),
+    .b(\U4/XPos [6:5]),
+    .fci(\U4/lt4_c5 ),
+    .fco(\U4/lt4_c7 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y2Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_8|U4/lt4_7  (
+    .a(\U4/AddrCtrl [8:7]),
+    .b({\U4/n20 [0],\U4/XPos [7]}),
+    .fci(\U4/lt4_c7 ),
+    .fco(\U4/lt4_c9 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt4_0|U4/lt4_cin"),
+    //.R_POSITION("X0Y4Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt4_cout|U4/lt4_15  (
+    .a({1'b0,\U4/AddrCtrl [15]}),
+    .b({1'b1,\U4/n20 [7]}),
+    .fci(\U4/lt4_c15 ),
+    .f({\U4/n21 ,open_n7128}));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y0Z0"),
+    .ALUTYPE("A_LE_B_CARRY"),
+    .INIT_LUT0(16'b0000000000001010),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_0|U4/lt5_cin  (
+    .a({\U4/AddrCtrl [0],1'b0}),
+    .b({1'b0,open_n7134}),
+    .fco(\U4/lt5_c1 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y2Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_10|U4/lt5_9  (
+    .a(\U4/AddrCtrl [10:9]),
+    .b(2'b11),
+    .fci(\U4/lt5_c9 ),
+    .fco(\U4/lt5_c11 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y3Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_12|U4/lt5_11  (
+    .a(\U4/AddrCtrl [12:11]),
+    .b(2'b00),
+    .fci(\U4/lt5_c11 ),
+    .fco(\U4/lt5_c13 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y3Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_14|U4/lt5_13  (
+    .a(\U4/AddrCtrl [14:13]),
+    .b(2'b00),
+    .fci(\U4/lt5_c13 ),
+    .fco(\U4/lt5_c15 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y0Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_2|U4/lt5_1  (
+    .a(\U4/AddrCtrl [2:1]),
+    .b(2'b00),
+    .fci(\U4/lt5_c1 ),
+    .fco(\U4/lt5_c3 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y1Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_4|U4/lt5_3  (
+    .a(\U4/AddrCtrl [4:3]),
+    .b(2'b00),
+    .fci(\U4/lt5_c3 ),
+    .fco(\U4/lt5_c5 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y1Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_6|U4/lt5_5  (
+    .a(\U4/AddrCtrl [6:5]),
+    .b(2'b10),
+    .fci(\U4/lt5_c5 ),
+    .fco(\U4/lt5_c7 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y2Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_8|U4/lt5_7  (
+    .a(\U4/AddrCtrl [8:7]),
+    .b(2'b00),
+    .fci(\U4/lt5_c7 ),
+    .fco(\U4/lt5_c9 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt5_0|U4/lt5_cin"),
+    //.R_POSITION("X0Y4Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt5_cout|U4/lt5_15  (
     .a({1'b0,\U4/AddrCtrl [15]}),
     .b(2'b10),
-    .fci(\U4/lt2_c15 ),
-    .f({\U4/n12 ,open_n6709}));
+    .fci(\U4/lt5_c15 ),
+    .f({\U4/n26 ,open_n7346}));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y0Z0"),
+    .ALUTYPE("A_LE_B_CARRY"),
+    .INIT_LUT0(16'b0000000000001010),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_0|U4/lt6_cin  (
+    .a({\U4/LineConut [0],1'b0}),
+    .b({1'b1,open_n7352}),
+    .fco(\U4/lt6_c1 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y2Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_10|U4/lt6_9  (
+    .a(\U4/LineConut [10:9]),
+    .b(2'b00),
+    .fci(\U4/lt6_c9 ),
+    .fco(\U4/lt6_c11 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y3Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_12|U4/lt6_11  (
+    .a(\U4/LineConut [12:11]),
+    .b(2'b00),
+    .fci(\U4/lt6_c11 ),
+    .fco(\U4/lt6_c13 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y3Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_14|U4/lt6_13  (
+    .a(\U4/LineConut [14:13]),
+    .b(2'b00),
+    .fci(\U4/lt6_c13 ),
+    .fco(\U4/lt6_c15 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y0Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_2|U4/lt6_1  (
+    .a(\U4/LineConut [2:1]),
+    .b(2'b00),
+    .fci(\U4/lt6_c1 ),
+    .fco(\U4/lt6_c3 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y1Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_4|U4/lt6_3  (
+    .a(\U4/LineConut [4:3]),
+    .b(2'b00),
+    .fci(\U4/lt6_c3 ),
+    .fco(\U4/lt6_c5 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y1Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_6|U4/lt6_5  (
+    .a(\U4/LineConut [6:5]),
+    .b(2'b00),
+    .fci(\U4/lt6_c5 ),
+    .fco(\U4/lt6_c7 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y2Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_8|U4/lt6_7  (
+    .a(\U4/LineConut [8:7]),
+    .b(2'b01),
+    .fci(\U4/lt6_c7 ),
+    .fco(\U4/lt6_c9 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt6_0|U4/lt6_cin"),
+    //.R_POSITION("X0Y4Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt6_cout|U4/lt6_15  (
+    .a({1'b0,\U4/LineConut [15]}),
+    .b(2'b10),
+    .fci(\U4/lt6_c15 ),
+    .f({\U4/n30 ,open_n7564}));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y0Z0"),
+    .ALUTYPE("A_LE_B_CARRY"),
+    .INIT_LUT0(16'b0000000000001010),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_0|U4/lt7_cin  (
+    .a(2'b11),
+    .b({\U4/LineConut [0],open_n7570}),
+    .fco(\U4/lt7_c1 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y2Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_10|U4/lt7_9  (
+    .a(2'b00),
+    .b(\U4/LineConut [10:9]),
+    .fci(\U4/lt7_c9 ),
+    .fco(\U4/lt7_c11 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y3Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_12|U4/lt7_11  (
+    .a(2'b00),
+    .b(\U4/LineConut [12:11]),
+    .fci(\U4/lt7_c11 ),
+    .fco(\U4/lt7_c13 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y3Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_14|U4/lt7_13  (
+    .a(2'b00),
+    .b(\U4/LineConut [14:13]),
+    .fci(\U4/lt7_c13 ),
+    .fco(\U4/lt7_c15 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y0Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_2|U4/lt7_1  (
+    .a(2'b00),
+    .b(\U4/LineConut [2:1]),
+    .fci(\U4/lt7_c1 ),
+    .fco(\U4/lt7_c3 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y1Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_4|U4/lt7_3  (
+    .a(2'b00),
+    .b(\U4/LineConut [4:3]),
+    .fci(\U4/lt7_c3 ),
+    .fco(\U4/lt7_c5 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y1Z1"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_6|U4/lt7_5  (
+    .a(2'b00),
+    .b(\U4/LineConut [6:5]),
+    .fci(\U4/lt7_c5 ),
+    .fco(\U4/lt7_c7 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y2Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_8|U4/lt7_7  (
+    .a(2'b00),
+    .b(\U4/LineConut [8:7]),
+    .fci(\U4/lt7_c7 ),
+    .fco(\U4/lt7_c9 ));
+  EG_PHY_MSLICE #(
+    //.MACRO("U4/lt7_0|U4/lt7_cin"),
+    //.R_POSITION("X0Y4Z0"),
+    .ALUTYPE("A_LE_B"),
+    .INIT_LUT0(16'b1001100110011100),
+    .INIT_LUT1(16'b1001100110011100),
+    .MODE("RIPPLE"))
+    \U4/lt7_cout|U4/lt7_15  (
+    .a(2'b00),
+    .b({1'b1,\U4/LineConut [15]}),
+    .fci(\U4/lt7_c15 ),
+    .f({\U4/n32 ,open_n7782}));
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTF1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0100010101000000),
-    .INIT_LUTF1(16'b0100010101000000),
-    .INIT_LUTG0(16'b0100010101000000),
-    .INIT_LUTG1(16'b0100010101000000),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6336,28 +6983,214 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg0_b0|U4/reg0_b14  (
-    .a({LCD_SYNC_pad,LCD_SYNC_pad}),
-    .b({\U4/n5 [0],\U4/n5 [14]}),
-    .c({\U4/n4 ,\U4/n4 }),
+    \U4/reg0_b0|U4/reg0_b8  (
+    .a({\U4/n6_lutinv ,\U4/n6_lutinv }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n7 [0],\U4/n7 [8]}),
+    .clk(CLK_100M),
+    .d({\U4/LineConut [0],\U4/LineConut [8]}),
+    .sr(nRST_pad),
+    .q({\U4/LineConut [0],\U4/LineConut [8]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .REG1_REGSET("RESET"),
+    .REG1_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \U4/reg0_b10|U4/reg0_b6  (
+    .a({\U4/n6_lutinv ,\U4/n6_lutinv }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n7 [10],\U4/n7 [6]}),
+    .clk(CLK_100M),
+    .d({\U4/LineConut [10],\U4/LineConut [6]}),
+    .sr(nRST_pad),
+    .q({\U4/LineConut [10],\U4/LineConut [6]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .REG1_REGSET("RESET"),
+    .REG1_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \U4/reg0_b11|U4/reg0_b5  (
+    .a({\U4/n6_lutinv ,\U4/n6_lutinv }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n7 [11],\U4/n7 [5]}),
+    .clk(CLK_100M),
+    .d({\U4/LineConut [11],\U4/LineConut [5]}),
+    .sr(nRST_pad),
+    .q({\U4/LineConut [11],\U4/LineConut [5]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .REG1_REGSET("RESET"),
+    .REG1_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \U4/reg0_b12|U4/reg0_b4  (
+    .a({\U4/n6_lutinv ,\U4/n6_lutinv }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n7 [12],\U4/n7 [4]}),
+    .clk(CLK_100M),
+    .d({\U4/LineConut [12],\U4/LineConut [4]}),
+    .sr(nRST_pad),
+    .q({\U4/LineConut [12],\U4/LineConut [4]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .REG1_REGSET("RESET"),
+    .REG1_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \U4/reg0_b13|U4/reg0_b2  (
+    .a({\U4/n6_lutinv ,\U4/n6_lutinv }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n7 [13],\U4/n7 [2]}),
+    .clk(CLK_100M),
+    .d({\U4/LineConut [13],\U4/LineConut [2]}),
+    .sr(nRST_pad),
+    .q({\U4/LineConut [13],\U4/LineConut [2]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .REG1_REGSET("RESET"),
+    .REG1_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \U4/reg0_b14|U4/reg0_b15  (
+    .a({\U4/n6_lutinv ,\U4/n6_lutinv }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n7 [14],\U4/n7 [15]}),
+    .clk(CLK_100M),
+    .d({\U4/LineConut [14],\U4/LineConut [15]}),
+    .sr(nRST_pad),
+    .q({\U4/LineConut [14],\U4/LineConut [15]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .REG1_REGSET("RESET"),
+    .REG1_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \U4/reg1_b0|U4/reg1_b14  (
+    .a({\U4/n22 ,\U4/n22 }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n23 [0],\U4/n23 [14]}),
     .clk(CLK_100M),
     .d({\U4/Addr [0],\U4/Addr [14]}),
     .sr(nRST_pad),
-    .q({\U4/Addr [0],\U4/Addr [14]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    .q({\U4/Addr [0],\U4/Addr [14]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTF1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0100010101000000),
-    .INIT_LUTF1(16'b0100010101000000),
-    .INIT_LUTG0(16'b0100010101000000),
-    .INIT_LUTG1(16'b0100010101000000),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6367,28 +7200,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg0_b10|U4/reg0_b13  (
-    .a({LCD_SYNC_pad,LCD_SYNC_pad}),
-    .b({\U4/n5 [10],\U4/n5 [13]}),
-    .c({\U4/n4 ,\U4/n4 }),
+    \U4/reg1_b10|U4/reg1_b13  (
+    .a({\U4/n22 ,\U4/n22 }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n23 [10],\U4/n23 [13]}),
     .clk(CLK_100M),
     .d({\U4/Addr [10],\U4/Addr [13]}),
     .sr(nRST_pad),
-    .q({\U4/Addr [10],\U4/Addr [13]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    .q({\U4/Addr [10],\U4/Addr [13]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTF1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0100010101000000),
-    .INIT_LUTF1(16'b0100010101000000),
-    .INIT_LUTG0(16'b0100010101000000),
-    .INIT_LUTG1(16'b0100010101000000),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6398,28 +7231,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg0_b11|U4/reg0_b9  (
-    .a({LCD_SYNC_pad,LCD_SYNC_pad}),
-    .b({\U4/n5 [11],\U4/n5 [9]}),
-    .c({\U4/n4 ,\U4/n4 }),
+    \U4/reg1_b11|U4/reg1_b9  (
+    .a({\U4/n22 ,\U4/n22 }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n23 [11],\U4/n23 [9]}),
     .clk(CLK_100M),
     .d({\U4/Addr [11],\U4/Addr [9]}),
     .sr(nRST_pad),
-    .q({\U4/Addr [11],\U4/Addr [9]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    .q({\U4/Addr [11],\U4/Addr [9]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTF1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0100010101000000),
-    .INIT_LUTF1(16'b0100010101000000),
-    .INIT_LUTG0(16'b0100010101000000),
-    .INIT_LUTG1(16'b0100010101000000),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6429,28 +7262,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg0_b12|U4/reg0_b8  (
-    .a({LCD_SYNC_pad,LCD_SYNC_pad}),
-    .b({\U4/n5 [12],\U4/n5 [8]}),
-    .c({\U4/n4 ,\U4/n4 }),
+    \U4/reg1_b12|U4/reg1_b8  (
+    .a({\U4/n22 ,\U4/n22 }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n23 [12],\U4/n23 [8]}),
     .clk(CLK_100M),
     .d({\U4/Addr [12],\U4/Addr [8]}),
     .sr(nRST_pad),
-    .q({\U4/Addr [12],\U4/Addr [8]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    .q({\U4/Addr [12],\U4/Addr [8]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTF1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0100010101000000),
-    .INIT_LUTF1(16'b0100010101000000),
-    .INIT_LUTG0(16'b0100010101000000),
-    .INIT_LUTG1(16'b0100010101000000),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6460,28 +7293,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg0_b1|U4/reg0_b7  (
-    .a({LCD_SYNC_pad,LCD_SYNC_pad}),
-    .b({\U4/n5 [1],\U4/n5 [7]}),
-    .c({\U4/n4 ,\U4/n4 }),
+    \U4/reg1_b1|U4/reg1_b7  (
+    .a({\U4/n22 ,\U4/n22 }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n23 [1],\U4/n23 [7]}),
     .clk(CLK_100M),
     .d({\U4/Addr [1],\U4/Addr [7]}),
     .sr(nRST_pad),
-    .q({\U4/Addr [1],\U4/Addr [7]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    .q({\U4/Addr [1],\U4/Addr [7]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTF1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0100010101000000),
-    .INIT_LUTF1(16'b0100010101000000),
-    .INIT_LUTG0(16'b0100010101000000),
-    .INIT_LUTG1(16'b0100010101000000),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6491,28 +7324,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg0_b2|U4/reg0_b6  (
-    .a({LCD_SYNC_pad,LCD_SYNC_pad}),
-    .b({\U4/n5 [2],\U4/n5 [6]}),
-    .c({\U4/n4 ,\U4/n4 }),
+    \U4/reg1_b2|U4/reg1_b6  (
+    .a({\U4/n22 ,\U4/n22 }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n23 [2],\U4/n23 [6]}),
     .clk(CLK_100M),
     .d({\U4/Addr [2],\U4/Addr [6]}),
     .sr(nRST_pad),
-    .q({\U4/Addr [2],\U4/Addr [6]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    .q({\U4/Addr [2],\U4/Addr [6]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTF1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG1("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0100010101000000),
-    .INIT_LUTF1(16'b0100010101000000),
-    .INIT_LUTG0(16'b0100010101000000),
-    .INIT_LUTG1(16'b0100010101000000),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0011000100100000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0011000100100000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6522,28 +7355,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg0_b3|U4/reg0_b5  (
-    .a({LCD_SYNC_pad,LCD_SYNC_pad}),
-    .b({\U4/n5 [3],\U4/n5 [5]}),
-    .c({\U4/n4 ,\U4/n4 }),
+    \U4/reg1_b3|U4/reg1_b5  (
+    .a({\U4/n22 ,\U4/n22 }),
+    .b({LCD_SYNC_pad,LCD_SYNC_pad}),
+    .c({\U4/n23 [3],\U4/n23 [5]}),
     .clk(CLK_100M),
     .d({\U4/Addr [3],\U4/Addr [5]}),
     .sr(nRST_pad),
-    .q({\U4/Addr [3],\U4/Addr [5]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    .q({\U4/Addr [3],\U4/Addr [5]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*D)"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*D)"),
-    //.LUTG1("(C*D)"),
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1111000000000000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b1111000000000000),
-    .INIT_LUTG1(16'b1111000000000000),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b1000101010000000),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b1000101010000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6553,26 +7386,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg1_b0|U4/reg1_b9  (
-    .c({\U4/n1 [0],\U4/n1 [9]}),
+    \U4/reg2_b0|U4/reg2_b5  (
+    .a({\U4/mux2_b0_sel_is_0_o ,\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/n2 [0],\U4/n2 [5]}),
+    .c({\U4/n1 ,\U4/n1 }),
     .clk(CLK_100M),
-    .d({\U4/mux1_b0_sel_is_0_o ,\U4/mux1_b0_sel_is_0_o }),
+    .d({\U4/AddrCtrl [0],\U4/AddrCtrl [5]}),
     .sr(nRST_pad),
-    .q({\U4/AddrCtrl [0],\U4/AddrCtrl [9]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+    .q({\U4/AddrCtrl [0],\U4/AddrCtrl [5]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*D)"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*D)"),
-    //.LUTG1("(C*D)"),
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1111000000000000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b1111000000000000),
-    .INIT_LUTG1(16'b1111000000000000),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b1000101010000000),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b1000101010000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6582,26 +7417,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg1_b10|U4/reg1_b8  (
-    .c({\U4/n1 [10],\U4/n1 [8]}),
+    \U4/reg2_b10|U4/reg2_b4  (
+    .a({\U4/mux2_b0_sel_is_0_o ,\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/n2 [10],\U4/n2 [4]}),
+    .c({\U4/n1 ,\U4/n1 }),
     .clk(CLK_100M),
-    .d({\U4/mux1_b0_sel_is_0_o ,\U4/mux1_b0_sel_is_0_o }),
+    .d({\U4/AddrCtrl [10],\U4/AddrCtrl [4]}),
     .sr(nRST_pad),
-    .q({\U4/AddrCtrl [10],\U4/AddrCtrl [8]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+    .q({\U4/AddrCtrl [10],\U4/AddrCtrl [4]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*D)"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*D)"),
-    //.LUTG1("(C*D)"),
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1111000000000000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b1111000000000000),
-    .INIT_LUTG1(16'b1111000000000000),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b1000101010000000),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b1000101010000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6611,26 +7448,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg1_b11|U4/reg1_b7  (
-    .c({\U4/n1 [11],\U4/n1 [7]}),
+    \U4/reg2_b11|U4/reg2_b2  (
+    .a({\U4/mux2_b0_sel_is_0_o ,\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/n2 [11],\U4/n2 [2]}),
+    .c({\U4/n1 ,\U4/n1 }),
     .clk(CLK_100M),
-    .d({\U4/mux1_b0_sel_is_0_o ,\U4/mux1_b0_sel_is_0_o }),
+    .d({\U4/AddrCtrl [11],\U4/AddrCtrl [2]}),
     .sr(nRST_pad),
-    .q({\U4/AddrCtrl [11],\U4/AddrCtrl [7]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+    .q({\U4/AddrCtrl [11],\U4/AddrCtrl [2]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*D)"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*D)"),
-    //.LUTG1("(C*D)"),
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1111000000000000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b1111000000000000),
-    .INIT_LUTG1(16'b1111000000000000),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b1000101010000000),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b1000101010000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6640,26 +7479,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg1_b12|U4/reg1_b6  (
-    .c({\U4/n1 [12],\U4/n1 [6]}),
+    \U4/reg2_b12|U4/reg2_b7  (
+    .a({\U4/mux2_b0_sel_is_0_o ,\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/n2 [12],\U4/n2 [7]}),
+    .c({\U4/n1 ,\U4/n1 }),
     .clk(CLK_100M),
-    .d({\U4/mux1_b0_sel_is_0_o ,\U4/mux1_b0_sel_is_0_o }),
+    .d({\U4/AddrCtrl [12],\U4/AddrCtrl [7]}),
     .sr(nRST_pad),
-    .q({\U4/AddrCtrl [12],\U4/AddrCtrl [6]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+    .q({\U4/AddrCtrl [12],\U4/AddrCtrl [7]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*D)"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*D)"),
-    //.LUTG1("(C*D)"),
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1111000000000000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b1111000000000000),
-    .INIT_LUTG1(16'b1111000000000000),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b1000101010000000),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b1000101010000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6669,256 +7510,222 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG1_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \U4/reg1_b13|U4/reg1_b5  (
-    .c({\U4/n1 [13],\U4/n1 [5]}),
+    \U4/reg2_b13|U4/reg2_b14  (
+    .a({\U4/mux2_b0_sel_is_0_o ,\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/n2 [13],\U4/n2 [14]}),
+    .c({\U4/n1 ,\U4/n1 }),
     .clk(CLK_100M),
-    .d({\U4/mux1_b0_sel_is_0_o ,\U4/mux1_b0_sel_is_0_o }),
+    .d({\U4/AddrCtrl [13],\U4/AddrCtrl [14]}),
     .sr(nRST_pad),
-    .q({\U4/AddrCtrl [13],\U4/AddrCtrl [5]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+    .q({\U4/AddrCtrl [13],\U4/AddrCtrl [14]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*D)"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*D)"),
-    //.LUTG1("(C*D)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1111000000000000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b1111000000000000),
-    .INIT_LUTG1(16'b1111000000000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .REG1_REGSET("RESET"),
-    .REG1_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \U4/reg1_b14|U4/reg1_b4  (
-    .c({\U4/n1 [14],\U4/n1 [4]}),
-    .clk(CLK_100M),
-    .d({\U4/mux1_b0_sel_is_0_o ,\U4/mux1_b0_sel_is_0_o }),
-    .sr(nRST_pad),
-    .q({\U4/AddrCtrl [14],\U4/AddrCtrl [4]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+    //.MACRO("U4/sub0/ucin_al_u440"),
+    //.R_POSITION("X0Y1Z1"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/sub0/u11_al_u443  (
+    .a({open_n8184,1'b0}),
+    .c(2'b11),
+    .d({open_n8189,\U4/Count [15]}),
+    .fci(\U4/sub0/c11 ),
+    .f({open_n8206,\U4/n18 [15]}));
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*D)"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*D)"),
-    //.LUTG1("(C*D)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1111000000000000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b1111000000000000),
-    .INIT_LUTG1(16'b1111000000000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .REG1_REGSET("RESET"),
-    .REG1_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \U4/reg1_b15|U4/reg1_b3  (
-    .c({\U4/n1 [15],\U4/n1 [3]}),
-    .clk(CLK_100M),
-    .d({\U4/mux1_b0_sel_is_0_o ,\U4/mux1_b0_sel_is_0_o }),
-    .sr(nRST_pad),
-    .q({\U4/AddrCtrl [15],\U4/AddrCtrl [3]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+    //.MACRO("U4/sub0/ucin_al_u440"),
+    //.R_POSITION("X0Y0Z1"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/sub0/u3_al_u441  (
+    .a(2'b11),
+    .b(2'b00),
+    .c(2'b11),
+    .d({\U4/Count [9],\U4/Count [7]}),
+    .e({\U4/Count [10],\U4/Count [8]}),
+    .fci(\U4/sub0/c3 ),
+    .f({\U4/n18 [9],\U4/n18 [7]}),
+    .fco(\U4/sub0/c7 ),
+    .fx({\U4/n18 [10],\U4/n18 [8]}));
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*D)"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*D)"),
-    //.LUTG1("(C*D)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1111000000000000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b1111000000000000),
-    .INIT_LUTG1(16'b1111000000000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .REG1_REGSET("RESET"),
-    .REG1_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \U4/reg1_b1|U4/reg1_b2  (
-    .c({\U4/n1 [1],\U4/n1 [2]}),
-    .clk(CLK_100M),
-    .d({\U4/mux1_b0_sel_is_0_o ,\U4/mux1_b0_sel_is_0_o }),
-    .sr(nRST_pad),
-    .q({\U4/AddrCtrl [1],\U4/AddrCtrl [2]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+    //.MACRO("U4/sub0/ucin_al_u440"),
+    //.R_POSITION("X0Y1Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'hA55A),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/sub0/u7_al_u442  (
+    .a(2'b01),
+    .b(2'b00),
+    .c(2'b11),
+    .d({\U4/Count [13],\U4/Count [11]}),
+    .e({\U4/Count [14],\U4/Count [12]}),
+    .fci(\U4/sub0/c7 ),
+    .f({\U4/n18 [13],\U4/n18 [11]}),
+    .fco(\U4/sub0/c11 ),
+    .fx({\U4/n18 [14],\U4/n18 [12]}));
   EG_PHY_LSLICE #(
-    //.LUTF0("(~C*B*D)"),
-    //.LUTF1("(~C*D)"),
-    //.LUTG0("(~C*B*D)"),
-    //.LUTG1("(~C*D)"),
-    .INIT_LUTF0(16'b0000110000000000),
-    .INIT_LUTF1(16'b0000111100000000),
-    .INIT_LUTG0(16'b0000110000000000),
-    .INIT_LUTG1(16'b0000111100000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
+    //.MACRO("U4/sub0/ucin_al_u440"),
+    //.R_POSITION("X0Y0Z0"),
+    .DEMUX0("E"),
+    .DEMUX1("E"),
+    .INIT_LUTF0(16'h0005),
+    .INIT_LUTF1(16'hA55A),
+    .INIT_LUTG0(16'hC33C),
+    .INIT_LUTG1(16'hC33C),
+    .LSFMUX0("SUM"),
+    .LSFMUX1("SUM"),
+    .LSFXMUX0("SUM"),
+    .LSFXMUX1("SUM"),
+    .MODE("RIPPLE"))
+    \U4/sub0/ucin_al_u440  (
+    .a(2'b01),
+    .b(2'b00),
+    .c(2'b11),
+    .d({\U4/Count [5],1'b1}),
+    .e({\U4/Count [6],\U4/Count [4]}),
+    .f({\U4/n18 [5],open_n8265}),
+    .fco(\U4/sub0/c3 ),
+    .fx({\U4/n18 [6],\U4/n18 [4]}));
+  EG_PHY_MSLICE #(
+    //.LUT0("(~D)"),
+    //.LUT1("(~C*D)"),
+    .INIT_LUT0(16'b0000000011111111),
+    .INIT_LUT1(16'b0000111100000000),
     .MODE("LOGIC"))
-    \_al_u125|_al_u143  (
-    .b({open_n7079,\D1/n21 }),
-    .c({FIFO_EMPTY,FIFO_EMPTY}),
-    .d({FIFO_DO[3],\D1/n22 }),
-    .f({LCD_B_pad[6],FIFO_RE}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("(~D)"),
-    //.LUTF1("(~C*D)"),
-    //.LUTG0("(~D)"),
-    //.LUTG1("(~C*D)"),
-    .INIT_LUTF0(16'b0000000011111111),
-    .INIT_LUTF1(16'b0000111100000000),
-    .INIT_LUTG0(16'b0000000011111111),
-    .INIT_LUTG1(16'b0000111100000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u126|_al_u331  (
-    .c({FIFO_EMPTY,open_n7108}),
-    .d({FIFO_DO[2],FIFO_EMPTY}),
-    .f({LCD_B_pad[5],LCD_B_pad[2]}));
+    \_al_u125|_al_u388  (
+    .c({FIFO_EMPTY,open_n8272}),
+    .d({FIFO_DO[3],FIFO_EMPTY}),
+    .f({LCD_B_pad[6],LCD_B_pad[2]}));
   EG_PHY_MSLICE #(
     //.LUT0("~(~C*~D)"),
     //.LUT1("(~C*D)"),
     .INIT_LUT0(16'b1111111111110000),
     .INIT_LUT1(16'b0000111100000000),
     .MODE("LOGIC"))
-    \_al_u127|_al_u140  (
+    \_al_u126|_al_u140  (
     .c({FIFO_EMPTY,FIFO_DO[12]}),
+    .d({FIFO_DO[2],FIFO_EMPTY}),
+    .f({LCD_B_pad[5],LCD_R_pad[4]}));
+  EG_PHY_LSLICE #(
+    //.LUTF0("~(~C*~D)"),
+    //.LUTF1("(~C*D)"),
+    //.LUTG0("~(~C*~D)"),
+    //.LUTG1("(~C*D)"),
+    .INIT_LUTF0(16'b1111111111110000),
+    .INIT_LUTF1(16'b0000111100000000),
+    .INIT_LUTG0(16'b1111111111110000),
+    .INIT_LUTG1(16'b0000111100000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"))
+    \_al_u127|_al_u139  (
+    .c({FIFO_EMPTY,FIFO_DO[13]}),
     .d({FIFO_DO[1],FIFO_EMPTY}),
-    .f({LCD_B_pad[4],LCD_R_pad[4]}));
+    .f({LCD_B_pad[4],LCD_R_pad[5]}));
+  EG_PHY_LSLICE #(
+    //.LUTF0("~(~C*~D)"),
+    //.LUTF1("(~C*D)"),
+    //.LUTG0("~(~C*~D)"),
+    //.LUTG1("(~C*D)"),
+    .INIT_LUTF0(16'b1111111111110000),
+    .INIT_LUTF1(16'b0000111100000000),
+    .INIT_LUTG0(16'b1111111111110000),
+    .INIT_LUTG1(16'b0000111100000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"))
+    \_al_u128|_al_u138  (
+    .c({FIFO_EMPTY,FIFO_DO[14]}),
+    .d({FIFO_DO[0],FIFO_EMPTY}),
+    .f({LCD_B_pad[3],LCD_R_pad[6]}));
   EG_PHY_MSLICE #(
     //.LUT0("~(~C*~D)"),
     //.LUT1("(~C*D)"),
     .INIT_LUT0(16'b1111111111110000),
     .INIT_LUT1(16'b0000111100000000),
     .MODE("LOGIC"))
-    \_al_u128|_al_u139  (
-    .c({FIFO_EMPTY,FIFO_DO[13]}),
-    .d({FIFO_DO[0],FIFO_EMPTY}),
-    .f({LCD_B_pad[3],LCD_R_pad[5]}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("~(~C*~D)"),
-    //.LUTF1("(~C*D)"),
-    //.LUTG0("~(~C*~D)"),
-    //.LUTG1("(~C*D)"),
-    .INIT_LUTF0(16'b1111111111110000),
-    .INIT_LUTF1(16'b0000111100000000),
-    .INIT_LUTG0(16'b1111111111110000),
-    .INIT_LUTG1(16'b0000111100000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u129|_al_u138  (
-    .c({FIFO_EMPTY,FIFO_DO[14]}),
-    .d({FIFO_DO[10],FIFO_EMPTY}),
-    .f({LCD_G_pad[7],LCD_R_pad[6]}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("~(~C*~D)"),
-    //.LUTF1("(~C*D)"),
-    //.LUTG0("~(~C*~D)"),
-    //.LUTG1("(~C*D)"),
-    .INIT_LUTF0(16'b1111111111110000),
-    .INIT_LUTF1(16'b0000111100000000),
-    .INIT_LUTG0(16'b1111111111110000),
-    .INIT_LUTG1(16'b0000111100000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u130|_al_u137  (
+    \_al_u129|_al_u137  (
     .c({FIFO_EMPTY,FIFO_DO[15]}),
-    .d({FIFO_DO[9],FIFO_EMPTY}),
-    .f({LCD_G_pad[6],LCD_R_pad[7]}));
+    .d({FIFO_DO[10],FIFO_EMPTY}),
+    .f({LCD_G_pad[7],LCD_R_pad[7]}));
   EG_PHY_MSLICE #(
     //.LUT0("(C*~D)"),
     //.LUT1("(~C*D)"),
     .INIT_LUT0(16'b0000000011110000),
     .INIT_LUT1(16'b0000111100000000),
     .MODE("LOGIC"))
-    \_al_u131|_al_u136  (
+    \_al_u130|_al_u136  (
     .c({FIFO_EMPTY,FIFO_DO[4]}),
-    .d({FIFO_DO[8],FIFO_EMPTY}),
-    .f({LCD_G_pad[5],LCD_B_pad[7]}));
-  EG_PHY_MSLICE #(
-    //.LUT0("(C*~D)"),
-    //.LUT1("~(~C*~D)"),
-    .INIT_LUT0(16'b0000000011110000),
-    .INIT_LUT1(16'b1111111111110000),
-    .MODE("LOGIC"))
-    \_al_u132|_al_u135  (
-    .c({FIFO_EMPTY,FIFO_DO[5]}),
-    .d({FIFO_DO[11],FIFO_EMPTY}),
-    .f({LCD_R_pad[3],LCD_G_pad[2]}));
+    .d({FIFO_DO[9],FIFO_EMPTY}),
+    .f({LCD_G_pad[6],LCD_B_pad[7]}));
   EG_PHY_LSLICE #(
     //.LUTF0("(C*~D)"),
-    //.LUTF1("(C*~D)"),
+    //.LUTF1("(~C*D)"),
     //.LUTG0("(C*~D)"),
-    //.LUTG1("(C*~D)"),
+    //.LUTG1("(~C*D)"),
     .INIT_LUTF0(16'b0000000011110000),
-    .INIT_LUTF1(16'b0000000011110000),
+    .INIT_LUTF1(16'b0000111100000000),
     .INIT_LUTG0(16'b0000000011110000),
-    .INIT_LUTG1(16'b0000000011110000),
+    .INIT_LUTG1(16'b0000111100000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u133|_al_u134  (
-    .c(FIFO_DO[7:6]),
-    .d({FIFO_EMPTY,FIFO_EMPTY}),
-    .f(LCD_G_pad[4:3]));
+    \_al_u131|_al_u135  (
+    .c({FIFO_EMPTY,FIFO_DO[5]}),
+    .d({FIFO_DO[8],FIFO_EMPTY}),
+    .f({LCD_G_pad[5],LCD_G_pad[2]}));
   EG_PHY_LSLICE #(
-    //.LUTF0("~(C*D)"),
-    //.LUTG0("~(C*D)"),
-    .INIT_LUTF0(16'b0000111111111111),
-    .INIT_LUTG0(16'b0000111111111111),
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("~(~C*~D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("~(~C*~D)"),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b1111111111110000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b1111111111110000),
     .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    _al_u141 (
-    .c({open_n7317,\D1/n10 }),
-    .d({open_n7320,\D1/n9 }),
-    .f({open_n7338,LCD_HYNC_pad}));
-  EG_PHY_MSLICE #(
-    //.LUT0("(D*C*B*A)"),
-    //.LUT1("~(C*D)"),
-    .INIT_LUT0(16'b1000000000000000),
-    .INIT_LUT1(16'b0000111111111111),
-    .MODE("LOGIC"))
-    \_al_u142|_al_u233  (
-    .a({open_n7344,_al_u229_o}),
-    .b({open_n7345,_al_u230_o}),
-    .c({\D1/n13 ,_al_u231_o}),
-    .d({\D1/n12 ,_al_u232_o}),
-    .f({LCD_SYNC_pad,_al_u233_o}));
-  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    \_al_u132|_al_u134  (
+    .c({FIFO_EMPTY,FIFO_DO[6]}),
+    .d({FIFO_DO[11],FIFO_EMPTY}),
+    .f({LCD_R_pad[3],LCD_G_pad[3]}));
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTF1("(~C*~D)"),
-    //.LUTG0("(~A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
-    //.LUTG1("(~C*~D)"),
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0100010101000000),
-    .INIT_LUTF1(16'b0000000000001111),
-    .INIT_LUTG0(16'b0100010101000000),
-    .INIT_LUTG1(16'b0000000000001111),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"),
@@ -6926,33 +7733,425 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u144|U4/reg0_b4  (
-    .a({open_n7366,LCD_SYNC_pad}),
-    .b({open_n7367,\U4/n5 [4]}),
-    .c({LCD_SYNC_pad,\U4/n4 }),
+    \_al_u141|U4/reg3_b4  (
+    .a({open_n8477,\U4/n13 }),
+    .b({\U4/Count [4],\U4/n14 [0]}),
+    .c({\U4/n18 [4],\U4/n10 }),
     .clk(CLK_100M),
-    .d({LCD_HYNC_pad,\U4/Addr [4]}),
+    .d({\U4/XPos [2],\U4/Count [4]}),
     .sr(nRST_pad),
-    .f({\U4/mux1_b0_sel_is_0_o ,open_n7385}),
-    .q({open_n7389,\U4/Addr [4]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+    .f({\U4/XPos [4],open_n8495}),
+    .q({open_n8499,\U4/Count [4]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~D*~C*~B*~A)"),
-    //.LUTF1("(D*C*B*A)"),
-    //.LUTG0("(~D*~C*~B*~A)"),
-    //.LUTG1("(D*C*B*A)"),
-    .INIT_LUTF0(16'b0000000000000001),
-    .INIT_LUTF1(16'b1000000000000000),
-    .INIT_LUTG0(16'b0000000000000001),
-    .INIT_LUTG1(16'b1000000000000000),
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u142|U4/reg3_b5  (
+    .a({open_n8500,\U4/n13 }),
+    .b({\U4/Count [5],\U4/n14 [1]}),
+    .c({\U4/n18 [5],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [5]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [5],open_n8518}),
+    .q({open_n8522,\U4/Count [5]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u143|U4/reg3_b14  (
+    .a({open_n8523,\U4/n13 }),
+    .b({\U4/Count [14],\U4/n14 [10]}),
+    .c({\U4/n18 [14],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [14]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [14],open_n8541}),
+    .q({open_n8545,\U4/Count [14]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u144|U4/reg3_b15  (
+    .a({open_n8546,\U4/n13 }),
+    .b({\U4/Count [15],\U4/n14 [11]}),
+    .c({\U4/n18 [15],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [15]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [15],open_n8564}),
+    .q({open_n8568,\U4/Count [15]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u145|U4/reg3_b6  (
+    .a({open_n8569,\U4/n13 }),
+    .b({\U4/Count [6],\U4/n14 [2]}),
+    .c({\U4/n18 [6],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [6]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [6],open_n8587}),
+    .q({open_n8591,\U4/Count [6]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u146|U4/reg3_b7  (
+    .a({open_n8592,\U4/n13 }),
+    .b({\U4/Count [7],\U4/n14 [3]}),
+    .c({\U4/n18 [7],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [7]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [7],open_n8610}),
+    .q({open_n8614,\U4/Count [7]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u147|U4/reg3_b8  (
+    .a({open_n8615,\U4/n13 }),
+    .b({\U4/Count [8],\U4/n14 [4]}),
+    .c({\U4/n18 [8],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [8]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [8],open_n8633}),
+    .q({open_n8637,\U4/Count [8]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u148|U4/reg3_b9  (
+    .a({open_n8638,\U4/n13 }),
+    .b({\U4/Count [9],\U4/n14 [5]}),
+    .c({\U4/n18 [9],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [9]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [9],open_n8656}),
+    .q({open_n8660,\U4/Count [9]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u149|U4/reg3_b10  (
+    .a({open_n8661,\U4/n13 }),
+    .b({\U4/Count [10],\U4/n14 [6]}),
+    .c({\U4/n18 [10],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [10]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [10],open_n8679}),
+    .q({open_n8683,\U4/Count [10]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u150|U4/reg3_b11  (
+    .a({open_n8684,\U4/n13 }),
+    .b({\U4/Count [11],\U4/n14 [7]}),
+    .c({\U4/n18 [11],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [11]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [11],open_n8702}),
+    .q({open_n8706,\U4/Count [11]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u151|U4/reg3_b12  (
+    .a({open_n8707,\U4/n13 }),
+    .b({\U4/Count [12],\U4/n14 [8]}),
+    .c({\U4/n18 [12],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [12]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [12],open_n8725}),
+    .q({open_n8729,\U4/Count [12]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTF1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    //.LUTG0("(~C*(D*~(B)*~(A)+D*B*~(A)+~(D)*B*A+D*B*A))"),
+    //.LUTG1("(B*~(C)*~(D)+B*C*~(D)+~(B)*C*D+B*C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000110100001000),
+    .INIT_LUTF1(16'b1111000011001100),
+    .INIT_LUTG0(16'b0000110100001000),
+    .INIT_LUTG1(16'b1111000011001100),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u152|U4/reg3_b13  (
+    .a({open_n8730,\U4/n13 }),
+    .b({\U4/Count [13],\U4/n14 [9]}),
+    .c({\U4/n18 [13],\U4/n10 }),
+    .clk(CLK_100M),
+    .d({\U4/XPos [2],\U4/Count [13]}),
+    .sr(nRST_pad),
+    .f({\U4/XPos [13],open_n8748}),
+    .q({open_n8752,\U4/Count [13]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(60)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*~D)"),
+    //.LUTF1("~(C*D)"),
+    //.LUTG0("(~C*~D)"),
+    //.LUTG1("~(C*D)"),
+    .INIT_LUTF0(16'b0000000000001111),
+    .INIT_LUTF1(16'b0000111111111111),
+    .INIT_LUTG0(16'b0000000000001111),
+    .INIT_LUTG1(16'b0000111111111111),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u177|_al_u224  (
-    .a({\D1/n15 ,\D1/PixelCount [12]}),
-    .b({\D1/n16 ,\D1/PixelCount [13]}),
-    .c({\D1/n18 ,\D1/PixelCount [14]}),
-    .d({\D1/n20 ,\D1/PixelCount [15]}),
-    .f({GPIO_pad,_al_u224_o}));
+    \_al_u153|_al_u154  (
+    .c({\D1/n10 ,LCD_SYNC_pad}),
+    .d({\D1/n9 ,LCD_HYNC_pad}),
+    .f({LCD_HYNC_pad,\U4/mux2_b0_sel_is_0_o }));
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(C*D)"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b1111000000000000),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b1111000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u155|U4/reg2_b1  (
+    .a({open_n8781,\U4/mux2_b0_sel_is_0_o }),
+    .b({open_n8782,\U4/n2 [1]}),
+    .c({\U4/n26 ,\U4/n1 }),
+    .clk(CLK_100M),
+    .d({\U4/mux2_b0_sel_is_0_o ,\U4/AddrCtrl [1]}),
+    .sr(nRST_pad),
+    .f({FIFO_WE,open_n8800}),
+    .q({open_n8804,\U4/AddrCtrl [1]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~C*B*D)"),
+    //.LUTF1("(C*B*D)"),
+    //.LUTG0("(~C*B*D)"),
+    //.LUTG1("(C*B*D)"),
+    .INIT_LUTF0(16'b0000110000000000),
+    .INIT_LUTF1(16'b1100000000000000),
+    .INIT_LUTG0(16'b0000110000000000),
+    .INIT_LUTG1(16'b1100000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"))
+    \_al_u190|_al_u189  (
+    .b({\D1/n15 ,\D1/n21 }),
+    .c({\D1/n17 ,FIFO_EMPTY}),
+    .d({_al_u189_o,\D1/n19 }),
+    .f({FIFO_RE,_al_u189_o}));
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(C*B*D)"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(C*B*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b1100000000000000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b1100000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u191|U4/reg1_b4  (
+    .a({open_n8831,\U4/n22 }),
+    .b({\U4/n30 ,LCD_SYNC_pad}),
+    .c({\U4/n32 ,\U4/n23 [4]}),
+    .clk(CLK_100M),
+    .d({\U4/n22 ,\U4/Addr [4]}),
+    .sr(nRST_pad),
+    .f({_al_u191_o,open_n8849}),
+    .q({open_n8853,\U4/Addr [4]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(74)
   EG_PHY_LSLICE #(
     //.LUTF0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
     //.LUTF1("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
@@ -6965,42 +8164,42 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u178|_al_u196  (
+    \_al_u192|_al_u210  (
     .a({\U4/Addr_piped [0],\U4/Addr_piped [0]}),
     .b({\U4/Addr_piped [1],\U4/Addr_piped [1]}),
-    .c({\U4/ROM0/inst_doa_i2_000 ,\U4/ROM0/inst_doa_i2_006 }),
-    .d({\U4/ROM0/inst_doa_i3_000 ,\U4/ROM0/inst_doa_i3_006 }),
-    .f({_al_u178_o,_al_u196_o}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTF1("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG1("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    .INIT_LUTF0(16'b0000010010001100),
-    .INIT_LUTF1(16'b0000000100100011),
-    .INIT_LUTG0(16'b0000010010001100),
-    .INIT_LUTG1(16'b0000000100100011),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u179|_al_u193  (
-    .a({\U4/Addr_piped [0],\U4/Addr_piped [0]}),
-    .b({\U4/Addr_piped [1],\U4/Addr_piped [1]}),
-    .c({\U4/ROM0/inst_doa_i0_000 ,\U4/ROM0/inst_doa_i2_005 }),
-    .d({\U4/ROM0/inst_doa_i1_000 ,\U4/ROM0/inst_doa_i3_005 }),
-    .f({_al_u179_o,_al_u193_o}));
+    .c({\U4/ROM0/inst_doa_i2_007 ,\U4/ROM0/inst_doa_i2_001 }),
+    .d({\U4/ROM0/inst_doa_i3_007 ,\U4/ROM0/inst_doa_i3_001 }),
+    .f({_al_u192_o,_al_u210_o}));
   EG_PHY_MSLICE #(
     //.LUT0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUT1("~(C*~(~B*~D))"),
+    //.LUT1("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
     .INIT_LUT0(16'b0000010010001100),
-    .INIT_LUT1(16'b0000111100111111),
+    .INIT_LUT1(16'b0000000100100011),
     .MODE("LOGIC"))
-    \_al_u180|_al_u184  (
-    .a({open_n7462,\U4/Addr_piped [0]}),
-    .b({_al_u179_o,\U4/Addr_piped [1]}),
-    .c({\U4/n12 ,\U4/ROM0/inst_doa_i2_002 }),
-    .d({_al_u178_o,\U4/ROM0/inst_doa_i3_002 }),
-    .f({FIFO_DI[0],_al_u184_o}));
+    \_al_u193|_al_u207  (
+    .a({\U4/Addr_piped [0],\U4/Addr_piped [0]}),
+    .b({\U4/Addr_piped [1],\U4/Addr_piped [1]}),
+    .c({\U4/ROM0/inst_doa_i0_007 ,\U4/ROM0/inst_doa_i2_002 }),
+    .d({\U4/ROM0/inst_doa_i1_007 ,\U4/ROM0/inst_doa_i3_002 }),
+    .f({_al_u193_o,_al_u207_o}));
+  EG_PHY_LSLICE #(
+    //.LUTF0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
+    //.LUTF1("~(D*~(~C*~B))"),
+    //.LUTG0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
+    //.LUTG1("~(D*~(~C*~B))"),
+    .INIT_LUTF0(16'b0000010010001100),
+    .INIT_LUTF1(16'b0000001111111111),
+    .INIT_LUTG0(16'b0000010010001100),
+    .INIT_LUTG1(16'b0000001111111111),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"))
+    \_al_u194|_al_u198  (
+    .a({open_n8898,\U4/Addr_piped [0]}),
+    .b({_al_u192_o,\U4/Addr_piped [1]}),
+    .c({_al_u193_o,\U4/ROM0/inst_doa_i2_005 }),
+    .d({_al_u191_o,\U4/ROM0/inst_doa_i3_005 }),
+    .f({FIFO_DI[7],_al_u198_o}));
   EG_PHY_LSLICE #(
     //.LUTF0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
     //.LUTF1("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
@@ -7013,161 +8212,143 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u181|_al_u190  (
+    \_al_u195|_al_u204  (
     .a({\U4/Addr_piped [0],\U4/Addr_piped [0]}),
     .b({\U4/Addr_piped [1],\U4/Addr_piped [1]}),
-    .c({\U4/ROM0/inst_doa_i2_001 ,\U4/ROM0/inst_doa_i2_004 }),
-    .d({\U4/ROM0/inst_doa_i3_001 ,\U4/ROM0/inst_doa_i3_004 }),
-    .f({_al_u181_o,_al_u190_o}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTF1("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG1("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    .INIT_LUTF0(16'b0000010010001100),
-    .INIT_LUTF1(16'b0000000100100011),
-    .INIT_LUTG0(16'b0000010010001100),
-    .INIT_LUTG1(16'b0000000100100011),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
+    .c({\U4/ROM0/inst_doa_i2_006 ,\U4/ROM0/inst_doa_i2_003 }),
+    .d({\U4/ROM0/inst_doa_i3_006 ,\U4/ROM0/inst_doa_i3_003 }),
+    .f({_al_u195_o,_al_u204_o}));
+  EG_PHY_MSLICE #(
+    //.LUT0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
+    //.LUT1("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
+    .INIT_LUT0(16'b0000010010001100),
+    .INIT_LUT1(16'b0000000100100011),
     .MODE("LOGIC"))
-    \_al_u182|_al_u187  (
+    \_al_u196|_al_u201  (
     .a({\U4/Addr_piped [0],\U4/Addr_piped [0]}),
     .b({\U4/Addr_piped [1],\U4/Addr_piped [1]}),
-    .c({\U4/ROM0/inst_doa_i0_001 ,\U4/ROM0/inst_doa_i2_003 }),
-    .d({\U4/ROM0/inst_doa_i1_001 ,\U4/ROM0/inst_doa_i3_003 }),
-    .f({_al_u182_o,_al_u187_o}));
+    .c({\U4/ROM0/inst_doa_i0_006 ,\U4/ROM0/inst_doa_i2_004 }),
+    .d({\U4/ROM0/inst_doa_i1_006 ,\U4/ROM0/inst_doa_i3_004 }),
+    .f({_al_u196_o,_al_u201_o}));
   EG_PHY_MSLICE #(
     //.LUT0("(C*D)"),
-    //.LUT1("~(C*~(~B*~D))"),
+    //.LUT1("~(D*~(~C*~B))"),
     .INIT_LUT0(16'b1111000000000000),
-    .INIT_LUT1(16'b0000111100111111),
+    .INIT_LUT1(16'b0000001111111111),
     .MODE("LOGIC"))
-    \_al_u183|_al_u145  (
-    .b({_al_u182_o,open_n7533}),
-    .c({\U4/n12 ,\U4/n8 }),
-    .d({_al_u181_o,\U4/mux1_b0_sel_is_0_o }),
-    .f({FIFO_DI[1],FIFO_WE}));
+    \_al_u197|_al_u173  (
+    .b({_al_u195_o,open_n8969}),
+    .c({_al_u196_o,\U4/n21 }),
+    .d({_al_u191_o,\U4/n19 }),
+    .f({FIFO_DI[6],\U4/n22 }));
   EG_PHY_LSLICE #(
     //.LUTF0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTF1("~(C*~(~B*~D))"),
+    //.LUTF1("~(D*~(~C*~B))"),
     //.LUTG0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG1("~(C*~(~B*~D))"),
+    //.LUTG1("~(D*~(~C*~B))"),
     .INIT_LUTF0(16'b0000000100100011),
-    .INIT_LUTF1(16'b0000111100111111),
+    .INIT_LUTF1(16'b0000001111111111),
     .INIT_LUTG0(16'b0000000100100011),
-    .INIT_LUTG1(16'b0000111100111111),
+    .INIT_LUTG1(16'b0000001111111111),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u186|_al_u185  (
-    .a({open_n7554,\U4/Addr_piped [0]}),
-    .b({_al_u185_o,\U4/Addr_piped [1]}),
-    .c({\U4/n12 ,\U4/ROM0/inst_doa_i0_002 }),
-    .d({_al_u184_o,\U4/ROM0/inst_doa_i1_002 }),
-    .f({FIFO_DI[2],_al_u185_o}));
+    \_al_u200|_al_u199  (
+    .a({open_n8990,\U4/Addr_piped [0]}),
+    .b({_al_u198_o,\U4/Addr_piped [1]}),
+    .c({_al_u199_o,\U4/ROM0/inst_doa_i0_005 }),
+    .d({_al_u191_o,\U4/ROM0/inst_doa_i1_005 }),
+    .f({FIFO_DI[5],_al_u199_o}));
+  EG_PHY_MSLICE #(
+    //.LUT0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
+    //.LUT1("~(D*~(~C*~B))"),
+    .INIT_LUT0(16'b0000000100100011),
+    .INIT_LUT1(16'b0000001111111111),
+    .MODE("LOGIC"))
+    \_al_u203|_al_u202  (
+    .a({open_n9015,\U4/Addr_piped [0]}),
+    .b({_al_u201_o,\U4/Addr_piped [1]}),
+    .c({_al_u202_o,\U4/ROM0/inst_doa_i0_004 }),
+    .d({_al_u191_o,\U4/ROM0/inst_doa_i1_004 }),
+    .f({FIFO_DI[4],_al_u202_o}));
   EG_PHY_LSLICE #(
     //.LUTF0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTF1("~(C*~(~B*~D))"),
+    //.LUTF1("~(D*~(~C*~B))"),
     //.LUTG0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG1("~(C*~(~B*~D))"),
+    //.LUTG1("~(D*~(~C*~B))"),
     .INIT_LUTF0(16'b0000000100100011),
-    .INIT_LUTF1(16'b0000111100111111),
+    .INIT_LUTF1(16'b0000001111111111),
     .INIT_LUTG0(16'b0000000100100011),
-    .INIT_LUTG1(16'b0000111100111111),
+    .INIT_LUTG1(16'b0000001111111111),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u189|_al_u188  (
-    .a({open_n7579,\U4/Addr_piped [0]}),
-    .b({_al_u188_o,\U4/Addr_piped [1]}),
-    .c({\U4/n12 ,\U4/ROM0/inst_doa_i0_003 }),
-    .d({_al_u187_o,\U4/ROM0/inst_doa_i1_003 }),
-    .f({FIFO_DI[3],_al_u188_o}));
+    \_al_u206|_al_u205  (
+    .a({open_n9036,\U4/Addr_piped [0]}),
+    .b({_al_u204_o,\U4/Addr_piped [1]}),
+    .c({_al_u205_o,\U4/ROM0/inst_doa_i0_003 }),
+    .d({_al_u191_o,\U4/ROM0/inst_doa_i1_003 }),
+    .f({FIFO_DI[3],_al_u205_o}));
+  EG_PHY_MSLICE #(
+    //.LUT0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
+    //.LUT1("~(D*~(~C*~B))"),
+    .INIT_LUT0(16'b0000000100100011),
+    .INIT_LUT1(16'b0000001111111111),
+    .MODE("LOGIC"))
+    \_al_u209|_al_u208  (
+    .a({open_n9061,\U4/Addr_piped [0]}),
+    .b({_al_u207_o,\U4/Addr_piped [1]}),
+    .c({_al_u208_o,\U4/ROM0/inst_doa_i0_002 }),
+    .d({_al_u191_o,\U4/ROM0/inst_doa_i1_002 }),
+    .f({FIFO_DI[2],_al_u208_o}));
   EG_PHY_LSLICE #(
     //.LUTF0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTF1("~(C*~(~B*~D))"),
+    //.LUTF1("~(D*~(~C*~B))"),
     //.LUTG0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG1("~(C*~(~B*~D))"),
+    //.LUTG1("~(D*~(~C*~B))"),
     .INIT_LUTF0(16'b0000000100100011),
-    .INIT_LUTF1(16'b0000111100111111),
+    .INIT_LUTF1(16'b0000001111111111),
     .INIT_LUTG0(16'b0000000100100011),
-    .INIT_LUTG1(16'b0000111100111111),
+    .INIT_LUTG1(16'b0000001111111111),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u192|_al_u191  (
-    .a({open_n7604,\U4/Addr_piped [0]}),
-    .b({_al_u191_o,\U4/Addr_piped [1]}),
-    .c({\U4/n12 ,\U4/ROM0/inst_doa_i0_004 }),
-    .d({_al_u190_o,\U4/ROM0/inst_doa_i1_004 }),
-    .f({FIFO_DI[4],_al_u191_o}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTF1("~(C*~(~B*~D))"),
-    //.LUTG0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG1("~(C*~(~B*~D))"),
-    .INIT_LUTF0(16'b0000000100100011),
-    .INIT_LUTF1(16'b0000111100111111),
-    .INIT_LUTG0(16'b0000000100100011),
-    .INIT_LUTG1(16'b0000111100111111),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u195|_al_u194  (
-    .a({open_n7629,\U4/Addr_piped [0]}),
-    .b({_al_u194_o,\U4/Addr_piped [1]}),
-    .c({\U4/n12 ,\U4/ROM0/inst_doa_i0_005 }),
-    .d({_al_u193_o,\U4/ROM0/inst_doa_i1_005 }),
-    .f({FIFO_DI[5],_al_u194_o}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTF1("~(C*~(~B*~D))"),
-    //.LUTG0("(~B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG1("~(C*~(~B*~D))"),
-    .INIT_LUTF0(16'b0000000100100011),
-    .INIT_LUTF1(16'b0000111100111111),
-    .INIT_LUTG0(16'b0000000100100011),
-    .INIT_LUTG1(16'b0000111100111111),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u198|_al_u197  (
-    .a({open_n7654,\U4/Addr_piped [0]}),
-    .b({_al_u197_o,\U4/Addr_piped [1]}),
-    .c({\U4/n12 ,\U4/ROM0/inst_doa_i0_006 }),
-    .d({_al_u196_o,\U4/ROM0/inst_doa_i1_006 }),
-    .f({FIFO_DI[6],_al_u197_o}));
+    \_al_u212|_al_u211  (
+    .a({open_n9082,\U4/Addr_piped [0]}),
+    .b({_al_u210_o,\U4/Addr_piped [1]}),
+    .c({_al_u211_o,\U4/ROM0/inst_doa_i0_001 }),
+    .d({_al_u191_o,\U4/ROM0/inst_doa_i1_001 }),
+    .f({FIFO_DI[1],_al_u211_o}));
   EG_PHY_LSLICE #(
     //.LUTF0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTF1("~(C*~(~B*~D))"),
+    //.LUTF1("~(D*~(~C*~B))"),
     //.LUTG0("(B*~(C*~(D)*~(A)+C*D*~(A)+~(C)*D*A+C*D*A))"),
-    //.LUTG1("~(C*~(~B*~D))"),
+    //.LUTG1("~(D*~(~C*~B))"),
     .INIT_LUTF0(16'b0000010010001100),
-    .INIT_LUTF1(16'b0000111100111111),
+    .INIT_LUTF1(16'b0000001111111111),
     .INIT_LUTG0(16'b0000010010001100),
-    .INIT_LUTG1(16'b0000111100111111),
+    .INIT_LUTG1(16'b0000001111111111),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u201|_al_u199  (
-    .a({open_n7679,\U4/Addr_piped [0]}),
-    .b({_al_u200_o,\U4/Addr_piped [1]}),
-    .c({\U4/n12 ,\U4/ROM0/inst_doa_i2_007 }),
-    .d({_al_u199_o,\U4/ROM0/inst_doa_i3_007 }),
-    .f({FIFO_DI[7],_al_u199_o}));
+    \_al_u215|_al_u213  (
+    .a({open_n9107,\U4/Addr_piped [0]}),
+    .b({_al_u213_o,\U4/Addr_piped [1]}),
+    .c({_al_u214_o,\U4/ROM0/inst_doa_i2_000 }),
+    .d({_al_u191_o,\U4/ROM0/inst_doa_i3_000 }),
+    .f({FIFO_DI[0],_al_u213_o}));
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(~D*~C*~B*~A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(~D*~C*~B*~A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0000000000000001),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0000000000000001),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7176,27 +8357,27 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u202|U1/reg0_b3  (
-    .a({\U1/Count [27],open_n7704}),
-    .b({\U1/Count [28],_al_u211_o}),
+    \_al_u216|U1/reg0_b3  (
+    .a({\U1/Count [27],open_n9132}),
+    .b({\U1/Count [28],open_n9133}),
     .c({\U1/Count [29],\U1/n3 [3]}),
     .clk(LCD_CLK_pad),
-    .d({\U1/Count [3],_al_u206_o}),
+    .d({\U1/Count [3],\U1/n1 }),
     .sr(nRST_pad),
-    .f({_al_u202_o,open_n7722}),
-    .q({open_n7726,\U1/Count [3]}));  // source/CLK_MOD.v(32)
+    .f({_al_u216_o,open_n9151}),
+    .q({open_n9155,\U1/Count [3]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(~D*~C*B*A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(~D*~C*B*A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0000000000001000),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0000000000001000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7205,27 +8386,27 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u203|U1/reg0_b26  (
-    .a({\U1/Count [23],open_n7727}),
-    .b({\U1/Count [24],_al_u211_o}),
+    \_al_u217|U1/reg0_b26  (
+    .a({\U1/Count [23],open_n9156}),
+    .b({\U1/Count [24],open_n9157}),
     .c({\U1/Count [25],\U1/n3 [26]}),
     .clk(LCD_CLK_pad),
-    .d({\U1/Count [26],_al_u206_o}),
+    .d({\U1/Count [26],\U1/n1 }),
     .sr(nRST_pad),
-    .f({_al_u203_o,open_n7745}),
-    .q({open_n7749,\U1/Count [26]}));  // source/CLK_MOD.v(32)
+    .f({_al_u217_o,open_n9175}),
+    .q({open_n9179,\U1/Count [26]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(D*~C*~B*A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(D*~C*~B*A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0000001000000000),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0000001000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7234,27 +8415,27 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u204|U1/reg0_b9  (
-    .a({\U1/Count [6],open_n7750}),
-    .b({\U1/Count [7],_al_u211_o}),
+    \_al_u218|U1/reg0_b9  (
+    .a({\U1/Count [6],open_n9180}),
+    .b({\U1/Count [7],open_n9181}),
     .c({\U1/Count [8],\U1/n3 [9]}),
     .clk(LCD_CLK_pad),
-    .d({\U1/Count [9],_al_u206_o}),
+    .d({\U1/Count [9],\U1/n1 }),
     .sr(nRST_pad),
-    .f({_al_u204_o,open_n7768}),
-    .q({open_n7772,\U1/Count [9]}));  // source/CLK_MOD.v(32)
+    .f({_al_u218_o,open_n9199}),
+    .q({open_n9203,\U1/Count [9]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(~D*~C*~B*~A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(~D*~C*~B*~A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0000000000000001),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0000000000000001),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7263,93 +8444,57 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u205|U1/reg0_b5  (
-    .a({\U1/Count [30],open_n7773}),
-    .b({\U1/Count [31],_al_u211_o}),
+    \_al_u219|U1/reg0_b5  (
+    .a({\U1/Count [30],open_n9204}),
+    .b({\U1/Count [31],open_n9205}),
     .c({\U1/Count [4],\U1/n3 [5]}),
     .clk(LCD_CLK_pad),
-    .d({\U1/Count [5],_al_u206_o}),
+    .d({\U1/Count [5],\U1/n1 }),
     .sr(nRST_pad),
-    .f({_al_u205_o,open_n7791}),
-    .q({open_n7795,\U1/Count [5]}));  // source/CLK_MOD.v(32)
-  // source/CLK_MOD.v(32)
+    .f({_al_u219_o,open_n9223}),
+    .q({open_n9227,\U1/Count [5]}));  // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~D)"),
+    //.LUTF0("(D*C*B*A)"),
     //.LUTF1("(D*C*B*A)"),
-    //.LUTG0("(~D)"),
+    //.LUTG0("(D*C*B*A)"),
     //.LUTG1("(D*C*B*A)"),
-    .CEMUX("CE"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0000000011111111),
+    .INIT_LUTF0(16'b1000000000000000),
     .INIT_LUTF1(16'b1000000000000000),
-    .INIT_LUTG0(16'b0000000011111111),
+    .INIT_LUTG0(16'b1000000000000000),
     .INIT_LUTG1(16'b1000000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("SET"),
-    .REG0_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \_al_u206|U2/CLK_OUT_reg  (
-    .a({_al_u202_o,open_n7796}),
-    .b({_al_u203_o,open_n7797}),
-    .c({_al_u204_o,open_n7798}),
-    .ce(\U2/n1 ),
-    .clk(clk_pad),
-    .d({_al_u205_o,LED_pad[2]}),
-    .sr(nRST_pad),
-    .f({_al_u206_o,open_n7815}),
-    .q({open_n7819,LED_pad[2]}));  // source/CLK_MOD.v(32)
-  EG_PHY_LSLICE #(
-    //.LUTF0("(D*C*B*A)"),
-    //.LUTF1("(D*~C*~B*~A)"),
-    //.LUTG0("(D*C*B*A)"),
-    //.LUTG1("(D*~C*~B*~A)"),
-    .INIT_LUTF0(16'b1000000000000000),
-    .INIT_LUTF1(16'b0000000100000000),
-    .INIT_LUTG0(16'b1000000000000000),
-    .INIT_LUTG1(16'b0000000100000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u207|_al_u211  (
-    .a({\U1/Count [12],_al_u207_o}),
-    .b({\U1/Count [13],_al_u208_o}),
-    .c({\U1/Count [14],_al_u209_o}),
-    .d({\U1/Count [15],_al_u210_o}),
-    .f({_al_u207_o,_al_u211_o}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("(~D*C*B*A)"),
-    //.LUTF1("(D*~C*~B*~A)"),
-    //.LUTG0("(~D*C*B*A)"),
-    //.LUTG1("(D*~C*~B*~A)"),
-    .INIT_LUTF0(16'b0000000010000000),
-    .INIT_LUTF1(16'b0000000100000000),
-    .INIT_LUTG0(16'b0000000010000000),
-    .INIT_LUTG1(16'b0000000100000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
+    \_al_u220|_al_u231  (
+    .a({_al_u216_o,_al_u227_o}),
+    .b({_al_u217_o,_al_u228_o}),
+    .c({_al_u218_o,_al_u229_o}),
+    .d({_al_u219_o,_al_u230_o}),
+    .f({_al_u220_o,_al_u231_o}));
+  EG_PHY_MSLICE #(
+    //.LUT0("(D*~C*~B*~A)"),
+    //.LUT1("(D*~C*~B*~A)"),
+    .INIT_LUT0(16'b0000000100000000),
+    .INIT_LUT1(16'b0000000100000000),
     .MODE("LOGIC"))
-    \_al_u208|_al_u210  (
-    .a({\U1/Count [0],\U1/Count [16]}),
-    .b({\U1/Count [1],\U1/Count [17]}),
-    .c({\U1/Count [10],\U1/Count [18]}),
-    .d({\U1/Count [11],\U1/Count [19]}),
-    .f({_al_u208_o,_al_u210_o}));
+    \_al_u221|_al_u222  (
+    .a({\U1/Count [12],\U1/Count [0]}),
+    .b({\U1/Count [13],\U1/Count [1]}),
+    .c({\U1/Count [14],\U1/Count [10]}),
+    .d({\U1/Count [15],\U1/Count [11]}),
+    .f({_al_u221_o,_al_u222_o}));
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(D*C*B*~A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(D*C*B*~A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0100000000000000),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0100000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7358,27 +8503,39 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u209|U1/reg0_b22  (
-    .a({\U1/Count [2],open_n7868}),
-    .b({\U1/Count [20],_al_u211_o}),
+    \_al_u223|U1/reg0_b22  (
+    .a({\U1/Count [2],open_n9272}),
+    .b({\U1/Count [20],open_n9273}),
     .c({\U1/Count [21],\U1/n3 [22]}),
     .clk(LCD_CLK_pad),
-    .d({\U1/Count [22],_al_u206_o}),
+    .d({\U1/Count [22],\U1/n1 }),
     .sr(nRST_pad),
-    .f({_al_u209_o,open_n7886}),
-    .q({open_n7890,\U1/Count [22]}));  // source/CLK_MOD.v(32)
+    .f({_al_u223_o,open_n9291}),
+    .q({open_n9295,\U1/Count [22]}));  // source/CLK_MOD.v(32)
+  EG_PHY_MSLICE #(
+    //.LUT0("(~D*C*B*A)"),
+    //.LUT1("(D*C*B*A)"),
+    .INIT_LUT0(16'b0000000010000000),
+    .INIT_LUT1(16'b1000000000000000),
+    .MODE("LOGIC"))
+    \_al_u225|_al_u224  (
+    .a({_al_u221_o,\U1/Count [16]}),
+    .b({_al_u222_o,\U1/Count [17]}),
+    .c({_al_u223_o,\U1/Count [18]}),
+    .d({_al_u224_o,\U1/Count [19]}),
+    .f({_al_u225_o,_al_u224_o}));
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(C*D)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(C*D)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b1111000000000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7387,26 +8544,25 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u212|U1/reg0_b2  (
-    .b({open_n7893,_al_u211_o}),
-    .c({_al_u211_o,\U1/n3 [2]}),
+    \_al_u226|U1/reg0_b2  (
+    .c({_al_u225_o,\U1/n3 [2]}),
     .clk(LCD_CLK_pad),
-    .d({_al_u206_o,_al_u206_o}),
+    .d({_al_u220_o,\U1/n1 }),
     .sr(nRST_pad),
-    .f({\U1/n1 ,open_n7911}),
-    .q({open_n7915,\U1/Count [2]}));  // source/CLK_MOD.v(32)
+    .f({\U1/n1 ,open_n9337}),
+    .q({open_n9341,\U1/Count [2]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(~D*~C*~B*~A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(~D*~C*~B*~A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0000000000000001),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0000000000000001),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7415,27 +8571,27 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u213|U2/reg0_b3  (
-    .a({\U2/Count [27],open_n7916}),
-    .b({\U2/Count [28],_al_u222_o}),
+    \_al_u227|U2/reg0_b3  (
+    .a({\U2/Count [27],open_n9342}),
+    .b({\U2/Count [28],open_n9343}),
     .c({\U2/Count [29],\U2/n3 [3]}),
     .clk(clk_pad),
-    .d({\U2/Count [3],_al_u217_o}),
+    .d({\U2/Count [3],\U2/n1 }),
     .sr(nRST_pad),
-    .f({_al_u213_o,open_n7934}),
-    .q({open_n7938,\U2/Count [3]}));  // source/CLK_MOD.v(32)
+    .f({_al_u227_o,open_n9361}),
+    .q({open_n9365,\U2/Count [3]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(~D*~C*B*~A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(~D*~C*B*~A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0000000000000100),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0000000000000100),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7444,27 +8600,27 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u214|U2/reg0_b26  (
-    .a({\U2/Count [23],open_n7939}),
-    .b({\U2/Count [24],_al_u222_o}),
+    \_al_u228|U2/reg0_b26  (
+    .a({\U2/Count [23],open_n9366}),
+    .b({\U2/Count [24],open_n9367}),
     .c({\U2/Count [25],\U2/n3 [26]}),
     .clk(clk_pad),
-    .d({\U2/Count [26],_al_u217_o}),
+    .d({\U2/Count [26],\U2/n1 }),
     .sr(nRST_pad),
-    .f({_al_u214_o,open_n7957}),
-    .q({open_n7961,\U2/Count [26]}));  // source/CLK_MOD.v(32)
+    .f({_al_u228_o,open_n9385}),
+    .q({open_n9389,\U2/Count [26]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(D*~C*~B*~A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(D*~C*~B*~A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0000000100000000),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0000000100000000),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7473,27 +8629,27 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u215|U2/reg0_b9  (
-    .a({\U2/Count [6],open_n7962}),
-    .b({\U2/Count [7],_al_u222_o}),
+    \_al_u229|U2/reg0_b9  (
+    .a({\U2/Count [6],open_n9390}),
+    .b({\U2/Count [7],open_n9391}),
     .c({\U2/Count [8],\U2/n3 [9]}),
     .clk(clk_pad),
-    .d({\U2/Count [9],_al_u217_o}),
+    .d({\U2/Count [9],\U2/n1 }),
     .sr(nRST_pad),
-    .f({_al_u215_o,open_n7980}),
-    .q({open_n7984,\U2/Count [9]}));  // source/CLK_MOD.v(32)
+    .f({_al_u229_o,open_n9409}),
+    .q({open_n9413,\U2/Count [9]}));  // source/CLK_MOD.v(32)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
+    //.LUTF0("(C*~D)"),
     //.LUTF1("(~D*~C*~B*~A)"),
-    //.LUTG0("(C*~(B*D))"),
+    //.LUTG0("(C*~D)"),
     //.LUTG1("(~D*~C*~B*~A)"),
     .CEMUX("1"),
     .CLKMUX("CLK"),
     .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
+    .INIT_LUTF0(16'b0000000011110000),
     .INIT_LUTF1(16'b0000000000000001),
-    .INIT_LUTG0(16'b0011000011110000),
+    .INIT_LUTG0(16'b0000000011110000),
     .INIT_LUTG1(16'b0000000000000001),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
@@ -7502,15 +8658,223 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u216|U2/reg0_b5  (
-    .a({\U2/Count [30],open_n7985}),
-    .b({\U2/Count [31],_al_u222_o}),
+    \_al_u230|U2/reg0_b5  (
+    .a({\U2/Count [30],open_n9414}),
+    .b({\U2/Count [31],open_n9415}),
     .c({\U2/Count [4],\U2/n3 [5]}),
     .clk(clk_pad),
-    .d({\U2/Count [5],_al_u217_o}),
+    .d({\U2/Count [5],\U2/n1 }),
     .sr(nRST_pad),
-    .f({_al_u216_o,open_n8003}),
-    .q({open_n8007,\U2/Count [5]}));  // source/CLK_MOD.v(32)
+    .f({_al_u230_o,open_n9433}),
+    .q({open_n9437,\U2/Count [5]}));  // source/CLK_MOD.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~D*C*~B*~A)"),
+    //.LUTF1("(~D*~C*B*A)"),
+    //.LUTG0("(~D*C*~B*~A)"),
+    //.LUTG1("(~D*~C*B*A)"),
+    .INIT_LUTF0(16'b0000000000010000),
+    .INIT_LUTF1(16'b0000000000001000),
+    .INIT_LUTG0(16'b0000000000010000),
+    .INIT_LUTG1(16'b0000000000001000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"))
+    \_al_u232|_al_u233  (
+    .a({\U2/Count [12],\U2/Count [0]}),
+    .b({\U2/Count [13],\U2/Count [1]}),
+    .c({\U2/Count [14],\U2/Count [10]}),
+    .d({\U2/Count [15],\U2/Count [11]}),
+    .f({_al_u232_o,_al_u233_o}));
+  // source/CLK_MOD.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(D*C*~B*~A)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(D*C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b0001000000000000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b0001000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u234|U2/reg0_b22  (
+    .a({\U2/Count [2],open_n9462}),
+    .b({\U2/Count [20],open_n9463}),
+    .c({\U2/Count [21],\U2/n3 [22]}),
+    .clk(clk_pad),
+    .d({\U2/Count [22],\U2/n1 }),
+    .sr(nRST_pad),
+    .f({_al_u234_o,open_n9481}),
+    .q({open_n9485,\U2/Count [22]}));  // source/CLK_MOD.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(D*C*B*~A)"),
+    //.LUTF1("(D*C*B*A)"),
+    //.LUTG0("(D*C*B*~A)"),
+    //.LUTG1("(D*C*B*A)"),
+    .INIT_LUTF0(16'b0100000000000000),
+    .INIT_LUTF1(16'b1000000000000000),
+    .INIT_LUTG0(16'b0100000000000000),
+    .INIT_LUTG1(16'b1000000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"))
+    \_al_u236|_al_u235  (
+    .a({_al_u232_o,\U2/Count [16]}),
+    .b({_al_u233_o,\U2/Count [17]}),
+    .c({_al_u234_o,\U2/Count [18]}),
+    .d({_al_u235_o,\U2/Count [19]}),
+    .f({_al_u236_o,_al_u235_o}));
+  // source/CLK_MOD.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(C*~D)"),
+    //.LUTF1("(C*D)"),
+    //.LUTG0("(C*~D)"),
+    //.LUTG1("(C*D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0000000011110000),
+    .INIT_LUTF1(16'b1111000000000000),
+    .INIT_LUTG0(16'b0000000011110000),
+    .INIT_LUTG1(16'b1111000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u237|U2/reg0_b2  (
+    .c({_al_u236_o,\U2/n3 [2]}),
+    .clk(clk_pad),
+    .d({_al_u231_o,\U2/n1 }),
+    .sr(nRST_pad),
+    .f({\U2/n1 ,open_n9531}),
+    .q({open_n9535,\U2/Count [2]}));  // source/CLK_MOD.v(32)
+  // source/VGAMod.v(56)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(~D*~C*~B*~A)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(~D*~C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b0000000000000001),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b0000000000000001),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u238|D1/reg0_b15  (
+    .a({\D1/PixelCount [12],open_n9536}),
+    .b({\D1/PixelCount [13],open_n9537}),
+    .c({\D1/PixelCount [14],\D1/n4 [15]}),
+    .clk(LCD_CLK_pad),
+    .d({\D1/PixelCount [15],\D1/mux2_b0_sel_is_0_o }),
+    .sr(nRST_pad),
+    .f({_al_u238_o,open_n9555}),
+    .q({open_n9559,\D1/PixelCount [15]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(~D*C*~B*~A)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(~D*C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b0000000000010000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b0000000000010000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u239|D1/reg0_b1  (
+    .a({\D1/PixelCount [0],open_n9560}),
+    .b({\D1/PixelCount [1],open_n9561}),
+    .c({\D1/PixelCount [10],\D1/n4 [1]}),
+    .clk(LCD_CLK_pad),
+    .d({\D1/PixelCount [11],\D1/mux2_b0_sel_is_0_o }),
+    .sr(nRST_pad),
+    .f({_al_u239_o,open_n9579}),
+    .q({open_n9583,\D1/PixelCount [1]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(~D*C*~B*~A)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(~D*C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b0000000000010000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b0000000000010000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u240|D1/reg0_b9  (
+    .a({\D1/PixelCount [6],open_n9584}),
+    .b({\D1/PixelCount [7],open_n9585}),
+    .c({\D1/PixelCount [8],\D1/n4 [9]}),
+    .clk(LCD_CLK_pad),
+    .d({\D1/PixelCount [9],\D1/mux2_b0_sel_is_0_o }),
+    .sr(nRST_pad),
+    .f({_al_u240_o,open_n9603}),
+    .q({open_n9607,\D1/PixelCount [9]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(C*D)"),
+    //.LUTF1("(D*~C*~B*~A)"),
+    //.LUTG0("(C*D)"),
+    //.LUTG1("(D*~C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1111000000000000),
+    .INIT_LUTF1(16'b0000000100000000),
+    .INIT_LUTG0(16'b1111000000000000),
+    .INIT_LUTG1(16'b0000000100000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u241|D1/reg0_b5  (
+    .a({\D1/PixelCount [2],open_n9608}),
+    .b({\D1/PixelCount [3],open_n9609}),
+    .c({\D1/PixelCount [4],\D1/n4 [5]}),
+    .clk(LCD_CLK_pad),
+    .d({\D1/PixelCount [5],\D1/mux2_b0_sel_is_0_o }),
+    .sr(nRST_pad),
+    .f({_al_u241_o,open_n9627}),
+    .q({open_n9631,\D1/PixelCount [5]}));  // source/VGAMod.v(56)
   // source/CLK_MOD.v(32)
   EG_PHY_LSLICE #(
     //.LUTF0("(~D)"),
@@ -7531,140 +8895,17 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u217|U1/CLK_OUT_reg  (
-    .a({_al_u213_o,open_n8008}),
-    .b({_al_u214_o,open_n8009}),
-    .c({_al_u215_o,open_n8010}),
-    .ce(\U1/n1 ),
-    .clk(LCD_CLK_pad),
-    .d({_al_u216_o,LED_pad[1]}),
-    .sr(nRST_pad),
-    .f({_al_u217_o,open_n8027}),
-    .q({open_n8031,LED_pad[1]}));  // source/CLK_MOD.v(32)
-  EG_PHY_LSLICE #(
-    //.LUTF0("(D*C*B*A)"),
-    //.LUTF1("(~D*~C*B*A)"),
-    //.LUTG0("(D*C*B*A)"),
-    //.LUTG1("(~D*~C*B*A)"),
-    .INIT_LUTF0(16'b1000000000000000),
-    .INIT_LUTF1(16'b0000000000001000),
-    .INIT_LUTG0(16'b1000000000000000),
-    .INIT_LUTG1(16'b0000000000001000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u218|_al_u222  (
-    .a({\U2/Count [12],_al_u218_o}),
-    .b({\U2/Count [13],_al_u219_o}),
-    .c({\U2/Count [14],_al_u220_o}),
-    .d({\U2/Count [15],_al_u221_o}),
-    .f({_al_u218_o,_al_u222_o}));
-  EG_PHY_MSLICE #(
-    //.LUT0("(D*C*B*~A)"),
-    //.LUT1("(~D*C*~B*~A)"),
-    .INIT_LUT0(16'b0100000000000000),
-    .INIT_LUT1(16'b0000000000010000),
-    .MODE("LOGIC"))
-    \_al_u219|_al_u221  (
-    .a({\U2/Count [0],\U2/Count [16]}),
-    .b({\U2/Count [1],\U2/Count [17]}),
-    .c({\U2/Count [10],\U2/Count [18]}),
-    .d({\U2/Count [11],\U2/Count [19]}),
-    .f({_al_u219_o,_al_u221_o}));
-  // source/CLK_MOD.v(32)
-  EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(D*C*~B*~A)"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(D*C*~B*~A)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b0001000000000000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b0001000000000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \_al_u220|U2/reg0_b22  (
-    .a({\U2/Count [2],open_n8076}),
-    .b({\U2/Count [20],_al_u222_o}),
-    .c({\U2/Count [21],\U2/n3 [22]}),
+    \_al_u242|U2/CLK_OUT_reg  (
+    .a({_al_u238_o,open_n9632}),
+    .b({_al_u239_o,open_n9633}),
+    .c({_al_u240_o,open_n9634}),
+    .ce(\U2/n1 ),
     .clk(clk_pad),
-    .d({\U2/Count [22],_al_u217_o}),
+    .d({_al_u241_o,LED_pad[2]}),
     .sr(nRST_pad),
-    .f({_al_u220_o,open_n8094}),
-    .q({open_n8098,\U2/Count [22]}));  // source/CLK_MOD.v(32)
-  // source/CLK_MOD.v(32)
-  EG_PHY_LSLICE #(
-    //.LUTF0("(C*~(B*D))"),
-    //.LUTF1("(C*D)"),
-    //.LUTG0("(C*~(B*D))"),
-    //.LUTG1("(C*D)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b0011000011110000),
-    .INIT_LUTF1(16'b1111000000000000),
-    .INIT_LUTG0(16'b0011000011110000),
-    .INIT_LUTG1(16'b1111000000000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \_al_u223|U2/reg0_b2  (
-    .b({open_n8101,_al_u222_o}),
-    .c({_al_u222_o,\U2/n3 [2]}),
-    .clk(clk_pad),
-    .d({_al_u217_o,_al_u217_o}),
-    .sr(nRST_pad),
-    .f({\U2/n1 ,open_n8119}),
-    .q({open_n8123,\U2/Count [2]}));  // source/CLK_MOD.v(32)
-  EG_PHY_LSLICE #(
-    //.LUTF0("(~D*C*~B*~A)"),
-    //.LUTF1("(~D*C*~B*~A)"),
-    //.LUTG0("(~D*C*~B*~A)"),
-    //.LUTG1("(~D*C*~B*~A)"),
-    .INIT_LUTF0(16'b0000000000010000),
-    .INIT_LUTF1(16'b0000000000010000),
-    .INIT_LUTG0(16'b0000000000010000),
-    .INIT_LUTG1(16'b0000000000010000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u225|_al_u226  (
-    .a({\D1/PixelCount [0],\D1/PixelCount [6]}),
-    .b({\D1/PixelCount [1],\D1/PixelCount [7]}),
-    .c({\D1/PixelCount [10],\D1/PixelCount [8]}),
-    .d({\D1/PixelCount [11],\D1/PixelCount [9]}),
-    .f({_al_u225_o,_al_u226_o}));
-  EG_PHY_LSLICE #(
-    //.LUTF0("(D*~C*~B*~A)"),
-    //.LUTF1("(D*C*B*A)"),
-    //.LUTG0("(D*~C*~B*~A)"),
-    //.LUTG1("(D*C*B*A)"),
-    .INIT_LUTF0(16'b0000000100000000),
-    .INIT_LUTF1(16'b1000000000000000),
-    .INIT_LUTG0(16'b0000000100000000),
-    .INIT_LUTG1(16'b1000000000000000),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"))
-    \_al_u228|_al_u227  (
-    .a({_al_u224_o,\D1/PixelCount [2]}),
-    .b({_al_u225_o,\D1/PixelCount [3]}),
-    .c({_al_u226_o,\D1/PixelCount [4]}),
-    .d({_al_u227_o,\D1/PixelCount [5]}),
-    .f({_al_u228_o,_al_u227_o}));
-  // source/VGAMod.v(55)
+    .f({_al_u242_o,open_n9651}),
+    .q({open_n9655,LED_pad[2]}));  // source/CLK_MOD.v(32)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
     //.LUTF0("(C*~(B)*~(D)+C*B*~(D)+~(C)*B*D+C*B*D)"),
     //.LUTF1("(~D*~C*~B*~A)"),
@@ -7684,45 +8925,16 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u229|D1/reg1_b15  (
-    .a({\D1/LineCount [12],open_n8172}),
+    \_al_u243|D1/reg1_b15  (
+    .a({\D1/LineCount [12],open_n9656}),
     .b({\D1/LineCount [13],\D1/n2 [15]}),
     .c({\D1/LineCount [14],\D1/LineCount [15]}),
     .clk(LCD_CLK_pad),
-    .d({\D1/LineCount [15],_al_u228_o}),
+    .d({\D1/LineCount [15],_al_u242_o}),
     .sr(nRST_pad),
-    .f({_al_u229_o,open_n8190}),
-    .q({open_n8194,\D1/LineCount [15]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
-  EG_PHY_LSLICE #(
-    //.LUTF0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
-    //.LUTF1("(~D*~C*B*~A)"),
-    //.LUTG0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
-    //.LUTG1("(~D*~C*B*~A)"),
-    .CEMUX("1"),
-    .CLKMUX("CLK"),
-    .DFFMODE("FF"),
-    .INIT_LUTF0(16'b1011000110100000),
-    .INIT_LUTF1(16'b0000000000000100),
-    .INIT_LUTG0(16'b1011000110100000),
-    .INIT_LUTG1(16'b0000000000000100),
-    .LSFMUX0("FUNC5"),
-    .LSFMUX1("FUNC5"),
-    .MODE("LOGIC"),
-    .REG0_REGSET("RESET"),
-    .REG0_SD("F"),
-    .SRMODE("ASYNC"),
-    .SRMUX("INV"))
-    \_al_u230|D1/reg1_b1  (
-    .a({\D1/LineCount [0],_al_u228_o}),
-    .b({\D1/LineCount [1],_al_u233_o}),
-    .c({\D1/LineCount [10],\D1/n2 [1]}),
-    .clk(LCD_CLK_pad),
-    .d({\D1/LineCount [11],\D1/LineCount [1]}),
-    .sr(nRST_pad),
-    .f({_al_u230_o,open_n8212}),
-    .q({open_n8216,\D1/LineCount [1]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .f({_al_u243_o,open_n9674}),
+    .q({open_n9678,\D1/LineCount [15]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
     //.LUTF0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
     //.LUTF1("(D*~C*~B*~A)"),
@@ -7742,16 +8954,16 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u231|D1/reg1_b9  (
-    .a({\D1/LineCount [6],_al_u228_o}),
-    .b({\D1/LineCount [7],_al_u233_o}),
+    \_al_u245|D1/reg1_b9  (
+    .a({\D1/LineCount [6],_al_u242_o}),
+    .b({\D1/LineCount [7],_al_u247_o}),
     .c({\D1/LineCount [8],\D1/n2 [9]}),
     .clk(LCD_CLK_pad),
     .d({\D1/LineCount [9],\D1/LineCount [9]}),
     .sr(nRST_pad),
-    .f({_al_u231_o,open_n8234}),
-    .q({open_n8238,\D1/LineCount [9]}));  // source/VGAMod.v(55)
-  // source/VGAMod.v(55)
+    .f({_al_u245_o,open_n9696}),
+    .q({open_n9700,\D1/LineCount [9]}));  // source/VGAMod.v(56)
+  // source/VGAMod.v(56)
   EG_PHY_LSLICE #(
     //.LUTF0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
     //.LUTF1("(D*C*B*~A)"),
@@ -7771,30 +8983,383 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REG0_SD("F"),
     .SRMODE("ASYNC"),
     .SRMUX("INV"))
-    \_al_u232|D1/reg1_b5  (
-    .a({\D1/LineCount [2],_al_u228_o}),
-    .b({\D1/LineCount [3],_al_u233_o}),
+    \_al_u246|D1/reg1_b5  (
+    .a({\D1/LineCount [2],_al_u242_o}),
+    .b({\D1/LineCount [3],_al_u247_o}),
     .c({\D1/LineCount [4],\D1/n2 [5]}),
     .clk(LCD_CLK_pad),
     .d({\D1/LineCount [5],\D1/LineCount [5]}),
     .sr(nRST_pad),
-    .f({_al_u232_o,open_n8256}),
-    .q({open_n8260,\D1/LineCount [5]}));  // source/VGAMod.v(55)
+    .f({_al_u246_o,open_n9718}),
+    .q({open_n9722,\D1/LineCount [5]}));  // source/VGAMod.v(56)
+  EG_PHY_MSLICE #(
+    //.LUT0("(~D*~C*B*~A)"),
+    //.LUT1("(D*C*B*A)"),
+    .INIT_LUT0(16'b0000000000000100),
+    .INIT_LUT1(16'b1000000000000000),
+    .MODE("LOGIC"))
+    \_al_u247|_al_u244  (
+    .a({_al_u243_o,\D1/LineCount [0]}),
+    .b({_al_u244_o,\D1/LineCount [1]}),
+    .c({_al_u245_o,\D1/LineCount [10]}),
+    .d({_al_u246_o,\D1/LineCount [11]}),
+    .f({_al_u247_o,_al_u244_o}));
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
   EG_PHY_LSLICE #(
-    //.LUTF0("(~D)"),
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(~D*~C*~B*~A)"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(~D*~C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b0000000000000001),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b0000000000000001),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u328|U4/reg2_b8  (
+    .a({\U4/AddrCtrl [0],\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/AddrCtrl [1],\U4/n2 [8]}),
+    .c({\U4/AddrCtrl [7],\U4/n1 }),
+    .clk(CLK_100M),
+    .d({\U4/AddrCtrl [8],\U4/AddrCtrl [8]}),
+    .sr(nRST_pad),
+    .f({_al_u328_o,open_n9760}),
+    .q({open_n9764,\U4/AddrCtrl [8]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(~D*~C*~B*~A)"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(~D*~C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b0000000000000001),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b0000000000000001),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u329|U4/reg2_b15  (
+    .a({\U4/AddrCtrl [12],\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/AddrCtrl [13],\U4/n2 [15]}),
+    .c({\U4/AddrCtrl [14],\U4/n1 }),
+    .clk(CLK_100M),
+    .d({\U4/AddrCtrl [15],\U4/AddrCtrl [15]}),
+    .sr(nRST_pad),
+    .f({_al_u329_o,open_n9782}),
+    .q({open_n9786,\U4/AddrCtrl [15]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  EG_PHY_MSLICE #(
+    //.LUT0("(C*D)"),
+    .INIT_LUT0(16'b1111000000000000),
+    .MODE("LOGIC"))
+    _al_u330 (
+    .c({open_n9791,_al_u329_o}),
+    .d({open_n9794,_al_u328_o}),
+    .f({open_n9808,_al_u330_o}));
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(D*C*~B*~A)"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(D*C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b0001000000000000),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b0001000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u331|U4/reg2_b9  (
+    .a({\U4/AddrCtrl [4],\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/AddrCtrl [5],\U4/n2 [9]}),
+    .c({\U4/AddrCtrl [6],\U4/n1 }),
+    .clk(CLK_100M),
+    .d({\U4/AddrCtrl [9],\U4/AddrCtrl [9]}),
+    .sr(nRST_pad),
+    .f({_al_u331_o,open_n9831}),
+    .q({open_n9835,\U4/AddrCtrl [9]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(~D*~C*~B*A)"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(~D*~C*~B*A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b0000000000000010),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b0000000000000010),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u332|U4/reg2_b3  (
+    .a({\U4/AddrCtrl [10],\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/AddrCtrl [11],\U4/n2 [3]}),
+    .c({\U4/AddrCtrl [2],\U4/n1 }),
+    .clk(CLK_100M),
+    .d({\U4/AddrCtrl [3],\U4/AddrCtrl [3]}),
+    .sr(nRST_pad),
+    .f({_al_u332_o,open_n9853}),
+    .q({open_n9857,\U4/AddrCtrl [3]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  // source/VGAMod.v(56)
+  EG_PHY_LSLICE #(
+    //.LUTF0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
+    //.LUTF1("(~C*~D)"),
+    //.LUTG0("((D*~B)*~(C)*~(A)+(D*~B)*C*~(A)+~((D*~B))*C*A+(D*~B)*C*A)"),
+    //.LUTG1("(~C*~D)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1011000110100000),
+    .INIT_LUTF1(16'b0000000000001111),
+    .INIT_LUTG0(16'b1011000110100000),
+    .INIT_LUTG1(16'b0000000000001111),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u350|D1/reg1_b3  (
+    .a({open_n9858,_al_u242_o}),
+    .b({open_n9859,_al_u247_o}),
+    .c({_al_u247_o,\D1/n2 [3]}),
+    .clk(LCD_CLK_pad),
+    .d({_al_u242_o,\D1/LineCount [3]}),
+    .sr(nRST_pad),
+    .f({\D1/mux2_b0_sel_is_0_o ,open_n9877}),
+    .q({open_n9881,\D1/LineCount [3]}));  // source/VGAMod.v(56)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(~D*~C*~B*~A)"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(~D*~C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0000000000000001),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0000000000000001),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u368|U4/reg0_b1  (
+    .a({\U4/LineConut [0],\U4/n6_lutinv }),
+    .b({\U4/LineConut [1],LCD_SYNC_pad}),
+    .c({\U4/AddrCtrl [11],\U4/n7 [1]}),
+    .clk(CLK_100M),
+    .d({\U4/AddrCtrl [3],\U4/LineConut [1]}),
+    .sr(nRST_pad),
+    .f({_al_u368_o,open_n9899}),
+    .q({open_n9903,\U4/LineConut [1]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(D*C*~B*~A)"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(D*C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0001000000000000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0001000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u369|U4/reg0_b7  (
+    .a({\U4/LineConut [4],\U4/n6_lutinv }),
+    .b({\U4/LineConut [5],LCD_SYNC_pad}),
+    .c({\U4/LineConut [6],\U4/n7 [7]}),
+    .clk(CLK_100M),
+    .d({\U4/LineConut [7],\U4/LineConut [7]}),
+    .sr(nRST_pad),
+    .f({_al_u369_o,open_n9921}),
+    .q({open_n9925,\U4/LineConut [7]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(D*~C*~B*~A)"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(D*~C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0000000100000000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0000000100000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u370|U4/reg0_b3  (
+    .a({\U4/LineConut [14],\U4/n6_lutinv }),
+    .b({\U4/LineConut [15],LCD_SYNC_pad}),
+    .c({\U4/LineConut [2],\U4/n7 [3]}),
+    .clk(CLK_100M),
+    .d({\U4/LineConut [3],\U4/LineConut [3]}),
+    .sr(nRST_pad),
+    .f({_al_u370_o,open_n9943}),
+    .q({open_n9947,\U4/LineConut [3]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~D*~C*~B*~A)"),
+    //.LUTF1("(D*C*B*A)"),
+    //.LUTG0("(~D*~C*~B*~A)"),
+    //.LUTG1("(D*C*B*A)"),
+    .INIT_LUTF0(16'b0000000000000001),
+    .INIT_LUTF1(16'b1000000000000000),
+    .INIT_LUTG0(16'b0000000000000001),
+    .INIT_LUTG1(16'b1000000000000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"))
+    \_al_u371|_al_u367  (
+    .a({_al_u367_o,\U4/LineConut [10]}),
+    .b({_al_u368_o,\U4/LineConut [11]}),
+    .c({_al_u369_o,\U4/LineConut [12]}),
+    .d({_al_u370_o,\U4/LineConut [13]}),
+    .f({_al_u371_o,_al_u367_o}));
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTF1("(~D*~C*~B*A)"),
+    //.LUTG0("(A*(D*~(B)*~(C)+D*B*~(C)+~(D)*B*C+D*B*C))"),
+    //.LUTG1("(~D*~C*~B*A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b1000101010000000),
+    .INIT_LUTF1(16'b0000000000000010),
+    .INIT_LUTG0(16'b1000101010000000),
+    .INIT_LUTG1(16'b0000000000000010),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u372|U4/reg2_b6  (
+    .a({\U4/AddrCtrl [4],\U4/mux2_b0_sel_is_0_o }),
+    .b({\U4/AddrCtrl [5],\U4/n2 [6]}),
+    .c({\U4/AddrCtrl [6],\U4/n1 }),
+    .clk(CLK_100M),
+    .d({\U4/AddrCtrl [9],\U4/AddrCtrl [6]}),
+    .sr(nRST_pad),
+    .f({_al_u372_o,open_n9989}),
+    .q({open_n9993,\U4/AddrCtrl [6]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_LSLICE #(
+    //.LUTF0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTF1("(D*~C*~B*~A)"),
+    //.LUTG0("(~B*(D*~(C)*~(A)+D*C*~(A)+~(D)*C*A+D*C*A))"),
+    //.LUTG1("(D*~C*~B*~A)"),
+    .CEMUX("1"),
+    .CLKMUX("CLK"),
+    .DFFMODE("FF"),
+    .INIT_LUTF0(16'b0011000100100000),
+    .INIT_LUTF1(16'b0000000100000000),
+    .INIT_LUTG0(16'b0011000100100000),
+    .INIT_LUTG1(16'b0000000100000000),
+    .LSFMUX0("FUNC5"),
+    .LSFMUX1("FUNC5"),
+    .MODE("LOGIC"),
+    .REG0_REGSET("RESET"),
+    .REG0_SD("F"),
+    .SRMODE("ASYNC"),
+    .SRMUX("INV"))
+    \_al_u373|U4/reg0_b9  (
+    .a({\U4/LineConut [8],\U4/n6_lutinv }),
+    .b({\U4/LineConut [9],LCD_SYNC_pad}),
+    .c({\U4/AddrCtrl [10],\U4/n7 [9]}),
+    .clk(CLK_100M),
+    .d({\U4/AddrCtrl [2],\U4/LineConut [9]}),
+    .sr(nRST_pad),
+    .f({_al_u373_o,open_n10011}),
+    .q({open_n10015,\U4/LineConut [9]}));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  EG_PHY_MSLICE #(
+    //.LUT0("(C*B*D)"),
+    //.LUT1("(D*C*B*A)"),
+    .INIT_LUT0(16'b1100000000000000),
+    .INIT_LUT1(16'b1000000000000000),
+    .MODE("LOGIC"))
+    \_al_u374|_al_u333  (
+    .a({_al_u330_o,open_n10016}),
+    .b({_al_u371_o,_al_u331_o}),
+    .c({_al_u372_o,_al_u332_o}),
+    .d({_al_u373_o,_al_u330_o}),
+    .f({\U4/n13 ,\U4/n6_lutinv }));
+  EG_PHY_MSLICE #(
+    //.LUT0("(C*~D)"),
+    //.LUT1("(~D)"),
+    .INIT_LUT0(16'b0000000011110000),
+    .INIT_LUT1(16'b0000000011111111),
+    .MODE("LOGIC"))
+    \_al_u387|_al_u133  (
+    .c({open_n10041,FIFO_DO[7]}),
+    .d({FIFO_EMPTY,FIFO_EMPTY}),
+    .f({\D1/n23 ,LCD_G_pad[4]}));
+  EG_PHY_LSLICE #(
+    //.LUTF0("(D*C*B*A)"),
     //.LUTF1("(~D)"),
-    //.LUTG0("(~D)"),
+    //.LUTG0("(D*C*B*A)"),
     //.LUTG1("(~D)"),
-    .INIT_LUTF0(16'b0000000011111111),
+    .INIT_LUTF0(16'b1000000000000000),
     .INIT_LUTF1(16'b0000000011111111),
-    .INIT_LUTG0(16'b0000000011111111),
+    .INIT_LUTG0(16'b1000000000000000),
     .INIT_LUTG1(16'b0000000011111111),
     .LSFMUX0("FUNC5"),
     .LSFMUX1("FUNC5"),
     .MODE("LOGIC"))
-    \_al_u332|_al_u330  (
-    .d({\FIFO0/logic_fifo_full ,FIFO_EMPTY}),
-    .f({\FIFO0/logic_fifo_full_neg ,\D1/n24 }));
+    \_al_u389|_al_u172  (
+    .a({open_n10062,\D1/n12 }),
+    .b({open_n10063,\D1/n13 }),
+    .c({open_n10064,\D1/n15 }),
+    .d({\FIFO0/logic_fifo_full ,\D1/n17 }),
+    .f({\FIFO0/logic_fifo_full_neg ,GPIO_pad}));
   EG_PHY_PAD #(
     //.LOCATION("C15"),
     //.PCICLAMP("ON"),
@@ -7805,7 +9370,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u60 (
-    .do({open_n8292,open_n8293,open_n8294,GPIO_pad}),
+    .do({open_n10090,open_n10091,open_n10092,GPIO_pad}),
     .opad(GPIO));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(26)
   EG_PHY_PAD #(
     //.LOCATION("J16"),
@@ -7817,7 +9382,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u61 (
-    .do({open_n8309,open_n8310,open_n8311,1'b1}),
+    .do({open_n10107,open_n10108,open_n10109,1'b1}),
     .opad(LCDBK));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(27)
   EG_PHY_PAD #(
     //.LOCATION("N1"),
@@ -7829,7 +9394,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u62 (
-    .do({open_n8326,open_n8327,open_n8328,LCD_B_pad[7]}),
+    .do({open_n10124,open_n10125,open_n10126,LCD_B_pad[7]}),
     .opad(LCD_B[7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(34)
   EG_PHY_PAD #(
     //.LOCATION("M1"),
@@ -7841,7 +9406,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u63 (
-    .do({open_n8343,open_n8344,open_n8345,LCD_B_pad[6]}),
+    .do({open_n10141,open_n10142,open_n10143,LCD_B_pad[6]}),
     .opad(LCD_B[6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(34)
   EG_PHY_PAD #(
     //.LOCATION("M2"),
@@ -7853,7 +9418,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u64 (
-    .do({open_n8360,open_n8361,open_n8362,LCD_B_pad[5]}),
+    .do({open_n10158,open_n10159,open_n10160,LCD_B_pad[5]}),
     .opad(LCD_B[5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(34)
   EG_PHY_PAD #(
     //.LOCATION("L3"),
@@ -7865,7 +9430,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u65 (
-    .do({open_n8377,open_n8378,open_n8379,LCD_B_pad[4]}),
+    .do({open_n10175,open_n10176,open_n10177,LCD_B_pad[4]}),
     .opad(LCD_B[4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(34)
   EG_PHY_PAD #(
     //.LOCATION("K3"),
@@ -7877,7 +9442,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u66 (
-    .do({open_n8394,open_n8395,open_n8396,LCD_B_pad[3]}),
+    .do({open_n10192,open_n10193,open_n10194,LCD_B_pad[3]}),
     .opad(LCD_B[3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(34)
   EG_PHY_PAD #(
     //.LOCATION("K2"),
@@ -7889,7 +9454,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u67 (
-    .do({open_n8411,open_n8412,open_n8413,LCD_B_pad[2]}),
+    .do({open_n10209,open_n10210,open_n10211,LCD_B_pad[2]}),
     .opad(LCD_B[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(34)
   EG_PHY_PAD #(
     //.LOCATION("K1"),
@@ -7901,7 +9466,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u68 (
-    .do({open_n8428,open_n8429,open_n8430,LCD_B_pad[2]}),
+    .do({open_n10226,open_n10227,open_n10228,LCD_B_pad[2]}),
     .opad(LCD_B[1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(34)
   EG_PHY_PAD #(
     //.LOCATION("J1"),
@@ -7913,7 +9478,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u69 (
-    .do({open_n8445,open_n8446,open_n8447,LCD_B_pad[2]}),
+    .do({open_n10243,open_n10244,open_n10245,LCD_B_pad[2]}),
     .opad(LCD_B[0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(34)
   EG_PHY_PAD #(
     //.LOCATION("L1"),
@@ -7925,7 +9490,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u70 (
-    .do({open_n8462,open_n8463,open_n8464,LCD_CLK_pad}),
+    .do({open_n10260,open_n10261,open_n10262,LCD_CLK_pad}),
     .opad(LCD_CLK));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(28)
   EG_PHY_PAD #(
     //.LOCATION("L4"),
@@ -7937,7 +9502,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u71 (
-    .do({open_n8479,open_n8480,open_n8481,GPIO_pad}),
+    .do({open_n10277,open_n10278,open_n10279,GPIO_pad}),
     .opad(LCD_DEN));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(31)
   EG_PHY_PAD #(
     //.LOCATION("J3"),
@@ -7949,7 +9514,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u72 (
-    .do({open_n8496,open_n8497,open_n8498,LCD_G_pad[7]}),
+    .do({open_n10294,open_n10295,open_n10296,LCD_G_pad[7]}),
     .opad(LCD_G[7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(33)
   EG_PHY_PAD #(
     //.LOCATION("J4"),
@@ -7961,7 +9526,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u73 (
-    .do({open_n8513,open_n8514,open_n8515,LCD_G_pad[6]}),
+    .do({open_n10311,open_n10312,open_n10313,LCD_G_pad[6]}),
     .opad(LCD_G[6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(33)
   EG_PHY_PAD #(
     //.LOCATION("G3"),
@@ -7973,7 +9538,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u74 (
-    .do({open_n8530,open_n8531,open_n8532,LCD_G_pad[5]}),
+    .do({open_n10328,open_n10329,open_n10330,LCD_G_pad[5]}),
     .opad(LCD_G[5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(33)
   EG_PHY_PAD #(
     //.LOCATION("G1"),
@@ -7985,7 +9550,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u75 (
-    .do({open_n8547,open_n8548,open_n8549,LCD_G_pad[4]}),
+    .do({open_n10345,open_n10346,open_n10347,LCD_G_pad[4]}),
     .opad(LCD_G[4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(33)
   EG_PHY_PAD #(
     //.LOCATION("F2"),
@@ -7997,7 +9562,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u76 (
-    .do({open_n8564,open_n8565,open_n8566,LCD_G_pad[3]}),
+    .do({open_n10362,open_n10363,open_n10364,LCD_G_pad[3]}),
     .opad(LCD_G[3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(33)
   EG_PHY_PAD #(
     //.LOCATION("F1"),
@@ -8009,7 +9574,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u77 (
-    .do({open_n8581,open_n8582,open_n8583,LCD_G_pad[2]}),
+    .do({open_n10379,open_n10380,open_n10381,LCD_G_pad[2]}),
     .opad(LCD_G[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(33)
   EG_PHY_PAD #(
     //.LOCATION("E4"),
@@ -8021,7 +9586,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u78 (
-    .do({open_n8598,open_n8599,open_n8600,LCD_B_pad[2]}),
+    .do({open_n10396,open_n10397,open_n10398,LCD_B_pad[2]}),
     .opad(LCD_G[1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(33)
   EG_PHY_PAD #(
     //.LOCATION("E3"),
@@ -8033,7 +9598,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u79 (
-    .do({open_n8615,open_n8616,open_n8617,LCD_B_pad[2]}),
+    .do({open_n10413,open_n10414,open_n10415,LCD_B_pad[2]}),
     .opad(LCD_G[0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(33)
   EG_PHY_PAD #(
     //.LOCATION("P1"),
@@ -8045,7 +9610,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u80 (
-    .do({open_n8632,open_n8633,open_n8634,LCD_HYNC_pad}),
+    .do({open_n10430,open_n10431,open_n10432,LCD_HYNC_pad}),
     .opad(LCD_HYNC));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(29)
   EG_PHY_PAD #(
     //.LOCATION("E1"),
@@ -8057,7 +9622,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u81 (
-    .do({open_n8649,open_n8650,open_n8651,LCD_R_pad[7]}),
+    .do({open_n10447,open_n10448,open_n10449,LCD_R_pad[7]}),
     .opad(LCD_R[7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(32)
   EG_PHY_PAD #(
     //.LOCATION("D1"),
@@ -8069,7 +9634,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u82 (
-    .do({open_n8666,open_n8667,open_n8668,LCD_R_pad[6]}),
+    .do({open_n10464,open_n10465,open_n10466,LCD_R_pad[6]}),
     .opad(LCD_R[6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(32)
   EG_PHY_PAD #(
     //.LOCATION("E2"),
@@ -8081,7 +9646,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u83 (
-    .do({open_n8683,open_n8684,open_n8685,LCD_R_pad[5]}),
+    .do({open_n10481,open_n10482,open_n10483,LCD_R_pad[5]}),
     .opad(LCD_R[5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(32)
   EG_PHY_PAD #(
     //.LOCATION("C1"),
@@ -8093,7 +9658,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u84 (
-    .do({open_n8700,open_n8701,open_n8702,LCD_R_pad[4]}),
+    .do({open_n10498,open_n10499,open_n10500,LCD_R_pad[4]}),
     .opad(LCD_R[4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(32)
   EG_PHY_PAD #(
     //.LOCATION("C2"),
@@ -8105,7 +9670,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u85 (
-    .do({open_n8717,open_n8718,open_n8719,LCD_R_pad[3]}),
+    .do({open_n10515,open_n10516,open_n10517,LCD_R_pad[3]}),
     .opad(LCD_R[3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(32)
   EG_PHY_PAD #(
     //.LOCATION("C3"),
@@ -8117,7 +9682,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u86 (
-    .do({open_n8734,open_n8735,open_n8736,1'b1}),
+    .do({open_n10532,open_n10533,open_n10534,1'b1}),
     .opad(LCD_R[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(32)
   EG_PHY_PAD #(
     //.LOCATION("A2"),
@@ -8129,7 +9694,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u87 (
-    .do({open_n8751,open_n8752,open_n8753,1'b1}),
+    .do({open_n10549,open_n10550,open_n10551,1'b1}),
     .opad(LCD_R[1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(32)
   EG_PHY_PAD #(
     //.LOCATION("B2"),
@@ -8141,7 +9706,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u88 (
-    .do({open_n8768,open_n8769,open_n8770,1'b1}),
+    .do({open_n10566,open_n10567,open_n10568,1'b1}),
     .opad(LCD_R[0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(32)
   EG_PHY_PAD #(
     //.LOCATION("R1"),
@@ -8153,7 +9718,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u89 (
-    .do({open_n8785,open_n8786,open_n8787,LCD_SYNC_pad}),
+    .do({open_n10583,open_n10584,open_n10585,LCD_SYNC_pad}),
     .opad(LCD_SYNC));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(30)
   EG_PHY_PAD #(
     //.LOCATION("R3"),
@@ -8165,7 +9730,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u90 (
-    .do({open_n8802,open_n8803,open_n8804,LED_pad[2]}),
+    .do({open_n10600,open_n10601,open_n10602,LED_pad[2]}),
     .opad(LED[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(24)
   EG_PHY_PAD #(
     //.LOCATION("P13"),
@@ -8177,7 +9742,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u91 (
-    .do({open_n8819,open_n8820,open_n8821,LED_pad[1]}),
+    .do({open_n10617,open_n10618,open_n10619,LED_pad[1]}),
     .opad(LED[1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(24)
   EG_PHY_PAD #(
     //.LOCATION("J14"),
@@ -8189,7 +9754,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .MODE("OUT"),
     .TSMUX("0"))
     _al_u92 (
-    .do({open_n8836,open_n8837,open_n8838,1'b1}),
+    .do({open_n10634,open_n10635,open_n10636,1'b1}),
     .opad(LED[0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(24)
   EG_PHY_PAD #(
     //.LOCATION("K14"),
