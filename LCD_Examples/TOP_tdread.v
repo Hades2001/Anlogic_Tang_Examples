@@ -1,5 +1,5 @@
 // Verilog netlist created by TD v4.4.433
-// Fri May 10 14:30:54 2019
+// Fri May 10 17:54:32 2019
 
 `timescale 1ns / 1ps
 module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)

@@ -4871,6 +4871,16 @@ module AL_DFF
 
   parameter INI = 1'b0;
 
+  tri0 gsrn = glbl.gsrn;
+
+  always @(gsrn)
+  begin
+    if(!gsrn)
+      assign q = INI;
+    else
+      deassign q;
+  end
+
   always @(posedge reset or posedge set or posedge clk)
   begin
     if (reset)
