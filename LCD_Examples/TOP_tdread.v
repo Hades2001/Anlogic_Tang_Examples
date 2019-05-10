@@ -1,5 +1,5 @@
 // Verilog netlist created by TD v4.4.433
-// Thu May  9 16:42:17 2019
+// Fri May 10 10:47:32 2019
 
 `timescale 1ns / 1ps
 module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
@@ -31,17 +31,16 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   output LCD_SYNC;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(30)
   output [2:0] LED;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(24)
 
-  wire [7:0] FIFO_DI;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(58)
-  wire [15:0] FIFO_DO;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(57)
+  wire [7:0] FIFO_DI;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(59)
+  wire [15:0] FIFO_DO;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(58)
   wire CLK_100M;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(40)
-  wire FIFO_CLK_R;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(51)
-  wire FIFO_CLK_W;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(52)
-  wire FIFO_EMPTY;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(55)
-  wire FIFO_FULL;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(56)
-  wire FIFO_RE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(53)
-  wire FIFO_WE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(54)
+  wire FIFO_CLK_R;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(52)
+  wire FIFO_CLK_W;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(53)
+  wire FIFO_EMPTY;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(56)
+  wire FIFO_RE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(54)
+  wire FIFO_RST;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(51)
+  wire FIFO_WE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(55)
   wire PixeClk;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(39)
-  wire n0;
 
   VGAMod D1 (
     .CLK(clk),
@@ -51,22 +50,22 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .nRST(nRST),
     .FIFO_CLK(FIFO_CLK_R),
     .FIFO_RE(FIFO_RE),
+    .FIFO_RST(FIFO_RST),
+    .LCD_B(LCD_B),
     .LCD_DE(LCD_DEN),
+    .LCD_G(LCD_G),
     .LCD_HSYNC(LCD_HYNC),
-    .LCD_VSYNC(LCD_SYNC),
-    .VGA_B(LCD_B),
-    .VGA_G(LCD_G),
-    .VGA_R(LCD_R));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(77)
+    .LCD_R(LCD_R),
+    .LCD_VSYNC(LCD_SYNC));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(90)
   DisFIFO FIFO0 (
     .clkr(FIFO_CLK_R),
     .clkw(FIFO_CLK_W),
     .di(FIFO_DI),
     .re(FIFO_RE),
-    .rst(n0),
+    .rst(FIFO_RST),
     .we(FIFO_WE),
     .do(FIFO_DO),
-    .empty_flag(FIFO_EMPTY),
-    .full_flag(FIFO_FULL));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(60)
+    .empty_flag(FIFO_EMPTY));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(61)
   LCDPLL PLL1 (
     .refclk(clk),
     .reset(1'b0),
@@ -76,31 +75,28 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .CLK(PixeClk),
     .Count_REG(32'b00000001111101111000101001000000),
     .RSTn(nRST),
-    .CLK_OUT(LED[1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(102)
+    .CLK_OUT(LED[1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(116)
   CLK_MOD U2 (
     .CLK(clk),
     .Count_REG(32'b00000001011011100011011000000000),
     .RSTn(nRST),
-    .CLK_OUT(LED[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(112)
-  buf u10 (LCD_CLK, CLK_100M);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(99)
-  buf u11 (GPIO, LCD_DEN);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(100)
-  buf u12 (FIFO_DI[3], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
-  buf u13 (FIFO_DI[4], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
-  buf u14 (FIFO_DI[5], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
-  buf u15 (FIFO_DI[6], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
-  buf u16 (FIFO_DI[7], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
-  buf u2 (FIFO_DI[2], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
-  buf u3 (FIFO_DI[1], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
-  buf u4 (LCDBK, 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(36)
-  buf u5 (LED[0], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(37)
-  not u6 (n0, nRST);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(62)
-  buf u7 (FIFO_CLK_W, clk);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(73)
-  buf u8 (FIFO_DI[0], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
-  not u9 (FIFO_WE, FIFO_FULL);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(75)
+    .CLK_OUT(LED[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(126)
+  LCDCTRL U4 (
+    .CLK(CLK_100M),
+    .HSYNC(LCD_HYNC),
+    .VSYNC(LCD_SYNC),
+    .nRST(nRST),
+    .FIFOWe(FIFO_WE),
+    .RGBData(FIFO_DI));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(74)
+  buf u2 (LCDBK, 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(36)
+  buf u3 (LED[0], 1'b1);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(37)
+  buf u4 (FIFO_CLK_W, CLK_100M);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(88)
+  buf u5 (LCD_CLK, PixeClk);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(113)
+  buf u6 (GPIO, LCD_DEN);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(114)
 
 endmodule 
 
-module VGAMod  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(1)
+module VGAMod  // source/VGAMod.v(1)
   (
   CLK,
   FIFO_Data,
@@ -109,27 +105,29 @@ module VGAMod  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMo
   nRST,
   FIFO_CLK,
   FIFO_RE,
+  FIFO_RST,
+  LCD_B,
   LCD_DE,
+  LCD_G,
   LCD_HSYNC,
-  LCD_VSYNC,
-  VGA_B,
-  VGA_G,
-  VGA_R
+  LCD_R,
+  LCD_VSYNC
   );
 
-  input CLK;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(3)
-  input [15:0] FIFO_Data;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(19)
-  input FIFO_Empty;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(18)
-  input PixelClk;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(6)
-  input nRST;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(4)
-  output FIFO_CLK;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(16)
-  output FIFO_RE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(17)
-  output LCD_DE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(8)
-  output LCD_HSYNC;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(9)
-  output LCD_VSYNC;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(10)
-  output [7:0] VGA_B;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(12)
-  output [7:0] VGA_G;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(13)
-  output [7:0] VGA_R;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(14)
+  input CLK;  // source/VGAMod.v(3)
+  input [15:0] FIFO_Data;  // source/VGAMod.v(21)
+  input FIFO_Empty;  // source/VGAMod.v(20)
+  input PixelClk;  // source/VGAMod.v(6)
+  input nRST;  // source/VGAMod.v(4)
+  output FIFO_CLK;  // source/VGAMod.v(18)
+  output FIFO_RE;  // source/VGAMod.v(19)
+  output FIFO_RST;  // source/VGAMod.v(17)
+  output [7:0] LCD_B;  // source/VGAMod.v(13)
+  output LCD_DE;  // source/VGAMod.v(8)
+  output [7:0] LCD_G;  // source/VGAMod.v(14)
+  output LCD_HSYNC;  // source/VGAMod.v(9)
+  output [7:0] LCD_R;  // source/VGAMod.v(15)
+  output LCD_VSYNC;  // source/VGAMod.v(10)
 
   // localparam FIFOReEnd = 16'b0000010000100001;
   // localparam FIFOReStart = 16'b0000000011111111;
@@ -139,8 +137,8 @@ module VGAMod  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMo
   // localparam PixelForHS = 16'b0000010100100000;
   // localparam V_BackPorch = 16'b0000000000101101;
   // localparam WidthPixel = 16'b0000001100100000;
-  wire [15:0] LineCount;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(24)
-  wire [15:0] PixelCount;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(23)
+  wire [15:0] LineCount;  // source/VGAMod.v(26)
+  wire [15:0] PixelCount;  // source/VGAMod.v(25)
   wire [15:0] n2;
   wire [15:0] n4;
   wire [15:0] n5;
@@ -170,128 +168,133 @@ module VGAMod  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMo
   add_pu16_pu16_o16 add0 (
     .i0(LineCount),
     .i1(16'b0000000000000001),
-    .o(n2));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(45)
+    .o(n2));  // source/VGAMod.v(47)
   add_pu16_pu16_o16 add1 (
     .i0(PixelCount),
     .i1(16'b0000000000000001),
-    .o(n4));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(52)
+    .o(n4));  // source/VGAMod.v(54)
   eq_w16 eq0 (
     .i0(PixelCount),
     .i1(16'b0000010100100000),
-    .o(n1));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(43)
+    .o(n1));  // source/VGAMod.v(45)
   eq_w16 eq1 (
     .i0(LineCount),
     .i1(16'b0000001000111010),
-    .o(n3));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(47)
+    .o(n3));  // source/VGAMod.v(49)
   lt_u16_u16 lt0 (
     .ci(1'b1),
-    .i0(16'b0000000100000100),
+    .i0(16'b0000000000111000),
     .i1(PixelCount),
-    .o(n9));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(56)
+    .o(n9));  // source/VGAMod.v(58)
   lt_u16_u16 lt1 (
     .ci(1'b0),
     .i0(PixelCount),
-    .i1(16'b0000010100011011),
-    .o(n10));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(56)
-  lt_u16_u16 lt2 (
-    .ci(1'b1),
-    .i0(16'b0000000000101111),
-    .i1(LineCount),
-    .o(n12));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(57)
-  lt_u16_u16 lt3 (
-    .ci(1'b0),
-    .i0(LineCount),
-    .i1(16'b0000001000110101),
-    .o(n13));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(57)
-  lt_u16_u16 lt4 (
-    .ci(1'b1),
-    .i0(16'b0000000100000000),
-    .i1(PixelCount),
-    .o(n15));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(59)
-  lt_u16_u16 lt5 (
-    .ci(1'b1),
-    .i0(PixelCount),
-    .i1(16'b0000010100100000),
-    .o(n16));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(60)
-  lt_u16_u16 lt6 (
-    .ci(1'b1),
-    .i0(16'b0000000000101101),
-    .i1(LineCount),
-    .o(n18));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(61)
-  lt_u16_u16 lt7 (
-    .ci(1'b0),
-    .i0(LineCount),
-    .i1(16'b0000001000111010),
-    .o(n20));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(62)
-  lt_u16_u16 lt8 (
-    .ci(1'b1),
-    .i0(16'b0000000011111111),
-    .i1(PixelCount),
-    .o(n21));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
-  lt_u16_u16 lt9 (
+    .i1(16'b0000010100011111),
+    .o(n10));  // source/VGAMod.v(58)
+  lt_u16_u16 lt10 (
     .ci(1'b1),
     .i0(PixelCount),
     .i1(16'b0000010000100001),
-    .o(n22));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
+    .o(n22));  // source/VGAMod.v(69)
+  lt_u16_u16 lt2 (
+    .ci(1'b1),
+    .i0(16'b0000000000000101),
+    .i1(LineCount),
+    .o(n12));  // source/VGAMod.v(59)
+  lt_u16_u16 lt3 (
+    .ci(1'b0),
+    .i0(LineCount),
+    .i1(16'b0000001000111001),
+    .o(n13));  // source/VGAMod.v(59)
+  lt_u16_u16 lt4 (
+    .ci(1'b0),
+    .i0(PixelCount),
+    .i1(16'b0000000000010100),
+    .o(FIFO_RST));  // source/VGAMod.v(61)
+  lt_u16_u16 lt5 (
+    .ci(1'b1),
+    .i0(16'b0000000100000000),
+    .i1(PixelCount),
+    .o(n15));  // source/VGAMod.v(63)
+  lt_u16_u16 lt6 (
+    .ci(1'b1),
+    .i0(PixelCount),
+    .i1(16'b0000010100100000),
+    .o(n16));  // source/VGAMod.v(64)
+  lt_u16_u16 lt7 (
+    .ci(1'b1),
+    .i0(16'b0000000000101101),
+    .i1(LineCount),
+    .o(n18));  // source/VGAMod.v(65)
+  lt_u16_u16 lt8 (
+    .ci(1'b0),
+    .i0(LineCount),
+    .i1(16'b0000001000111010),
+    .o(n20));  // source/VGAMod.v(66)
+  lt_u16_u16 lt9 (
+    .ci(1'b1),
+    .i0(16'b0000000011111111),
+    .i1(PixelCount),
+    .o(n21));  // source/VGAMod.v(69)
   binary_mux_s1_w16 mux0 (
     .i0(LineCount),
     .i1(16'b0000000000000000),
     .sel(n3),
-    .o(n5));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(n5));  // source/VGAMod.v(55)
   binary_mux_s1_w16 mux1 (
     .i0(n4),
     .i1(16'b0000000000000000),
     .sel(n3),
-    .o(n6));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(n6));  // source/VGAMod.v(55)
   binary_mux_s1_w16 mux2 (
     .i0(n6),
     .i1(16'b0000000000000000),
     .sel(n1),
-    .o(n7));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(n7));  // source/VGAMod.v(55)
   binary_mux_s1_w16 mux3 (
     .i0(n5),
     .i1(n2),
     .sel(n1),
-    .o(n8));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(n8));  // source/VGAMod.v(55)
   binary_mux_s1_w8 mux4 (
     .i0({FIFO_Data[15:11],3'b111}),
     .i1(8'b11111111),
     .sel(FIFO_Empty),
-    .o(VGA_R));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(67)
+    .o(LCD_R));  // source/VGAMod.v(71)
   binary_mux_s1_w8 mux5 (
     .i0({FIFO_Data[10:5],2'b11}),
     .i1(8'b00000000),
     .sel(FIFO_Empty),
-    .o(VGA_G));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(68)
+    .o(LCD_G));  // source/VGAMod.v(72)
   binary_mux_s1_w8 mux6 (
     .i0({FIFO_Data[4:0],3'b111}),
     .i1(8'b00000000),
     .sel(FIFO_Empty),
-    .o(VGA_B));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(69)
+    .o(LCD_B));  // source/VGAMod.v(73)
   reg_ar_as_w16 reg0 (
     .clk(PixelClk),
     .d(n7),
     .reset({n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0}),
     .set(16'b0000000000000000),
-    .q(PixelCount));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(PixelCount));  // source/VGAMod.v(55)
   reg_ar_as_w16 reg1 (
     .clk(PixelClk),
     .d(n8),
     .reset({n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0}),
     .set(16'b0000000000000000),
-    .q(LineCount));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
-  buf u10 (FIFO_CLK, PixelClk);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(64)
-  and u11 (n23, n21, n22);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
-  not u12 (n24, FIFO_Empty);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
-  and u13 (FIFO_RE, n23, n24);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
-  not u2 (n0, nRST);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(39)
-  and u3 (n11, n9, n10);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(56)
-  not u4 (LCD_HSYNC, n11);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(56)
-  and u5 (n14, n12, n13);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(57)
-  not u6 (LCD_VSYNC, n14);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(57)
-  and u7 (n17, n15, n16);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(60)
-  and u8 (n19, n17, n18);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(61)
-  and u9 (LCD_DE, n19, n20);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(62)
+    .q(LineCount));  // source/VGAMod.v(55)
+  buf u10 (FIFO_CLK, PixelClk);  // source/VGAMod.v(68)
+  and u11 (n23, n21, n22);  // source/VGAMod.v(69)
+  not u12 (n24, FIFO_Empty);  // source/VGAMod.v(69)
+  and u13 (FIFO_RE, n23, n24);  // source/VGAMod.v(69)
+  not u2 (n0, nRST);  // source/VGAMod.v(41)
+  and u3 (n11, n9, n10);  // source/VGAMod.v(58)
+  not u4 (LCD_HSYNC, n11);  // source/VGAMod.v(58)
+  and u5 (n14, n12, n13);  // source/VGAMod.v(59)
+  not u6 (LCD_VSYNC, n14);  // source/VGAMod.v(59)
+  and u7 (n17, n15, n16);  // source/VGAMod.v(64)
+  and u8 (n19, n17, n18);  // source/VGAMod.v(65)
+  and u9 (LCD_DE, n19, n20);  // source/VGAMod.v(66)
 
 endmodule 
 
@@ -510,6 +513,113 @@ module CLK_MOD  // source/CLK_MOD.v(1)
 
 endmodule 
 
+module LCDCTRL  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(1)
+  (
+  CLK,
+  HSYNC,
+  VSYNC,
+  nRST,
+  FIFOWe,
+  RGBData
+  );
+
+  input CLK;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(3)
+  input HSYNC;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(6)
+  input VSYNC;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(7)
+  input nRST;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(4)
+  output FIFOWe;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(9)
+  output [7:0] RGBData;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(11)
+
+  wire [14:0] Addr;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(18)
+  wire [15:0] AddrCtrl;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(15)
+  wire [7:0] RomData;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(49)
+  wire [15:0] n1;
+  wire [15:0] n2;
+  wire [15:0] n3;
+  wire [14:0] n5;
+  wire [14:0] n6;
+  wire [14:0] n7;
+  wire n0;
+  wire n10;
+  wire n11;
+  wire n12;
+  wire n4;
+  wire n8;
+  wire n9;
+
+  ImgROM ROM0 (
+    .addra(Addr),
+    .clka(CLK),
+    .rsta(n0),
+    .doa(RomData));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(51)
+  add_pu16_pu16_o16 add0 (
+    .i0(AddrCtrl),
+    .i1(16'b0000000000000001),
+    .o(n1));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(31)
+  add_pu15_pu15_o15 add1 (
+    .i0(Addr),
+    .i1(15'b000000000000001),
+    .o(n5));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(43)
+  lt_u16_u16 lt0 (
+    .ci(1'b0),
+    .i0(AddrCtrl),
+    .i1(16'b0000000011111111),
+    .o(n4));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(42)
+  lt_u16_u16 lt1 (
+    .ci(1'b0),
+    .i0(AddrCtrl),
+    .i1(16'b0000011001000000),
+    .o(n8));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
+  lt_u16_u16 lt2 (
+    .ci(1'b0),
+    .i0(AddrCtrl),
+    .i1(16'b0000000100000000),
+    .o(n12));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  binary_mux_s1_w16 mux0 (
+    .i0(n1),
+    .i1(16'b0000000000000000),
+    .sel(HSYNC),
+    .o(n2));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  binary_mux_s1_w16 mux1 (
+    .i0(n2),
+    .i1(16'b0000000000000000),
+    .sel(VSYNC),
+    .o(n3));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  binary_mux_s1_w15 mux2 (
+    .i0(Addr),
+    .i1(n5),
+    .sel(n4),
+    .o(n6));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w15 mux3 (
+    .i0(n6),
+    .i1(15'b000000000000000),
+    .sel(VSYNC),
+    .o(n7));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w8 mux4 (
+    .i0(8'b11111111),
+    .i1(RomData),
+    .sel(n12),
+    .o(RGBData));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  reg_ar_as_w15 reg0 (
+    .clk(CLK),
+    .d(n7),
+    .reset({n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0}),
+    .set(15'b000000000000000),
+    .q(Addr));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w16 reg1 (
+    .clk(CLK),
+    .d(n3),
+    .reset({n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0,n0}),
+    .set(16'b0000000000000000),
+    .q(AddrCtrl));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  not u2 (n0, nRST);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(21)
+  not u3 (n9, VSYNC);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
+  and u4 (n10, n8, n9);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
+  not u5 (n11, HSYNC);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
+  and u6 (FIFOWe, n10, n11);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
+
+endmodule 
+
 module add_pu16_pu16_o16
   (
   i0,
@@ -675,6 +785,116 @@ module reg_ar_as_w32
   input [31:0] reset;
   input [31:0] set;
   output [31:0] q;
+
+
+
+endmodule 
+
+module ImgROM  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/al_ip/ROM.v(14)
+  (
+  addra,
+  clka,
+  rsta,
+  doa
+  );
+
+  input [14:0] addra;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/al_ip/ROM.v(18)
+  input clka;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/al_ip/ROM.v(19)
+  input rsta;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/al_ip/ROM.v(20)
+  output [7:0] doa;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/al_ip/ROM.v(16)
+
+
+  EG_LOGIC_BRAM #(
+    //.FORCE_KEEP("OFF"),
+    //.INIT_FILE("../mif/128x128.mif"),
+    .ADDR_WIDTH_A(15),
+    .ADDR_WIDTH_B(15),
+    .BYTE_A(1),
+    .BYTE_B(1),
+    .BYTE_ENABLE(0),
+    .DATA_DEPTH_A(32768),
+    .DATA_DEPTH_B(32768),
+    .DATA_WIDTH_A(8),
+    .DATA_WIDTH_B(8),
+    .DEBUGGABLE("NO"),
+    .FILL_ALL("NONE"),
+    .IMPLEMENT("9K"),
+    .MODE("SP"),
+    .PACKABLE("NO"),
+    .REGMODE_A("NOREG"),
+    .REGMODE_B("NOREG"),
+    .RESETMODE("SYNC"),
+    .WRITEMODE_A("NORMAL"),
+    .WRITEMODE_B("NORMAL"))
+    inst (
+    .addra(addra),
+    .addrb(15'b000000000000000),
+    .bea(1'b0),
+    .beb(1'b0),
+    .cea(1'b1),
+    .ceb(1'b0),
+    .clka(clka),
+    .clkb(1'b0),
+    .dia(8'b00000000),
+    .dib(8'b00000000),
+    .ocea(1'b0),
+    .oceb(1'b0),
+    .rsta(rsta),
+    .rstb(1'b0),
+    .wea(1'b0),
+    .web(1'b0),
+    .doa(doa));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/al_ip/ROM.v(39)
+
+endmodule 
+
+module add_pu15_pu15_o15
+  (
+  i0,
+  i1,
+  o
+  );
+
+  input [14:0] i0;
+  input [14:0] i1;
+  output [14:0] o;
+
+
+
+endmodule 
+
+module binary_mux_s1_w15
+  (
+  i0,
+  i1,
+  sel,
+  o
+  );
+
+  input [14:0] i0;
+  input [14:0] i1;
+  input sel;
+  output [14:0] o;
+
+
+
+endmodule 
+
+module reg_ar_as_w15
+  (
+  clk,
+  d,
+  en,
+  reset,
+  set,
+  q
+  );
+
+  input clk;
+  input [14:0] d;
+  input en;
+  input [14:0] reset;
+  input [14:0] set;
+  output [14:0] q;
 
 
 

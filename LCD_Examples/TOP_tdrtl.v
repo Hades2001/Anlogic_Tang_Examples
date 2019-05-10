@@ -1,5 +1,5 @@
 // Verilog netlist created by TD v4.4.433
-// Thu May  9 16:42:17 2019
+// Fri May 10 10:47:32 2019
 
 `timescale 1ns / 1ps
 module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
@@ -31,20 +31,30 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   output LCD_SYNC;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(30)
   output [2:0] LED;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(24)
 
-  wire [15:0] \D1/LineCount ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(24)
-  wire [15:0] \D1/PixelCount ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(23)
+  wire [15:0] \D1/LineCount ;  // source/VGAMod.v(26)
+  wire [15:0] \D1/PixelCount ;  // source/VGAMod.v(25)
   wire [15:0] \D1/n2 ;
   wire [15:0] \D1/n4 ;
   wire [15:0] \D1/n5 ;
   wire [15:0] \D1/n7 ;
   wire [15:0] \D1/n8 ;
-  wire [15:0] FIFO_DO;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(57)
+  wire [7:0] FIFO_DI;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(59)
+  wire [15:0] FIFO_DO;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(58)
   wire [31:0] \U1/Count ;  // source/CLK_MOD.v(15)
   wire [31:0] \U1/n3 ;
   wire [31:0] \U1/n5 ;
   wire [31:0] \U2/Count ;  // source/CLK_MOD.v(15)
   wire [31:0] \U2/n3 ;
   wire [31:0] \U2/n5 ;
+  wire [14:0] \U4/Addr ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(18)
+  wire [15:0] \U4/AddrCtrl ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(15)
+  wire [7:0] \U4/RomData ;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(49)
+  wire [15:0] \U4/n1 ;
+  wire [15:0] \U4/n3 ;
+  wire [14:0] \U4/n5 ;
+  wire [14:0] \U4/n6 ;
+  wire [14:0] \U4/n7 ;
+  wire CLK_100M;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(40)
   wire \D1/mux2_b0_sel_is_0_o ;
   wire \D1/n0 ;
   wire \D1/n1 ;
@@ -67,16 +77,20 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   wire \D1/n3 ;
   wire \D1/n3_neg ;
   wire \D1/n9 ;
-  wire FIFO_EMPTY;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(55)
-  wire FIFO_FULL;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(56)
-  wire FIFO_RE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(53)
-  wire FIFO_WE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(54)
+  wire FIFO_EMPTY;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(56)
+  wire FIFO_RE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(54)
+  wire FIFO_RST;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(51)
+  wire FIFO_WE;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(55)
   wire \PLL1/clk0_buf ;  // al_ip/LCDPLL.v(36)
-  wire PixeClk;  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(39)
   wire \U1/n1 ;
   wire \U1/n2 ;
   wire \U2/n1 ;
   wire \U2/n2 ;
+  wire \U4/mux1_b0_sel_is_0_o ;
+  wire \U4/n10 ;
+  wire \U4/n12 ;
+  wire \U4/n4 ;
+  wire \U4/n8 ;
 
   assign LCDBK = 1'b1;
   assign LCD_B[1] = LCD_B[2];
@@ -91,149 +105,154 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
   add_pu16_pu16_o16 \D1/add0  (
     .i0(\D1/LineCount ),
     .i1(16'b0000000000000001),
-    .o(\D1/n2 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(45)
+    .o(\D1/n2 ));  // source/VGAMod.v(47)
   add_pu16_pu16_o16 \D1/add1  (
     .i0(\D1/PixelCount ),
     .i1(16'b0000000000000001),
-    .o(\D1/n4 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(52)
+    .o(\D1/n4 ));  // source/VGAMod.v(54)
   eq_w16 \D1/eq0  (
     .i0(\D1/PixelCount ),
     .i1(16'b0000010100100000),
-    .o(\D1/n1 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(43)
+    .o(\D1/n1 ));  // source/VGAMod.v(45)
   eq_w16 \D1/eq1  (
     .i0(\D1/LineCount ),
     .i1(16'b0000001000111010),
-    .o(\D1/n3 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(47)
+    .o(\D1/n3 ));  // source/VGAMod.v(49)
   lt_u16_u16 \D1/lt0  (
     .ci(1'b1),
-    .i0(16'b0000000100000100),
+    .i0(16'b0000000000111000),
     .i1(\D1/PixelCount ),
-    .o(\D1/n9 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(56)
+    .o(\D1/n9 ));  // source/VGAMod.v(58)
   lt_u16_u16 \D1/lt1  (
     .ci(1'b0),
     .i0(\D1/PixelCount ),
-    .i1(16'b0000010100011011),
-    .o(\D1/n10 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(56)
-  lt_u16_u16 \D1/lt2  (
-    .ci(1'b1),
-    .i0(16'b0000000000101111),
-    .i1(\D1/LineCount ),
-    .o(\D1/n12 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(57)
-  lt_u16_u16 \D1/lt3  (
-    .ci(1'b0),
-    .i0(\D1/LineCount ),
-    .i1(16'b0000001000110101),
-    .o(\D1/n13 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(57)
-  lt_u16_u16 \D1/lt4  (
-    .ci(1'b1),
-    .i0(16'b0000000100000000),
-    .i1(\D1/PixelCount ),
-    .o(\D1/n15 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(59)
-  lt_u16_u16 \D1/lt5  (
-    .ci(1'b1),
-    .i0(\D1/PixelCount ),
-    .i1(16'b0000010100100000),
-    .o(\D1/n16 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(60)
-  lt_u16_u16 \D1/lt6  (
-    .ci(1'b1),
-    .i0(16'b0000000000101101),
-    .i1(\D1/LineCount ),
-    .o(\D1/n18 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(61)
-  lt_u16_u16 \D1/lt7  (
-    .ci(1'b0),
-    .i0(\D1/LineCount ),
-    .i1(16'b0000001000111010),
-    .o(\D1/n20 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(62)
-  lt_u16_u16 \D1/lt8  (
-    .ci(1'b1),
-    .i0(16'b0000000011111111),
-    .i1(\D1/PixelCount ),
-    .o(\D1/n21 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
-  lt_u16_u16 \D1/lt9  (
+    .i1(16'b0000010100011111),
+    .o(\D1/n10 ));  // source/VGAMod.v(58)
+  lt_u16_u16 \D1/lt10  (
     .ci(1'b1),
     .i0(\D1/PixelCount ),
     .i1(16'b0000010000100001),
-    .o(\D1/n22 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
+    .o(\D1/n22 ));  // source/VGAMod.v(69)
+  lt_u16_u16 \D1/lt2  (
+    .ci(1'b1),
+    .i0(16'b0000000000000101),
+    .i1(\D1/LineCount ),
+    .o(\D1/n12 ));  // source/VGAMod.v(59)
+  lt_u16_u16 \D1/lt3  (
+    .ci(1'b0),
+    .i0(\D1/LineCount ),
+    .i1(16'b0000001000111001),
+    .o(\D1/n13 ));  // source/VGAMod.v(59)
+  lt_u16_u16 \D1/lt4  (
+    .ci(1'b0),
+    .i0(\D1/PixelCount ),
+    .i1(16'b0000000000010100),
+    .o(FIFO_RST));  // source/VGAMod.v(61)
+  lt_u16_u16 \D1/lt5  (
+    .ci(1'b1),
+    .i0(16'b0000000100000000),
+    .i1(\D1/PixelCount ),
+    .o(\D1/n15 ));  // source/VGAMod.v(63)
+  lt_u16_u16 \D1/lt6  (
+    .ci(1'b1),
+    .i0(\D1/PixelCount ),
+    .i1(16'b0000010100100000),
+    .o(\D1/n16 ));  // source/VGAMod.v(64)
+  lt_u16_u16 \D1/lt7  (
+    .ci(1'b1),
+    .i0(16'b0000000000101101),
+    .i1(\D1/LineCount ),
+    .o(\D1/n18 ));  // source/VGAMod.v(65)
+  lt_u16_u16 \D1/lt8  (
+    .ci(1'b0),
+    .i0(\D1/LineCount ),
+    .i1(16'b0000001000111010),
+    .o(\D1/n20 ));  // source/VGAMod.v(66)
+  lt_u16_u16 \D1/lt9  (
+    .ci(1'b1),
+    .i0(16'b0000000011111111),
+    .i1(\D1/PixelCount ),
+    .o(\D1/n21 ));  // source/VGAMod.v(69)
   binary_mux_s1_w1 \D1/mux0_b0  (
     .i0(\D1/LineCount [0]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [0]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b1  (
     .i0(\D1/LineCount [1]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [1]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b10  (
     .i0(\D1/LineCount [10]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [10]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [10]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b11  (
     .i0(\D1/LineCount [11]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [11]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [11]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b12  (
     .i0(\D1/LineCount [12]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [12]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [12]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b13  (
     .i0(\D1/LineCount [13]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [13]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [13]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b14  (
     .i0(\D1/LineCount [14]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [14]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [14]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b15  (
     .i0(\D1/LineCount [15]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [15]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [15]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b2  (
     .i0(\D1/LineCount [2]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [2]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b3  (
     .i0(\D1/LineCount [3]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [3]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b4  (
     .i0(\D1/LineCount [4]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [4]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b5  (
     .i0(\D1/LineCount [5]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [5]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b6  (
     .i0(\D1/LineCount [6]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [6]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b7  (
     .i0(\D1/LineCount [7]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [7]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b8  (
     .i0(\D1/LineCount [8]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [8]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [8]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux0_b9  (
     .i0(\D1/LineCount [9]),
     .i1(1'b0),
     .sel(\D1/n3 ),
-    .o(\D1/n5 [9]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n5 [9]));  // source/VGAMod.v(55)
   AL_MUX \D1/mux2_b0  (
     .i0(1'b0),
     .i1(\D1/n4 [0]),
@@ -319,404 +338,404 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .i0(\D1/n5 [0]),
     .i1(\D1/n2 [0]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [0]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b1  (
     .i0(\D1/n5 [1]),
     .i1(\D1/n2 [1]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [1]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b10  (
     .i0(\D1/n5 [10]),
     .i1(\D1/n2 [10]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [10]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [10]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b11  (
     .i0(\D1/n5 [11]),
     .i1(\D1/n2 [11]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [11]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [11]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b12  (
     .i0(\D1/n5 [12]),
     .i1(\D1/n2 [12]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [12]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [12]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b13  (
     .i0(\D1/n5 [13]),
     .i1(\D1/n2 [13]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [13]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [13]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b14  (
     .i0(\D1/n5 [14]),
     .i1(\D1/n2 [14]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [14]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [14]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b15  (
     .i0(\D1/n5 [15]),
     .i1(\D1/n2 [15]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [15]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [15]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b2  (
     .i0(\D1/n5 [2]),
     .i1(\D1/n2 [2]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [2]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b3  (
     .i0(\D1/n5 [3]),
     .i1(\D1/n2 [3]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [3]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b4  (
     .i0(\D1/n5 [4]),
     .i1(\D1/n2 [4]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [4]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b5  (
     .i0(\D1/n5 [5]),
     .i1(\D1/n2 [5]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [5]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b6  (
     .i0(\D1/n5 [6]),
     .i1(\D1/n2 [6]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [6]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b7  (
     .i0(\D1/n5 [7]),
     .i1(\D1/n2 [7]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [7]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b8  (
     .i0(\D1/n5 [8]),
     .i1(\D1/n2 [8]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [8]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [8]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux3_b9  (
     .i0(\D1/n5 [9]),
     .i1(\D1/n2 [9]),
     .sel(\D1/n1 ),
-    .o(\D1/n8 [9]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .o(\D1/n8 [9]));  // source/VGAMod.v(55)
   binary_mux_s1_w1 \D1/mux4_b3  (
     .i0(FIFO_DO[11]),
     .i1(1'b1),
     .sel(FIFO_EMPTY),
-    .o(LCD_R[3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(67)
+    .o(LCD_R[3]));  // source/VGAMod.v(71)
   binary_mux_s1_w1 \D1/mux4_b4  (
     .i0(FIFO_DO[12]),
     .i1(1'b1),
     .sel(FIFO_EMPTY),
-    .o(LCD_R[4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(67)
+    .o(LCD_R[4]));  // source/VGAMod.v(71)
   binary_mux_s1_w1 \D1/mux4_b5  (
     .i0(FIFO_DO[13]),
     .i1(1'b1),
     .sel(FIFO_EMPTY),
-    .o(LCD_R[5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(67)
+    .o(LCD_R[5]));  // source/VGAMod.v(71)
   binary_mux_s1_w1 \D1/mux4_b6  (
     .i0(FIFO_DO[14]),
     .i1(1'b1),
     .sel(FIFO_EMPTY),
-    .o(LCD_R[6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(67)
+    .o(LCD_R[6]));  // source/VGAMod.v(71)
   binary_mux_s1_w1 \D1/mux4_b7  (
     .i0(FIFO_DO[15]),
     .i1(1'b1),
     .sel(FIFO_EMPTY),
-    .o(LCD_R[7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(67)
+    .o(LCD_R[7]));  // source/VGAMod.v(71)
   binary_mux_s1_w1 \D1/mux5_b0  (
     .i0(1'b1),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_B[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(68)
+    .o(LCD_B[2]));  // source/VGAMod.v(72)
   binary_mux_s1_w1 \D1/mux5_b2  (
     .i0(FIFO_DO[5]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_G[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(68)
+    .o(LCD_G[2]));  // source/VGAMod.v(72)
   binary_mux_s1_w1 \D1/mux5_b3  (
     .i0(FIFO_DO[6]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_G[3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(68)
+    .o(LCD_G[3]));  // source/VGAMod.v(72)
   binary_mux_s1_w1 \D1/mux5_b4  (
     .i0(FIFO_DO[7]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_G[4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(68)
+    .o(LCD_G[4]));  // source/VGAMod.v(72)
   binary_mux_s1_w1 \D1/mux5_b5  (
     .i0(FIFO_DO[8]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_G[5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(68)
+    .o(LCD_G[5]));  // source/VGAMod.v(72)
   binary_mux_s1_w1 \D1/mux5_b6  (
     .i0(FIFO_DO[9]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_G[6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(68)
+    .o(LCD_G[6]));  // source/VGAMod.v(72)
   binary_mux_s1_w1 \D1/mux5_b7  (
     .i0(FIFO_DO[10]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_G[7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(68)
+    .o(LCD_G[7]));  // source/VGAMod.v(72)
   binary_mux_s1_w1 \D1/mux6_b3  (
     .i0(FIFO_DO[0]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_B[3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(69)
+    .o(LCD_B[3]));  // source/VGAMod.v(73)
   binary_mux_s1_w1 \D1/mux6_b4  (
     .i0(FIFO_DO[1]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_B[4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(69)
+    .o(LCD_B[4]));  // source/VGAMod.v(73)
   binary_mux_s1_w1 \D1/mux6_b5  (
     .i0(FIFO_DO[2]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_B[5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(69)
+    .o(LCD_B[5]));  // source/VGAMod.v(73)
   binary_mux_s1_w1 \D1/mux6_b6  (
     .i0(FIFO_DO[3]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_B[6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(69)
+    .o(LCD_B[6]));  // source/VGAMod.v(73)
   binary_mux_s1_w1 \D1/mux6_b7  (
     .i0(FIFO_DO[4]),
     .i1(1'b0),
     .sel(FIFO_EMPTY),
-    .o(LCD_B[7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(69)
+    .o(LCD_B[7]));  // source/VGAMod.v(73)
   not \D1/n1_inv  (\D1/n1_neg , \D1/n1 );
   not \D1/n3_inv  (\D1/n3_neg , \D1/n3 );
   reg_ar_as_w1 \D1/reg0_b0  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [0]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [0]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b1  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [1]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [1]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b10  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [10]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [10]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [10]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b11  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [11]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [11]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [11]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b12  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [12]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [12]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [12]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b13  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [13]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [13]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [13]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b14  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [14]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [14]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [14]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b15  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [15]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [15]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [15]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b2  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [2]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [2]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b3  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [3]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [3]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b4  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [4]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [4]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b5  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [5]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [5]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b6  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [6]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [6]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b7  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [7]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [7]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b8  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [8]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [8]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [8]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg0_b9  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n7 [9]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/PixelCount [9]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/PixelCount [9]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b0  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [0]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [0]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b1  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [1]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [1]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b10  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [10]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [10]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [10]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b11  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [11]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [11]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [11]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b12  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [12]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [12]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [12]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b13  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [13]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [13]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [13]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b14  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [14]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [14]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [14]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b15  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [15]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [15]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [15]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b2  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [2]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [2]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b3  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [3]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [3]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b4  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [4]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [4]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b5  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [5]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [5]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b6  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [6]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [6]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b7  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [7]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [7]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b8  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [8]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [8]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
+    .q(\D1/LineCount [8]));  // source/VGAMod.v(55)
   reg_ar_as_w1 \D1/reg1_b9  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\D1/n8 [9]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
-    .q(\D1/LineCount [9]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(53)
-  and \D1/u11  (\D1/n23 , \D1/n21 , \D1/n22 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
-  not \D1/u12  (\D1/n24 , FIFO_EMPTY);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
-  and \D1/u13  (FIFO_RE, \D1/n23 , \D1/n24 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(65)
-  not \D1/u2  (\D1/n0 , nRST);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(39)
-  and \D1/u3  (\D1/n11 , \D1/n9 , \D1/n10 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(56)
-  not \D1/u4  (LCD_HYNC, \D1/n11 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(56)
-  and \D1/u5  (\D1/n14 , \D1/n12 , \D1/n13 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(57)
-  not \D1/u6  (LCD_SYNC, \D1/n14 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(57)
-  and \D1/u7  (\D1/n17 , \D1/n15 , \D1/n16 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(60)
-  and \D1/u8  (\D1/n19 , \D1/n17 , \D1/n18 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(61)
-  and \D1/u9  (GPIO, \D1/n19 , \D1/n20 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/VGAMod.v(62)
+    .q(\D1/LineCount [9]));  // source/VGAMod.v(55)
+  and \D1/u11  (\D1/n23 , \D1/n21 , \D1/n22 );  // source/VGAMod.v(69)
+  not \D1/u12  (\D1/n24 , FIFO_EMPTY);  // source/VGAMod.v(69)
+  and \D1/u13  (FIFO_RE, \D1/n23 , \D1/n24 );  // source/VGAMod.v(69)
+  not \D1/u2  (\D1/n0 , nRST);  // source/VGAMod.v(41)
+  and \D1/u3  (\D1/n11 , \D1/n9 , \D1/n10 );  // source/VGAMod.v(58)
+  not \D1/u4  (LCD_HYNC, \D1/n11 );  // source/VGAMod.v(58)
+  and \D1/u5  (\D1/n14 , \D1/n12 , \D1/n13 );  // source/VGAMod.v(59)
+  not \D1/u6  (LCD_SYNC, \D1/n14 );  // source/VGAMod.v(59)
+  and \D1/u7  (\D1/n17 , \D1/n15 , \D1/n16 );  // source/VGAMod.v(64)
+  and \D1/u8  (\D1/n19 , \D1/n17 , \D1/n18 );  // source/VGAMod.v(65)
+  and \D1/u9  (GPIO, \D1/n19 , \D1/n20 );  // source/VGAMod.v(66)
   EG_LOGIC_FIFO #(
     .AE(6),
     .AF(2042),
@@ -734,21 +753,20 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .REGMODE_W("NOREG"),
     .RESETMODE("ASYNC"))
     \FIFO0/logic_fifo  (
-    .clkr(PixeClk),
-    .clkw(clk),
+    .clkr(LCD_CLK),
+    .clkw(CLK_100M),
     .csr(3'b111),
     .csw(3'b111),
-    .di(8'b11111111),
+    .di(FIFO_DI),
     .ore(1'b0),
     .re(FIFO_RE),
-    .rst(\D1/n0 ),
+    .rst(FIFO_RST),
     .we(FIFO_WE),
     .do(FIFO_DO),
-    .empty_flag(FIFO_EMPTY),
-    .full_flag(FIFO_FULL));  // al_ip/DisFIFO.v(41)
+    .empty_flag(FIFO_EMPTY));  // al_ip/DisFIFO.v(41)
   EG_LOGIC_BUFG \PLL1/bufg_feedback  (
     .i(\PLL1/clk0_buf ),
-    .o(PixeClk));  // al_ip/LCDPLL.v(38)
+    .o(LCD_CLK));  // al_ip/LCDPLL.v(38)
   EG_PHY_PLL #(
     .CLKC0_CPHASE(29),
     .CLKC0_DIV(30),
@@ -820,7 +838,7 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .dcs(1'b0),
     .di(8'b00000000),
     .dwe(1'b0),
-    .fbclk(PixeClk),
+    .fbclk(LCD_CLK),
     .psclk(1'b0),
     .psclksel(3'b000),
     .psdown(1'b0),
@@ -828,9 +846,9 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .refclk(clk),
     .reset(1'b0),
     .stdby(1'b0),
-    .clkc({open_n2,open_n3,open_n4,LCD_CLK,\PLL1/clk0_buf }));  // al_ip/LCDPLL.v(69)
+    .clkc({open_n3,open_n4,open_n5,CLK_100M,\PLL1/clk0_buf }));  // al_ip/LCDPLL.v(69)
   reg_ar_as_w1 \U1/CLK_OUT_reg  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n2 ),
     .en(\U1/n1 ),
     .reset(1'b0),
@@ -1005,224 +1023,224 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .sel(\U1/n1 ),
     .o(\U1/n5 [9]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b0  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [0]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [0]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b1  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [1]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [1]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b10  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [10]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [10]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b11  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [11]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [11]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b12  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [12]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [12]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b13  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [13]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [13]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b14  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [14]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [14]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b15  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [15]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [15]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b16  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [16]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [16]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b17  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [17]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [17]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b18  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [18]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [18]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b19  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [19]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [19]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b2  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [2]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [2]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b20  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [20]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [20]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b21  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [21]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [21]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b22  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [22]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [22]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b23  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [23]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [23]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b24  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [24]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [24]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b25  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [25]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [25]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b26  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [26]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [26]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b27  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [27]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [27]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b28  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [28]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [28]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b29  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [29]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [29]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b3  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [3]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [3]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b30  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [30]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [30]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b31  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [31]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [31]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b4  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [4]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [4]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b5  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [5]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [5]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b6  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [6]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [6]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b7  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [7]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [7]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b8  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [8]),
     .en(1'b1),
     .reset(~nRST),
     .set(1'b0),
     .q(\U1/Count [8]));  // source/CLK_MOD.v(32)
   reg_ar_as_w1 \U1/reg0_b9  (
-    .clk(PixeClk),
+    .clk(LCD_CLK),
     .d(\U1/n5 [9]),
     .en(1'b1),
     .reset(~nRST),
@@ -1629,7 +1647,559 @@ module TOP  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(1)
     .set(1'b0),
     .q(\U2/Count [9]));  // source/CLK_MOD.v(32)
   not \U2/u3  (\U2/n2 , LED[2]);  // source/CLK_MOD.v(28)
-  not u9 (FIFO_WE, FIFO_FULL);  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/TOP.v(75)
+  EG_LOGIC_BRAM #(
+    //.FORCE_KEEP("OFF"),
+    //.INIT_FILE("../mif/128x128.mif"),
+    .ADDR_WIDTH_A(15),
+    .ADDR_WIDTH_B(15),
+    .BYTE_A(1),
+    .BYTE_B(1),
+    .BYTE_ENABLE(0),
+    .DATA_DEPTH_A(32768),
+    .DATA_DEPTH_B(32768),
+    .DATA_WIDTH_A(8),
+    .DATA_WIDTH_B(8),
+    .DEBUGGABLE("NO"),
+    .FILL_ALL("NONE"),
+    .IMPLEMENT("9K"),
+    .MODE("SP"),
+    .PACKABLE("NO"),
+    .REGMODE_A("NOREG"),
+    .REGMODE_B("NOREG"),
+    .RESETMODE("SYNC"),
+    .WRITEMODE_A("NORMAL"),
+    .WRITEMODE_B("NORMAL"))
+    \U4/ROM0/inst  (
+    .addra(\U4/Addr ),
+    .addrb(15'b000000000000000),
+    .bea(1'b0),
+    .beb(1'b0),
+    .cea(1'b1),
+    .ceb(1'b0),
+    .clka(CLK_100M),
+    .clkb(1'b0),
+    .dia(8'b00000000),
+    .dib(8'b00000000),
+    .ocea(1'b0),
+    .oceb(1'b0),
+    .rsta(\D1/n0 ),
+    .rstb(1'b0),
+    .wea(1'b0),
+    .web(1'b0),
+    .doa(\U4/RomData ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/al_ip/ROM.v(39)
+  add_pu16_pu16_o16 \U4/add0  (
+    .i0(\U4/AddrCtrl ),
+    .i1(16'b0000000000000001),
+    .o(\U4/n1 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(31)
+  add_pu15_pu15_o15 \U4/add1  (
+    .i0(\U4/Addr ),
+    .i1(15'b000000000000001),
+    .o(\U4/n5 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(43)
+  lt_u16_u16 \U4/lt0  (
+    .ci(1'b0),
+    .i0(\U4/AddrCtrl ),
+    .i1(16'b0000000011111111),
+    .o(\U4/n4 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(42)
+  lt_u16_u16 \U4/lt1  (
+    .ci(1'b0),
+    .i0(\U4/AddrCtrl ),
+    .i1(16'b0000011001000000),
+    .o(\U4/n8 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
+  lt_u16_u16 \U4/lt2  (
+    .ci(1'b0),
+    .i0(\U4/AddrCtrl ),
+    .i1(16'b0000000100000000),
+    .o(\U4/n12 ));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  AL_MUX \U4/mux1_b0  (
+    .i0(1'b0),
+    .i1(\U4/n1 [0]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [0]));
+  and \U4/mux1_b0_sel_is_0  (\U4/mux1_b0_sel_is_0_o , \D1/n14 , \D1/n11 );
+  AL_MUX \U4/mux1_b1  (
+    .i0(1'b0),
+    .i1(\U4/n1 [1]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [1]));
+  AL_MUX \U4/mux1_b10  (
+    .i0(1'b0),
+    .i1(\U4/n1 [10]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [10]));
+  AL_MUX \U4/mux1_b11  (
+    .i0(1'b0),
+    .i1(\U4/n1 [11]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [11]));
+  AL_MUX \U4/mux1_b12  (
+    .i0(1'b0),
+    .i1(\U4/n1 [12]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [12]));
+  AL_MUX \U4/mux1_b13  (
+    .i0(1'b0),
+    .i1(\U4/n1 [13]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [13]));
+  AL_MUX \U4/mux1_b14  (
+    .i0(1'b0),
+    .i1(\U4/n1 [14]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [14]));
+  AL_MUX \U4/mux1_b15  (
+    .i0(1'b0),
+    .i1(\U4/n1 [15]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [15]));
+  AL_MUX \U4/mux1_b2  (
+    .i0(1'b0),
+    .i1(\U4/n1 [2]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [2]));
+  AL_MUX \U4/mux1_b3  (
+    .i0(1'b0),
+    .i1(\U4/n1 [3]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [3]));
+  AL_MUX \U4/mux1_b4  (
+    .i0(1'b0),
+    .i1(\U4/n1 [4]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [4]));
+  AL_MUX \U4/mux1_b5  (
+    .i0(1'b0),
+    .i1(\U4/n1 [5]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [5]));
+  AL_MUX \U4/mux1_b6  (
+    .i0(1'b0),
+    .i1(\U4/n1 [6]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [6]));
+  AL_MUX \U4/mux1_b7  (
+    .i0(1'b0),
+    .i1(\U4/n1 [7]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [7]));
+  AL_MUX \U4/mux1_b8  (
+    .i0(1'b0),
+    .i1(\U4/n1 [8]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [8]));
+  AL_MUX \U4/mux1_b9  (
+    .i0(1'b0),
+    .i1(\U4/n1 [9]),
+    .sel(\U4/mux1_b0_sel_is_0_o ),
+    .o(\U4/n3 [9]));
+  binary_mux_s1_w1 \U4/mux2_b0  (
+    .i0(\U4/Addr [0]),
+    .i1(\U4/n5 [0]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b1  (
+    .i0(\U4/Addr [1]),
+    .i1(\U4/n5 [1]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b10  (
+    .i0(\U4/Addr [10]),
+    .i1(\U4/n5 [10]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [10]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b11  (
+    .i0(\U4/Addr [11]),
+    .i1(\U4/n5 [11]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [11]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b12  (
+    .i0(\U4/Addr [12]),
+    .i1(\U4/n5 [12]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [12]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b13  (
+    .i0(\U4/Addr [13]),
+    .i1(\U4/n5 [13]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [13]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b14  (
+    .i0(\U4/Addr [14]),
+    .i1(\U4/n5 [14]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [14]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b2  (
+    .i0(\U4/Addr [2]),
+    .i1(\U4/n5 [2]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b3  (
+    .i0(\U4/Addr [3]),
+    .i1(\U4/n5 [3]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b4  (
+    .i0(\U4/Addr [4]),
+    .i1(\U4/n5 [4]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b5  (
+    .i0(\U4/Addr [5]),
+    .i1(\U4/n5 [5]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b6  (
+    .i0(\U4/Addr [6]),
+    .i1(\U4/n5 [6]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b7  (
+    .i0(\U4/Addr [7]),
+    .i1(\U4/n5 [7]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b8  (
+    .i0(\U4/Addr [8]),
+    .i1(\U4/n5 [8]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [8]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux2_b9  (
+    .i0(\U4/Addr [9]),
+    .i1(\U4/n5 [9]),
+    .sel(\U4/n4 ),
+    .o(\U4/n6 [9]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b0  (
+    .i0(\U4/n6 [0]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b1  (
+    .i0(\U4/n6 [1]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b10  (
+    .i0(\U4/n6 [10]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [10]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b11  (
+    .i0(\U4/n6 [11]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [11]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b12  (
+    .i0(\U4/n6 [12]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [12]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b13  (
+    .i0(\U4/n6 [13]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [13]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b14  (
+    .i0(\U4/n6 [14]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [14]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b2  (
+    .i0(\U4/n6 [2]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b3  (
+    .i0(\U4/n6 [3]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b4  (
+    .i0(\U4/n6 [4]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b5  (
+    .i0(\U4/n6 [5]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b6  (
+    .i0(\U4/n6 [6]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b7  (
+    .i0(\U4/n6 [7]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b8  (
+    .i0(\U4/n6 [8]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [8]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux3_b9  (
+    .i0(\U4/n6 [9]),
+    .i1(1'b0),
+    .sel(LCD_SYNC),
+    .o(\U4/n7 [9]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  binary_mux_s1_w1 \U4/mux4_b0  (
+    .i0(1'b1),
+    .i1(\U4/RomData [0]),
+    .sel(\U4/n12 ),
+    .o(FIFO_DI[0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  binary_mux_s1_w1 \U4/mux4_b1  (
+    .i0(1'b1),
+    .i1(\U4/RomData [1]),
+    .sel(\U4/n12 ),
+    .o(FIFO_DI[1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  binary_mux_s1_w1 \U4/mux4_b2  (
+    .i0(1'b1),
+    .i1(\U4/RomData [2]),
+    .sel(\U4/n12 ),
+    .o(FIFO_DI[2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  binary_mux_s1_w1 \U4/mux4_b3  (
+    .i0(1'b1),
+    .i1(\U4/RomData [3]),
+    .sel(\U4/n12 ),
+    .o(FIFO_DI[3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  binary_mux_s1_w1 \U4/mux4_b4  (
+    .i0(1'b1),
+    .i1(\U4/RomData [4]),
+    .sel(\U4/n12 ),
+    .o(FIFO_DI[4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  binary_mux_s1_w1 \U4/mux4_b5  (
+    .i0(1'b1),
+    .i1(\U4/RomData [5]),
+    .sel(\U4/n12 ),
+    .o(FIFO_DI[5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  binary_mux_s1_w1 \U4/mux4_b6  (
+    .i0(1'b1),
+    .i1(\U4/RomData [6]),
+    .sel(\U4/n12 ),
+    .o(FIFO_DI[6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  binary_mux_s1_w1 \U4/mux4_b7  (
+    .i0(1'b1),
+    .i1(\U4/RomData [7]),
+    .sel(\U4/n12 ),
+    .o(FIFO_DI[7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(59)
+  reg_ar_as_w1 \U4/reg0_b0  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [0]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b1  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [1]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b10  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [10]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [10]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b11  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [11]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [11]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b12  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [12]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [12]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b13  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [13]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [13]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b14  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [14]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [14]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b2  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [2]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b3  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [3]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b4  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [4]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b5  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [5]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b6  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [6]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b7  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [7]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b8  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [8]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [8]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg0_b9  (
+    .clk(CLK_100M),
+    .d(\U4/n7 [9]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/Addr [9]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(44)
+  reg_ar_as_w1 \U4/reg1_b0  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [0]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [0]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b1  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [1]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [1]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b10  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [10]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [10]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b11  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [11]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [11]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b12  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [12]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [12]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b13  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [13]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [13]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b14  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [14]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [14]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b15  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [15]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [15]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b2  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [2]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [2]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b3  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [3]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [3]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b4  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [4]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [4]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b5  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [5]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [5]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b6  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [6]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [6]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b7  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [7]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [7]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b8  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [8]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [8]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  reg_ar_as_w1 \U4/reg1_b9  (
+    .clk(CLK_100M),
+    .d(\U4/n3 [9]),
+    .en(1'b1),
+    .reset(~nRST),
+    .set(1'b0),
+    .q(\U4/AddrCtrl [9]));  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(32)
+  and \U4/u4  (\U4/n10 , \U4/n8 , \D1/n14 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
+  and \U4/u6  (FIFO_WE, \U4/n10 , \D1/n11 );  // E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_Examples/source/LCDCTRL.v(47)
 
 endmodule 
 
@@ -2727,6 +3297,216 @@ module eq_w32
   xor \xor_i0[7]_i1[7]  (\xor_i0[7]_i1[7]_o , i0[7], i1[7]);
   xor \xor_i0[8]_i1[8]  (\xor_i0[8]_i1[8]_o , i0[8], i1[8]);
   xor \xor_i0[9]_i1[9]  (\xor_i0[9]_i1[9]_o , i0[9], i1[9]);
+
+endmodule 
+
+module add_pu15_pu15_o15
+  (
+  i0,
+  i1,
+  o
+  );
+
+  input [14:0] i0;
+  input [14:0] i1;
+  output [14:0] o;
+
+  wire net_a0;
+  wire net_a1;
+  wire net_a10;
+  wire net_a11;
+  wire net_a12;
+  wire net_a13;
+  wire net_a14;
+  wire net_a2;
+  wire net_a3;
+  wire net_a4;
+  wire net_a5;
+  wire net_a6;
+  wire net_a7;
+  wire net_a8;
+  wire net_a9;
+  wire net_b0;
+  wire net_b1;
+  wire net_b10;
+  wire net_b11;
+  wire net_b12;
+  wire net_b13;
+  wire net_b14;
+  wire net_b2;
+  wire net_b3;
+  wire net_b4;
+  wire net_b5;
+  wire net_b6;
+  wire net_b7;
+  wire net_b8;
+  wire net_b9;
+  wire net_cout0;
+  wire net_cout1;
+  wire net_cout10;
+  wire net_cout11;
+  wire net_cout12;
+  wire net_cout13;
+  wire net_cout14;
+  wire net_cout2;
+  wire net_cout3;
+  wire net_cout4;
+  wire net_cout5;
+  wire net_cout6;
+  wire net_cout7;
+  wire net_cout8;
+  wire net_cout9;
+  wire net_sum0;
+  wire net_sum1;
+  wire net_sum10;
+  wire net_sum11;
+  wire net_sum12;
+  wire net_sum13;
+  wire net_sum14;
+  wire net_sum2;
+  wire net_sum3;
+  wire net_sum4;
+  wire net_sum5;
+  wire net_sum6;
+  wire net_sum7;
+  wire net_sum8;
+  wire net_sum9;
+
+  assign net_a14 = i0[14];
+  assign net_a13 = i0[13];
+  assign net_a12 = i0[12];
+  assign net_a11 = i0[11];
+  assign net_a10 = i0[10];
+  assign net_a9 = i0[9];
+  assign net_a8 = i0[8];
+  assign net_a7 = i0[7];
+  assign net_a6 = i0[6];
+  assign net_a5 = i0[5];
+  assign net_a4 = i0[4];
+  assign net_a3 = i0[3];
+  assign net_a2 = i0[2];
+  assign net_a1 = i0[1];
+  assign net_a0 = i0[0];
+  assign net_b14 = i1[14];
+  assign net_b13 = i1[13];
+  assign net_b12 = i1[12];
+  assign net_b11 = i1[11];
+  assign net_b10 = i1[10];
+  assign net_b9 = i1[9];
+  assign net_b8 = i1[8];
+  assign net_b7 = i1[7];
+  assign net_b6 = i1[6];
+  assign net_b5 = i1[5];
+  assign net_b4 = i1[4];
+  assign net_b3 = i1[3];
+  assign net_b2 = i1[2];
+  assign net_b1 = i1[1];
+  assign net_b0 = i1[0];
+  assign o[14] = net_sum14;
+  assign o[13] = net_sum13;
+  assign o[12] = net_sum12;
+  assign o[11] = net_sum11;
+  assign o[10] = net_sum10;
+  assign o[9] = net_sum9;
+  assign o[8] = net_sum8;
+  assign o[7] = net_sum7;
+  assign o[6] = net_sum6;
+  assign o[5] = net_sum5;
+  assign o[4] = net_sum4;
+  assign o[3] = net_sum3;
+  assign o[2] = net_sum2;
+  assign o[1] = net_sum1;
+  assign o[0] = net_sum0;
+  AL_FADD comp_0 (
+    .a(net_a0),
+    .b(net_b0),
+    .c(1'b0),
+    .cout(net_cout0),
+    .sum(net_sum0));
+  AL_FADD comp_1 (
+    .a(net_a1),
+    .b(net_b1),
+    .c(net_cout0),
+    .cout(net_cout1),
+    .sum(net_sum1));
+  AL_FADD comp_10 (
+    .a(net_a10),
+    .b(net_b10),
+    .c(net_cout9),
+    .cout(net_cout10),
+    .sum(net_sum10));
+  AL_FADD comp_11 (
+    .a(net_a11),
+    .b(net_b11),
+    .c(net_cout10),
+    .cout(net_cout11),
+    .sum(net_sum11));
+  AL_FADD comp_12 (
+    .a(net_a12),
+    .b(net_b12),
+    .c(net_cout11),
+    .cout(net_cout12),
+    .sum(net_sum12));
+  AL_FADD comp_13 (
+    .a(net_a13),
+    .b(net_b13),
+    .c(net_cout12),
+    .cout(net_cout13),
+    .sum(net_sum13));
+  AL_FADD comp_14 (
+    .a(net_a14),
+    .b(net_b14),
+    .c(net_cout13),
+    .cout(net_cout14),
+    .sum(net_sum14));
+  AL_FADD comp_2 (
+    .a(net_a2),
+    .b(net_b2),
+    .c(net_cout1),
+    .cout(net_cout2),
+    .sum(net_sum2));
+  AL_FADD comp_3 (
+    .a(net_a3),
+    .b(net_b3),
+    .c(net_cout2),
+    .cout(net_cout3),
+    .sum(net_sum3));
+  AL_FADD comp_4 (
+    .a(net_a4),
+    .b(net_b4),
+    .c(net_cout3),
+    .cout(net_cout4),
+    .sum(net_sum4));
+  AL_FADD comp_5 (
+    .a(net_a5),
+    .b(net_b5),
+    .c(net_cout4),
+    .cout(net_cout5),
+    .sum(net_sum5));
+  AL_FADD comp_6 (
+    .a(net_a6),
+    .b(net_b6),
+    .c(net_cout5),
+    .cout(net_cout6),
+    .sum(net_sum6));
+  AL_FADD comp_7 (
+    .a(net_a7),
+    .b(net_b7),
+    .c(net_cout6),
+    .cout(net_cout7),
+    .sum(net_sum7));
+  AL_FADD comp_8 (
+    .a(net_a8),
+    .b(net_b8),
+    .c(net_cout7),
+    .cout(net_cout8),
+    .sum(net_sum8));
+  AL_FADD comp_9 (
+    .a(net_a9),
+    .b(net_b9),
+    .c(net_cout8),
+    .cout(net_cout9),
+    .sum(net_sum9));
 
 endmodule 
 

@@ -48,6 +48,7 @@ module TOP
 		.clk2_out	(	CLK_50M		)
 	);
 
+	wire	FIFO_RST;
     wire    FIFO_CLK_R;
     wire    FIFO_CLK_W;
     wire    FIFO_RE;
@@ -59,7 +60,7 @@ module TOP
 	
 	DisFIFO 	FIFO0
 	(
-		.rst		(	~nRST		),
+		.rst		(	FIFO_RST	),
 		.di			(	FIFO_DI		), 
 		.clkw		(	FIFO_CLK_W	), 
 		.we			(	FIFO_WE		),
@@ -85,12 +86,6 @@ module TOP
 	);
 	
 	assign	FIFO_CLK_W 	= CLK_100M;
-	//assign	FIFO_DI		= 8'b1111_1111;	
-	/*
-	assign	FIFO_CLK_W 	= CLK_100M;
-	assign	FIFO_DI		= 8'b1111_1111;	
-	assign	FIFO_WE		= ( FIFO_FULL == 1'b1 ) ? 1'b0 : 1'b1;
-	*/
 
 	VGAMod	D1
 	(
@@ -103,10 +98,11 @@ module TOP
 		.LCD_HSYNC	(	LCD_HYNC 	),
     	.LCD_VSYNC	(	LCD_SYNC 	),
 
-		.VGA_B		(	LCD_B		),
-		.VGA_G		(	LCD_G		),
-		.VGA_R		(	LCD_R		),
+		.LCD_B		(	LCD_B		),
+		.LCD_G		(	LCD_G		),
+		.LCD_R		(	LCD_R		),
 
+		.FIFO_RST	(	FIFO_RST	),
 		.FIFO_CLK	(	FIFO_CLK_R	),
 		.FIFO_RE	(	FIFO_RE		),
 		.FIFO_Empty	(	FIFO_EMPTY	),
@@ -133,9 +129,8 @@ module TOP
 		.RSTn		(	nRST	),
 		
 		.CLK_OUT	(	LED[2]	),
-		
+
 		.Count_REG	(	32'd24000000)	
 	);
-
 
 endmodule

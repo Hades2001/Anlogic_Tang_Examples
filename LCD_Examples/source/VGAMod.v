@@ -9,10 +9,12 @@ module VGAMod
     output                  LCD_HSYNC,
     output                  LCD_VSYNC,
 
-	output          [7:0]   VGA_B,
-	output          [7:0]   VGA_G,
-	output          [7:0]   VGA_R,
 
+	output          [7:0]   LCD_B,
+	output          [7:0]   LCD_G,
+	output          [7:0]   LCD_R,
+
+    output                  FIFO_RST,
     output                  FIFO_CLK,
     output                  FIFO_RE,
     input   wire            FIFO_Empty,
@@ -56,10 +58,7 @@ module VGAMod
     assign  LCD_HSYNC = (( PixelCount >= ( H_BackPorch - 16'd200 ))&&( PixelCount < (PixelForHS - 1))) ? 1'b0 : 1'b1;
     assign  LCD_VSYNC = (( LineCount  >= ( V_BackPorch - 16'd40  ))&&( LineCount  < (LineForVS  - 1))) ? 1'b0 : 1'b1;
 
-    /*
-    assign  LCD_HSYNC = (( PixelCount >= ( H_BackPorch + 4 ))&&( PixelCount < (PixelForHS - 5))) ? 1'b0 : 1'b1;
-    assign  LCD_VSYNC = (( LineCount  >= ( V_BackPorch + 2 ))&&( LineCount  < (LineForVS  - 5))) ? 1'b0 : 1'b1;
-    */
+    assign  FIFO_RST  = (( PixelCount >= 0 )&&( PixelCount < 16'd20 )) ? 1'b1 : 1'b0;
 
     assign  LCD_DE = (  ( PixelCount >= H_BackPorch )&&
                         ( PixelCount <= PixelForHS ) &&
@@ -69,9 +68,9 @@ module VGAMod
     assign  FIFO_CLK = PixelClk;
     assign  FIFO_RE  = (( PixelCount >= FIFOReStart )&&( PixelCount <= FIFOReEnd )&&( FIFO_Empty == 1'b0 )) ? 1'b1 : 1'b0;
 
-    assign  VGA_R    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[15:11], 3'b111 } : 8'b1111_1111;
-    assign  VGA_G    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[10:5] , 2'b11  } : 8'b0000_0000;
-    assign  VGA_B    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[4:0]  , 3'b111 } : 8'b0000_0000;
+    assign  LCD_R    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[15:11], 3'b111 } : 8'b1111_1111;
+    assign  LCD_G    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[10:5] , 2'b11  } : 8'b0000_0000;
+    assign  LCD_B    = ( FIFO_Empty == 1'b0 ) ? {FIFO_Data[4:0]  , 3'b111 } : 8'b0000_0000;
 
     
 /*
