@@ -2,5 +2,7 @@ Tang FPGA Examples
 Anlogic_Tang_Examples
 -LED_Examples
 -UART_Examples
--LCD_Examples(2019)
-    荔枝塘LCD驱动Demo程序
+-LCD_Examples(2019)  荔枝塘LCD驱动Demo程序
+2019-05-09:驱动RGB接口800x480液晶屏（DE时序）
+2019-05-10:彩条驱动
+2019-05-11:动态图片显示
