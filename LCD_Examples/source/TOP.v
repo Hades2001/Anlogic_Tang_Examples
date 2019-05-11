@@ -36,17 +36,20 @@ module TOP
 	assign		LCDBK 	= 	1'b1;
 	assign		LED[0] 	=	1'b1;
 
-	wire 		PixeClk;		
+	wire 		PixeClk;	
+	wire		CLK_33M;	
 	wire		CLK_100M;
 	wire		CLK_50M;
 	LCDPLL	PLL1
 	(	
 		.refclk		(	clk			),
 		.reset		(	1'b0		),
-		.clk0_out	(	PixeClk		),
+		.clk0_out	(	CLK_33M		),
 		.clk1_out	(	CLK_100M	),
 		.clk2_out	(	CLK_50M		)
 	);
+
+	assign	PixeClk = CLK_33M;
 
 	wire	FIFO_RST;
     wire    FIFO_CLK_R;
