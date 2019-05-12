@@ -1,5 +1,9 @@
 // Verilog netlist created by TD v4.4.433
+<<<<<<< HEAD
 // Sun May 12 23:46:43 2019
+=======
+// Thu May  9 16:41:20 2019
+>>>>>>> 30ed56de523c0d3b9e4279fbe1f06fdd97297fb4
 
 `timescale 1ns / 1ps
 module LCDPLL  // al_ip/LCDPLL.v(24)

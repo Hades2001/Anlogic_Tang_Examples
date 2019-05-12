@@ -2,6 +2,7 @@
 <Project>
     <Project_Created_Time>2019-05-12 23:43:57</Project_Created_Time>
     <TD_Version>4.4.433</TD_Version>
+<<<<<<< HEAD
     <UCode>01000010</UCode>
     <Name>LCD_8080ToRGB</Name>
     <HardWare>
@@ -19,12 +20,21 @@
             <File>al_ip/LCDPLL.v</File>
             <File>al_ip/ROM.v</File>
         </Verilog>
+=======
+    <Name>LCD_8080ToRGB</Name>
+    <HardWare>
+        <Family>AL3</Family>
+        <Device>AL3A10BG256C7</Device>
+    </HardWare>
+    <Source_Files>
+>>>>>>> 30ed56de523c0d3b9e4279fbe1f06fdd97297fb4
         <ADC_FILE/>
         <SDC_FILE/>
         <CWC_FILE/>
     </Source_Files>
     <TOP_MODULE>
         <LABEL/>
+<<<<<<< HEAD
         <MODULE>TOP</MODULE>
         <CREATEINDEX>user</CREATEINDEX>
     </TOP_MODULE>
@@ -33,4 +43,8 @@
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
+=======
+        <MODULE/>
+    </TOP_MODULE>
+>>>>>>> 30ed56de523c0d3b9e4279fbe1f06fdd97297fb4
 </Project>
