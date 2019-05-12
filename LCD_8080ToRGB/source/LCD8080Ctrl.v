@@ -26,9 +26,12 @@ module LCD8080Ctrl
     assign      J80_Data = ( J80_Re ) && ( !J80_We ) ? OutDataReg : 8'bzzzz_zzzz;
 
     always @( posedge CLK or negedge nRST ) begin
+    if( !nRST ) begin
 
+        end
+    else begin
 
-
+        end
     end
 
 endmodule
