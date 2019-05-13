@@ -6,11 +6,6 @@ module LCDCTRL
     input                   HSYNC,
     input                   VSYNC,
 
-    input                   J80_RS;
-    input                   J80_We;
-    input                   J80_Re;
-    input       [7:0]       J80_Data;
-
     output                  FIFOWe,
 
     output      [7:0]       RGBData
