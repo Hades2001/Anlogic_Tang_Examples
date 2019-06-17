@@ -20,17 +20,10 @@
         <register_a>None</register_a>
     </PortAOption>
     <MemoryInitialization>
-<<<<<<< HEAD
-        <init_file>../mif/128x128.mif</init_file>
-    </MemoryInitialization>
-    <FillMemoryInitValues>
-        <fill_all>0</fill_all>
-=======
         <init_file_enable>true</init_file_enable>
         <init_file>../mif/128x128.mif</init_file>
     </MemoryInitialization>
     <FillMemoryInitValues>
         <fill_all>NONE</fill_all>
->>>>>>> 30ed56de523c0d3b9e4279fbe1f06fdd97297fb4
     </FillMemoryInitValues>
 </RomConfig>

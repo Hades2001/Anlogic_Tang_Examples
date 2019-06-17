@@ -1,38 +1,32 @@
 module TOP
 (
-	clk,
-	nRST,
+	input 	wire	clk,
+	input 	wire	nRST,
 
-	LED,
-	GPIO,
+	output	wire	[2:0]LED,
+	inout 	wire	GPIO,
 
-	LCDBK,
-	LCD_CLK,
-	LCD_HYNC,
-	LCD_SYNC,
-	LCD_DEN,
-	LCD_R,
-	LCD_G,
-	LCD_B
+	input 	wire 	CSI_PCLK,	//CSI时
+	output 	wire 	CSI_XCLK,	//CSI系统时
+	input 	wire 	CSI_HREF,	//同
+	input 	wire 	CSI_VSYNC,	//帧同
+	output 	wire 	CSI_PWDN,	//模式
+	output 	wire 	CSI_RST,	//位
+	output 	wire 	CSI_SOIC,	//SCCB,时
+	inout 	wire 	CSI_SOID,	//SCCB,
+	input 	wire 	[7:0]CSI_D,	//
+
+	output	wire	LCDBK,
+	output	wire	LCD_CLK,
+	output	wire	LCD_HYNC,
+	output	wire	LCD_SYNC,
+	output	wire	LCD_DEN,
+	output	wire	LCD_R,
+	output	wire	LCD_G,
+	output	wire	LCD_B
 
 	
 );
-
-	input			clk;
-	input			nRST;
-	
-	output	[2:0]	LED;
-
-	output			GPIO;
-	output			LCDBK;
-	output			LCD_CLK;
-	output			LCD_HYNC;
-	output			LCD_SYNC;
-	output			LCD_DEN;
-	output	[7:0]	LCD_R;
-	output	[7:0]	LCD_G;
-	output	[7:0]	LCD_B;
-
 	assign		LCDBK 	= 	1'b1;
 	assign		LED[0] 	=	1'b1;
 
@@ -40,6 +34,7 @@ module TOP
 	wire		CLK_33M;	
 	wire		CLK_100M;
 	wire		CLK_50M;
+
 	LCDPLL	PLL1
 	(	
 		.refclk		(	clk			),

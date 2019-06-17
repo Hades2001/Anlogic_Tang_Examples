@@ -1,0 +1,64 @@
+standard
+***Report Model: TOP***
+
+IO Statistics
+#IO                    30
+  #input               13
+  #output              15
+  #inout                2
+
+Utilization Statistics
+#lut                  662   out of  19600    3.38%
+#reg                  159   out of  19600    0.81%
+#le                   662
+  #lut only           503   out of    662   75.98%
+  #reg only             0   out of    662    0.00%
+  #lut&reg            159   out of    662   24.02%
+#dsp                    0   out of     29    0.00%
+#bram                  17   out of     64   26.56%
+  #bram9k              16
+  #fifo9k               1
+#bram32k                0   out of     16    0.00%
+#pad                   30   out of    188   15.96%
+  #ireg                 0
+  #oreg                 0
+  #treg                 0
+#pll                    1   out of      4   25.00%
+#clknet                 3   out of     16   18.75%
+  #gclk                 1
+
+
+Detailed IO Report
+
+Name          Direction     Location     IOStandard     DriveStrength     
+CSI_D[7]      INPUT         S41          LVCMOS25       N/A               
+CSI_D[6]      INPUT         H5           LVCMOS25       N/A               
+CSI_D[5]      INPUT         S73          LVCMOS25       N/A               
+CSI_D[4]      INPUT         S61          LVCMOS25       N/A               
+CSI_D[3]      INPUT         K12          LVCMOS25       N/A               
+CSI_D[2]      INPUT         S58          LVCMOS25       N/A               
+CSI_D[1]      INPUT         S18          LVCMOS25       N/A               
+CSI_D[0]      INPUT         S59          LVCMOS25       N/A               
+CSI_HREF      INPUT         J12          LVCMOS25       N/A               
+CSI_PCLK      INPUT         S64          LVCMOS25       N/A               
+CSI_VSYNC     INPUT         E12          LVCMOS25       N/A               
+clk           INPUT         F9           LVCMOS25       N/A               
+nRST          INPUT         D8           LVCMOS25       N/A               
+CSI_PWDN      OUTPUT        H4           LVCMOS25       8                 
+CSI_RST       OUTPUT        G1           LVCMOS25       8                 
+CSI_SOIC      OUTPUT        T7           LVCMOS25       8                 
+CSI_XCLK      OUTPUT        L12          LVCMOS25       8                 
+LCDBK         OUTPUT        K1           LVCMOS25       8                 
+LCD_B         OUTPUT        H14          LVCMOS25       8                 
+LCD_CLK       OUTPUT        P2           LVCMOS25       8                 
+LCD_DEN       OUTPUT        D5           LVCMOS25       8                 
+LCD_G         OUTPUT        P4           LVCMOS25       8                 
+LCD_HYNC      OUTPUT        F1           LVCMOS25       8                 
+LCD_R         OUTPUT        S42          LVCMOS25       8                 
+LCD_SYNC      OUTPUT        M11          LVCMOS25       8                 
+LED[2]        OUTPUT        F14          LVCMOS25       8                 
+LED[1]        OUTPUT        L8           LVCMOS25       8                 
+LED[0]        OUTPUT        D6           LVCMOS25       8                 
+CSI_SOID      INOUT         L14          LVCMOS25       8                 
+GPIO          INOUT         C13          LVCMOS25       8                 
+

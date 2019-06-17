@@ -1,5 +1,5 @@
 // Verilog netlist created by TD v4.4.433
-// Sun May 12 23:48:04 2019
+// Mon May 13 08:51:08 2019
 
 `timescale 1ns / 1ps
 module TOP  // source/TOP.v(1)
@@ -925,7 +925,7 @@ module ImgROM  // al_ip/ROM.v(14)
 
   EG_LOGIC_BRAM #(
     //.FORCE_KEEP("OFF"),
-    //.INIT_FILE("NONE"),
+    //.INIT_FILE("../mif/128x128.mif"),
     .ADDR_WIDTH_A(15),
     .ADDR_WIDTH_B(15),
     .BYTE_A(1),
@@ -936,7 +936,7 @@ module ImgROM  // al_ip/ROM.v(14)
     .DATA_WIDTH_A(8),
     .DATA_WIDTH_B(8),
     .DEBUGGABLE("NO"),
-    .FILL_ALL("00000000"),
+    .FILL_ALL("NONE"),
     .IMPLEMENT("9K"),
     .MODE("SP"),
     .PACKABLE("NO"),

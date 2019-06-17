@@ -1,0 +1,53 @@
+============================================================
+   Tang Dynasty, V4.4.433
+   Copyright:   Shanghai Anlogic Infotech Co., Ltd.
+                2011 - 2021
+   Executable = C:/Anlogic/TD4.4.433/bin/td.exe
+   Built at =   17:57:18 Feb 26 2019
+   Run by =     Administrator
+   Run Date =   Mon May 13 08:44:47 2019
+
+   Run on =     JSB-C
+============================================================
+RUN-1002 : start command "open_project LCDTest.al"
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-1007 : analyze verilog file source/VGAMod.v
+HDL-1007 : analyze verilog file al_ip/LCDPLL.v
+HDL-1007 : analyze verilog file source/CLK_MOD.v
+HDL-1007 : analyze verilog file al_ip/DisFIFO.v
+HDL-1007 : analyze verilog file source/LCDCTRL.v
+HDL-8007 ERROR: syntax error near ';' in source/LCDCTRL.v(9)
+HDL-1007 : Verilog file 'source/LCDCTRL.v' ignored due to errors
+HDL-1007 : analyze verilog file al_ip/ROM.v
+GUI-8384 ERROR: Analyze file(s) failed ...
+RUN-1003 : finish command "open_project LCDTest.al" in  14.019927s wall, 0.015600s user + 0.015600s system = 0.031200s CPU (0.2%)
+
+RUN-1004 : used memory is 30 MB, reserved memory is 13 MB, peak memory is 30 MB
+RUN-1002 : start command "import_device eagle_s20.db -package BG256"
+ARC-1001 : Device Initialization.
+ARC-1001 : ------------------------------------------------------------------
+ARC-1001 :            OPTION            |          IO          |   SETTING   
+ARC-1001 : ------------------------------------------------------------------
+ARC-1001 :   cso_b/cclk/mosi/miso/dout  |  T3/R11/T10/P10/S11  |    gpio    
+ARC-1001 :             done             |         P13          |    gpio    
+ARC-1001 :           program_b          |          T2          |  dedicated  
+ARC-1001 :        tdi/tms/tck/tdo       |   C12/A15/C14/E14    |  dedicated  
+ARC-1001 : ------------------------------------------------------------------
+ARC-1004 : Device setting, marked 5 dedicate IOs in total.
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-1007 : analyze verilog file source/VGAMod.v
+HDL-1007 : analyze verilog file al_ip/LCDPLL.v
+HDL-1007 : analyze verilog file source/CLK_MOD.v
+HDL-1007 : analyze verilog file al_ip/DisFIFO.v
+HDL-1007 : analyze verilog file source/LCDCTRL.v
+HDL-8007 ERROR: syntax error near ';' in source/LCDCTRL.v(9)
+HDL-1007 : Verilog file 'source/LCDCTRL.v' ignored due to errors
+HDL-1007 : analyze verilog file al_ip/ROM.v
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-1007 : analyze verilog file source/VGAMod.v
+HDL-1007 : analyze verilog file al_ip/LCDPLL.v
+HDL-1007 : analyze verilog file source/CLK_MOD.v
+HDL-1007 : analyze verilog file al_ip/DisFIFO.v
+HDL-1007 : analyze verilog file source/LCDCTRL.v
+HDL-1007 : analyze verilog file al_ip/ROM.v
+GUI-8014 ERROR: Find error in E:/Fpga_Prj/Anlogic/AnlogIC_Examples/LCD_8080ToRGB/LCD_8080ToRGB.al(5) ...

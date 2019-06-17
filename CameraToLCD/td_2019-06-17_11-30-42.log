@@ -19,3 +19,638 @@ ARC-1001 :           program_b          |          T2          |  dedicated
 ARC-1001 :        tdi/tms/tck/tdo       |   C12/A15/C14/E14    |  dedicated  
 ARC-1001 : ------------------------------------------------------------------
 ARC-1004 : Device setting, marked 5 dedicate IOs in total.
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-8007 ERROR: cannot index into non-array type wire for 'LED' in source/TOP.v(31)
+HDL-8007 ERROR: cannot index into non-array type wire for 'LED' in source/TOP.v(119)
+HDL-8007 ERROR: cannot index into non-array type wire for 'LED' in source/TOP.v(129)
+HDL-8007 ERROR: ignore module module due to previous errors in source/TOP.v(134)
+HDL-1007 : Verilog file 'source/TOP.v' ignored due to errors
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-8007 ERROR: cannot index into non-array type wire for 'LED' in source/TOP.v(31)
+HDL-8007 ERROR: cannot index into non-array type wire for 'LED' in source/TOP.v(119)
+HDL-8007 ERROR: cannot index into non-array type wire for 'LED' in source/TOP.v(129)
+HDL-8007 ERROR: ignore module module due to previous errors in source/TOP.v(134)
+HDL-1007 : Verilog file 'source/TOP.v' ignored due to errors
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-1007 : analyze verilog file source/CLK_MOD.v
+HDL-1007 : analyze verilog file source/LCDCTRL.v
+HDL-1007 : analyze verilog file source/VGAMod.v
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-1007 : analyze verilog file source/CLK_MOD.v
+HDL-1007 : analyze verilog file source/LCDCTRL.v
+HDL-1007 : analyze verilog file source/VGAMod.v
+RUN-1002 : start command "elaborate -top TOP"
+HDL-1007 : elaborate module TOP in source/TOP.v(1)
+HDL-5007 WARNING: instantiate unknown module LCDPLL in source/TOP.v(45)
+HDL-5007 WARNING: instantiate unknown module DisFIFO in source/TOP.v(70)
+HDL-1007 : elaborate module LCDCTRL in source/LCDCTRL.v(1)
+HDL-5007 WARNING: instantiate unknown module ImgROM in source/LCDCTRL.v(89)
+HDL-1007 : elaborate module VGAMod in source/VGAMod.v(1)
+HDL-5007 WARNING: actual bit length 1 differs from formal bit length 8 for port 'LCD_B' in source/TOP.v(99)
+HDL-5007 WARNING: actual bit length 1 differs from formal bit length 8 for port 'LCD_G' in source/TOP.v(100)
+HDL-5007 WARNING: actual bit length 1 differs from formal bit length 8 for port 'LCD_R' in source/TOP.v(101)
+HDL-1007 : elaborate module CLK_MOD in source/CLK_MOD.v(1)
+HDL-8007 ERROR: LCDPLL is a black box
+HDL-8007 ERROR: DisFIFO is a black box
+HDL-8007 ERROR: ImgROM is a black box
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-1007 : analyze verilog file source/CLK_MOD.v
+HDL-1007 : analyze verilog file source/LCDCTRL.v
+HDL-1007 : analyze verilog file source/VGAMod.v
+HDL-1007 : analyze verilog file al_ip/LCDPLL.v
+HDL-1007 : analyze verilog file al_ip/DisFIFO.v
+HDL-1007 : analyze verilog file E:/Fpga_Prj/Anlogic/AnlogIC_Examples/CameraToLCD/al_ip/DisFIFO.v
+HDL-1007 : analyze verilog file al_ip/ROM.v
+HDL-1007 : analyze verilog file source/TOP.v
+HDL-1007 : analyze verilog file source/CLK_MOD.v
+HDL-1007 : analyze verilog file source/LCDCTRL.v
+HDL-1007 : analyze verilog file source/VGAMod.v
+HDL-1007 : analyze verilog file al_ip/LCDPLL.v
+HDL-1007 : analyze verilog file al_ip/DisFIFO.v
+HDL-1007 : analyze verilog file al_ip/ROM.v
+RUN-1002 : start command "elaborate -top TOP"
+HDL-5007 WARNING: port 'clk3_out' remains unconnected for this instance in source/TOP.v(45)
+HDL-1007 : elaborate module TOP in source/TOP.v(1)
+HDL-1007 : elaborate module LCDPLL in al_ip/LCDPLL.v(25)
+HDL-1007 : elaborate module EG_LOGIC_BUFG in C:/Anlogic/TD4.4.433/arch/eagle_macro.v(80)
+HDL-1007 : elaborate module EG_PHY_PLL(FIN="24.000",REFCLK_DIV=13,FBCLK_DIV=18,CLKC0_DIV=30,CLKC1_DIV=10,CLKC2_DIV=20,CLKC3_DIV=56,CLKC0_ENABLE="ENABLE",CLKC1_ENABLE="ENABLE",CLKC2_ENABLE="ENABLE",CLKC3_ENABLE="ENABLE",FEEDBK_PATH="CLKC0_EXT",STDBY_ENABLE="DISABLE",CLKC0_CPHASE=29,CLKC1_CPHASE=9,CLKC2_CPHASE=19,CLKC3_CPHASE=55,GMC_GAIN=6,ICP_CURRENT=3,KVCO=6,LPF_RESISTOR=2,SYNC_ENABLE="DISABLE") in C:/Anlogic/TD4.4.433/arch/eagle_macro.v(985)
+HDL-1007 : elaborate module DisFIFO in E:/Fpga_Prj/Anlogic/AnlogIC_Examples/CameraToLCD/al_ip/DisFIFO.v(14)
+HDL-1007 : elaborate module EG_LOGIC_FIFO(DATA_WIDTH_W=8,DATA_WIDTH_R=16,DATA_DEPTH_W=2048,DATA_DEPTH_R=1024,F=2048,ENDIAN="BIG") in C:/Anlogic/TD4.4.433/arch/eagle_macro.v(214)
+HDL-1007 : elaborate module LCDCTRL in source/LCDCTRL.v(1)
+HDL-1007 : elaborate module ImgROM in al_ip/ROM.v(14)
+HDL-1007 : elaborate module EG_LOGIC_BRAM(DATA_WIDTH_A=8,DATA_WIDTH_B=8,ADDR_WIDTH_A=15,ADDR_WIDTH_B=15,DATA_DEPTH_A=32768,DATA_DEPTH_B=32768,MODE="SP",INIT_FILE="../mif/128x128.mif") in C:/Anlogic/TD4.4.433/arch/eagle_macro.v(1071)
+HDL-1007 : elaborate module VGAMod in source/VGAMod.v(1)
+HDL-5007 WARNING: actual bit length 1 differs from formal bit length 8 for port 'LCD_B' in source/TOP.v(99)
+HDL-5007 WARNING: actual bit length 1 differs from formal bit length 8 for port 'LCD_G' in source/TOP.v(100)
+HDL-5007 WARNING: actual bit length 1 differs from formal bit length 8 for port 'LCD_R' in source/TOP.v(101)
+HDL-1007 : elaborate module CLK_MOD in source/CLK_MOD.v(1)
+HDL-1200 : Current top model is TOP
+HDL-1100 : Inferred 0 RAMs.
+RUN-1002 : start command "optimize_rtl"
+RUN-1001 : Open license file C:/Anlogic/TD4.4.433/license/Anlogic.lic
+SYN-1012 : SanityCheck: Model "TOP"
+SYN-1012 : SanityCheck: Model "VGAMod"
+SYN-1012 : SanityCheck: Model "DisFIFO"
+SYN-1012 : SanityCheck: Model "LCDPLL"
+SYN-1012 : SanityCheck: Model "CLK_MOD"
+SYN-1012 : SanityCheck: Model "LCDCTRL"
+SYN-1012 : SanityCheck: Model "ImgROM"
+SYN-1043 : Mark LCDPLL as IO macro for instance bufg_feedback
+SYN-5013 WARNING: Undriven net: model "TOP" / net "CSI_PWDN" in source/TOP.v(13)
+SYN-5014 WARNING: the net's pin: pin "CSI_PWDN" in source/TOP.v(13)
+SYN-5013 WARNING: Undriven net: model "TOP" / net "CSI_RST" in source/TOP.v(14)
+SYN-5014 WARNING: the net's pin: pin "CSI_RST" in source/TOP.v(14)
+SYN-5013 WARNING: Undriven net: model "TOP" / net "CSI_SOIC" in source/TOP.v(15)
+SYN-5014 WARNING: the net's pin: pin "CSI_SOIC" in source/TOP.v(15)
+SYN-5013 WARNING: Undriven net: model "TOP" / net "CSI_XCLK" in source/TOP.v(10)
+SYN-5014 WARNING: the net's pin: pin "CSI_XCLK" in source/TOP.v(10)
+SYN-5025 WARNING: Using 0 for all undriven pins and nets
+SYN-1016 : Merged 6 instances.
+SYN-1011 : Flatten model TOP
+SYN-1011 : Flatten model VGAMod
+SYN-1011 : Flatten model DisFIFO
+SYN-1011 : Flatten model LCDPLL
+SYN-1011 : Flatten model CLK_MOD
+SYN-1011 : Flatten model LCDCTRL
+SYN-1011 : Flatten model ImgROM
+SYN-1016 : Merged 2 instances.
+SYN-1016 : Merged 14 instances.
+SYN-1014 : Optimize round 1
+SYN-1044 : Optimized 1 inv instances.
+SYN-1032 : 707/36 useful/useless nets, 516/16 useful/useless insts
+SYN-1019 : Optimized 1 mux instances.
+SYN-1020 : Optimized 32 distributor mux.
+SYN-1016 : Merged 93 instances.
+SYN-1015 : Optimize round 1, 184 better
+SYN-1014 : Optimize round 2
+SYN-1044 : Optimized 1 inv instances.
+SYN-1032 : 670/8 useful/useless nets, 479/32 useful/useless insts
+SYN-1017 : Remove 2 const input seq instances
+SYN-1002 :     U4/reg3_b0
+SYN-1002 :     U4/reg3_b1
+SYN-1019 : Optimized 0 mux instances.
+SYN-1016 : Merged 1 instances.
+SYN-1015 : Optimize round 2, 43 better
+SYN-1014 : Optimize round 3
+SYN-1032 : 663/7 useful/useless nets, 476/0 useful/useless insts
+SYN-1019 : Optimized 2 mux instances.
+SYN-1015 : Optimize round 3, 5 better
+SYN-1014 : Optimize round 4
+SYN-1032 : 661/2 useful/useless nets, 474/0 useful/useless insts
+SYN-1019 : Optimized 0 mux instances.
+SYN-1015 : Optimize round 4, 0 better
+RUN-1002 : start command "report_area -file CameraToLCD_rtl.area"
+RUN-1001 : standard
+***Report Model: TOP***
+
+IO Statistics
+#IO                    30
+  #input               13
+  #output              15
+  #inout                2
+
+Gate Statistics
+#Basic gates          213
+  #and                 16
+  #nand                 0
+  #or                   0
+  #nor                  0
+  #xor                  0
+  #xnor                 0
+  #buf                  0
+  #not                  8
+  #bufif1               0
+  #MX21                32
+  #FADD                 0
+  #DFF                157
+  #LATCH                0
+#MACRO_ADD             28
+#MACRO_EQ               7
+#MACRO_MUX            220
+
+RUN-1001 : 
+Report Hierarchy Area:
++-----------------------------------------+
+|Instance |Module |gates  |seq    |macros |
++-----------------------------------------+
+|top      |TOP    |56     |157    |38     |
++-----------------------------------------+
+
+GUI-5001 WARNING: Found no ADC files
+RUN-1002 : start command "export_db CameraToLCD_rtl.db"
+RUN-1001 : Exported /
+RUN-1001 : Exported libs
+RUN-1001 : Exported entities
+RUN-1001 : Exported ports
+RUN-1001 : Exported pins
+RUN-1001 : Exported instances
+RUN-1001 : Exported nets
+RUN-1001 : Exported buses
+RUN-1001 : Exported models
+RUN-1001 : Exported congestions
+RUN-1001 : Exported violations
+RUN-1001 : Exported IO constraints
+RUN-1001 : Exported Inst constraints
+RUN-1001 : Exported flow parameters
+RUN-1002 : start command "optimize_gate -packarea CameraToLCD_gate.area"
+RUN-1001 : Open license file C:/Anlogic/TD4.4.433/license/Anlogic.lic
+SYN-2001 : Map 30 IOs to PADs
+SYN-2501 : Processed 0 LOGIC_BUF instances.
+SYN-2501 : 1 BUFG to GCLK
+SYN-2512 : LOGIC BRAM "U4/ROM0/inst"
+SYN-2541 : Reading BRAM "U4/ROM0/inst" init file "E:/Fpga_Prj\Anlogic\AnlogIC_Examples\CameraToLCD\mif\128x128.mif"
+SYN-2542 : Parsing MIF init file
+SYN-2541 : Logic FIFO "FIFO0/logic_fifo"
+SYN-2541 : Write 2048x8, read 1024x16.
+SYN-2571 : Optimize after map_dsp, round 1
+SYN-1032 : 711/52 useful/useless nets, 543/41 useful/useless insts
+SYN-1016 : Merged 15 instances.
+SYN-2571 : Optimize after map_dsp, round 1, 97 better
+SYN-2571 : Optimize after map_dsp, round 2
+SYN-1032 : 696/0 useful/useless nets, 528/0 useful/useless insts
+SYN-2571 : Optimize after map_dsp, round 2, 0 better
+SYN-2501 : Optimize round 1
+SYN-1032 : 868/0 useful/useless nets, 700/0 useful/useless insts
+SYN-1016 : Merged 4 instances.
+SYN-2501 : Optimize round 1, 151 better
+SYN-2501 : Optimize round 2
+SYN-1032 : 864/0 useful/useless nets, 696/0 useful/useless insts
+SYN-2501 : Optimize round 2, 0 better
+SYN-2501 : Map 28 macro adder
+SYN-1032 : 1352/3 useful/useless nets, 1184/3 useful/useless insts
+SYN-3001 : Running gate level optimization.
+SYN-2581 : Mapping with K=4, #lut = 234 (3.16), #lev = 4 (3.20)
+SYN-2551 : Post LUT mapping optimization.
+SYN-2581 : Mapping with K=4, #lut = 234 (3.12), #lev = 4 (3.20)
+SYN-2581 : Mapping with K=4, #lut = 234 (3.12), #lev = 4 (3.20)
+SYN-3001 : Logic optimization runtime opt =   0.01 sec, map =   0.00 sec
+SYN-3001 : Mapper mapped 463 instances into 241 LUTs, name keeping = 78%.
+SYN-3001 : Mapper removed 1 lut buffers
+SYN-1001 : Packing model "TOP" ...
+SYN-4010 : Pack lib has 28 rtl pack models with 8 top pack blocks
+SYN-1014 : Optimize round 1
+SYN-1032 : 1120/0 useful/useless nets, 952/0 useful/useless insts
+SYN-1015 : Optimize round 1, 0 better
+SYN-4002 : Packing 159 DFF/LATCH to SEQ ...
+SYN-4009 : Pack 10 carry chain into lslice
+SYN-4007 : Packing 316 adder to BLE ...
+SYN-4008 : Packed 316 adder and 0 SEQ to BLE.
+SYN-4007 : Packing 0 gate4 to BLE ...
+SYN-4008 : Packed 0 gate4 and 0 SEQ to BLE.
+SYN-4012 : Packed 0 FxMUX
+SYN-4007 : Packing 0 MUX to BLE ...
+SYN-4008 : Packed 0 MUX and 0 SEQ to BLE.
+SYN-4007 : Packing 240 LUT to BLE ...
+SYN-4008 : Packed 240 LUT and 157 SEQ to BLE.
+SYN-4003 : Packing 2 remaining SEQ's ...
+SYN-4004 : #0: Packed 0 SEQ (2 nodes)...
+SYN-4004 : #1: Packed 2 SEQ (38 nodes)...
+SYN-4005 : Packed 2 SEQ with LUT/SLICE
+SYN-4006 : 81 single LUT's are left
+SYN-4006 : 2 single SEQ's are left
+SYN-4011 : Packing model "TOP" (AL_USER_NORMAL) with 240/503 primitive instances ...
+RUN-1002 : start command "report_area -file CameraToLCD_gate.area"
+RUN-1001 : standard
+***Report Model: TOP***
+
+IO Statistics
+#IO                    30
+  #input               13
+  #output              15
+  #inout                2
+
+Utilization Statistics
+#lut                  662   out of  19600    3.38%
+#reg                  159   out of  19600    0.81%
+#le                   662
+  #lut only           503   out of    662   75.98%
+  #reg only             0   out of    662    0.00%
+  #lut&reg            159   out of    662   24.02%
+#dsp                    0   out of     29    0.00%
+#bram                  17   out of     64   26.56%
+  #bram9k              16
+  #fifo9k               1
+#bram32k                0   out of     16    0.00%
+#pad                   30   out of    188   15.96%
+  #ireg                 0
+  #oreg                 0
+  #treg                 0
+#pll                    1   out of      4   25.00%
+#clknet                 0   out of     16    0.00%
+  #gclk                 1
+
+RUN-1001 : 
+Report Hierarchy Area:
++--------------------------------------+
+|Instance |Module |le    |lut   |seq   |
++--------------------------------------+
+|top      |TOP    |662   |662   |159   |
++--------------------------------------+
+
+RUN-1002 : start command "legalize_phy_inst"
+SYN-1011 : Flatten model TOP
+RUN-1002 : start command "legalize_phy_inst"
+SYN-1011 : Flatten model TOP
+RUN-1002 : start command "export_db CameraToLCD_gate.db"
+RUN-1001 : Exported /
+RUN-1001 : Exported libs
+RUN-1001 : Exported entities
+RUN-1001 : Exported ports
+RUN-1001 : Exported pins
+RUN-1001 : Exported instances
+RUN-1001 : Exported nets
+RUN-1001 : Exported buses
+RUN-1001 : Exported models
+RUN-1001 : Exported congestions
+RUN-1001 : Exported violations
+RUN-1001 : Exported IO constraints
+RUN-1001 : Exported Inst constraints
+RUN-1001 : Exported flow parameters
+RUN-1002 : start command "place"
+RUN-1001 : Open license file C:/Anlogic/TD4.4.433/license/Anlogic.lic
+PHY-3001 : Placer runs in 4 thread(s).
+SYN-4016 : Net LCD_CLK_pad driven by BUFG (41 clock/control pins, 2 other pins).
+SYN-4027 : Net CLK_100M is clkc1 of pll PLL1/pll_inst.
+SYN-4019 : Net clk_pad is refclk of pll PLL1/pll_inst.
+SYN-4020 : Net clk_pad is fbclk of pll PLL1/pll_inst.
+SYN-4024 : Net "CLK_100M" drive clk pins.
+SYN-4024 : Net "LCD_CLK_pad" drive clk pins.
+SYN-4024 : Net "clk_pad" drive clk pins.
+SYN-4025 : Tag rtl::Net CLK_100M as clock net
+SYN-4025 : Tag rtl::Net LCD_CLK_pad as clock net
+SYN-4025 : Tag rtl::Net clk_pad as clock net
+SYN-4026 : Tagged 3 rtl::Net as clock net
+RUN-1001 : There are total 384 instances
+RUN-1001 : 166 mslices, 166 lslices, 30 pads, 17 brams, 0 dsps
+RUN-1001 : There are total 673 nets
+RUN-1001 : 474 nets have 2 pins
+RUN-1001 : 87 nets have [3 - 5] pins
+RUN-1001 : 79 nets have [6 - 10] pins
+RUN-1001 : 24 nets have [11 - 20] pins
+RUN-1001 : 6 nets have [21 - 99] pins
+RUN-1001 : 3 nets have 100+ pins
+PHY-3001 : Initial placement ...
+PHY-3001 : design contains 382 instances, 332 slices, 28 macros(211 instances)
+PHY-3001 : Start timing update ...
+RUN-1002 : start command "start_timer"
+TMR-5001 WARNING: No sdc constraints found while initiating timer.
+TMR-2505 : Start building timing graph for model TOP.
+TMR-2506 : Build timing graph completely. Port num: 21, tpin num: 2606, tnet num: 671, tinst num: 382, tnode num: 3029, tedge num: 4500.
+TMR-2507 : Eliminate loop in the timing graph, delete 0 tedges.
+TMR-2508 : Levelizing timing graph completed, there are 40 levels in total.
+TMR-2501 : Timing graph initialized successfully.
+TMR-2503 : Start to update net delay, extr mode = 2.
+TMR-2504 : Update delay of 671 nets completely.
+TMR-2502 : Annotate delay completely, extr mode = 2.
+TMR-3002 : No user constraint, initiate default constraint.
+TMR-1501 : Assign derive clock DeriveClock to 240 clock pins, and constraint 419 relative nodes.
+TMR-3004 : Start mapping sdc constraints, there are 0 constraints in total.
+TMR-3005 : Start mapping report constraints, there are 0 constraints in total.
+TMR-3003 : Constraints initiated successfully.
+TMR-3501 : Forward propagation: start to calculate arrival time...
+TMR-3502 : Backward propagation: start to calculate required time...
+TMR-3503 : Timing propagation completes.
+PHY-3001 : End timing update;  0.069535s wall, 0.093601s user + 0.000000s system = 0.093601s CPU (134.6%)
+
+PHY-3001 : Global placement ...
+PHY-3001 : Initial: Len = 183674
+PHY-3001 : Run with size of 4
+PHY-3001 : Cell area utilization is 3%, beta_incr = 0.979673
+PHY-3001 : :::0::: Try harder cell spreading with beta_ = 0
+PHY-3002 : Step(1): len = 132357, overlap = 36
+PHY-3002 : Step(2): len = 106435, overlap = 38.25
+PHY-3002 : Step(3): len = 91323.6, overlap = 38.25
+PHY-3002 : Step(4): len = 76163.2, overlap = 38.25
+PHY-3002 : Step(5): len = 64405.6, overlap = 38.25
+PHY-3002 : Step(6): len = 56150.6, overlap = 38.25
+PHY-3002 : Step(7): len = 45519, overlap = 38.25
+PHY-3002 : Step(8): len = 37841.5, overlap = 38.25
+PHY-3002 : Step(9): len = 32014.9, overlap = 38.25
+PHY-3002 : Step(10): len = 26382.2, overlap = 38.25
+PHY-3002 : Step(11): len = 21536.9, overlap = 38.25
+PHY-3002 : Step(12): len = 18959.6, overlap = 38.25
+PHY-3002 : Step(13): len = 16149.3, overlap = 38.25
+PHY-3002 : Step(14): len = 14737, overlap = 38.5
+PHY-3002 : Step(15): len = 13392.2, overlap = 38.25
+PHY-3002 : Step(16): len = 12298.3, overlap = 38.25
+PHY-3002 : Step(17): len = 11951.2, overlap = 38.25
+PHY-3001 : :::1::: Try harder cell spreading with beta_ = 7.96089e-06
+PHY-3002 : Step(18): len = 14228.4, overlap = 32.75
+PHY-3002 : Step(19): len = 15584.1, overlap = 34.75
+PHY-3002 : Step(20): len = 14869.8, overlap = 29.25
+PHY-3002 : Step(21): len = 13570.5, overlap = 29.75
+PHY-3002 : Step(22): len = 13478.5, overlap = 30
+PHY-3002 : Step(23): len = 13486, overlap = 29.75
+PHY-3002 : Step(24): len = 13382.4, overlap = 29.75
+PHY-3002 : Step(25): len = 13276.1, overlap = 27.25
+PHY-3002 : Step(26): len = 12850.3, overlap = 22.75
+PHY-3002 : Step(27): len = 12529.3, overlap = 27.25
+PHY-3002 : Step(28): len = 12182, overlap = 29.25
+PHY-3002 : Step(29): len = 11905.2, overlap = 29.75
+PHY-3002 : Step(30): len = 11730.1, overlap = 25.25
+PHY-3002 : Step(31): len = 11408.4, overlap = 20.5
+PHY-3002 : Step(32): len = 11194.4, overlap = 20.5
+PHY-3002 : Step(33): len = 10990.2, overlap = 24.75
+PHY-3002 : Step(34): len = 10979.1, overlap = 24.75
+PHY-3002 : Step(35): len = 11015.3, overlap = 29.25
+PHY-3001 : :::2::: Try harder cell spreading with beta_ = 1.59218e-05
+PHY-3002 : Step(36): len = 11183.3, overlap = 29.25
+PHY-3002 : Step(37): len = 11270.6, overlap = 29.25
+PHY-3002 : Step(38): len = 11353.2, overlap = 29.25
+PHY-3001 : :::3::: Try harder cell spreading with beta_ = 3.18436e-05
+PHY-3002 : Step(39): len = 11521.3, overlap = 29.25
+PHY-3002 : Step(40): len = 11658.4, overlap = 29.25
+PHY-3002 : Step(41): len = 11769.2, overlap = 29.25
+PHY-3001 : Legalization ...
+PHY-3001 : End legalization;  0.005704s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (273.5%)
+
+PHY-3001 : Run with size of 4
+PHY-3001 : Cell area utilization is 4%, beta_incr = 0.979673
+PHY-3001 : :::0::: Try harder cell spreading with beta_ = 6.15247e-06
+PHY-3002 : Step(42): len = 17090.1, overlap = 3.75
+PHY-3002 : Step(43): len = 17043.9, overlap = 4
+PHY-3002 : Step(44): len = 17114, overlap = 3.75
+PHY-3002 : Step(45): len = 17100.1, overlap = 4.75
+PHY-3002 : Step(46): len = 17144.1, overlap = 4.5
+PHY-3002 : Step(47): len = 17090.4, overlap = 6.75
+PHY-3001 : :::1::: Try harder cell spreading with beta_ = 1.23049e-05
+PHY-3002 : Step(48): len = 17004.5, overlap = 6.75
+PHY-3002 : Step(49): len = 17014, overlap = 6.75
+PHY-3001 : :::2::: Try harder cell spreading with beta_ = 2.46099e-05
+PHY-3002 : Step(50): len = 17037.6, overlap = 6.75
+PHY-3002 : Step(51): len = 17082.3, overlap = 6.75
+PHY-3001 : Run with size of 2
+PHY-3001 : Cell area utilization is 4%, beta_incr = 0.979673
+PHY-3001 : :::0::: Try harder cell spreading with beta_ = 8.43199e-06
+PHY-3002 : Step(52): len = 17039.5, overlap = 15.25
+PHY-3002 : Step(53): len = 17108.8, overlap = 15.25
+PHY-3001 : :::1::: Try harder cell spreading with beta_ = 1.6864e-05
+PHY-3002 : Step(54): len = 17491, overlap = 14
+PHY-3002 : Step(55): len = 17854.9, overlap = 13.75
+PHY-3002 : Step(56): len = 17972.3, overlap = 14
+PHY-3002 : Step(57): len = 18339.3, overlap = 11
+PHY-3002 : Step(58): len = 18252.4, overlap = 11.75
+PHY-3002 : Step(59): len = 18338.9, overlap = 11
+PHY-3002 : Step(60): len = 18376.9, overlap = 11.5
+PHY-3002 : Step(61): len = 18243.9, overlap = 11
+PHY-3001 : :::2::: Try harder cell spreading with beta_ = 3.3728e-05
+PHY-3002 : Step(62): len = 18225.5, overlap = 10.75
+PHY-3002 : Step(63): len = 18296.9, overlap = 9.5
+PHY-3001 : :::3::: Try harder cell spreading with beta_ = 6.74559e-05
+PHY-3002 : Step(64): len = 18596.3, overlap = 8.25
+PHY-3002 : Step(65): len = 18866.9, overlap = 8
+PHY-3002 : Step(66): len = 19578.3, overlap = 10.25
+PHY-3002 : Step(67): len = 19436.4, overlap = 10.5
+PHY-3002 : Step(68): len = 19454.6, overlap = 11.75
+PHY-3002 : Step(69): len = 19427.6, overlap = 11.5
+PHY-3002 : Step(70): len = 19265.2, overlap = 11.75
+PHY-3002 : Step(71): len = 19265, overlap = 11.5
+PHY-3002 : Step(72): len = 19200.3, overlap = 10.25
+PHY-3001 : :::4::: Try harder cell spreading with beta_ = 0.000134912
+PHY-3002 : Step(73): len = 19488.2, overlap = 9.5
+PHY-3002 : Step(74): len = 19550.1, overlap = 9.5
+PHY-3002 : Step(75): len = 19700.7, overlap = 9.75
+PHY-3001 : :::5::: Try harder cell spreading with beta_ = 0.000269824
+PHY-3002 : Step(76): len = 20344.5, overlap = 8.75
+PHY-3002 : Step(77): len = 20719.2, overlap = 8.5
+PHY-3002 : Step(78): len = 21077.5, overlap = 8
+PHY-3002 : Step(79): len = 20752, overlap = 7.75
+PHY-3002 : Step(80): len = 20711.1, overlap = 6.75
+PHY-3002 : Step(81): len = 20491.3, overlap = 7.25
+PHY-3001 : Legalization ...
+PHY-3001 : End legalization;  0.020907s wall, 0.000000s user + 0.015600s system = 0.015600s CPU (74.6%)
+
+PHY-3001 : Run with size of 2
+PHY-3001 : Cell area utilization is 4%, beta_incr = 0.979673
+PHY-3001 : :::0::: Try harder cell spreading with beta_ = 0.842899
+PHY-3002 : Step(82): len = 26358.5, overlap = 0
+PHY-3002 : Step(83): len = 26149.4, overlap = 0
+PHY-3002 : Step(84): len = 25821.1, overlap = 0.5
+PHY-3002 : Step(85): len = 25702.7, overlap = 0.5
+PHY-3002 : Step(86): len = 25686.6, overlap = 0.5
+PHY-3002 : Step(87): len = 25655.6, overlap = 0.5
+PHY-3001 : Legalization ...
+PHY-3001 : End legalization;  0.007296s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (213.8%)
+
+PHY-3001 : Legalized: Len = 26403.6, Over = 0
+PHY-3001 : Spreading special nets. 1 overflows in 2952 tiles.
+PHY-3001 : 1 instances has been re-located, deltaX = 1, deltaY = 0.
+PHY-3001 : Final: Len = 26423.6, Over = 0
+PHY-3001 : Improving timing with driver duplication.
+RUN-1003 : finish command "place" in  1.460397s wall, 1.996813s user + 0.748805s system = 2.745618s CPU (188.0%)
+
+RUN-1004 : used memory is 177 MB, reserved memory is 138 MB, peak memory is 177 MB
+RUN-1002 : start command "route"
+RUN-1001 : Open license file C:/Anlogic/TD4.4.433/license/Anlogic.lic
+PHY-1001 : Pin swapping for better routability
+PHY-1001 : Pin misalignment score is improved from 293 to 251
+PHY-1001 : Pin misalignment score is improved from 251 to 245
+PHY-1001 : Pin misalignment score is improved from 245 to 245
+PHY-1001 : Pin local connectivity score is improved from 6 to 0
+PHY-1001 : Pin misalignment score is improved from 245 to 245
+PHY-1001 : Pin local connectivity score is improved from 0 to 0
+PHY-1001 : End pin swap;  0.158642s wall, 0.156001s user + 0.000000s system = 0.156001s CPU (98.3%)
+
+PHY-1001 : Route runs in 4 thread(s)
+RUN-1001 : There are total 384 instances
+RUN-1001 : 166 mslices, 166 lslices, 30 pads, 17 brams, 0 dsps
+RUN-1001 : There are total 673 nets
+RUN-1001 : 474 nets have 2 pins
+RUN-1001 : 87 nets have [3 - 5] pins
+RUN-1001 : 79 nets have [6 - 10] pins
+RUN-1001 : 24 nets have [11 - 20] pins
+RUN-1001 : 6 nets have [21 - 99] pins
+RUN-1001 : 3 nets have 100+ pins
+PHY-1001 : Start global routing ...
+PHY-1001 : Generate routing grids ...
+PHY-1001 : Initialize routing nets ...
+PHY-1001 : Ripup & Reroute ...
+PHY-1002 : len = 32008, over cnt = 71(0%), over = 137, worst = 7
+PHY-1002 : len = 32464, over cnt = 41(0%), over = 64, worst = 4
+PHY-1002 : len = 32744, over cnt = 36(0%), over = 42, worst = 2
+PHY-1002 : len = 33544, over cnt = 3(0%), over = 3, worst = 1
+PHY-1002 : len = 33624, over cnt = 0(0%), over = 0, worst = 0
+RUN-1002 : start command "start_timer"
+TMR-5001 WARNING: No sdc constraints found while initiating timer.
+TMR-2505 : Start building timing graph for model TOP.
+TMR-2506 : Build timing graph completely. Port num: 21, tpin num: 2606, tnet num: 671, tinst num: 382, tnode num: 3029, tedge num: 4500.
+TMR-2507 : Eliminate loop in the timing graph, delete 0 tedges.
+TMR-2508 : Levelizing timing graph completed, there are 40 levels in total.
+TMR-2501 : Timing graph initialized successfully.
+PHY-1001 : Generate timing info.
+TMR-2503 : Start to update net delay, extr mode = 5.
+TMR-2504 : Update delay of 671 nets completely.
+TMR-2502 : Annotate delay completely, extr mode = 5.
+TMR-3002 : No user constraint, initiate default constraint.
+TMR-1501 : Assign derive clock DeriveClock to 240 clock pins, and constraint 419 relative nodes.
+TMR-3004 : Start mapping sdc constraints, there are 0 constraints in total.
+TMR-3005 : Start mapping report constraints, there are 0 constraints in total.
+TMR-3003 : Constraints initiated successfully.
+TMR-3501 : Forward propagation: start to calculate arrival time...
+TMR-3502 : Backward propagation: start to calculate required time...
+TMR-3503 : Timing propagation completes.
+PHY-1001 : Optimize timing.
+PHY-1001 : End global routing;  0.287642s wall, 0.280802s user + 0.000000s system = 0.280802s CPU (97.6%)
+
+PHY-1001 : Start detail routing ...
+PHY-1001 : Generate detailed routing grids ...
+PHY-1001 : Generate nets ...
+PHY-1001 : net CLK_100M will be routed on clock mesh
+PHY-1001 : clock net LCD_CLK_pad will be merged with clock PLL1/clk0_buf
+PHY-1001 : net clk_pad will be routed on clock mesh
+PHY-1001 : Detail Route ...
+PHY-1001 : ===== Detail Route Phase 1 =====
+PHY-1001 : Routed 0% nets.
+PHY-1001 :  0.103515s wall, 0.109201s user + 0.015600s system = 0.124801s CPU (120.6%)
+
+PHY-1002 : len = 14856, over cnt = 0(0%), over = 0, worst = 0
+PHY-1001 : ===== Detail Route Phase 2 =====
+PHY-1001 : Routed 15% nets.
+PHY-1001 :  0.645997s wall, 0.639604s user + 0.000000s system = 0.639604s CPU (99.0%)
+
+PHY-1002 : len = 29024, over cnt = 20(0%), over = 20, worst = 1
+PHY-1001 : ===== DR Iter 1 =====
+PHY-1001 :  0.065471s wall, 0.078001s user + 0.000000s system = 0.078001s CPU (119.1%)
+
+PHY-1002 : len = 28832, over cnt = 5(0%), over = 5, worst = 1
+PHY-1001 : ===== DR Iter 2 =====
+PHY-1001 :  0.021769s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (71.7%)
+
+PHY-1002 : len = 28824, over cnt = 3(0%), over = 3, worst = 1
+PHY-1001 : ===== DR Iter 3 =====
+PHY-1001 :  0.017187s wall, 0.015600s user + 0.000000s system = 0.015600s CPU (90.8%)
+
+PHY-1002 : len = 28816, over cnt = 2(0%), over = 2, worst = 1
+PHY-1001 : ===== DR Iter 4 =====
+PHY-1001 :  0.016324s wall, 0.015600s user + 0.015600s system = 0.031200s CPU (191.1%)
+
+PHY-1002 : len = 28816, over cnt = 1(0%), over = 1, worst = 1
+PHY-1001 : ===== DR Iter 5 =====
+PHY-1001 :  0.011996s wall, 0.000000s user + 0.000000s system = 0.000000s CPU (n/a%)
+
+PHY-1002 : len = 28816, over cnt = 0(0%), over = 0, worst = 0
+PHY-1001 : ===== Detail Route Phase 3 =====
+PHY-1001 : Routed 32% nets.
+PHY-1001 : Routed 36% nets.
+PHY-1001 : Routed 42% nets.
+PHY-1001 : Routed 52% nets.
+PHY-1001 : Routed 67% nets.
+PHY-1001 :  1.687049s wall, 2.028013s user + 0.031200s system = 2.059213s CPU (122.1%)
+
+PHY-1002 : len = 98656, over cnt = 0(0%), over = 0, worst = 0
+PHY-1003 : Routed, final wirelength = 98656
+PHY-1001 : 0 feed throughs used by 0 nets
+PHY-1001 : Generate detailed routing grids ...
+PHY-1001 : Generate nets ...
+PHY-1001 : net CLK_100M will be routed on clock mesh
+PHY-1001 : clock net LCD_CLK_pad will be merged with clock PLL1/clk0_buf
+PHY-1001 : net clk_pad will be routed on clock mesh
+PHY-1001 : eco open net = 0
+PHY-1001 : End detail routing;  9.092095s wall, 9.048058s user + 0.514803s system = 9.562861s CPU (105.2%)
+
+PHY-1001 : Routing violations:
+PHY-1001 : End of Routing Violations.
+RUN-1003 : finish command "route" in  9.631704s wall, 9.562861s user + 0.530403s system = 10.093265s CPU (104.8%)
+
+RUN-1004 : used memory is 289 MB, reserved memory is 252 MB, peak memory is 628 MB
+RUN-1002 : start command "report_area -io_info -file CameraToLCD_phy.area"
+RUN-1001 : standard
+***Report Model: TOP***
+
+IO Statistics
+#IO                    30
+  #input               13
+  #output              15
+  #inout                2
+
+Utilization Statistics
+#lut                  662   out of  19600    3.38%
+#reg                  159   out of  19600    0.81%
+#le                   662
+  #lut only           503   out of    662   75.98%
+  #reg only             0   out of    662    0.00%
+  #lut&reg            159   out of    662   24.02%
+#dsp                    0   out of     29    0.00%
+#bram                  17   out of     64   26.56%
+  #bram9k              16
+  #fifo9k               1
+#bram32k                0   out of     16    0.00%
+#pad                   30   out of    188   15.96%
+  #ireg                 0
+  #oreg                 0
+  #treg                 0
+#pll                    1   out of      4   25.00%
+#clknet                 3   out of     16   18.75%
+  #gclk                 1
+
+RUN-1001 : 
+
+RUN-1002 : start command "export_db CameraToLCD_pr.db"
+RUN-1001 : Exported /
+RUN-1001 : Exported libs
+RUN-1001 : Exported entities
+RUN-1001 : Exported ports
+RUN-1001 : Exported pins
+RUN-1001 : Exported instances
+RUN-1001 : Exported nets
+RUN-1001 : Exported buses
+RUN-1001 : Exported models
+RUN-1001 : Exported congestions
+RUN-1001 : Exported violations
+RUN-1001 : Exported IO constraints
+RUN-1001 : Exported Inst constraints
+RUN-1001 : Exported flow parameters
+RUN-1002 : start command "bitgen -bit CameraToLCD.bit -version 0X00 -g ucode:00000000010011000000000000000000"
+BIT-1003 : Start to generate bitstream. 
+BIT-1002 : Init instances with 4 threads.
+BIT-1002 : Init instances completely, inst num: 384
+BIT-1002 : Init pips with 4 threads.
+BIT-1002 : Init pips completely, net num: 673, pip num: 6355
+BIT-1003 : Multithreading accelaration with 4 threads.
+BIT-1003 : Generate bitstream completely, there are 769 valid insts, and 20672 bits set as '1'.
+BIT-1004 : PLL setting string = 0001
+BIT-1004 : Generate bits file CameraToLCD.bit.
+RUN-1003 : finish command "bitgen -bit CameraToLCD.bit -version 0X00 -g ucode:00000000010011000000000000000000" in  2.566334s wall, 6.630043s user + 0.093601s system = 6.723643s CPU (262.0%)
+
+RUN-1004 : used memory is 298 MB, reserved memory is 262 MB, peak memory is 628 MB
